@@ -1,6 +1,6 @@
 import chromadb
 from typing import List
-from geminiDataBaseParser import GeminiEmbeddingFunction
+from app.geminiDataBaseParser import GeminiEmbeddingFunction
 
 def create_chroma_db(documents:List, path:str, name:str):
     try:
