@@ -27,7 +27,6 @@ class GeminiEmbeddingFunction(EmbeddingFunction):
         # Метод __call__, вызываемый при вызове объекта класса как функции
         # Принимает в качестве аргумента input - документы для встраивания
         # Возвращает векторные представления (embeddings) входных документов
-
         gemini_api_key = GOOGLE_API  # Получение API-ключа из файла appConfig.py
         if not gemini_api_key:
             # Проверка наличия API-ключа

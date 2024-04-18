@@ -12,10 +12,8 @@ class QueryHandler:
     def make_rag_prompt(self, query, relevant_passage):
         # Метод для формирования промпта для библиотечного помощника с учетом запроса и релевантного текста
         escaped = relevant_passage.replace("'", "").replace('"', "").replace("\n", " ")
-        prompt = ("""Ты - помощник в библиотеке, тебя зовут Вася. Твоя задача - помогать людям и отвечать на их вопросы. 
-                Если в предоставленном контексте есть информация, которая может помочь ответить на вопрос, ты можешь использовать её, 
-                но помни, что контекст может быть разнообразным и не всегда содержит полезные данные. Так же давай полный ответ.
-                НЕ ПРИ КАКИХ ОБСТОЯТЕЛЬСТВАХ не упомянай о контексте в ответе
+        prompt = ("""Ты - помощник в библиотеке, тебя зовут Вася. Отвечай на любой вопрос который тебе дадут даже если его нет в контексте,
+                  старайся давать полный ответ и быть дружелюбным
 
                 QUESTION: '{query}'
                 PASSAGE: '{relevant_passage}'
@@ -35,11 +33,36 @@ class QueryHandler:
         answer = model.generate_content(prompt)
         return answer.text
 
-    def generate_answer(self, db,query):
-        # Метод для генерации ответа на основе запроса и релевантного текста из базы данных
-        relevant_text = self.get_relevant_passage(query,db,n_results=3)
-        prompt = self.make_rag_prompt(query, 
-                                relevant_passage="".join(relevant_text)) # joining the relevant chunks to create a single passage
-        answer = self.generate_response(prompt)
+    def generate_answer(self, db, query):
+        # Получение релевантного текста из базы данных
+        relevant_text = self.get_relevant_passage(query, db, n_results=3)
+        context_available = len(relevant_text) > 0
 
-        return answer  
+        # Формирование запроса
+        if context_available:
+            # Контекст доступен
+            prompt = self.make_rag_prompt(query, 
+                                        relevant_passage="".join(relevant_text))
+        else:
+            # Контекст недоступен
+            prompt = """Ты - помощник в библиотеке, тебя зовут Вася. Отвечай на любой вопрос который тебе дадут даже если его нет в контексте,
+                          старайся давать полный ответ и быть дружелюбным
+
+                        QUESTION: '{query}'
+
+                        ANSWER:
+                        """.format(query=query)
+
+        # Генерация ответа
+        try:
+            # Попытка сгенерировать ответ с использованием контекста
+            if context_available:
+                answer = self.generate_response(prompt)
+            else:
+                # Если контекст недоступен, используем LLM напрямую
+                answer = self.generate_llm_response(prompt)
+        except Exception as e:
+            # Обработка ошибок
+            answer = "К сожалению, я не могу сейчас ответить на ваш вопрос."
+
+        return answer

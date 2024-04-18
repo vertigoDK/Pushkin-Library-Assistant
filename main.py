@@ -15,11 +15,11 @@ chunked_text = parser.split_text(text)
 #                            path=appConfig.CHROMA_DB_PATH,
 #                            name=appConfig.CHROMA_DB_NAME)
 # if db and name:
-#     print(f"Chroma Collection '{name}' successfully created.")   Создание векторной базы данных
+#     print(f"Chroma Collection '{name}' successfully created.")   #Создание векторной базы данных
 
 db = load_chroma_collection(path=appConfig.CHROMA_DB_PATH, name=appConfig.CHROMA_DB_NAME) #Загрузка базы данных
 qHandler = QueryHandler()
-answer = qHandler.generate_answer(db, query="А как тебя зовут?")
+answer = qHandler.generate_answer(db, query="Привееет")
 print(answer)
 
 
