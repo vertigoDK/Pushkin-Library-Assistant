@@ -1,0 +1,14 @@
+site_name: My Docs
+dev_addr: "localhost:8080"
+
+
+theme:
+  name: material
+  language: ru
+  palette:
+    primary: black
+
+nav:
+  - Главная:
+    - index.md
+
