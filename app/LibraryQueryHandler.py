@@ -1,4 +1,4 @@
-from appConfig import GOOGLE_API  # Импорт API-ключа из файла настроек
+from app.appConfig import GOOGLE_API  # Импорт API-ключа из файла настроек
 import google.generativeai as genai
 
 class QueryHandler:
