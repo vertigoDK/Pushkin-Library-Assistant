@@ -19,10 +19,11 @@ chunked_text = parser.split_text(text)
 
 db = load_chroma_collection(path=appConfig.CHROMA_DB_PATH, name=appConfig.CHROMA_DB_NAME) #Загрузка базы данных
 qHandler = QueryHandler()
-answer = qHandler.generate_answer(db, query="Привееет")
+answer = qHandler.generate_answer(db, query="а сколько лет илону маску?")
 print(answer)
 
 
 end_time = time.time()
 execution_time = end_time - start_time
 print(f"Время выполнения кода: {execution_time} секунд")
+
