@@ -14,7 +14,7 @@ class DataBaseParser: #Класс превращающий путь к базе 
             text = file.read()
         return text
 
-    def split_text(self, text: str): #Расспличивание самого текста
+    def split_text(self, text: str, chunk_size=512): #Расспличивание самого текста
         split_text = re.split('\n \n', text)
         return [i for i in split_text if i != ""]
     

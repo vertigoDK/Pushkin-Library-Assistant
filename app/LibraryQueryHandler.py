@@ -33,6 +33,23 @@ class QueryHandler:
         answer = model.generate_content(prompt)
         return answer.text
 
+    def generate_llm_response(self, prompt):
+        # Получение ключа API Gemini
+        gemini_api_key = GOOGLE_API
+        if not gemini_api_key:
+            raise ValueError("Gemini API Key not provided. Please provide GEMINI_API_KEY as an environment variable")
+
+        # Настройка LLM-модели
+        genai.configure(api_key=gemini_api_key)
+        model = genai.GenerativeModel('gemini-pro')
+
+        # Генерация ответа с помощью LLM
+        answer = model.generate_content(prompt)
+
+        # Возвращение сгенерированного ответа
+        return answer.text
+
+
     def generate_answer(self, db, query):
         # Получение релевантного текста из базы данных
         relevant_text = self.get_relevant_passage(query, db, n_results=3)
@@ -41,10 +58,12 @@ class QueryHandler:
         # Формирование запроса
         if context_available:
             # Контекст доступен
+            print(f"Контекст был доступен {relevant_text}")
             prompt = self.make_rag_prompt(query, 
                                         relevant_passage="".join(relevant_text))
         else:
             # Контекст недоступен
+            print('контекст не был доступен')
             prompt = """Ты - помощник в библиотеке, тебя зовут Вася. Отвечай на любой вопрос который тебе дадут даже если его нет в контексте,
                           старайся давать полный ответ и быть дружелюбным
 
@@ -52,6 +71,8 @@ class QueryHandler:
 
                         ANSWER:
                         """.format(query=query)
+            
+            
 
         # Генерация ответа
         try:
@@ -63,6 +84,6 @@ class QueryHandler:
                 answer = self.generate_llm_response(prompt)
         except Exception as e:
             # Обработка ошибок
-            answer = "К сожалению, я не могу сейчас ответить на ваш вопрос."
+            answer = f"К сожалению, я не могу сейчас ответить на ваш вопрос. {e}"
 
         return answer
