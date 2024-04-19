@@ -34,19 +34,12 @@ class QueryHandler:
         return answer.text
 
     def generate_llm_response(self, prompt):
-        # Получение ключа API Gemini
         gemini_api_key = GOOGLE_API
         if not gemini_api_key:
             raise ValueError("Gemini API Key not provided. Please provide GEMINI_API_KEY as an environment variable")
-
-        # Настройка LLM-модели
         genai.configure(api_key=gemini_api_key)
         model = genai.GenerativeModel('gemini-pro')
-
-        # Генерация ответа с помощью LLM
         answer = model.generate_content(prompt)
-
-        # Возвращение сгенерированного ответа
         return answer.text
 
 
@@ -58,7 +51,9 @@ class QueryHandler:
         # Формирование запроса
         if context_available:
             # Контекст доступен
-            print(f"Контекст был доступен {relevant_text}")
+            print("Контекст был доступен:")
+            for i in range(len(relevant_text)):
+                print(f'{i} {relevant_text[i]}')
             prompt = self.make_rag_prompt(query, 
                                         relevant_passage="".join(relevant_text))
         else:
