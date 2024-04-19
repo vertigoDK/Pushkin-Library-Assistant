@@ -19,7 +19,7 @@ chunked_text = parser.split_text(text)
 
 db = load_chroma_collection(path=appConfig.CHROMA_DB_PATH, name=appConfig.CHROMA_DB_NAME) #Загрузка базы данных
 qHandler = QueryHandler()
-answer = qHandler.generate_answer(db, query="Привееет")
+answer = qHandler.generate_answer(db, query="Привет а у вас есть книга мороз? и еще расскажи кто такой илон маск")
 print(answer)
 
 
