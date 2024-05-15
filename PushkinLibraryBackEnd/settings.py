@@ -26,6 +26,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+UNFOLD = {
+
+    "SITE_TITLE": "Admin",
+    "SITE_HEADER": "AD",
+}
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -124,3 +132,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
