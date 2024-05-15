@@ -3,4 +3,7 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello world")
+    return render(request=request, template_name='core/index.html')
+
+def soon(request):
+    return render(request=request, template_name='core/soon.html')
