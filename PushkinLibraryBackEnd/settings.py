@@ -1,9 +1,7 @@
 
+from django.utils.translation import gettext_lazy as _
 from pathlib import Path
-
 import os
-
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +23,6 @@ UNFOLD = {
     "SITE_TITLE": "Admin",
     "SITE_HEADER": "AD",
 }
-
-
 
 # Application definition
 
@@ -55,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'PushkinLibraryBackEnd.urls'
@@ -62,7 +59,7 @@ ROOT_URLCONF = 'PushkinLibraryBackEnd.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [os.path.join(BASE_DIR, "templates/")]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -116,6 +113,23 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+
+LOCALE_PATHS = (
+   os.path.join(BASE_DIR, 'conf/locale'),
+   # os.path.join(BASE_DIR, 'polls/locale')
+)
+
+LANGUAGES = [
+    ("en", _("English")),
+    ("ru", _("Russian")),
+    ("kz", _("Kazak")),
+]
+MULTILINGUAL_LANGUAGES = (
+    "en-us",
+    "kz",
+    "ru",
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
