@@ -1,0 +1,28 @@
+<!-- templates/news_list.html -->
+
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Новости</h1>
+    <div class="row">
+        {% for news_item in news %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                {% if news_item.main_image %}
+                <img src="{{ news_item.main_image.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ news_item.title }}</h5>
+                    <p class="card-text">{{ news_item.content|truncatewords:20 }}</p>
+                    <a href="#" class="btn btn-primary">Читать далее</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Опубликовано: {{ news_item.pub_date|date:"d M Y" }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
