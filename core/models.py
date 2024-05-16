@@ -2,6 +2,7 @@
 
 from django.db import models
 
+
 class News(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     content = models.TextField(verbose_name='Содержание')
