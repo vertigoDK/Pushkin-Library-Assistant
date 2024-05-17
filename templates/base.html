@@ -24,7 +24,7 @@
           <a class="nav-link" href="#">Читателям</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href={% url 'soon' %}>Новости</a>
+          <a class="nav-link" href={% url 'news' %}>Новости</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Электронный каталог</a>
@@ -46,5 +46,14 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "122c9adb-6212-434e-8e83-9a2a74b6f6d9",
+        apiHost: "http://127.0.0.1:3000",
+    })
+</script>
+
+
 </body>
 </html>

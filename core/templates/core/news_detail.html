@@ -1,0 +1,18 @@
+<!-- templates/news_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ news_item.title }}</h5>
+            {% if news_item.main_image %}
+            <img src="{{ news_item.main_image.url }}" class="card-img-top" alt="...">
+            {% endif %}
+            <p class="card-text">{{ news_item.content }}</p>
+            <p class="card-text"><small class="text-muted">Опубликовано: {{ news_item.pub_date }}</small></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

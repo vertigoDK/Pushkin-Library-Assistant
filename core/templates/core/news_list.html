@@ -1,6 +1,6 @@
 <!-- templates/news_list.html -->
 
-{% extends 'core/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 <div class="container mt-5">
@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ news_item.title }}</h5>
                     <p class="card-text">{{ news_item.content|truncatewords:20 }}</p>
-                    <a href="#" class="btn btn-primary">Читать далее</a>
+                    <a href="{% url 'news_detail' slug=news_item.slug %}" class="btn btn-primary">Читать далее</a>
                 </div>
                 <div class="card-footer text-muted">
                     Опубликовано: {{ news_item.pub_date|date:"d M Y" }}

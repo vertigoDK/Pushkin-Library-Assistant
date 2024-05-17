@@ -11,7 +11,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t9m6e4e^#p#5n7isahxr%%ro0=h38^7d@a+s3-nhpi8!crl^+-'
+SECRET_KEY = 'django-insecure-!=))xlvz%9uc2+!#rc&2qrwf5w-4b!x3r4(1imas-_d0p^&2&p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -27,12 +27,14 @@ UNFOLD = {
 # Application definition
 
 INSTALLED_APPS = [
-    # Для админки тема красивая :)
+    # Для админки тема красивая
     "unfold",
     "unfold.contrib.filters",
     "unfold.contrib.forms",
     "unfold.contrib.guardian",
     "unfold.contrib.simple_history",
+
+    'autoslug',
 
     "django.contrib.admin",
     'django.contrib.auth',
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
+    'chatbot_app'
 ]
 
 MIDDLEWARE = [

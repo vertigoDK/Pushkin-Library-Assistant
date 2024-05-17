@@ -1,0 +1,14 @@
+{% extends 'base_without_bot.html' %}
+
+{% block content %}
+
+<flowise-fullchatbot></flowise-fullchatbot>
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.initFull({
+        chatflowid: "122c9adb-6212-434e-8e83-9a2a74b6f6d9",
+        apiHost: "http://127.0.0.1:3000",
+    })
+</script>
+
+{% endblock %}
