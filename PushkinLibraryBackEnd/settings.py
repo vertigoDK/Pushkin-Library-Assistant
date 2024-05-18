@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     "unfold.contrib.forms",
     "unfold.contrib.guardian",
     "unfold.contrib.simple_history",
-
+    'core',
     'autoslug',
 
     'events_app',

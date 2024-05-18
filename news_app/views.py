@@ -2,9 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from .models import News
 
 
-def index(request):
-    return render(request=request, template_name='news_app/index.html')
-
 
 def soon(request):
     return render(request=request, template_name='news_app/soon.html')
