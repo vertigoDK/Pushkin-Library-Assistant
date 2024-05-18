@@ -4,7 +4,7 @@ from . import views
 
 
 urlpatterns = [
+    path('', views.news_list, name='news'),
+    path('<slug:slug>/', views.news_detail, name='news_detail'),
     path('soon/', views.soon, name='soon'),
-    path('news/', views.news_list, name='news'),
-    path('news/<slug:slug>/', views.news_detail, name='news_detail'),
 ]
