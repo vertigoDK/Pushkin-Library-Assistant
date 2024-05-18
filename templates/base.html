@@ -24,7 +24,7 @@
           <a class="nav-link" href="#">Читателям</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href={% url 'news' %}>Новости</a>
+          <a class="nav-link" href="{% url 'news' %}">Новости</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Электронный каталог</a>
@@ -38,22 +38,23 @@
       </ul>
     </div>
   </nav>
+
   {% block content %}
-  	
   {% endblock %}
-  
+
   <!-- Подключаем скрипты Bootstrap и jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="module">
-    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
-    Chatbot.init({
-        chatflowid: "58fe397f-15b9-4b04-b188-85f1f61aba16",
-        apiHost: "http://127.0.0.1:3000",
-    })
-</script>
 
-
+  {% if show_chatbot %}
+  <script type="module">
+      import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+      Chatbot.init({
+          chatflowid: "58fe397f-15b9-4b04-b188-85f1f61aba16",
+          apiHost: "http://127.0.0.1:3000",
+      })
+  </script>
+  {% endif %}
 </body>
 </html>

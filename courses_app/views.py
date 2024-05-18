@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse('hello wolrd')
+    return HttpResponse('hello wolrd') #Контекст добавить
