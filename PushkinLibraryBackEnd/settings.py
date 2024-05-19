@@ -73,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.settings_context'
             ],
         },
     },
@@ -146,3 +147,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+FLOWISE_CHATFLOW = 'bca6d8e7-2894-417d-8527-a38b0a072cdf'
+FLOWISE_HOST = 'http://127.0.0.1:3000'
