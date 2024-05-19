@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from .models import News
 
 
-
 def soon(request):
     return render(request=request, template_name='news_app/soon.html', context={'show_chatbot': True})
 
