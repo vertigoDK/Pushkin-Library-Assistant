@@ -29,5 +29,6 @@ def search_books(request):
 
     return JsonResponse({'results': results})
 
+
 def search_page(request):
     return render(request, 'booksearch_app/search_book.html', context={'show_chatbot': True})

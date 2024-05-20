@@ -1,9 +1,10 @@
 from django.db import models
 from autoslug import AutoSlugField
+from django.utils.translation import gettext as _
 
 
 class News(models.Model):
-    title = models.CharField(max_length=255, verbose_name='Заголовок')
+    title = models.CharField(max_length=255, verbose_name=_('title'))
     slug = AutoSlugField(populate_from='title', unique=True)
     content = models.TextField(verbose_name='Содержание')
     pub_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
