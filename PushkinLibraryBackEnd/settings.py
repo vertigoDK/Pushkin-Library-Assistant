@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "unfold.contrib.simple_history",
     'core',
     'autoslug',
-
+    'booksearch_app',
     'events_app',
     'courses_app',
     "django.contrib.admin",

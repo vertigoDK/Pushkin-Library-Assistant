@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Поиск книг</h1>
+  <form id="search-form">
+    <div class="form-group">
+      <label for="search-query">Введите название книги или автора</label>
+      <input type="text" class="form-control" id="search-query" placeholder="Поиск книг">
+    </div>
+    <button type="submit" class="btn btn-primary">Поиск</button>
+  </form>
+
+  <div id="search-results" class="mt-5">
+    <!-- Здесь будут отображаться результаты поиска -->
+  </div>
+
+  <div id="pagination" class="mt-3">
+    <button id="prev-page" class="btn btn-secondary" disabled>Предыдущая</button>
+    <button id="next-page" class="btn btn-secondary">Следующая</button>
+  </div>
+</div>
+
+<script>
+  let currentPage = 1;
+  const resultsPerPage = 10;
+
+  function displayResults(results) {
+    const resultsDiv = document.getElementById('search-results');
+    resultsDiv.innerHTML = '';
+    if (results.length === 0) {
+      resultsDiv.innerHTML = '<p>Ничего не найдено.</p>';
+    } else {
+      const list = document.createElement('ul');
+      list.className = 'list-group';
+      results.slice((currentPage - 1) * resultsPerPage, currentPage * resultsPerPage).forEach(book => {
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item';
+        listItem.textContent = `${book.title}`;
+        list.appendChild(listItem);
+      });
+      resultsDiv.appendChild(list);
+    }
+  }
+
+  document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const query = document.getElementById('search-query').value;
+    fetch(`/search_books?q=${query}`)
+      .then(response => response.json())
+      .then(data => {
+        displayResults(data.results);
+        const totalPages = Math.ceil(data.results.length / resultsPerPage);
+        document.getElementById('prev-page').disabled = currentPage === 1;
+        document.getElementById('next-page').disabled = currentPage === totalPages;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  });
+
+  document.getElementById('prev-page').addEventListener('click', function() {
+    if (currentPage > 1) {
+      currentPage--;
+      document.getElementById('search-form').dispatchEvent(new Event('submit'));
+    }
+  });
+
+  document.getElementById('next-page').addEventListener('click', function() {
+    currentPage++;
+    document.getElementById('search-form').dispatchEvent(new Event('submit'));
+  });
+</script>
+{% endblock %}

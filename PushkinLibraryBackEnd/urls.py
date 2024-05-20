@@ -9,6 +9,7 @@ urlpatterns = [
     path('dosai/', include('chatbot_app.urls')),
     path('events/', include('events_app.urls')),
     path('courses/', include('courses_app.urls')),
+    path('search_books/', include("booksearch_app.urls")),
     path('', include('core.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
