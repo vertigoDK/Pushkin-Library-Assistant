@@ -24,8 +24,6 @@ lst_keyL = list(KeyL)
 def get_format_txt(s):
     result = []
     for j in s:
-        if not j or j.get(KeyL.author, none) == none or j.get(KeyL.title, none) == none:
-            continue
 
         for i in lst_keyL:
             result.append(f"{i}: {j.get(i, none)}")
@@ -43,7 +41,7 @@ def get_format_json(s):
 def get_dict(s):
     result = {}
 
-    if s.get(KeyL.author, none) == none or s.get(KeyL.title, none) == none:
+    if s.get(KeyL.title, none) == none:
         return ""
 
     for i in lst_keyL:
@@ -58,7 +56,7 @@ def get_text(s, *r) -> str:
     return result
 
 
-def read_irbis(path: str):
+def read_irbis(path: str, limit_book: int):
     print(path)
     result = []
     with open(path, mode='r+', encoding='utf8', errors="ignore") as file_read:
@@ -74,11 +72,10 @@ def read_irbis(path: str):
                 tag = -1
             elif content.startswith("</record>"):
                 count_book += 1
-                if count_book >= 10000:
+                if count_book > limit_book > 0:
                     break
-                print(count_book)
+                print(f"Книга #{count_book}")
                 result.append(get_dict(subfield))
-
                 subfield = dict()
             else:
 
@@ -99,27 +96,28 @@ def read_irbis(path: str):
                 if 610 == tag and not content.startswith("<field"):
                     subfield[KeyL.keywords] = subfield.get(KeyL.keywords, "") + get_text(content,
                                                                                          '<field tag="610">') + ", "
+
+        print(len(result))
         return result
 
 
-def export_txt(file_output: str, file_input: str):
-    data = read_irbis(file_input)
-    write_text = ""
+def export_txt(file_output: str, file_input: str, limit_book):
+    data = read_irbis(file_input, limit_book)
+    write_text = []
     for i in data:
         if i:
-            write_text += f'{",".join(get_format_txt(data))}\n'
+            write_text.append(f'{",".join(get_format_txt(data))}')
     with open(file_output, 'w+', encoding='utf8', errors="ignore") as file_write:
-        file_write.write(write_text)
+        file_write.write('\n'.join(write_text))
 
 
-def export_json(file_output: str, file_input: str):
-    data = read_irbis(file_input)
+def export_json(file_output: str, file_input: str, limit_book):
+    data = read_irbis(file_input, limit_book)
     result = []
     for i in data:
         if i:
             result.append(f'{get_format_json(i)}')
     write_text = "[\n" + ',\n'.join(result) + '\n]'
-    print(file_output)
     with open(file_output, 'w+', encoding='utf8', errors="ignore") as file_write:
         file_write.write(write_text)
 
@@ -128,19 +126,25 @@ def start_settings():
     type_file = input('Введите тип файла: json, txt (default: json) >> ')
     if type_file != 'txt':
         type_file = 'json'
-    file_name = input(f'Введите название файла (default: output_books.{type_file}) >> )')
+    file_name = input(f'Введите название файла (default: output_books.{type_file}) >> ')
     if not file_name:
         file_name = f'output_books.{type_file}'
-    file_input = input('Введите название файла (default: booktest.xml) >> )')
+    file_input = input('Введите название файла (default: booktest.xml) >> ')
     if not file_input:
         file_input = 'booktest.xml'
 
-    return type_file, file_name, file_input
+    limit_book = input('Ограничить число книг? (default: -1 (нет)) >> ')
+    if not limit_book:
+        limit_book = -1
+    else:
+        limit_book = int(limit_book)
+
+    return type_file, file_name, file_input, limit_book
 
 
 if __name__ == '__main__':
-    type_file, output_file, input_file = start_settings()
+    type_file, output_file, input_file, limit_book = start_settings()
     if type_file == 'json':
-        export_json(output_file, input_file)
+        export_json(output_file, input_file, limit_book)
     else:
-        export_txt(output_file, input_file)
+        export_txt(output_file, input_file, limit_book)
