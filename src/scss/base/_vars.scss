@@ -1,0 +1,24 @@
+:root {
+	--container-width: 1280px;
+	--container-padding: 15px;
+
+	--font-main: 'Montserrat', sans-serif;
+
+	--gray-color: #7f7b82;
+	--general-color: #185638;
+	--secondary-color: #f6ae2d;
+	--alternative-color: #4c1036;
+	--white-color: #fcfcfc;
+	--black-color: #0a1128;
+	--general-tint-color: #0c2b1c;
+	--general-tint-2-color: #103f28;
+
+	--laptop-size: 1199px;
+	--tablet-size: 959px;
+	--mobile-size: 599px;
+}
+
+.dark {
+	--page-bg: #252526;
+	--text-color: #fff;
+}
