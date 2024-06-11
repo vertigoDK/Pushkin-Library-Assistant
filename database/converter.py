@@ -1,5 +1,6 @@
 from enum import Enum
 import os
+from typing import List
 
 
 class KeyL(Enum):
@@ -29,7 +30,8 @@ class Converter:
         "'": "&apos;"
     }
 
-    def __init__(self, type_file: str = 'txt', file_name: str = "output", file_input: str = "booktest.xml", limit_book: int = -1):
+    def __init__(self, type_file: str = 'txt', file_name: str = "output", file_input: str = "booktest.xml",
+                 limit_book: int = -1):
         self.type_file = type_file
         if file_name.find(".") == -1:
             self.file_name = f'{file_name}.{type_file}'
@@ -38,12 +40,8 @@ class Converter:
         self.file_input = file_input
         self.limit_book = limit_book
 
-    def convert_format_txt(self, s):
-        result = []
-        for j in s:
-            for i in self.lst_keyL:
-                result.append(f"{i}: {j.get(i, self.none)}")
-        return result
+    def convert_format_txt(self, s: dict) -> str:
+        return "|".join([f"{i}: {s.get(i, self.none)}" for i in self.lst_keyL])
 
     def convert_format_json(self, s):
         result = []
@@ -61,7 +59,7 @@ class Converter:
             result[i] = self.replace_symbols(s.get(i, self.none))
         return result
 
-    def replace_symbols(self, text:str):
+    def replace_symbols(self, text: str):
         for i, k in self.symbols.items():
             text = text.replace(i, k)
         return text
@@ -73,7 +71,7 @@ class Converter:
             result = result.replace(i, "")
         return result
 
-    def read_irbis(self):
+    def read_irbis(self) -> List[dict]:
         result = []
         with open(self.file_input, mode='r+', encoding='utf8', errors="ignore") as file_read:
             subfield = dict()
@@ -111,20 +109,20 @@ class Converter:
                         subfield[KeyL.description] = content.replace('<field tag="101">', "").replace('\n', '')
                     if 610 == tag and not content.startswith("<field"):
                         subfield[KeyL.keywords] = subfield.get(KeyL.keywords, "") + self.get_text(content,
-                                                                                             '<field tag="610">') + ", "
+                                                                                                  '<field tag="610">') + ", "
 
             print(f"Всего книг:{len(result)}")
             return result
 
     def export_txt(self):
         data = self.read_irbis()
-        write_text = []
+        write_text: List[str] = []
         for i in data:
             if i:
-                write_text.append(f'{",".join(self.convert_format_txt(data))}')
+                write_text.append(self.convert_format_txt(i))
         self.save('\n'.join(write_text))
 
-    def export_json(self,):
+    def export_json(self, ):
         data = self.read_irbis()
         result = []
         for i in data:
@@ -133,10 +131,9 @@ class Converter:
         write_text = "[\n" + ',\n'.join(result) + '\n]'
         self.save(write_text)
 
-    def save(self, write_text:str):
-        with open(self.file_name, 'w+', encoding='utf8', errors="ignore") as file_write:
+    def save(self, write_text: str):
+        with open(self.file_name, 'a+', encoding='utf8', errors="ignore") as file_write:
             file_write.write(write_text)
-
 
 
 def start_settings():
@@ -147,6 +144,7 @@ def start_settings():
     if not file_name:
         file_name = f'output_books.{type_file}'
     file_input = input('Введите название файла (default: booktest.xml) >> ')
+    file_input = r'C:\Users\Riffaells\Downloads\kz.xml'
     if not file_input:
         file_input = 'booktest.xml'
     limit_book = input('Ограничить число книг? (default: -1 (нет)) >> ')
@@ -156,6 +154,10 @@ def start_settings():
         limit_book = int(limit_book)
 
     return type_file, file_name, file_input, limit_book
+
+
+def parsing():
+    pass
 
 
 if __name__ == '__main__':

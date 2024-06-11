@@ -1,59 +1,53 @@
 import os
-
 from django.http import JsonResponse
 from django.shortcuts import render
 from difflib import SequenceMatcher
-from Levenshtein import ratio, distance
 
 
 def parse_data_file():
-    file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'database', 'data.txt')
-    books = []
-    with open(file_path, 'r', encoding='utf-8', errors="ignore") as file:
-        for line in file:
-            title = line.strip()  # Получаем название книги из строки без лишних пробелов
-            if title:  # Проверяем, что строка не пустая
-                books.append({'title': title})
+    file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'database', 'output_books.txt')
+    with open(file_path, 'r', encoding='utf-8', errors="ignore") as f:
+        lines = f.readlines()
+
+    books = [convert_str_to_dict(line.strip()) for line in lines if line.strip()]
     return books
 
 
-def similar(a: str, b: str):
-    return 1 - (SequenceMatcher(None, b, a).find_longest_match().size / len(a))
+def convert_str_to_dict(s: str) -> dict:
+    pairs = s.split('|')
+    result_dict = {}
+    for pair in pairs:
+        if ': ' in pair:
+            key, value = pair.split(': ', 1)
+            result_dict[key.strip()] = value.strip() if value.strip() != "Null" else "нету"
+    return result_dict
+
+
+def similar(a: str, b: str) -> float:
+    return SequenceMatcher(None, b, a).ratio()
 
 
 def search_books(request):
     query = request.GET.get('q', '').lower()
-    results = []
-    sort_index = []
+    page = int(request.GET.get('page', 1))
+    results_per_page = 10
+
+    if not query:
+        return JsonResponse({'results': [], 'total_pages': 0, 'current_page': page})
+
     books = parse_data_file()
+    filtered_books = [book for book in books if
+                      query in book.get('title', '').lower() or query in book.get('author', '').lower()]
 
-    if query:
-        for book in books:
-            if x := ratio(book.get('title', '').lower(), query) > 0.7:
-                results.append({'title': book['title']})
-                sort_index.append(x)
-            if len(results) >= 20:
-                break
+    sorted_books = sorted(filtered_books, key=lambda x: similar(x.get('title', '').lower(), query), reverse=True)
 
-    return JsonResponse({'results': results})
+    total_pages = (len(sorted_books) + results_per_page - 1) // results_per_page
+    start = (page - 1) * results_per_page
+    end = start + results_per_page
+    paginated_books = sorted_books[start:end]
+
+    return JsonResponse({'results': paginated_books, 'total_pages': total_pages, 'current_page': page})
 
 
 def search_page(request):
     return render(request, 'booksearch_app/search_book.html', context={'show_chatbot': True})
-
-
-def levenshtein_distance(a: str, b: str):
-    if len(b) == 0:
-        return len(a)
-
-    previous_row = range(len(b) + 1)
-    for i, c1 in enumerate(a):
-        row = [i + 1]
-        for j, c2 in enumerate(b):
-            insertions = previous_row[j + 1] + 1
-            deletions = row[j] + 1
-            substitutions = previous_row[j] + (c1 != c2)
-            row.append(min(insertions, deletions, substitutions))
-        previous_row = row
-
-    return previous_row[-1]
