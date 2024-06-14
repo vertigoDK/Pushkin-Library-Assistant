@@ -4,8 +4,9 @@ from django.shortcuts import render
 from difflib import SequenceMatcher
 
 
+# Скачать файл и закинуть в database https://drive.google.com/file/d/1XRpyAM9wqDZfeAA2a_JM-zTj05yMY55i/view?usp=drive_link
 def parse_data_file():
-    file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '../../database', 'output_books.txt')
+    file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '../database', 'output_books.txt')
     with open(file_path, 'r', encoding='utf-8', errors="ignore") as f:
         lines = f.readlines()
 

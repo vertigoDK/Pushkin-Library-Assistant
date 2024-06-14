@@ -1,7 +1,10 @@
 from django.forms import CharField
 from django.utils.translation import gettext_lazy as _
 from pathlib import Path
+from .read_env import read_env
 import os
+
+read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,10 +14,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!=))xlvz%9uc2+!#rc&2qrwf5w-4b!x3r4(1imas-_d0p^&2&p'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -33,7 +36,6 @@ INSTALLED_APPS = [
     "unfold.contrib.guardian",
     "unfold.contrib.simple_history",
 
-
     "django.contrib.admin",
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +51,6 @@ INSTALLED_APPS = [
     'app.events_app.apps.EventsAppConfig',
     'app.news_app.apps.NewsAppConfig',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,7 +91,7 @@ WSGI_APPLICATION = 'base.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / os.environ.get('DATABASE_NAME'),
     }
 }
 
@@ -125,9 +126,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 LOCALE_PATHS = (
-   os.path.join(BASE_DIR, 'conf/locale'),
+    os.path.join(BASE_DIR, 'conf/locale'),
 )
 
 LANGUAGES = [
@@ -141,7 +141,6 @@ MULTILINGUAL_LANGUAGES = (
     "ru-ru",
 )
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -152,5 +151,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-FLOWISE_CHATFLOW = 'bca6d8e7-2894-417d-8527-a38b0a072cdf'
+FLOWISE_CHATFLOW = os.environ.get('FLOWISE_CHATFLOW')
 FLOWISE_HOST = 'http://127.0.0.1:3000'
