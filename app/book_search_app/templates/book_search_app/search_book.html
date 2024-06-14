@@ -20,6 +20,32 @@
     <button id="next-page" class="btn btn-secondary" disabled>Следующая</button>
   </div>
 </div>
+<style>
+  .list-group-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+  }
+
+  .list-group-item strong {
+    font-size: 1.2em;
+    color: #333;
+  }
+
+  .list-group-item em {
+    color: #555;
+  }
+
+  .list-group-item p {
+    color: #666;
+  }
+
+  .list-group-item small {
+    color: #777;
+  }
+</style>
 
 <script>
   let currentPage = 1;
@@ -54,7 +80,7 @@
   }
 
   function fetchResults() {
-    fetch(`/search_books?page=${currentPage}`)
+    fetch(`/search_books?q=${currentQuery}&page=${currentPage}`)
       .then(response => response.json())
       .then(data => {
         displayResults(data.results);
