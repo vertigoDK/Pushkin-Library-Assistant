@@ -151,5 +151,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-FLOWISE_CHATFLOW = os.environ.get('FLOWISE_CHATFLOW')
+FLOWISE_CHATFLOW = 'bca6d8e7-2894-417d-8527-a38b0a072cdf'
 FLOWISE_HOST = 'http://127.0.0.1:3000'
