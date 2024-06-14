@@ -24,7 +24,6 @@
 <script>
   let currentPage = 1;
   let currentQuery = '';
-  const resultsPerPage = 10;
 
   function displayResults(results) {
     const resultsDiv = document.getElementById('search-results');
@@ -38,9 +37,9 @@
         const listItem = document.createElement('li');
         listItem.className = 'list-group-item';
         listItem.innerHTML = `
-          <strong>${book.title || 'нету'}</strong><br>
+          <strong>${book.title !== "нету" || 'нету'}</strong><br>
           <em>Автор: ${book.author || 'нету'}</em><br>
-          <p>${book.description || 'нету'}</p>
+          <p>${book.description !== "нету"  || 'нету1'}</p>
           <small><strong>Ключевые слова:</strong> ${book.keywords || 'нету'}</small>
         `;
         list.appendChild(listItem);
