@@ -54,7 +54,7 @@
   }
 
   function fetchResults() {
-    fetch(`/search_books?q=${currentQuery}&page=${currentPage}`)
+    fetch(`/search_books?page=${currentPage}`)
       .then(response => response.json())
       .then(data => {
         displayResults(data.results);
