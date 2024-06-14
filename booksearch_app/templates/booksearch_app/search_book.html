@@ -37,10 +37,10 @@
         const listItem = document.createElement('li');
         listItem.className = 'list-group-item';
         listItem.innerHTML = `
-          <strong>${book.title !== "нету" || 'нету'}</strong><br>
-          <em>Автор: ${book.author || 'нету'}</em><br>
-          <p>${book.description !== "нету"  || 'нету1'}</p>
-          <small><strong>Ключевые слова:</strong> ${book.keywords || 'нету'}</small>
+          <strong>${book.title === "нету" ? 'Неизвестно': book.title}</strong><br>
+          <em>Автор: ${book.author === 'нету' ?  'Автора у данной книги нет' : book.author}</em><br>
+          <p>${book.description === "нету"  ? 'описание у данной книги нет ': book.description}</p>
+          <small><strong>Ключевые слова:</strong> ${book.keywords === "нету" ? 'нету' : book.keywords}</small>
         `;
         list.appendChild(listItem);
       });

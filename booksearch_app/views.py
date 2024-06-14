@@ -19,7 +19,7 @@ def convert_str_to_dict(s: str) -> dict:
     for pair in pairs:
         if ': ' in pair:
             key, value = pair.split(': ', 1)
-            # result_dict[key.strip()] = value.strip() if value.strip() != "Null" else "нету"
+            result_dict[key.strip()] = value.strip() if value.strip() != "Null" else "нету"
     return result_dict
 
 
