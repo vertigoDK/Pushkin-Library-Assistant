@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ChatbotAppConfig(AppConfig):
+class EventsAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'chatbot_app'
+    name = 'app.events_app'

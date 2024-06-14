@@ -25,7 +25,6 @@ UNFOLD = {
 }
 
 # Application definition
-
 INSTALLED_APPS = [
     # Для админки тема красивая
     "unfold",
@@ -33,20 +32,24 @@ INSTALLED_APPS = [
     "unfold.contrib.forms",
     "unfold.contrib.guardian",
     "unfold.contrib.simple_history",
-    'core',
-    'autoslug',
-    'booksearch_app',
-    'events_app',
-    'courses_app',
+
+
     "django.contrib.admin",
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'news_app.apps.CoreConfig',
-    'chatbot_app'
+    'autoslug',
+
+    'core',
+    'app.book_search_app.apps.BookSearchAppConfig',
+    'app.chatbot_app.apps.ChatbotAppConfig',
+    'app.courses_app.apps.CoursesAppConfig',
+    'app.events_app.apps.EventsAppConfig',
+    'app.news_app.apps.NewsAppConfig',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,7 +62,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
 ]
 
-ROOT_URLCONF = 'PushkinLibraryBackEnd.urls'
+ROOT_URLCONF = 'base.urls'
 
 TEMPLATES = [
     {
@@ -79,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'PushkinLibraryBackEnd.wsgi.application'
+WSGI_APPLICATION = 'base.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

@@ -5,7 +5,7 @@ from difflib import SequenceMatcher
 
 
 def parse_data_file():
-    file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'database', 'output_books.txt')
+    file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '../../database', 'output_books.txt')
     with open(file_path, 'r', encoding='utf-8', errors="ignore") as f:
         lines = f.readlines()
 
@@ -50,4 +50,4 @@ def search_books(request):
 
 
 def search_page(request):
-    return render(request, 'booksearch_app/search_book.html', context={'show_chatbot': True})
+    return render(request, 'book_search_app/search_book.html', context={'show_chatbot': True})
