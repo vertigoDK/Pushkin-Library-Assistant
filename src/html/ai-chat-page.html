@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat AI</title>
+	<link rel='stylesheet' href='./css/main.css' />
+</head>
+
+<body>
+	@@include('blocks/header.html');
+	<main class="dosai">
+		<div class="container">
+			<div class="dosai__row">
+
+				<form action='/' class="dosai__chat-bar">
+					<textarea type="text" class="dosai__chat-bar-input" rows='1' placeholder='Сообщение DosAI'></textarea>
+					<button type='submit' class="dosai__chat-bar-btn">
+						<img src="../img/dosai/arrow-up.svg" alt="Arrow up" />
+					</button>
+				</form>
+			</div> <!-- /ROW -->
+		</div> <!-- /CONTAINER -->
+	</main>
+
+	<script src='./js/dosai.bundle.js'></script>
+</body>
+
+</html>

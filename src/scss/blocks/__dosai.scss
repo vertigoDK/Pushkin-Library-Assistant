@@ -1,0 +1,86 @@
+.dosai {
+	padding: 50px 0 100px;
+	background-image: url('../../img/dosai/background-logo.svg');
+	background-position: 50% 30%;
+	background-repeat: no-repeat;
+}
+
+.dosai__row {
+	min-height: 500px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+
+	position: relative;
+}
+
+.dosai__chat-bar {
+	position: fixed;
+	bottom: 50px;
+	left: 50%;
+	z-index: 20;
+	transform: translateX(-50%);
+	background-color: rgba(10, 17, 40, 35%);
+	max-width: 800px;
+	width: 100%;
+	max-height: 800px;
+	padding: 10px;
+	border-radius: 3px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid var(--black-color);
+	transition: height 0.2s ease;
+}
+.dosai__chat-bar-input {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--black-color);
+	font-weight: 500;
+	font-size: 16px;
+	resize: none;
+	overflow: hidden;
+	outline: none;
+
+	height: 100%;
+	width: 90%;
+	transition: height 0.2s ease;
+}
+.dosai__chat-bar-btn {
+	transition: box-shadow 0.2s ease;
+	&:hover {
+		box-shadow: 0px 4px 4px 0 rgba(10, 17, 40, 0.25);
+	}
+	img {
+		width: 27px;
+		height: 27px;
+		background-color: var(--black-color);
+		padding: 10px 8px;
+		border-radius: 3px;
+	}
+}
+
+.dosai__user-msg {
+	padding: 20px;
+	font-size: 16px;
+	font-weight: 500;
+	background-color: var(--general-color);
+	max-width: 600px;
+	align-self: end;
+	color: var(--white-color);
+	border-radius: 9px;
+	box-shadow: -4px 5px 17px 2px rgba(12, 43, 28, 0.7);
+}
+
+.dosai__bot-msg {
+	padding: 20px;
+	background-color: var(--black-color);
+	font-size: 16px;
+	font-weight: 500;
+	max-width: 600px;
+	align-self: flex-start;
+	color: var(--white-color);
+	border-radius: 9px;
+	box-shadow: 4px 5px 17px 2px rgba(10, 17, 40, 0.7);
+}

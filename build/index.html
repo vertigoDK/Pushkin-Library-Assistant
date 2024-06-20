@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 	<meta charset="UTF-8" />
@@ -13,7 +13,7 @@
 	<header class="header">
 	<div class="container">
 		<div class="header__row">
-			<a href='./index.html' class="logo">
+			<a href='./index.html' class="header__logo logo">
 				<img src="./img/header/logo.svg" alt="Logo">
 			</a>
 			<!-- HEADER-NAV -->
@@ -23,6 +23,7 @@
 					<li class="header__nav-item">
 						<div class='header__nav-item-main'>Библиотека</div>
 						<ul class='header__nav-item-dropdown'>
+							<li><a href='#'>Главная</a></li>
 							<li><a href='#'>О нас</a></li>
 							<li><a href='#'>История</a></li>
 							<li><a href='#'>Правила пользования</a></li>
@@ -103,9 +104,348 @@
 	<main class='main'>
 		<section class='hero'>
 	<div class="container">
-		<div class="hero_row"></div>
-	</div>
+		<div class="hero__row">
+			<!-- SWIPER -->
+			<div class="hero__swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="./img/hero/photo_summer.jpg" alt="Library Summer">
+					</div>
+					<div class="swiper-slide">
+						<img src="./img/hero/photo_summer.jpg" alt="Library Summer">
+					</div>
+					<div class="swiper-slide">
+						<img src="./img/hero/photo_summer.jpg" alt="Library Summer">
+					</div>
+					<div class="swiper-slide">
+						<img src="./img/hero/photo_summer.jpg" alt="Library Summer">
+					</div>
+				</div> <!-- SWIPER WRAPPER -->
+				<!-- PAGINATION -->
+				<div class="swiper-button-prev hero__arrow">
+					<img src="./img/hero/arrow-prev.svg" alt="Arrow Prev">
+				</div>
+				<div class="swiper-button-next hero__arrow">
+					<img src="./img/hero/arrow-next.svg" alt="Arrow Next">
+				</div>
+				<!-- /PAGINATION -->
+			</div> <!-- /SWIPER -->
+			<!-- SWIPER -->
+			<h1 class='hero__title'>Восточно-Казахстанская
+				областная библиотека им. А.С. Пушкина</h1>
+			<div class="hero__socials">
+				<a class='hero__social' href='#!'><img src="../../img/hero/2gis-logo.svg" alt="2GIS"></a>
+				<a class='hero__social' href='#!'><img src="../../img/hero/vk-logo.svg" alt="VKontakte"></a>
+				<a class='hero__social' href='#!'><img src="../../img/hero/whatsapp-logo.svg" alt="WhatsApp"></a>
+				<a class='hero__social' href='#!'><img src="../../img/hero/instagram-logo.svg" alt="Instagram"></a>
+				<a class='hero__social' href='#!'><img src="../../img/hero/facebook-logo.svg" alt="Facebook"></a>
+				<a class='hero__social' href='#!'><img src="../../img/hero/youtube-logo.svg" alt="YouTube"></a>
+				<a class='hero__social' href='#!'><img src="../../img/hero/x-logo.svg" alt="X Twitter"></a>
+			</div> <!-- /SOCIALS -->
+		</div> <!-- /ROW -->
+		<div class="hero__line"></div>
+		<div class="hero__links">
+			<!-- 01 -->
+			<div class="hero__link">
+				<a href="#!">
+					<div class="hero__link-frame hero__link-frame-1" data-text="Наш Абай">
+						<img class='hero__link-img' src="./img/hero/abai-icon.svg" alt="Abai">
+					</div>
+				</a>
+			</div>
+			<!-- 02 -->
+			<div class="hero__link">
+				<a href="#!">
+					<div class="hero__link-frame hero__link-frame-2" data-text="Краеведение">
+						<img class='hero__link-img' src="./img/hero/map-icon.svg" alt="Abai">
+					</div>
+				</a>
+			</div>
+			<!-- 03 -->
+			<div class="hero__link">
+				<a href="#!">
+					<div class="hero__link-frame hero__link-frame-3" data-text="ВКО: Известные места">
+						<img class='hero__link-img' src="./img/hero/mountain-icon.svg" alt="Abai">
+					</div>
+				</a>
+			</div>
+			<!-- 04 -->
+			<div class="hero__link">
+				<a href="#!">
+					<div class="hero__link-frame hero__link-frame-4" data-text="ВКО: Легенды и сказания
+					">
+						<img class='hero__link-img' src="./img/hero/feather-icon.svg" alt="Abai">
+					</div>
+				</a>
+			</div>
+		</div> <!-- /LINKS -->
+	</div> <!-- /CONTAINER -->
 </section> <!-- /HERO -->
+		<section class="services">
+	<div class="container">
+		<div class="services__row">
+			<div class="services__action services__time">
+
+	<div class="services__time-item">
+		<h6 class="services__time-num" id='services-current-time'>08:00</h6>
+		<p class="services__time-text" id='services-current-date'>Среда 30 апреля</p>
+	</div>
+
+	<div class="services__time-item">
+		<h6 class="services__time-num">08:00 - 19:00</h6>
+		<p class="services__time-text">График работы</p>
+	</div>
+
+	<div class="services__time-item">
+		<h6 class="services__time-num" id='services-close-time'>01:00:20</h6>
+		<p class="services__time-text">До <span id='services-open-close'>закрытия</span> библиотеки</p>
+	</div>
+
+</div> <!-- /TIME -->
+			<div class="services__action services__news">
+	<div class="services__news-swiper">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide"><img src="./img/services/news-img.jpg" alt="News Image">
+				<h6 class="services__news-title">Новости</h6>
+				<p class="services__news-desc">Общереспубликанский фестиваль «KITAP шоу - 2024»</p>
+				<a class="services__news-link" href='#!'>Читать</a>
+			</div>
+			<div class="swiper-slide"><img src="./img/services/news-img.jpg" alt="News Image">
+				<h6 class="services__news-title">Новости</h6>
+				<p class="services__news-desc">Новость 2</p>
+				<a class="services__news-link" href='#!'>Читать</a>
+			</div>
+		</div> <!-- /SWIPER-WRAPPER -->
+		<div class="swiper-button-prev services__arrow">
+			<img src="./img/services/arrow-left.svg" alt="Arrow Prev">
+		</div> <!-- /NEXT -->
+		<div class="swiper-button-next services__arrow">
+			<img src="./img/services/arrow-right.svg" alt="Arrow Next">
+		</div> <!-- /PREV -->
+	</div> <!-- SWIPER -->
+
+</div> <!-- /NEWS -->
+			<div class="services__action services__ai-chat">
+	<a target='_blank' href="./ai-chat-page.html" class="services__ai-chat-link">
+		<img class="services__ai-chat-logo" src="./img/services/logo-dosai-white.svg" alt="DosAI Logo" />
+		<p class="services__ai-chat-text">Чат-бот ассистент DosAI</p>
+	</a>
+</div> <!-- AI CHAT -->
+			<div class="services__action services__actions">
+	<div class="services__actions-row">
+		<h6 class="services__actions-title">Услуги</h6>
+		<div class="services__actions-icons">
+
+			<a class="services__actions-icon" data-name="Читателям" href="#!">
+				<svg width="44" height="42" viewBox="0 0 44 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M43 8.22379H1V34.0699H43V8.22379Z" stroke="#7F7B82" stroke-width="2" stroke-miterlimit="10"
+						stroke-linecap="round" stroke-linejoin="round" />
+					<path
+						d="M14.7366 20.5769C16.471 20.5769 17.877 19.1709 17.877 17.4365C17.877 15.7021 16.471 14.2961 14.7366 14.2961C13.0022 14.2961 11.5962 15.7021 11.5962 17.4365C11.5962 19.1709 13.0022 20.5769 14.7366 20.5769Z"
+						stroke="#7F7B82" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+					<path
+						d="M8.45605 26.8576C8.45605 23.4032 11.2824 20.5768 14.7369 20.5768C18.1913 20.5768 21.0176 23.4032 21.0176 26.8576"
+						stroke="#7F7B82" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+					<path d="M27.2983 17.4364H36.7195" stroke="#7F7B82" stroke-width="2" stroke-miterlimit="10"
+						stroke-linecap="round" stroke-linejoin="round" />
+					<path d="M32.0083 23.7172H36.7189" stroke="#7F7B82" stroke-width="2" stroke-miterlimit="10"
+						stroke-linecap="round" stroke-linejoin="round" />
+				</svg>
+			</a>
+
+			<a class="services__actions-icon" data-name="Виртуальная справка" href="#!"><svg width="42" height="42"
+					viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M19.5999 12.6C23.4659 12.6 26.5999 15.734 26.5999 19.6M27.5222 27.5169L33.5999 33.6M30.7999 19.6C30.7999 25.7856 25.7855 30.8 19.5999 30.8C13.4143 30.8 8.3999 25.7856 8.3999 19.6C8.3999 13.4144 13.4143 8.40002 19.5999 8.40002C25.7855 8.40002 30.7999 13.4144 30.7999 19.6Z"
+						stroke="#7F7B82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+				</svg>
+			</a>
+
+			<a class="services__actions-icon" data-name="Электронная доставка документов" href="#!">
+				<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M14.0699 10.92C12.3302 10.92 10.9199 12.3303 10.9199 14.07V14.7C10.9199 15.3959 10.3558 15.96 9.6599 15.96C8.96403 15.96 8.3999 15.3959 8.3999 14.7V14.07C8.3999 10.9385 10.9384 8.39999 14.0699 8.39999H14.6999C15.3958 8.39999 15.9599 8.96412 15.9599 9.65999C15.9599 10.3559 15.3958 10.92 14.6999 10.92H14.0699Z"
+						fill="#7F7B82" />
+					<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M19.689 13.44C18.8501 13.44 18.1451 13.44 17.5681 13.4871C16.965 13.5364 16.3917 13.6434 15.8476 13.9207C15.0178 14.3435 14.3431 15.0181 13.9203 15.8479C13.6431 16.392 13.536 16.9653 13.4868 17.5685C13.4643 17.8431 13.4526 18.1467 13.4464 18.48H10.9197C10.2238 18.48 9.65967 19.0441 9.65967 19.74C9.65967 20.4359 10.2238 21 10.9197 21H31.0797C31.7756 21 32.3397 20.4359 32.3397 19.74C32.3397 19.0441 31.7756 18.48 31.0797 18.48H28.5529C28.5468 18.1467 28.535 17.8431 28.5125 17.5685C28.4633 16.9653 28.3563 16.392 28.079 15.8479C27.6562 15.0181 26.9815 14.3435 26.1518 13.9207C25.6076 13.6434 25.0343 13.5364 24.4312 13.4871C23.8543 13.44 23.1492 13.44 22.3103 13.44H19.689ZM26.0325 18.48C26.0271 18.2082 26.0176 17.9774 26.001 17.7737C25.9644 17.3263 25.8998 17.1216 25.8337 16.992C25.6525 16.6363 25.3633 16.3472 25.0077 16.166C24.8781 16.0999 24.6733 16.0353 24.226 15.9987C23.7639 15.961 23.1626 15.96 22.2597 15.96H19.7397C18.8368 15.96 18.2354 15.961 17.7734 15.9987C17.326 16.0353 17.1213 16.0999 16.9916 16.166C16.636 16.3472 16.3469 16.6363 16.1657 16.992C16.0996 17.1216 16.035 17.3263 15.9984 17.7737C15.9818 17.9774 15.9723 18.2082 15.9668 18.48H26.0325Z"
+						fill="#7F7B82" />
+					<path
+						d="M23.6158 28.56H19.6898C18.851 28.56 18.1458 28.56 17.5689 28.5129C16.9657 28.4636 16.3925 28.3566 15.8483 28.0793C15.0185 27.6566 14.3439 26.9819 13.9211 26.1522C13.8749 26.0614 13.8503 26.0192 13.8184 25.9645C13.7986 25.9306 13.7761 25.892 13.7439 25.834C13.6577 25.679 13.5645 25.4837 13.5088 25.2109C13.4633 24.988 13.4517 24.7528 13.4462 24.5217C13.4404 24.2833 13.4404 23.9638 13.4404 23.54V23.52C13.4404 22.8241 14.0046 22.26 14.7004 22.26C15.3963 22.26 15.9604 22.8241 15.9604 23.52C15.9604 23.9683 15.9605 24.2569 15.9654 24.4611C15.9677 24.557 15.971 24.6187 15.9736 24.6567C16.0148 24.7277 16.0944 24.8667 16.1664 25.0081C16.3476 25.3636 16.6368 25.6528 16.9924 25.834C17.1221 25.9002 17.3268 25.9648 17.7741 26.0013C18.2362 26.039 18.8375 26.04 19.7404 26.04H23.5204C24.1538 26.04 24.3238 26.0361 24.4462 26.0167C25.2548 25.8887 25.8891 25.2544 26.0171 24.4457C26.0365 24.3234 26.0404 24.1534 26.0404 23.52C26.0404 22.8241 26.6045 22.26 27.3004 22.26C27.9963 22.26 28.5604 22.8241 28.5604 23.52V23.6154C28.5607 24.1068 28.5608 24.4945 28.5061 24.8399C28.2073 26.7268 26.7273 28.2068 24.8403 28.5057C24.4949 28.5604 24.1072 28.5603 23.6158 28.56Z"
+						fill="#7F7B82" />
+					<path
+						d="M33.6005 27.3C33.6005 26.6041 33.0364 26.04 32.3405 26.04C31.6446 26.04 31.0805 26.6041 31.0805 27.3V27.93C31.0805 29.6697 29.6702 31.08 27.9305 31.08H27.3005C26.6046 31.08 26.0405 31.6441 26.0405 32.34C26.0405 33.0359 26.6046 33.6 27.3005 33.6H27.9305C31.062 33.6 33.6005 31.0615 33.6005 27.93V27.3Z"
+						fill="#7F7B82" />
+					<path
+						d="M26.0405 9.65999C26.0405 8.96412 26.6046 8.39999 27.3005 8.39999H27.9305C31.062 8.39999 33.6005 10.9385 33.6005 14.07V14.7C33.6005 15.3959 33.0364 15.96 32.3405 15.96C31.6446 15.96 31.0805 15.3959 31.0805 14.7V14.07C31.0805 12.3303 29.6702 10.92 27.9305 10.92H27.3005C26.6046 10.92 26.0405 10.3559 26.0405 9.65999Z"
+						fill="#7F7B82" />
+					<path
+						d="M10.9199 27.3C10.9199 26.6041 10.3558 26.04 9.6599 26.04C8.96403 26.04 8.3999 26.6041 8.3999 27.3V27.93C8.3999 31.0615 10.9384 33.6 14.0699 33.6H14.6999C15.3958 33.6 15.9599 33.0359 15.9599 32.34C15.9599 31.6441 15.3958 31.08 14.6999 31.08H14.0699C12.3302 31.08 10.9199 29.6697 10.9199 27.93V27.3Z"
+						fill="#7F7B82" />
+				</svg>
+
+			</a>
+
+			<a class="services__actions-icon" data-name="Продлить книгу" href="#!">
+				<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M9.6001 30.8V12.88C9.6001 11.3119 9.6001 10.5278 9.90528 9.92885C10.1737 9.40199 10.6021 8.97365 11.1289 8.70521C11.7279 8.40002 12.512 8.40002 14.0801 8.40002H27.5201C29.0882 8.40002 29.8724 8.40002 30.4713 8.70521C30.9981 8.97365 31.4265 9.40199 31.6949 9.92885C32.0001 10.5278 32.0001 11.3119 32.0001 12.88V28H12.4001C10.8537 28 9.6001 29.2536 9.6001 30.8ZM9.6001 30.8C9.6001 32.3465 10.8537 33.6 12.4001 33.6H32.0001M16.6001 14H25.0001M16.6001 19.6H25.0001M30.6001 28V33.6"
+						stroke="#7F7B82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+				</svg>
+
+			</a>
+
+			<a class="services__actions-icon" data-name="Знаменательный календарь" href="#!">
+				<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M8 16.3333H33M27.4444 21.8908L13.5556 21.8889M18.1851 27.4451L13.5556 27.4444M13.5556 8V10.7778M27.4444 8V10.7778M12.4444 33H28.5556C30.1112 33 30.8892 33 31.4833 32.6972C32.006 32.431 32.431 32.006 32.6972 31.4833C33 30.8892 33 30.1112 33 28.5556V15.2222C33 13.6665 33 12.8887 32.6972 12.2945C32.431 11.7718 32.006 11.3468 31.4833 11.0805C30.8892 10.7778 30.1112 10.7778 28.5556 10.7778H12.4444C10.8887 10.7778 10.1109 10.7778 9.51669 11.0805C8.99401 11.3468 8.56907 11.7718 8.30276 12.2945C8 12.8887 8 13.6665 8 15.2222V28.5556C8 30.1112 8 30.8892 8.30276 31.4833C8.56907 32.006 8.99401 32.431 9.51669 32.6972C10.1109 33 10.8887 33 12.4444 33Z"
+						stroke="#7F7B82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+				</svg>
+			</a>
+
+			<a class="services__actions-icon" href="#!">
+				<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M8 21.5C8 14.5964 13.5964 9 20.5 9C27.4035 9 32.9998 14.5964 32.9998 21.5C32.9998 28.4035 27.4035 34 20.5 34C13.5964 34 8 28.4035 8 21.5ZM20.5 10.793C14.5867 10.793 9.79304 15.5867 9.79304 21.5C9.79304 27.4131 14.5867 32.207 20.5 32.207C26.4132 32.207 31.2068 27.4131 31.2068 21.5C31.2068 15.5867 26.4132 10.793 20.5 10.793ZM21.9156 27.1627C21.9156 27.9445 21.2818 28.5782 20.5 28.5782C19.7182 28.5782 19.0844 27.9445 19.0844 27.1627C19.0844 26.3809 19.7182 25.7471 20.5 25.7471C21.2818 25.7471 21.9156 26.3809 21.9156 27.1627ZM17.7635 19.1412C17.7635 17.8618 18.8677 16.6404 20.5002 16.6404C22.1327 16.6404 23.2369 17.8618 23.2369 19.1412C23.2369 20.0683 22.7273 20.5419 21.8486 21.0757C21.7506 21.1353 21.6374 21.201 21.5164 21.2712C21.1707 21.472 20.7604 21.7103 20.452 21.9506C19.9946 22.307 19.4621 22.882 19.4621 23.7654C19.4621 24.3387 19.9269 24.8034 20.5002 24.8034C21.0709 24.8034 21.534 24.3429 21.5382 23.7732L21.5393 23.7716C21.5556 23.7457 21.6041 23.6849 21.728 23.5883C21.9196 23.4391 22.1329 23.3155 22.4171 23.1508C22.5653 23.0649 22.7329 22.9678 22.9266 22.8501C23.9353 22.2373 25.313 21.2246 25.313 19.1412C25.313 16.6459 23.2088 14.5643 20.5002 14.5643C17.7916 14.5643 15.6873 16.6459 15.6873 19.1412C15.6873 19.7145 16.1521 20.1793 16.7254 20.1793C17.2987 20.1793 17.7635 19.7145 17.7635 19.1412Z"
+						fill="#7F7B82" />
+				</svg>
+			</a>
+
+		</div> <!-- /ICONS -->
+	</div> <!-- /ROW -->
+</div> <!-- /ACTIONS -->
+			<div class="services__action services__events">
+	<div class="services__events-row">
+		<div class="services__events-swiper">
+			<div class="swiper-wrapper">
+
+				<div class="swiper-slide">
+					<div class="services__events-slide-row">
+						<div class="services__events-slide-image">
+							<img src="./img/services/events-image.jpg" alt="Event" />
+							<div class="services__events-slide-shadow"></div>
+						</div>
+						<div class="services__events-slide-content">
+							<h6 class="services__events-slide-title">
+								Квиз “Литература”
+							</h6>
+							<p class="services__events-slide-location">Актовый зал</p>
+							<p class="services__events-slide-date">Понедельник 20 июня</p>
+							<p class="services__events-slide-time">13:00 - 14:00</p>
+							<p class="services__events-slide-desc">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nulla. Nemo, laudantium itaque
+								quas consequatur expedita veniam, quaerat a dolore, nobis neque ad molestiae totam nesciunt voluptatibus
+								architecto dolor. Sapiente.
+							</p>
+						</div> <!-- CONTENT -->
+					</div> <!-- SLLIDE ROW -->
+				</div> <!-- /SLIDE -->
+
+				<div class="swiper-slide">
+					<div class="services__events-slide-row">
+						<div class="services__events-slide-image">
+							<img src="./img/services/events-image.jpg" alt="Event" />
+							<div class="services__events-slide-shadow"></div>
+						</div>
+						<div class="services__events-slide-content">
+							<h6 class="services__events-slide-title">
+								Квиз “Литература”
+							</h6>
+							<p class="services__events-slide-location">Актовый зал</p>
+							<p class="services__events-slide-date">Понедельник 20 июня</p>
+							<p class="services__events-slide-time">13:00 - 14:00</p>
+							<p class="services__events-slide-desc">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nulla. Nemo, laudantium itaque
+								quas consequatur expedita veniam, quaerat a dolore, nobis neque ad molestiae totam nesciunt voluptatibus
+								architecto dolor. Sapiente.
+							</p>
+						</div> <!-- CONTENT -->
+					</div> <!-- SLLIDE ROW -->
+				</div> <!-- /SLIDE -->
+
+			</div> <!-- /SWIPER WRAPER -->
+			<!-- PAGINATION -->
+			<div class="swiper-button-prev services__events-arrow">
+				<img src="./img/hero/arrow-prev.svg" alt="Arrow Prev">
+			</div>
+			<div class="swiper-button-next services__events-arrow">
+				<img src="./img/hero/arrow-next.svg" alt="Arrow Next">
+			</div>
+			<!-- /PAGINATION -->
+		</div> <!-- /SERVICES SWIPER	-->
+	</div> <!-- ROW -->
+</div>
+			<div class="services__action services__courses">
+	<div class="services__courses-swiper">
+		<div class="swiper-wrapper">
+
+			<div class="swiper-slide">
+				<img src="./img/services/courses-image.jpg" alt="Courses Image" />
+				<h6 class="services__courses-title">Курсы</h6>
+				<p class="services__сourses-desc">3D Моделирование</p>
+				<a class="services__courses-link" href='#!'>Записаться</a>
+			</div>
+
+			<div class="swiper-slide">
+				<img src="./img/services/courses-image.jpg" alt="Courses Image" />
+				<h6 class="services__courses-title">Курсы</h6>
+				<p class="services__сourses-desc">3D Моделирование</p>
+				<a class="services__courses-link" href='#!'>Записаться</a>
+			</div>
+
+		</div> <!-- /SWIPER-WRAPPER -->
+		<div class="swiper-button-prev services__arrow">
+			<img src="./img/services/arrow-left.svg" alt="Arrow Prev">
+		</div> <!-- /NEXT -->
+		<div class="swiper-button-next services__arrow">
+			<img src="./img/services/arrow-right.svg" alt="Arrow Next">
+		</div> <!-- /PREV -->
+	</div> <!-- SWIPER -->
+</div>
+		</div> <!-- /ROW -->
+	</div> <!-- CONTAINER -->
+</section>
+		<section class="tour">
+	<div class="container">
+		<div class="tour__row">
+			<h3 class="tour__title title">Тур по библиотеке</h3>
+			<div class="tour__box">
+				<div class="tour__list">
+
+					<div class="tour__swiper">
+
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">Фойе 1</div>
+							<div class="swiper-slide">Фойе 2</div>
+							<div class="swiper-slide">Фойе 3</div>
+							<div class="swiper-slide">Фойе 4</div>
+							<div class="swiper-slide">Фойе 5</div>
+							<div class="swiper-slide">Фойе 6</div>
+							<div class="swiper-slide">Фойе 7</div>
+							<div class="swiper-slide">Фойе 8</div>
+							<div class="swiper-slide">Фойе 9</div>
+						</div> <!-- /SWIPER WRAPER -->
+						<!-- PAGINATION -->
+					</div> <!-- /TOUR SWIPER -->
+				</div> <!-- №LIST -->
+
+				<div class="tour__images">
+					<div class="tour__image tour__image-1">
+						<img src="./img/tour/lobby-1.jpg" alt="Фото фойе 1">
+					</div>
+					<div class="tour__image tour__image-2">
+						<img src="./img/tour/lobby-2.jpg" alt="Фото фойе 2">
+					</div>
+					<div class="tour__image tour__image-3">
+						<img src="./img/tour/lobby-3.jpg" alt="Фото фойе 3">
+					</div>
+					<div class="tour__image tour__image-4">
+						<img src="./img/tour/lobby-4.jpg" alt="Фото фойе 4">
+					</div>
+				</div> <!-- /IMAGES -->
+			</div> <!-- /BOX -->
+		</div> <!-- /ROW -->
+	</div>
+</section>
 	</main>
 	<footer class="footer">
 	<div class="container">
@@ -113,7 +453,9 @@
 	</div>
 </footer>
 
+
 	<script src="./js/index.bundle.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 </body>
 
 </html>

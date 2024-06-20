@@ -74,3 +74,6 @@ npm i gulp-webp gulp-webp-html gulp-webp-css --save-dev
 ---------------------------------------
 
 npm install scrollreveal - Установка библиотеки для появления элементов при скролле
+
+npm install swiper - слайдер
+

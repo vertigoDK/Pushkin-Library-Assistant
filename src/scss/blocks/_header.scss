@@ -5,10 +5,11 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		gap: 56px;
 		z-index: 10;
 	}
 
-	.logo {
+	&__logo {
 		cursor: pointer;
 		&:hover img {
 			filter: drop-shadow(10px);
@@ -18,9 +19,11 @@
 
 .header__nav {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
-	gap: 40px;
+	column-gap: 40px;
+	margin-right: 25px;
+	text-align: center;
 
 	&-item {
 		position: relative;
@@ -51,7 +54,7 @@
 			transition: opacity 0.3s ease-out, top 0.3s ease-out;
 			top: 28px;
 			left: 50%;
-			z-index: 1;
+			z-index: 99;
 			transform: translate(-50%, 0);
 			// inside positioning
 			li {
