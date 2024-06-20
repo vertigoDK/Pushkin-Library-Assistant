@@ -1,36 +1,4 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pushkin Library</title>
-    <!-- Подключаем Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
-</head>
-<body>
-{% include 'blocks/header.html' %}
-<main class='main'>
-    {% block content %}
-    {% endblock %}
-</main>
-
-{% if not hide_footer %}
-{% include 'blocks/footer.html' %}
-{% endif %}
-<script src="{% static 'js/index.bundle.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-
-
-
-
-{% if show_chatbot %}
-{#    <script type="module" src="{% static 'js/flowise.js' %}"/>#}
-    <script type="module" >
-    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
 
 Chatbot.init({
     chatflowid: "bca6d8e7-2894-417d-8527-a38b0a072cdf",
@@ -75,8 +43,3 @@ Chatbot.init({
         }
     }
 })
-    </script>
-
-{% endif %}
-</body>
-</html>

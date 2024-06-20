@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
 
 def index(request):
-    return render(request=request, template_name='chatbot_app/index.html', context={'show_chatbot': False})
+    return render(request=request, template_name='chat.html', context={'show_chatbot': False})
+
+
+def chat_page(request):
+    return render(request=request, template_name='chat_page.html', context={'show_chatbot': False, 'hide_footer': True})

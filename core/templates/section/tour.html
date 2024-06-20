@@ -1,0 +1,59 @@
+{% load static %}
+
+<section class="tour">
+    <div class="container">
+        <div class="tour__row">
+            <h3 class="tour__title title">Тур по библиотеке</h3>
+            <div class="tour__box">
+                <div class="tour__list">
+
+                    <div class="tour__swiper">
+
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide tour__location active" id='tour-lobby'>Фойе</div>
+                            <div class="swiper-slide tour__location" id='tour-childrens-room'>Детский сектор
+                            </div>
+                            <div class="swiper-slide tour__location">Школа мастеров</div>
+                            <div class="swiper-slide tour__location">Кабинет робототехники</div>
+                            <div class="swiper-slide tour__location">IT Центр</div>
+                            <div class="swiper-slide tour__location">American corner</div>
+                            <div class="swiper-slide tour__location">Maker Space</div>
+                            <div class="swiper-slide tour__location">Фойе 8</div>
+                            <div class="swiper-slide tour__location">Фойе 9</div>
+                        </div> <!-- /SWIPER WRAPER -->
+                        <!-- PAGINATION -->
+                        <div class="swiper-button-prev tour__arrow">
+                            <img src="{% static 'img/hero/arrow-prev.svg' %}" alt="Arrow Prev">
+                        </div>
+                        <div class="swiper-button-next tour__arrow">
+                            <img src="{% static 'img/hero/arrow-next.svg' %}" alt="Arrow Next">
+                        </div>
+                        <!-- /PAGINATION -->
+                    </div> <!-- /TOUR SWIPER -->
+                </div> <!-- №LIST -->
+
+                <div class="tour__images">
+                    <div class="tour__image tour__image-1">
+                        <img class='tour__image-picture' src="{% static 'img/tour/tour-lobby-1.jpg' %}"
+                             alt="Фото фойе 1">
+                    </div>
+                    <div class="tour__image tour__image-2">
+                        <img class='tour__image-picture' src="{% static 'img/tour/tour-lobby-2.jpg' %}"
+                             alt="Фото фойе 2">
+                    </div>
+                    <div class="tour__image tour__image-3">
+                        <img class='tour__image-picture' src="{% static 'img/tour/tour-lobby-3.jpg' %}"
+                             alt="Фото фойе 3">
+                    </div>
+                    <div class="tour__image tour__image-4">
+                        <img class='tour__image-picture' src="{% static 'img/tour/tour-lobby-4.jpg' %}"
+                             alt="Фото фойе 4">
+                    </div>
+                    <a href="#!" class="tour__virtual-tour">
+                        Виртуальный тур <span>+</span>
+                    </a>
+                </div> <!-- /IMAGES -->
+            </div> <!-- /BOX -->
+        </div> <!-- /ROW -->
+    </div>
+</section>

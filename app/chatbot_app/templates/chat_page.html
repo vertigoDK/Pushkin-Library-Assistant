@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+{% block content %}
+<main class="dosai">
+    <div class="container">
+        <div class="dosai__row">
+
+            <form action='/' class="dosai__chat-bar">
+                <label>
+                    <textarea type="text" class="dosai__chat-bar-input" rows='1' placeholder='Сообщение DosAI'></textarea>
+                </label>
+                <button type='submit' class="dosai__chat-bar-btn">
+                    <img src="{% static 'img/dosai/arrow-up.svg' %}" alt="Arrow up"/>
+                </button>
+            </form>
+        </div> <!-- /ROW -->
+    </div> <!-- /CONTAINER -->
+</main>
+
+<script src='{% static 'js/dosai.bundle.js' %}'></script>
+{% endblock %}
