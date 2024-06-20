@@ -1,17 +1,21 @@
 // import mobileNav from './modules/mobile-nav.js';
 // mobileNav();
+
 // Swiper
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
+
 // Time
 import timeDate from './modules/time-date.js';
-timeDate();
+// timeDate();
+
 // Actions
 import servicesActions from './modules/services-actions.js';
 servicesActions();
-// Dosai
-// import dosaiFunction from './modules/dosai.js';
-// dosaiFunction();
+
+// Tour location changes
+import tourLocationChanges from './modules/tour.js';
+tourLocationChanges();
 
 // Hero Swiper:
 const swiperHero = new Swiper('.hero__swiper', {
@@ -93,8 +97,8 @@ const swiperTour = new Swiper('.tour__swiper', {
 	speed: 400,
 
 	// Navigation arrows
-	// navigation: {
-	// 	prevEl: '.swiper-button-prev',
-	// 	nextEl: '.swiper-button-next',
-	// },
+	navigation: {
+		prevEl: '.swiper-button-prev',
+		nextEl: '.swiper-button-next',
+	},
 });

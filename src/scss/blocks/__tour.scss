@@ -2,9 +2,6 @@
 	margin-bottom: 85px;
 }
 
-.tour__row {
-}
-
 .tour__title {
 	margin-bottom: 40px;
 }
@@ -12,6 +9,7 @@
 .tour__box {
 	display: flex;
 	gap: 25px;
+	position: relative;
 }
 
 .tour__list {
@@ -28,11 +26,28 @@
 		height: 100%;
 	}
 	.swiper-slide {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		font-size: 14px;
+		font-weight: 700;
+		color: var(--gray-color);
 		padding: 21px 5px;
+		&:not(:last-child) {
+			border-bottom: 1px solid #efefef;
+		}
+		&.active {
+			transition: background-color 0.2s ease-in;
+			background-color: var(--general-color);
+			color: var(--white-color);
+			border-bottom: 0;
+			border-radius: 9px;
+		}
 	}
 }
 
 .tour__images {
+	position: relative;
 	padding-top: 30px;
 	display: grid;
 	display: grid;
@@ -46,7 +61,6 @@
 }
 
 .tour__image {
-	// background-color: aqua;
 	width: 100%;
 	height: 100%;
 	border-radius: 9px;
@@ -77,5 +91,61 @@
 		height: 463px;
 		width: 100%;
 		grid-area: image-4;
+	}
+}
+
+.swiper-button-prev.tour__arrow,
+.swiper-button-next.tour__arrow {
+	opacity: 1 !important;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	width: 32px;
+	height: 27px;
+	background-color: var(--general-color);
+	border-radius: 3px;
+	&::after {
+		content: '';
+	}
+	transition: box-shadow 0.1s ease-out, scale 0.1s ease-in;
+	&:hover {
+		box-shadow: 0 4px 10px rgba(243, 168, 0, 55%);
+		scale: 1.02;
+	}
+	&:active {
+		scale: 0.9;
+	}
+}
+.tour__arrow.swiper-button-prev {
+	left: 90%;
+}
+.tour__arrow.swiper-button-next {
+	right: 0;
+}
+
+.tour__virtual-tour {
+	font-size: 14px;
+	font-weight: 600;
+	background-color: #ffffff;
+	// border: 1px solid var(--white-color);
+	color: var(--gray-color);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 7px 23px;
+	border-radius: 0 9px 0 9px;
+	transition: color 0.2s ease;
+	&:hover {
+		color: var(--secondary-color);
+		span {
+			transform: rotate(135deg);
+		}
+	}
+	span {
+		display: inline-block;
+		transition: transform 0.2s ease;
+		color: var(--secondary-color);
 	}
 }
