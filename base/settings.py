@@ -137,11 +137,7 @@ LANGUAGES = [
     ("ru", _("Russian")),
     ("kz", _("Kazakh")),
 ]
-MULTILINGUAL_LANGUAGES = (
-    "en-us",
-    "kz",
-    "ru-ru",
-)
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

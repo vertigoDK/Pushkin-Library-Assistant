@@ -77,7 +77,9 @@
                     <li class="header__nav-item">
                         <div class='header__nav-item-main'>Русский</div>
                         <ul class='header__nav-item-dropdown'>
-                            <li><a href='#'>Қазақ</a></li>
+                            {% for language in LANGUAGES %}
+                            <li><a href='#'>{{ language.name_local }}</a></li>
+                            {% endfor %}
                             <li><a href='#'>English</a></li>
                         </ul>
                     </li>
