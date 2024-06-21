@@ -79,7 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'core.context_processors.settings_context'
+                'core.context_processors.settings_context',
+                'django.template.context_processors.i18n'
             ],
         },
     },
@@ -120,12 +121,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Etc/GMT+5'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 LOCALE_PATHS = (
@@ -133,11 +132,10 @@ LOCALE_PATHS = (
 )
 
 LANGUAGES = [
-    ("en", _("English")),
-    ("ru", _("Russian")),
-    ("kz", _("Kazakh")),
+    ('en', 'English'),
+    ('ru', 'Русский'),
+    ('kk', 'Қазақ'),
 ]
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

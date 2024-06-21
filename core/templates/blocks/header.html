@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <header class="header">
     <div class="container">
@@ -10,10 +11,10 @@
                 <ul class='header__nav'>
                     <!-- ITEM-1 -->
                     <li class="header__nav-item">
-                        <div class='header__nav-item-main'>Библиотека</div>
+                        <div class='header__nav-item-main'>{% trans "Library" %}</div>
                         <ul class='header__nav-item-dropdown'>
-                            <li><a href='#'>Главная</a></li>
-                            <li><a href='#'>О нас</a></li>
+                            <li><a href='#'>{% trans "Home" %}</a></li>
+                            <li><a href='#'>{% trans 'About Us' %}</a></li>
                             <li><a href='#'>История</a></li>
                             <li><a href='#'>Правила пользования</a></li>
                         </ul>
@@ -75,12 +76,28 @@
                         </ul>
                     </li>
                     <li class="header__nav-item">
-                        <div class='header__nav-item-main'>Русский</div>
-                        <ul class='header__nav-item-dropdown'>
-                            {% for language in LANGUAGES %}
-                            <li><a href='#'>{{ language.name_local }}</a></li>
+                        <div class='header__nav-item-main'>
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                {% if language.code == LANGUAGE_CODE %}
+                                    <div class='header__nav-item-main'>{{ language.name_local }}</div>
+                                {% endif %}
                             {% endfor %}
-                            <li><a href='#'>English</a></li>
+                        </div>
+                        <ul class='header__nav-item-dropdown'>
+                            {% for language in languages %}
+                                {% if language.code != LANGUAGE_CODE %}
+                                    <li>
+                                        <form action="{% url 'set_language' %}" method="post">
+                                            {% csrf_token %}
+                                            <input name="next" type="hidden" value="{{ request.path }}">
+                                            <input type="hidden" name="language" value="{{ language.code }}">
+                                            <a href="#"
+                                               onclick="this.parentNode.submit();">{{ language.name_local }}</a>
+                                        </form>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
                         </ul>
                     </li>
                 </ul>
