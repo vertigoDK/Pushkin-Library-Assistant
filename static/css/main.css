@@ -407,16 +407,16 @@ html, body {
 
 .services__news-title {
     position: absolute;
-    bottom: 90px;
-    left: 25px;
-    z-index: 8;
-    padding: 3px 12px;
-    background-color: var(--general-color);
-    color: var(--white-color);
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 800;
+    top: 10px; /* Позиционирование сверху слайда */
+    left: 10px; /* Позиционирование слева слайда */
+    z-index: 8; /* Убедитесь, что заголовок отображается поверх других элементов */
+    padding: 3px 12px; /* Поддержание вашего оригинального стиля */
+    background-color: var(--general-color); /* Использование CSS переменной для фона */
+    color: var(--white-color); /* Использование CSS переменной для цвета текста */
+    border-radius: 3px; /* Скругление углов */
+    text-transform: uppercase; /* Верхний регистр текста */
+    font-size: 16px; /* Размер шрифта */
+    font-weight: 800; /* Жирность шрифта */
 }
 
 .services__news-desc {
@@ -426,6 +426,12 @@ html, body {
     color: var(--white-color);
     font-size: 16px;
     font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.7); /* Добавление полупрозрачного черного фона */
+    padding: 10px; /* Добавление паддинга для отступов текста от краев блока */
+    border-radius: 5px; /* Скругление углов блока */
+    width: calc(100% - 60px); /* Установка ширины с учетом паддингов */
+    box-sizing: border-box; /* Включает паддинги в ширину элемента */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Добавление тени для текста */
 }
 
 .services__news-link {
@@ -869,6 +875,9 @@ html, body {
     font-weight: 700;
     color: var(--gray-color);
     padding: 21px 5px;
+    position: relative; /* Новое */
+    overflow: hidden; /* Скрывает выходящие за пределы элементы */
+
 }
 
 .tour__swiper .swiper-slide:not(:last-child) {

@@ -25,18 +25,30 @@
             <div class="services__action services__news">
                 <div class="services__news-swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="{% static 'img/services/news-img.jpg' %}"
-                                                       alt="News Image">
-                            <h6 class=" services__news-title">Новости</h6>
-                            <p class="services__news-desc">Общереспубликанский фестиваль «KITAP шоу - 2024»</p>
-                            <a class="services__news-link" href='#!'>Читать</a>
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/services/news-img.jpg' %}"
-                                                       alt="News Image">
-                            <h6 class=" services__news-title">Новости</h6>
-                            <p class="services__news-desc">Новость 2</p>
-                            <a class="services__news-link" href='#!'>Читать</a>
-                        </div>
+
+                        {% for news in news %}
+                            <div class="swiper-slide">
+                                <img src="{{ news.main_image.url }}" alt="{{ news.title }}">
+                                <a href="{% url 'news' %}"><h6 class="services__news-title">Новости</h6></a>
+                                <p class="services__news-desc">{{ news.title }}</p>
+                                <a class="services__news-link" href="{% url 'news_detail' slug=news.slug %}">Читать</a>
+                            </div>
+                        {% endfor %}
+
+
+                        {#                        <div class="swiper-slide"><img src="{% static 'img/services/news-img.jpg' %}"#}
+                        {#                                                       alt="News Image">#}
+                        {##}
+                        {#                            <h6 class=" services__news-title">Новости</h6>#}
+                        {#                            <p class="services__news-desc">Общереспубликанский фестиваль «KITAP шоу - 2024»</p>#}
+                        {#                            <a class="services__news-link" href='#!'>Читать</a>#}
+                        {#                        </div>#}
+                        {#                        <div class="swiper-slide"><img src="{% static 'img/services/news-img.jpg' %}"#}
+                        {#                                                       alt="News Image">#}
+                        {#                            <h6 class=" services__news-title">Новости</h6>#}
+                        {#                            <p class="services__news-desc">Новость 2</p>#}
+                        {#                            <a class="services__news-link" href='#!'>Читать</a>#}
+                        {#                        </div>#}
                     </div> <!-- /SWIPER-WRAPPER -->
                     <div class="swiper-button-prev services__arrow">
                         <img src="{% static 'img/services/arrow-left.svg' %}" alt="Arrow Prev">
