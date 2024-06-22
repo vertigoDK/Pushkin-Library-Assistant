@@ -49,3 +49,31 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial scroll to bottom in case there are already messages
     scrollToBottom();
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    chatForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const userMessage = chatInput.value.trim();
+        if (userMessage) {
+            addMessage('user', userMessage);
+            chatInput.value = '';
+            // Simulate bot response
+            setTimeout(() => {
+                addMessage('bot', 'Ответ бота на сообщение: ' + userMessage);
+            }, 1000);
+        }
+    });
+
+    function addMessage(sender, message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('dosai__' + sender + '-msg');
+        messageElement.textContent = message;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+});
