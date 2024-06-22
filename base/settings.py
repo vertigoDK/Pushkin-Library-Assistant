@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
+    '*',
 ]
 
 UNFOLD = {
@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'autoslug',
 
     'core',
+
+
+    'app.api',
     'app.book_search_app.apps.BookSearchAppConfig',
     'app.chatbot_app.apps.ChatbotAppConfig',
     'app.courses_app.apps.CoursesAppConfig',
@@ -140,10 +143,13 @@ LANGUAGES = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
