@@ -10,6 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const openStatus = document.getElementById('library-status-open');
         const closeStatus = document.getElementById('library-status-close');
 
+        // Форматирование текущей даты
+        document.getElementById('services-current-date').textContent = now.toLocaleDateString('ru-RU', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long'
+        });
+
+
         if (isLibraryOpen) {
             // Библиотека открыта
             closeStatus.style.display = 'none'; // Скрываем статус закрытия

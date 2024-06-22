@@ -481,7 +481,7 @@ html, body {
 }
 
 .services__ai-chat-link {
-    background: url("../img/dosai/background-logo.svg");
+    background: url("/static/img/dosai/background-logo.svg");
     background-size: 90%;
     display: flex;
     flex-direction: column;

@@ -7,7 +7,7 @@
             <div class="services__action services__time">
 
                 <div class="services__time-item">
-                    <h6 class="services__time-num" id='services-current-time'></h6>
+                    <h6 class="services__time-num" id='services-current-time'>08:00</h6>
                     <p class="services__time-text" id='services-current-date'></p>
                 </div>
 
@@ -23,7 +23,10 @@
                     </p>
                 </div>
 
+
             </div> <!-- /TIME -->
+
+
             <div class="services__action services__news">
                 <div class="services__news-swiper">
                     <div class="swiper-wrapper">
@@ -80,7 +83,7 @@
                     <h6 class="services__actions-title">{% trans 'services' %}</h6>
                     <div class="services__actions-icons">
 
-                        <a class="services__actions-icon" data-name="{%  trans 'readers' %}" href="#!">
+                        <a class="services__actions-icon" data-name="{% trans 'readers' %}" href="#!">
                             <svg width="44" height="42" viewBox="0 0 44 42" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M43 8.22379H1V34.0699H43V8.22379Z" stroke="#7F7B82" stroke-width="2"
@@ -114,7 +117,8 @@
                             </svg>
                         </a>
 
-                        <a class="services__actions-icon" data-name="{% trans 'electronic-document-delivery' %}" href="#!">
+                        <a class="services__actions-icon" data-name="{% trans 'electronic-document-delivery' %}"
+                           href="#!">
                             <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
