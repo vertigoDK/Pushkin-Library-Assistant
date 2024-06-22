@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-21 22:06+0500\n"
+"POT-Creation-Date: 2024-06-21 22:55+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,14 +21,189 @@ msgstr ""
 msgid "title"
 msgstr "Ньюс"
 
-#: .\core\templates\blocks\header.html:14
-msgid "Library"
+
+msgid "library-title"
+msgstr "Восточно-Казахстанская областная библиотека им. А.С. Пушкина"
+
+# Hader Translate
+
+
+# 1 item
+msgid "library"
 msgstr "Библиотека"
 
-#: .\core\templates\blocks\header.html:16
-msgid "Home"
+msgid "home"
 msgstr "Главная"
 
-#: .\core\templates\blocks\header.html:17
-msgid "About Us"
+msgid "about-us"
 msgstr "О Нас"
+
+msgid "history"
+msgstr "История"
+
+msgid "terms-of-use"
+msgstr "Правила пользования"
+
+
+# 2 item
+
+msgid "readers"
+msgstr "Читателям"
+
+
+msgid "sign-up-for-readers"
+msgstr "Записаться Читателям"
+
+msgid "virtual-help"
+msgstr "Виртуальная справка"
+
+msgid "electronic-document-delivery"
+msgstr "Электронная доставка документов"
+
+msgid "renew-your-book"
+msgstr "Продлить книгу"
+
+msgid "sign-up-for-courses"
+msgstr "Записаться на курсы"
+
+msgid "legal-consultations"
+msgstr "Конасультации юриста"
+
+msgid "circles-and-clubs"
+msgstr "Куржки и клубы"
+
+msgid "significant-calendar"
+msgstr "Знаменательный календарь"
+
+
+# 3 item
+msgid "news"
+msgstr "Новости"
+
+msgid "archive"
+msgstr "Архив"
+
+
+# 4 item
+msgid "digital-catalogue"
+msgstr "Электронный каталог"
+
+
+msgid "local-history-electronic-library"
+msgstr "Краеведческая электронная библиотека"
+
+
+# 5 item
+msgid "local-history"
+msgstr "Краеведение"
+
+msgid "electronic-library-our-abai"
+msgstr "Электронная библиотека «Наш Абай»"
+
+msgid "east-kazakhstan-local-history"
+msgstr "Краеведение Восточного Казахстана"
+
+msgid "famous-names-east-kazakhstan"
+msgstr "Восточный Казахстан: известные имена"
+
+msgid "kayum-mukhamedkhanov-index"
+msgstr "Каюм Мухамедханов: библиографический указатель"
+
+msgid "significant-dates-calendar"
+msgstr "Календарь знаменательных и памятных дат по ВКО"
+
+
+# 6 item
+msgid "resources"
+msgstr "Ресурсы"
+
+msgid "our-rarities"
+msgstr "Наши раритеты"
+
+msgid "virtual-exhibitions"
+msgstr "Виртуальные выставки"
+
+msgid "one-country-one-book"
+msgstr "Одна страна - одна книга"
+
+msgid "new-arrivals"
+msgstr "Новые поступления"
+
+
+# 7 item
+msgid "for-professionals"
+msgstr "Профессионалам"
+
+msgid "methodological-service"
+msgstr "Методическая служба"
+
+msgid "spiritual-treasure"
+msgstr "Духовное сокровище"
+
+
+#Services
+
+# time open close
+
+msgid "before-the-library-opened"
+msgstr "До открытия библиотеки"
+
+msgid "before-the-library-closes"
+msgstr "До закрытия библиотеки"
+
+msgid "schedule"
+msgstr "График работы"
+
+
+# AI CHAT
+
+msgid "chatbot-assistant-dos-ai"
+msgstr "Чат-бот ассистент DosAI"
+
+msgid "services"
+msgstr "Услуги"
+
+
+
+# tour
+
+msgid "library-tour"
+msgstr "Тур по библиотеке"
+
+msgid "foyer"
+msgstr "Фойе"
+
+msgid "children-sector"
+msgstr "Детский сектор"
+
+msgid "school-of-masters"
+msgstr "Школа мастеров"
+
+msgid "robotics-room"
+msgstr "Кабинет робототехники"
+
+msgid "it-center"
+msgstr "IT Центр"
+
+msgid "american-corner"
+msgstr "Американский уголок"
+
+msgid "maker-space"
+msgstr "Создающее пространство"
+
+msgid "foyer-8"
+msgstr "Фойе 8"
+
+msgid "foyer-9"
+msgstr "Фойе 9"
+
+# hero
+
+msgid "our-abai"
+msgstr "Наш Абай"
+
+msgid "east-kazakhstan-region-famous-places"
+msgstr "ВКО: Известные места"
+
+msgid "east-kazakhstan-region-legends-and-tales"
+msgstr "ВКО: Легенды и сказания"

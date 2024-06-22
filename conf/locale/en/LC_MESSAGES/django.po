@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-21 22:06+0500\n"
+"POT-Creation-Date: 2024-06-21 22:56+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,11 +33,183 @@ msgstr "Home"
 msgid "About Us"
 msgstr "About Us"
 
-#~ msgid "English"
-#~ msgstr "English"
+#: .\templates\base.html:11
+#, fuzzy
+#| msgid "Library"
+msgid "Library-title"
+msgstr "East Kazakhstan Regional Library named after. A.S. Pushkin"
 
-#~ msgid "Russian"
-#~ msgstr "Русский"
 
-#~ msgid "Kazakh"
-#~ msgstr "Қазақ"
+# 1 item
+msgid "library"
+msgstr "Library"
+
+msgid "home"
+msgstr "Home"
+
+msgid "about-us"
+msgstr "About Us"
+
+msgid "history"
+msgstr "History"
+
+msgid "terms-of-use"
+msgstr "Terms of Use"
+
+# 2 item
+msgid "readers"
+msgstr "Readers"
+
+msgid "sign-up-for-readers"
+msgstr "Sign Up for Readers"
+
+msgid "virtual-help"
+msgstr "Virtual Help"
+
+msgid "electronic-document-delivery"
+msgstr "Electronic Document Delivery"
+
+msgid "renew-your-book"
+msgstr "Renew Your Book"
+
+msgid "sign-up-for-courses"
+msgstr "Sign Up for Courses"
+
+msgid "legal-consultations"
+msgstr "Legal Consultations"
+
+msgid "circles-and-clubs"
+msgstr "Circles and Clubs"
+
+msgid "significant-calendar"
+msgstr "Significant Calendar"
+
+
+# 3 item
+msgid "news"
+msgstr "News"
+
+msgid "archive"
+msgstr "Archive"
+
+# 4 item
+msgid "digital-catalogue"
+msgstr "Digital Catalogue"
+
+msgid "local-history-electronic-library"
+msgstr "Local History Electronic Library"
+
+# 5 item
+msgid "local-history"
+msgstr "Local History"
+
+msgid "electronic-library-our-abai"
+msgstr "Electronic Library 'Our Abai'"
+
+msgid "east-kazakhstan-local-history"
+msgstr "East Kazakhstan Local History"
+
+msgid "famous-names-east-kazakhstan"
+msgstr "East Kazakhstan: Famous Names"
+
+msgid "kayum-mukhamedkhanov-index"
+msgstr "Kayum Mukhamedkhanov: Bibliographic Index"
+
+msgid "significant-dates-calendar"
+msgstr "Significant Dates Calendar of East Kazakhstan"
+
+# 6 item
+msgid "resources"
+msgstr "Resources"
+
+msgid "our-rarities"
+msgstr "Our Rarities"
+
+msgid "virtual-exhibitions"
+msgstr "Virtual Exhibitions"
+
+msgid "one-country-one-book"
+msgstr "One Country, One Book"
+
+msgid "new-arrivals"
+msgstr "New Arrivals"
+
+# 7 item
+msgid "for-professionals"
+msgstr "For Professionals"
+
+msgid "methodological-service"
+msgstr "Methodological Service"
+
+msgid "spiritual-treasure"
+msgstr "Spiritual Treasure"
+
+
+#Services
+
+# time open close
+
+msgid "before-the-library-opened"
+msgstr "Before the library opens"
+
+msgid "before-the-library-closes"
+msgstr "Before the library closes"
+
+msgid "schedule"
+msgstr "Schedule"
+
+# # Услуги
+
+
+# AI CHAT
+
+msgid "chatbot-assistant-dos-ai"
+msgstr "DosAI Chatbot Assistant"
+
+msgid "services"
+msgstr "Services"
+
+# tour
+
+msgid "library-tour"
+msgstr "Library Tour"
+
+msgid "foyer"
+msgstr "Foyer"
+
+msgid "children-sector"
+msgstr "Children's Sector"
+
+msgid "school-of-masters"
+msgstr "School of Masters"
+
+msgid "robotics-room"
+msgstr "Robotics Room"
+
+msgid "it-center"
+msgstr "IT Center"
+
+msgid "american-corner"
+msgstr "American Corner"
+
+msgid "maker-space"
+msgstr "Maker Space"
+
+msgid "foyer-8"
+msgstr "Foyer 8"
+
+msgid "foyer-9"
+msgstr "Foyer 9"
+
+# hero
+
+msgid "our-abai"
+msgstr "Our Abai"
+
+
+msgid "east-kazakhstan-region-famous-places"
+msgstr "East Kazakhstan Region: Famous Places"
+
+msgid "east-kazakhstan-region-legends-and-tales"
+msgstr "East Kazakhstan Region: Legends and Tales"
+

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-21 22:06+0500\n"
+"POT-Creation-Date: 2024-06-21 22:56+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,3 +32,180 @@ msgstr "Үй"
 #: .\core\templates\blocks\header.html:17
 msgid "About Us"
 msgstr "Біз туралы"
+
+#: .\templates\base.html:11
+#, fuzzy
+#| msgid "Library"
+msgid "Library-title"
+msgstr "Шығыс Қазақстан облыстық кітапханасы. А. С. Пушкин"
+
+
+# 1 item
+msgid "library"
+msgstr "Кітапхана"
+
+msgid "home"
+msgstr "Басты бет"
+
+msgid "about-us"
+msgstr "Біз туралы"
+
+msgid "history"
+msgstr "Тарих"
+
+msgid "terms-of-use"
+msgstr "Пайдалану шарттары"
+
+# 2 item
+msgid "readers"
+msgstr "Оқырмандар"
+
+msgid "sign-up-for-readers"
+msgstr "Оқырмандарға тіркелу"
+
+msgid "virtual-help"
+msgstr "Виртуалды көмек"
+
+msgid "electronic-document-delivery"
+msgstr "Құжаттарды электрондық жеткізу"
+
+msgid "renew-your-book"
+msgstr "Кітабыңызды жаңартыңыз"
+
+msgid "sign-up-for-courses"
+msgstr "Курстарға жазылу"
+
+msgid "legal-consultations"
+msgstr "Заңгерлік кеңестер"
+
+msgid "circles-and-clubs"
+msgstr "Үйірмелер мен клубтар"
+
+msgid "significant-calendar"
+msgstr "Маңызды күндер күнтізбесі"
+
+
+# 3 item
+msgid "news"
+msgstr "Жаңалықтар"
+
+msgid "archive"
+msgstr "Мұрағат"
+
+# 4 item
+msgid "digital-catalogue"
+msgstr "Электрондық каталог"
+
+msgid "local-history-electronic-library"
+msgstr "Жергілікті тарих электрондық кітапханасы"
+
+# 5 item
+msgid "local-history"
+msgstr "Жергілікті тарих"
+
+msgid "electronic-library-our-abai"
+msgstr "«Біздің Абай» электрондық кітапханасы"
+
+msgid "east-kazakhstan-local-history"
+msgstr "Шығыс Қазақстан жергілікті тарихы"
+
+msgid "famous-names-east-kazakhstan"
+msgstr "Шығыс Қазақстан: танымал тұлғалар"
+
+msgid "kayum-mukhamedkhanov-index"
+msgstr "Қаюм Мұхамедханов: библиографиялық көрсеткіш"
+
+msgid "significant-dates-calendar"
+msgstr "ШҚО маңызды және есте қаларлықтай күндер күнтізбесі"
+
+# 6 item
+msgid "resources"
+msgstr "Ресурстар"
+
+msgid "our-rarities"
+msgstr "Біздің сирек кездесетіндер"
+
+msgid "virtual-exhibitions"
+msgstr "Виртуалды көрмелер"
+
+msgid "one-country-one-book"
+msgstr "Бір ел - бір кітап"
+
+msgid "new-arrivals"
+msgstr "Жаңа түскендер"
+
+# 7 item
+msgid "for-professionals"
+msgstr "Мамандарға"
+
+msgid "methodological-service"
+msgstr "Әдістемелік қызмет"
+
+msgid "spiritual-treasure"
+msgstr "Рухани қазына"
+
+#Services
+
+# time open close
+
+msgid "before-the-library-opened"
+msgstr "Кітапхана ашылғанға дейін"
+
+msgid "before-the-library-closes"
+msgstr "Кітапхана жабылғанға дейін"
+
+msgid "schedule"
+msgstr "Жұмыс кестесі"
+
+# AI CHAT
+
+msgid "chatbot-assistant-dos-ai"
+msgstr "DosAI чат-бот көмекшісі"
+
+msgid "services"
+msgstr "Қызметтер"
+
+# tour
+
+msgid "library-tour"
+msgstr "Кітапхана бойынша экскурсия"
+
+msgid "foyer"
+msgstr "Фойе"
+
+msgid "children-sector"
+msgstr "Балалар секторы"
+
+msgid "school-of-masters"
+msgstr "Шеберлер мектебі"
+
+msgid "robotics-room"
+msgstr "Робототехника бөлмесі"
+
+msgid "it-center"
+msgstr "АҚ орталығы"
+
+msgid "american-corner"
+msgstr "Америкалық бұрыш"
+
+msgid "maker-space"
+msgstr "Жасаушы кеңістігі"
+
+msgid "foyer-8"
+msgstr "Фойе 8"
+
+msgid "foyer-9"
+msgstr "Фойе 9"
+
+
+# hero
+
+msgid "our-abai"
+msgstr "Біздің Абай"
+
+
+msgid "east-kazakhstan-region-famous-places"
+msgstr "ШҚО: Танымал орындар"
+
+msgid "east-kazakhstan-region-legends-and-tales"
+msgstr "ШҚО: Аңыздар мен ертегілер"

@@ -6,9 +6,11 @@
         {% include 'section/services.html' %}
         {% include 'section/tour.html' %}
     </main>
+    <script src="{% static '/js/time-open-close.js' %}"></script>
 
 
-    <div class="container mt-4">
+
+    {% comment %}    <div class="container mt-4">
         <div class="row">
             <div class="col-md-4 mb-3">
                 <a href="{% url 'events_index' %}" class="btn btn-info btn-block">Мероприятия</a>
@@ -27,4 +29,5 @@
             </div>
         </div>
     </div>
+    {% endcomment %}
 {% endblock %}

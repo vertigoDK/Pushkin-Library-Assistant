@@ -1,25 +1,26 @@
+{% load i18n %}
 {% load static %}
 
 <section class="tour">
     <div class="container">
         <div class="tour__row">
-            <h3 class="tour__title title">Тур по библиотеке</h3>
+            <h3 class="tour__title title">{% trans 'library-tour' %}</h3>
             <div class="tour__box">
                 <div class="tour__list">
 
                     <div class="tour__swiper">
 
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide tour__location active" id='tour-lobby'>Фойе</div>
-                            <div class="swiper-slide tour__location" id='tour-childrens-room'>Детский сектор
-                            </div>
-                            <div class="swiper-slide tour__location">Школа мастеров</div>
-                            <div class="swiper-slide tour__location">Кабинет робототехники</div>
-                            <div class="swiper-slide tour__location">IT Центр</div>
-                            <div class="swiper-slide tour__location">American corner</div>
-                            <div class="swiper-slide tour__location">Maker Space</div>
-                            <div class="swiper-slide tour__location">Фойе 8</div>
-                            <div class="swiper-slide tour__location">Фойе 9</div>
+                            <div class="swiper-slide tour__location active" id='tour-lobby'>{% trans 'foyer' %}</div>
+                            <div class="swiper-slide tour__location"
+                                 id='tour-childrens-room'>{% trans 'children-sector' %}</div>
+                            <div class="swiper-slide tour__location">{% trans 'school-of-masters' %}</div>
+                            <div class="swiper-slide tour__location">{% trans 'robotics-room' %}</div>
+                            <div class="swiper-slide tour__location">{% trans 'it-center' %}</div>
+                            <div class="swiper-slide tour__location">{% trans 'american-corner' %}</div>
+                            <div class="swiper-slide tour__location">{% trans 'maker-space' %}</div>
+                            <div class="swiper-slide tour__location">{% trans 'foyer-8' %}</div>
+                            <div class="swiper-slide tour__location">{% trans 'foyer-9' %}</div>
                         </div> <!-- /SWIPER WRAPER -->
                         <!-- PAGINATION -->
                         <div class="swiper-button-prev tour__arrow">

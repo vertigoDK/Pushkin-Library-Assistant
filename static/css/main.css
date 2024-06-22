@@ -35,7 +35,6 @@
 }
 
 
-
 /* Links */
 a, a:link, a:visited {
     text-decoration: none;
@@ -427,7 +426,7 @@ html, body {
     right: 7px;
 }
 
-.services__news-title {
+.services-news {
     position: absolute;
     top: 10px; /* Позиционирование сверху слайда */
     left: 10px; /* Позиционирование слева слайда */
@@ -441,10 +440,10 @@ html, body {
     font-weight: 800; /* Жирность шрифта */
 }
 
-.services__news-desc {
+.services__news-title {
     position: absolute;
     left: 30px;
-    bottom: 70px;
+    bottom: 20px;
     color: var(--white-color);
     font-size: 16px;
     font-weight: 600;
@@ -822,9 +821,9 @@ html, body {
     right: 7px;
 }
 
-.services__courses-title {
+.services-courses {
     position: absolute;
-    bottom: 90px;
+    top: 10px;
     left: 25px;
     z-index: 8;
     padding: 3px 12px;
@@ -1117,7 +1116,7 @@ html, body {
     display: block;
     text-align: center;
     padding: 11px 30px;
-    width: 100%;
+    width: 130%;
     background-color: var(--general-tint-color);
     border-bottom: 1px solid var(--secondary-color);
     transition: background-color 0.2s ease;
