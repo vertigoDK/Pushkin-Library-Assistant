@@ -10,6 +10,7 @@ urlpatterns = [
     path('events/', include('app.events_app.urls')),
     path('courses/', include('app.courses_app.urls')),
     path('search_books/', include("app.book_search_app.urls")),
+    path('', include('app.api.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     path('', include('core.urls')),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
