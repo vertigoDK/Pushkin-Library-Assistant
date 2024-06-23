@@ -54,9 +54,12 @@ INSTALLED_APPS = [
     'app.api',
     'app.book_search_app.apps.BookSearchAppConfig',
     'app.chatbot_app.apps.ChatbotAppConfig',
+
     'app.courses_app.apps.CoursesAppConfig',
     'app.events_app.apps.EventsAppConfig',
     'app.news_app.apps.NewsAppConfig',
+
+    'app.services.readers.apps.ReadersConfig'
 ]
 
 MIDDLEWARE = [
