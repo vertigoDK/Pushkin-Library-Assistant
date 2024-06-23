@@ -45,9 +45,6 @@
 
 
 
-
-
-
                         {#                        <div class="swiper-slide"><img src="{% static 'img/services/news-img.jpg' %}"#}
                         {#                                                       alt="News Image">#}
                         {##}
@@ -71,6 +68,7 @@
                 </div> <!-- SWIPER -->
 
             </div> <!-- /NEWS -->
+            <!-- AI CHAT -->
             <div class="services__action services__ai-chat">
                 <a target='_blank' href="{% url 'chat_page' %}" class="services__ai-chat-link">
                     <img class="services__ai-chat-logo" src="{% static 'img/services/logo-dosai-white.svg' %}"
@@ -83,7 +81,7 @@
                     <h6 class="services__actions-title">{% trans 'services' %}</h6>
                     <div class="services__actions-icons">
 
-                        <a class="services__actions-icon" data-name="{% trans 'readers' %}" href="#!">
+                        <a class="services__actions-icon" data-name="{% trans 'readers' %}" href="{% url 'readers' %}">
                             <svg width="44" height="42" viewBox="0 0 44 42" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M43 8.22379H1V34.0699H43V8.22379Z" stroke="#7F7B82" stroke-width="2"
@@ -106,7 +104,7 @@
                             </svg>
                         </a>
 
-                        <a class="services__actions-icon" data-name="{% trans 'virtual-help' %}" href="#!">
+                        <a class="services__actions-icon" data-name="{% trans 'virtual-help' %}" href="{% url 'virtual-help' %}">
                             <svg
                                     width="42" height="42" viewBox="0 0 42 42" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -118,7 +116,7 @@
                         </a>
 
                         <a class="services__actions-icon" data-name="{% trans 'electronic-document-delivery' %}"
-                           href="#!">
+                           href="{% url 'electronic-document-delivery' %}">
                             <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -143,7 +141,7 @@
 
                         </a>
 
-                        <a class="services__actions-icon" data-name="{% trans 'renew-your-book' %}" href="#!">
+                        <a class="services__actions-icon" data-name="{% trans 'renew-your-book' %}" href="{% url 'renew-your-book' %}">
                             <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -154,7 +152,7 @@
 
                         </a>
 
-                        <a class="services__actions-icon" data-name="{% trans 'significant-calendar' %}" href="#!">
+                        <a class="services__actions-icon" data-name="{% trans 'significant-calendar' %}" href="{% url 'significant-calendar' %}">
                             <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -164,7 +162,7 @@
                             </svg>
                         </a>
 
-                        <a class="services__actions-icon" data-name="FAQ " href="#!">
+                        <a class="services__actions-icon" data-name="FAQ " href="{% url 'faq' %}">
                             <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"

@@ -3,5 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    path('renew-the-book/', views.renew_the_book, name='renew-the-book'),
+    path('renew-your-book/', views.renew_your_book, name='renew-your-book'),
+    path('significant-calendar/', views.renew_your_book, name='significant-calendar'),
+    path('', views.index, name='readers'),
 ]

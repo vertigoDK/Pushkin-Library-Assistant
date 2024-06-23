@@ -81,11 +81,9 @@
                     <!-- /ITEM-7 -->
                     <!-- Кнопка админ панели -->
                     {% if user.is_authenticated and user.is_staff %}
-                    <li class="header__nav-item">
                         <a class="nav-link header__nav-item-main" href="/admin/">
                             <i class="fas fa-user-shield"></i> Админ
                         </a>
-                    </li>
                     {% endif %}
                     <li class="header__nav-item">
                         <div class='header__nav-item-main'>
