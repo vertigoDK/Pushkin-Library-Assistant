@@ -15,3 +15,20 @@ django-admin makemessages -d djangojs -l en
 ```bash
 django-admin compilemessages
 ```
+
+
+Запуск сервера
+```shell
+python manage.py runserver
+```
+
+
+Создание миграций
+```shell
+python manage.py makemigrations
+```
+
+Миграция
+```shell
+python manage.py migrate
+```
