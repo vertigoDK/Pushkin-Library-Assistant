@@ -1,5 +1,3 @@
-<!-- templates/news_detail.html -->
-
 {% extends 'base.html' %}
 
 {% block content %}
@@ -8,10 +6,20 @@
         <div class="card-body">
             <h5 class="card-title">{{ news_item.title }}</h5>
             {% if news_item.main_image %}
-            <img src="{{ news_item.main_image.url }}" class="card-img-top" alt="...">
+            <img src="{{ news_item.main_image.url }}" class="card-img-top" alt="{{ news_item.title }}">
             {% endif %}
-            <p class="card-text">{{ news_item.content }}</p>
-            <p class="card-text"><small class="text-muted">Опубликовано: {{ news_item.pub_date }}</small></p>
+            <p class="card-text">
+                {% if LANGUAGE_CODE == 'ru' %}
+                    {{ news_item.content_ru }}
+                {% elif LANGUAGE_CODE == 'kk' %}
+                    {{ news_item.content_kz }}
+                {% elif LANGUAGE_CODE == 'en' %}
+                    {{ news_item.content_eng }}
+                {% else %}
+                    {{ news_item.content_ru }}
+                {% endif %}
+            </p>
+
         </div>
     </div>
 </div>
