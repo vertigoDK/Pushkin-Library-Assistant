@@ -88,3 +88,29 @@
 		}
 	}
 }
+
+#language-change {
+	.header__nav-item-main {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		img {
+			transition: scale 0.2s ease;
+		}
+		&:hover img {
+			scale: 1.1;
+		}
+	}
+
+	.header__nav-item-dropdown li a {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		img {
+			transition: scale 0.2s ease;
+		}
+		&:hover img {
+			scale: 1.1;
+		}
+	}
+}

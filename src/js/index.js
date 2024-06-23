@@ -7,7 +7,7 @@ import 'swiper/css/bundle';
 
 // Time
 import timeDate from './modules/time-date.js';
-// timeDate();
+timeDate();
 
 // Actions
 import servicesActions from './modules/services-actions.js';
@@ -16,6 +16,10 @@ servicesActions();
 // Tour location changes
 import tourLocationChanges from './modules/tour.js';
 tourLocationChanges();
+
+// Catalog
+import symbolLimit from './modules/catalog.js';
+symbolLimit();
 
 // Hero Swiper:
 const swiperHero = new Swiper('.hero__swiper', {

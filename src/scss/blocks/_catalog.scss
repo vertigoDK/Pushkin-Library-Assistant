@@ -1,0 +1,92 @@
+.catalog {
+	// padding-bottom: 130px;
+}
+
+.catalog__title {
+	margin-bottom: 40px;
+}
+
+.catalog__bookcards {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	margin-bottom: 85px;
+}
+
+.catalog__bookcard {
+	width: 305px;
+	height: 600px;
+	box-shadow: 0 0 10px 2px rgba(24, 86, 56, 0.2);
+	border-radius: 9px;
+}
+
+.catalog__bookcard-image {
+	padding: 45px 0 22px;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	img {
+		transition: scale 0.2s ease;
+		&:hover {
+			scale: 1.08;
+		}
+	}
+}
+.catalog__bookcard-contetnt {
+	padding: 0 20px 10px;
+	height: 180px;
+}
+.catalog__bookcard-title {
+	font-weight: 700;
+	font-size: 14px;
+	color: var(--black-color);
+	margin-bottom: 22px;
+}
+
+.catalog__bookcard-text {
+	font-weight: 300;
+	font-size: 14px;
+	color: var(--gray-color);
+}
+.catalog__bookcard-link {
+	font-weight: 600;
+	font-size: 14px;
+	color: var(--white-color);
+
+	border-radius: 0 0 9px 9px;
+	width: 100%;
+	height: 70px;
+	color: var(--white-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--general-color);
+	transition: background-color 0.2s ease;
+	&:hover {
+		background-color: var(--general-tint-color);
+	}
+}
+
+.catalog__bookcard-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.catalog__bookcard-btn {
+	// padding: 13px 36px;
+	text-align: center;
+	background-color: var(--black-color);
+	border-radius: 9px;
+	display: block;
+
+	width: 214px;
+	height: 44px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-weight: 700;
+	font-size: 14px;
+	color: var(--white-color);
+}
