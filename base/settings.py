@@ -159,3 +159,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 FLOWISE_CHATFLOW = 'bca6d8e7-2894-417d-8527-a38b0a072cdf'
 FLOWISE_HOST = 'http://127.0.0.1:3000'
+
+DEFAULT_BOOKS_PATH = BASE_DIR / 'database/data.txt'

@@ -1,14 +1,16 @@
 import re
 from fuzzywuzzy import fuzz
+from django.conf import settings
 
 
 class SearchBook:
     def __init__(self):
+        
         self.books = self.extract_books()
 
     def extract_books(self):
         books = []
-        with open('search_books/output_booksru.txt', 'r', encoding='utf-8') as file:
+        with open(settings.DEFAULT_BOOKS_PATH, 'r', encoding='utf-8') as file:
             content = file.read()
             book_entries = re.split(r'(?=\blang:)', content)
             for entry in book_entries:
@@ -33,4 +35,4 @@ class SearchBook:
         for book in self.books:
             if fuzz.token_set_ratio(query, book['title']) / 100 >= threshold:
                 matches.append(book)
-        return matches[:20]  # Возвращаем максимум 20 записей
+        return matches[:20]  # возвращение 20 самых релевантных записей 
