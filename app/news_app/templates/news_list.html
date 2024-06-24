@@ -1,28 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
 <!-- templates/news_list.html -->
 
-{% extends 'base.html' %}
+{% block content_css %}
 
+    <link rel="stylesheet" href="{% static 'css/news.css' %}"/>
+{% endblock %}
 {% block content %}
-<div class="container mt-5">
     <h1>Новости</h1>
-    <div class="row">
+
+
+    <div class="container">
         {% for news_item in news %}
-        <div class="col-md-4">
-            <div class="card mb-4">
+            <div class="card">
                 {% if news_item.main_image %}
-                <img src="{{ news_item.main_image.url }}" class="card-img-top" alt="...">
+                    <div class="card-header">
+                    <img src="{{ news_item.main_image.url }}" alt="{{ news_item.title }}" class="card-image">
                 {% endif %}
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ news_item.title }}</h5>
-                    <p class="card-text">{{ news_item.content|truncatewords:20 }}</p>
-                    <a href="{% url 'news_detail' slug=news_item.slug %}" class="btn btn-primary">Читать далее</a>
+                    <h5>{{ news_item.title }}</h5>
+
+                    <p>
+                        {% if LANGUAGE_CODE == 'ru' %}
+                            {{ news_item.content_ru|truncatewords:20 }}
+                        {% elif LANGUAGE_CODE == 'en' %}
+                            {{ news_item.content_eng|truncatewords:20 }}
+                        {% else %}
+                            {{ news_item.content_kz|truncatewords:20 }}
+                        {% endif %}
+                    </p>
                 </div>
-                <div class="card-footer text-muted">
-                    Опубликовано: {{ news_item.pub_date|date:"d M Y" }}
+                <div class="card-footer-button">
+                    <a href="{% url 'news_detail' slug=news_item.slug %}">
+                        <button>читать далее</button>
+                    </a>
                 </div>
+                {#                        Опубликовано: {{ news_item.pub_date|date:"d M Y" }}#}
+
             </div>
-        </div>
+
         {% endfor %}
     </div>
-</div>
+    </div>
 {% endblock %}
