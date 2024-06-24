@@ -1,121 +1,33 @@
 {% load i18n %}
 {% load static %}
-<header class="header">
-    <div class="container">
-        <div class="header__row">
-            <a href='{% url 'core' %}' class="header__logo logo">
-                <img src="{% static 'img/header/logo.svg' %}" alt="Logo">
-            </a>
-            <!-- HEADER-NAV -->
-            <nav>
-                <ul class='header__nav'>
-                    <!-- ITEM-1 -->
-                    <li class="header__nav-item">
-                        <div class='header__nav-item-main'>{% trans "library" %}</div>
-                        <ul class='header__nav-item-dropdown'>
-                            <li><a href='#'>{% trans "home" %}</a></li>
-                            <li><a href='#'>{% trans 'about-us' %}</a></li>
-                            <li><a href='#'>{% trans 'history' %}</a></li>
-                            <li><a href='#'>{% trans 'terms-of-use' %}</a></li>
-                        </ul>
-                    </li> <!-- /ITEM-1 -->
-                    <!-- ITEM-2 -->
-                    <li class="header__nav-item">
-                        <div class='header__nav-item-main'>{% trans 'readers' %}</div>
-                        <ul class='header__nav-item-dropdown'>
-                            <li><a href="#!">{% trans 'sign-up-for-readers' %}</a></li>
-                            <li><a href="#!">{% trans 'virtual-help' %}</a></li>
-                            <li><a href="#!">{% trans 'electronic-document-delivery' %}</a></li>
-                            <li><a href="#!">{% trans 'renew-your-book' %}</a></li>
-                            <li><a href="#!">{% trans 'sign-up-for-courses' %}</a></li>
-                            <li><a href="#!">{% trans 'legal-consultations' %}</a></li>
-                            <li><a href="#!">{% trans 'circles-and-clubs' %}</a></li>
-                        </ul>
-                    </li> <!-- /ITEM-2 -->
-                    <!-- ITEM-3 -->
-                    <li class="header__nav-item">
-                        <div class='header__nav-item-main'>{% trans 'news' %}</div>
-                        <ul class='header__nav-item-dropdown'>
-                            <li><a href='#'>{% trans 'archive' %}</a></li>
-                        </ul>
-                    </li> <!-- ITEM-3 -->
-                    <!-- ITEM-4 -->
-                    <li class="header__nav-item">
-                        <div class='header__nav-item-main'>{% trans 'digital-catalogue' %}</div>
-                        <ul class='header__nav-item-dropdown'>
-                            <li><a href='#'>{% trans 'electronic-library-our-abai' %}</a></li>
-                            <li><a href='#'>{% trans 'local-history-electronic-library' %}</a></li>
-                        </ul>
-                    </li> <!-- /ITEM-4 -->
-                    <!-- ITEM-5 -->
-                    <li class="header__nav-item">
-                        <div class='header__nav-item-main'>{% trans 'local-history' %}</div>
-                        <ul class='header__nav-item-dropdown'>
-                            <li><a href='#'>{% trans 'electronic-library-our-abai' %}</a></li>
-                            <li><a href='#'>{% trans 'east-kazakhstan-local-history' %}</a></li>
-                            <li><a href='#'>{% trans 'famous-names-east-kazakhstan' %}</a></li>
-                            <li><a href='#'>{% trans 'kayum-mukhamedkhanov-index' %}</a></li>
-                            <li><a href='#'>{% trans 'significant-dates-calendar' %}</a></li>
-                        </ul>
-                    </li><!-- /ITEM-5 -->
-                    <!-- ITEM-6 -->
-                    <li class="header__nav-item">
-                        <div class='header__nav-item-main'>{% trans 'resources' %}</div>
-                        <ul class='header__nav-item-dropdown'>
-                            <li><a href='#'>{% trans 'our-rarities' %}</a></li>
-                            <li><a href='#'>{% trans 'virtual-exhibitions' %}</a></li>
-                            <li><a href='#'>{% trans 'one-country-one-book' %}</a></li>
-                            <li><a href='#'>{% trans 'new-arrivals' %}</a></li>
-                        </ul>
-                    </li>
-                    <!-- /ITEM-6 -->
-
-                    <!-- ITEM-7 -->
-                    <li class="header__nav-item">
-                        <div class='header__nav-item-main'>{% trans 'for-professionals' %}</div>
-                        <ul class='header__nav-item-dropdown'>
-                            <li><a href='#'>{% trans 'methodological-service' %}</a></li>
-                            <li><a href='#'>{% trans 'spiritual-treasure' %}</a></li>
-                        </ul>
-                    </li>
-                    <!-- /ITEM-7 -->
-                    <!-- Кнопка админ панели -->
-                    {% if user.is_authenticated and user.is_staff %}
-                        <a class="nav-link header__nav-item-main" href="/admin/">
-                            <i class="fas fa-user-shield"></i> Админ
-                        </a>
-                    {% endif %}
-                    <li class="header__nav-item">
-                        <div class='header__nav-item-main'>
-                            {% get_language_info_list for LANGUAGES as languages %}
-                            {% for language in languages %}
-                                {% if language.code == LANGUAGE_CODE %}
-                                    <div class='header__nav-item-main'>{{ language.name_local }}</div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        <ul class='header__nav-item-dropdown'>
-                            {% for language in languages %}
-                                {% if language.code != LANGUAGE_CODE %}
-                                    <li>
-                                        <form action="{% url 'set_language' %}" method="post">
-                                            {% csrf_token %}
-                                            <input name="next" type="hidden" value="{{ request.path }}">
-                                            <input type="hidden" name="language" value="{{ language.code }}">
-                                            <a href="#"
-                                               onclick="this.parentNode.submit();">{{ language.name_local }}</a>
-                                        </form>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </li>
+<header>
+    <a href="#" class="logo">Logo</a>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="#">Home</a></li>
+            <li class="menu-item">
+                <a href="#" class="submenu-toggle">About</a>
+                <ul class="submenu">
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Our History</a></li>
                 </ul>
-            </nav> <!-- /HEADER NAV -->
-            <!-- <button class="mobile-nav-btn">
-                <div class="nav-icon"></div>
-            </button> -->
-        </div>
-    </div>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="submenu-toggle">Services</a>
+                <ul class="submenu">
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">Development</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+            <li class="menu-item">
+                <a href="#" class="submenu-toggle">Developer</a>
+                <ul class="submenu">
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="toggle navigation">Menu</button>
 </header>
-<!-- @@include('mobile-nav.html') -->
