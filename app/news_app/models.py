@@ -11,6 +11,9 @@ class News(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     main_image = models.ImageField(upload_to='news_images/', blank=True, null=True, verbose_name='Основное изображение')
     contact_info = models.CharField(max_length=100, blank=True, null=True, verbose_name='Контактная информация')
+    is_archive = models.BooleanField(default=False)
+
+
 
     class Meta:
         verbose_name = 'Новость'
