@@ -1,0 +1,84 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Создание столбцов минимум 300px, максимум - 1 доля доступного пространства */
+    gap: 20px; /* Отступы между карточками */
+}
+
+.card {
+    font-family: Arial, sans-serif;
+    border: 2px solid #000;
+    border-radius: 10px;
+    overflow: hidden; /* Обрезка содержимого по границам card */
+    width: 300px;
+    max-width: 300px;
+    display: inline-block;
+    margin: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.card-header {
+    padding: 0; /* Убираем внутренний отступ */
+    width: 100%; /* Ширина заголовка равна ширине карточки */
+    height: 150px; /* Фиксированная высота для изображения */
+}
+
+.card-image {
+    width: 100%; /* Занимает всю ширину header */
+    height: 100%; /* Занимает всю высоту header */
+    object-fit: cover; /* Обеспечивает покрытие всей области, возможно обрезание */
+    filter: grayscale(100%); /* Преобразование в черно-белый цвет */
+}
+
+.card-body {
+    padding: 10px;
+    color: #333;
+}
+
+.card-body h3 {
+    margin-top: 0;
+}
+
+.card-body .price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.card-footer-button {
+    padding: 10px;
+    background: #f5f5f5;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex; /* Используем flexbox для выравнивания содержимого */
+    align-items: center; /* Центрируем содержимое по вертикали */
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+}
+
+.card-footer-button button {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border-radius: 0.6em;
+    cursor: pointer;
+    display: flex; /* flex для выравнивания текста внутри кнопки */
+    align-items: center; /* Центрируем текст по вертикали внутри кнопки */
+    justify-content: center; /* Центрируем текст по горизонтали внутри кнопки */
+    font-size: 0.8em;
+    line-height: 1;
+    margin: 10px;
+    padding: 1.2em 1.8em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    border: 2px solid #8576FF;
+    outline: none; /* Убираем стандартный outline при фокусе */
+}
+
+.card-footer-button:hover button {
+    box-shadow: 0 0 40px 40px #4A55A2 inset; /* Анимация тени при наведении */
+    color: white;
+}

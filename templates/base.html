@@ -32,6 +32,9 @@
 
     {% block content_css %}
     {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/header/header.css' %}"/>
+
 </head>
 <body>
 {% include 'blocks/header.html' %}
@@ -93,5 +96,7 @@
 <script src="{% static 'js/index.bundle.js' %}"></script>
 <script src="{% static 'js/lib/swiper-element-bundle.min.js' %}"></script>
 
+{% block content_js %}
+{% endblock %}
 </body>
 </html>
