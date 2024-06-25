@@ -164,18 +164,25 @@
                     <div class="services__events-swiper">
                         <div class="swiper-wrapper">
 
+                            {% for event in events %}
                             <div class="swiper-slide">
                                 <div class="services__events-slide-row">
                                     <div class="services__events-slide-image">
-                                        <img src="{% static 'img/services/events-image.jpg' %}" alt="Event"/>
+                                        <img src="{{ event.image.url }}" alt="{% if LANGUAGE_CODE == 'ru' %}{{ event.title_event_ru }}{% elif LANGUAGE_CODE == 'kk' %}{{ event.title_event_kz }}{% elif LANGUAGE_CODE == 'en' %}{{ event.title_event_en }}{% endif %}">
                                         <div class=" services__events-slide-shadow">
                                         </div>
                                     </div>
                                     <div class="services__events-slide-content">
                                         <h6 class="services__events-slide-title">
-                                            Квиз “Литература”
+                                            {% if LANGUAGE_CODE == 'ru' %}
+                                            {{ event.title_event_ru }}
+                                            {% elif LANGUAGE_CODE == 'kk' %}
+                                                {{ event.title_event_kz }}
+                                            {% elif LANGUAGE_CODE == 'en' %}
+                                                {{ event.title_event_en }}
+                                            {% endif %}
                                         </h6>
-                                        <p class="services__events-slide-location">Актовый зал</p>
+                                        <p class="services__events-slide-location">{{ event.location }}</p>
                                         <p class="services__events-slide-date">Понедельник 20 июня</p>
                                         <p class="services__events-slide-time">13:00 - 14:00</p>
                                         <p class="services__events-slide-desc">
@@ -188,6 +195,7 @@
                                     </div> <!-- CONTENT -->
                                 </div> <!-- SLLIDE ROW -->
                             </div> <!-- /SLIDE -->
+                            {% endfor %}
 
                             <div class="swiper-slide">
                                 <div class="services__events-slide-row">
@@ -229,20 +237,23 @@
             <div class="services__action services__courses">
                 <div class="services__courses-swiper">
                     <div class="swiper-wrapper">
-
+                        
+                        {% for course in courses %}
                         <div class="swiper-slide">
-                            <img src="{% static 'img/services/courses-image.jpg' %}" alt="Courses Image"/>
+                            <img src="{{ course.image.url }}" alt="{% if LANGUAGE_CODE == 'ru' %}{{ course.course_title_ru }}{% elif LANGUAGE_CODE == 'kk' %}{{ course.course_title_kz }}{% elif LANGUAGE_CODE == 'en' %}{{ course.course_title_en }}{% endif %}"/>
                             <h6 class="services-courses">Курсы</h6>
-                            <p class="services__сourses-desc">3D Моделирование</p>
+                            <p class="services__сourses-desc">
+                                {% if LANGUAGE_CODE == 'ru' %}
+                                {{ course.course_title_ru }}
+                                {% elif LANGUAGE_CODE == 'kk' %}
+                                    {{ course.course_title_kz }}
+                                {% elif LANGUAGE_CODE == 'en' %}
+                                    {{ course.course_title_en }}
+                                {% endif %}
+                            </p>
                             <a class="services__courses-link" href='#!'>Записаться</a>
                         </div>
-
-                        <div class="swiper-slide">
-                            <img src="{% static 'img/services/courses-image.jpg' %}" alt="Courses Image"/>
-                            <h6 class="services-courses">Курсы</h6>
-                            <p class="services__сourses-desc">3D Моделирование</p>
-                            <a class="services__courses-link" href='#!'>Записаться</a>
-                        </div>
+                        {% endfor %}
 
                     </div> <!-- /SWIPER-WRAPPER -->
                     <div class="swiper-button-prev services__arrow">
