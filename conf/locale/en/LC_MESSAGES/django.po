@@ -96,8 +96,9 @@ msgstr "Significant Calendar"
 msgid "news"
 msgstr "News"
 
-msgid "archive"
-msgstr "Archive"
+msgid "news-archive"
+msgstr "News Archive"
+
 
 # 4 item
 msgid "digital-catalogue"

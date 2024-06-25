@@ -113,8 +113,8 @@ msgstr "Знаменательный календарь"
 msgid "news"
 msgstr "Новости"
 
-msgid "archive"
-msgstr "Архив"
+msgid "news-archive"
+msgstr "Архив новостей"
 
 
 # 4 item
