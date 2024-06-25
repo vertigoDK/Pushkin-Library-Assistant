@@ -99,8 +99,9 @@ msgstr "Маңызды күндер күнтізбесі"
 msgid "news"
 msgstr "Жаңалықтар"
 
-msgid "archive"
-msgstr "Мұрағат"
+msgid "news-archive"
+msgstr "Жаңалықтар мұрағаты"
+
 
 # 4 item
 msgid "digital-catalogue"
