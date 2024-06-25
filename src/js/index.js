@@ -21,6 +21,10 @@ tourLocationChanges();
 import symbolLimit from './modules/catalog.js';
 symbolLimit();
 
+// Dosai Fixed
+import dosaiFixed from './modules/dosai-fixed.js';
+dosaiFixed();
+
 // Hero Swiper:
 const swiperHero = new Swiper('.hero__swiper', {
 	// Optional parameters

@@ -1,14 +1,15 @@
-html, body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+html,
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .footer {
-    margin-top: auto;
+	margin-top: auto;
 }
 
 .footer {
-	padding: 60px 0;
+	padding: 60px 0 !important;
 	background-color: #e3e3e3;
 }

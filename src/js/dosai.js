@@ -1,4 +1,4 @@
-const dosaiField = document.querySelector('.dosai__row');
+const dosaiField = document.querySelector('.dosai__box');
 const sendBtn = document.querySelector('.dosai__chat-bar-btn');
 const form = document.querySelector('.dosai__chat-bar');
 const textarea = document.querySelector('.dosai__chat-bar-input');
@@ -12,8 +12,18 @@ textarea.addEventListener('input', function () {
 });
 
 function createUserMessage(text) {
+	let textArr = text.split('');
+	let j = 55;
+	let result = '';
+	for (let i = 0; i < textArr.length; i++) {
+		result += textArr[i];
+		if (i === j) {
+			result += `\n${textArr[i]}`;
+			j += 55;
+		}
+	}
 	const newMessage = document.createElement('div');
-	newMessage.textContent = text;
+	newMessage.textContent = result;
 	newMessage.classList.add('dosai__user-msg');
 	dosaiField.appendChild(newMessage);
 }
