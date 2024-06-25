@@ -94,10 +94,10 @@ legend {
   --container-padding: 15px;
   --font-main: "Montserrat", sans-serif;
   --gray-color: #7f7b82;
-  --general-color: #185638;
+  --general-color: #1f6b44;
   --secondary-color: #FFDB5C;
   --alternative-color: #4c1036;
-  --white-color: #ACE1AF;
+  --white-color: #fcfcfc;
   --black-color: #0a1128;
   --general-tint-color: #125030;
   --general-tint-2-color: #125937;
@@ -1093,9 +1093,9 @@ body {
 
 .services__news-title {
   position: absolute;
-  bottom: 90px;
+  top: 10px;
   left: 25px;
-  z-index: 8;
+  z-index: 9998;
   padding: 3px 12px;
   background-color: var(--general-color);
   color: var(--white-color);
@@ -1651,3 +1651,6 @@ body {
     position: relative;
 }
 
+.news-img {
+  z-index: 919139;
+}
