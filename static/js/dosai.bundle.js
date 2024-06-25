@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Загрузка сообщений при загрузке страницы
-    loadMessages();
 
     // Очистка сообщений через 30 минут
     setTimeout(clearMessages, 1800000);

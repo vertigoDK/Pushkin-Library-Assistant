@@ -13,7 +13,7 @@ Chatbot.init({
             bottom: 20,
             size: "medium",
             iconColor: "black",
-            customIconSrc: "https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg",
+            customIconSrc: "../img/dosai/logo-dosai-white-bg.svg",
         },
         chatWindow: {
             welcomeMessage: "Привет, я Дос твой онлайн помощник в библиотеке Пушкина",
