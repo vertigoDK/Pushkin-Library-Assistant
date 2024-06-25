@@ -37,7 +37,7 @@
 
                 {% for name, url in exl %}
 
-                    <a class='hero__social' target="_blank" href='{{ url }}'><img src="{% static 'img/hero/'|add:name|lower|add:'-logo.svg' %}"
+                    <a class='hero__social' target="_blank" href='{{ url }}'><img src="{% static 'img/logo/'|add:name|lower|add:'-logo.svg' %}"
                                                            alt="{{ name }}"></a>
                 {% endfor %}
 

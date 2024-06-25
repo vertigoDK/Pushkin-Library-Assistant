@@ -44,7 +44,7 @@
 				<div class="footer__links">
                      {% for name, url in exl %}
 
-                    <a class="footer__link" target="_blank" href='{{ url }}'><img src="{% static 'img/hero/'|add:name|lower|add:'-logo.svg' %}"
+                    <a class="footer__link" target="_blank" href='{{ url }}'><img src="{% static 'img/logo/'|add:name|lower|add:'-logo.svg' %}"
                                                            alt="{{ name }}"></a>
                 {% endfor %}
 				</div> <!-- /LINKS -->

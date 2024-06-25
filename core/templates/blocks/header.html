@@ -81,18 +81,19 @@
                     <!-- /ITEM-7 -->
                     <!-- Кнопка админ панели -->
                     {% if user.is_authenticated and user.is_staff %}
-                    <li class="header__nav-item">
-                        <a class="nav-link header__nav-item-main" href="/admin/">
-                            <i class="fas fa-user-shield"></i> Админ
-                        </a>
-                    </li>
+                        <li class="header__nav-item">
+                            <a class="nav-link header__nav-item-main" href="/admin/">
+                                <i class="fas fa-user-shield"></i> Админ
+                            </a>
+                        </li>
                     {% endif %}
                     <li class="header__nav-item">
                         <div class='header__nav-item-main'>
                             {% get_language_info_list for LANGUAGES as languages %}
                             {% for language in languages %}
                                 {% if language.code == LANGUAGE_CODE %}
-                                    <div class='header__nav-item-main'>{{ language.name_local }}</div>
+                                    <div class='header__nav-item-main'><img src="{% static 'img/lang/'|add:language.code|add:'-icon.svg' %}"
+                                                     alt="{{ language.name_local }}"/>{{ language.name_local }}</div>
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -100,14 +101,18 @@
                             {% for language in languages %}
                                 {% if language.code != LANGUAGE_CODE %}
                                     <li>
+
                                         <form action="{% url 'set_language' %}" method="post">
                                             {% csrf_token %}
                                             <input name="next" type="hidden" value="{{ request.path }}">
                                             <input type="hidden" name="language" value="{{ language.code }}">
                                             <a href="#"
-                                               onclick="this.parentNode.submit();">{{ language.name_local }}</a>
+                                               onclick="this.parentNode.submit();">
+                                                <img src="{% static 'img/lang/'|add:language.code|add:'-icon.svg' %}"
+                                                     alt="{{ language.name_local }}"/>{{ language.name_local }}</a>
                                         </form>
                                     </li>
+
                                 {% endif %}
                             {% endfor %}
                         </ul>
