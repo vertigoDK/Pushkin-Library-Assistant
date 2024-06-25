@@ -42,12 +42,11 @@
 				<p class="footer__contacts-text footer__contacts-text-3">+7(7232) 609-087</p>
 
 				<div class="footer__links">
-					<a class="footer__link" href="#!"><img src="{% static 'img/footer/whatsapp-icon.svg' %}" alt="WhatsApp" /></a>
-					<a class="footer__link" href="#!"><img src="{% static 'img/footer/inst-icon.svg' %}" alt="Instagram" /></a>
-					<a class="footer__link" href="#!"><img src="{% static 'img/footer/facebook-icon.svg' %}" alt="Facebook" /></a>
-					<a class="footer__link" href="#!"><img src="{% static 'img/footer/youtube-icon.svg' %}" alt="YouTube" /></a>
-					<a class="footer__link" href="#!"><img src="{% static 'img/footer/vk-icon.svg' %}" alt="VKontakte" /></a>
-					<a class="footer__link" href="#!"><img src="{% static 'img/footer/x-icon.svg' %}" alt="X" /></a>
+                     {% for name, url in exl %}
+
+                    <a class="footer__link" target="_blank" href='{{ url }}'><img src="{% static 'img/hero/'|add:name|lower|add:'-logo.svg' %}"
+                                                           alt="{{ name }}"></a>
+                {% endfor %}
 				</div> <!-- /LINKS -->
 			</div> <!-- /CONTACTS -->
 

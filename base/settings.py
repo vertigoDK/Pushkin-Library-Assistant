@@ -51,7 +51,6 @@ INSTALLED_APPS = [
 
     'core',
 
-
     'app.api',
     'app.book_search_app.apps.BookSearchAppConfig',
     'app.chatbot_app.apps.ChatbotAppConfig',
@@ -147,6 +146,8 @@ LANGUAGES = [
     ('kk', 'Қазақ'),
 ]
 
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -155,7 +156,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

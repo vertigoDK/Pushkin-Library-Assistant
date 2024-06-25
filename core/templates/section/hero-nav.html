@@ -31,20 +31,29 @@
             </div> <!-- /SWIPER -->
             <!-- SWIPER -->
             <h1 class='hero__title'>{% trans 'library-title-1' %}</h1>
+
+
             <div class="hero__socials">
-                <a class='hero__social' href='#!'><img src="{% static 'img/hero/2gis-logo.svg' %}"
-                                                       alt="2GIS"></a>
-                <a class='hero__social' href='#!'><img src="{% static 'img/hero/vk-logo.svg' %}"
-                                                       alt="VKontakte"></a>
-                <a class='hero__social' href='#!'><img src="{% static 'img/hero/whatsapp-logo.svg' %}"
-                                                       alt="WhatsApp"></a>
-                <a class='hero__social' href='#!'><img src="{% static 'img/hero/instagram-logo.svg' %}"
-                                                       alt="Instagram"></a>
-                <a class='hero__social' href='#!'><img src="{% static 'img/hero/facebook-logo.svg' %}"
-                                                       alt="Facebook"></a>
-                <a class='hero__social' href='#!'><img src="{% static 'img/hero/youtube-logo.svg' %}"
-                                                       alt="YouTube"></a>
-                <a class='hero__social' href='#!'><img src="{% static 'img/hero/x-logo.svg' %}" alt="X Twitter"></a>
+
+                {% for name, url in exl %}
+
+                    <a class='hero__social' target="_blank" href='{{ url }}'><img src="{% static 'img/hero/'|add:name|lower|add:'-logo.svg' %}"
+                                                           alt="{{ name }}"></a>
+                {% endfor %}
+
+{#                <a class='hero__social' href='{{ exl }}'><img src="{% static 'img/hero/2gis-logo.svg' %}"#}
+{#                                                              alt="2GIS"></a>#}
+{#                <a class='hero__social' href='#!'><img src="{% static 'img/hero/vk-logo.svg' %}"#}
+{#                                                       alt="VK"></a>#}
+{#                <a class='hero__social' href='#!'><img src="{% static 'img/hero/whatsapp-logo.svg' %}"#}
+{#                                                       alt="WhatsApp"></a>#}
+{#                <a class='hero__social' href='#!'><img src="{% static 'img/hero/instagram-logo.svg' %}"#}
+{#                                                       alt="Instagram"></a>#}
+{#                <a class='hero__social' href='#!'><img src="{% static 'img/hero/facebook-logo.svg' %}"#}
+{#                                                       alt="Facebook"></a>#}
+{#                <a class='hero__social' href='#!'><img src="{% static 'img/hero/youtube-logo.svg' %}"#}
+{#                                                       alt="YouTube"></a>#}
+{#                <a class='hero__social' href='#!'><img src="{% static 'img/hero/twitter-logo.svg' %}" alt="X Twitter"></a>#}
             </div> <!-- /SOCIALS -->
         </div> <!-- /ROW -->
         <div class="hero__line"></div>
