@@ -468,18 +468,19 @@ html, body {
     filter: drop-shadow(2px 2px 2px black);
 }
 
+/*  */
 .services__ai-chat {
     grid-area: ai-chat;
     background-color: var(--general-color);
     transition: background-color 0.2s ease;
-}
-
-.services__ai-chat:hover {
+  }
+  .services__ai-chat:hover {
     background-color: var(--general-tint-color);
-}
-
-.services__ai-chat-link {
-    background: url("/static/img/dosai/background-logo.svg");
+  }
+  .services__ai-chat-link {
+    background: url("/static/img/dosai/logo-dosai-white-bg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: 90%;
     display: flex;
     flex-direction: column;
@@ -490,34 +491,29 @@ html, body {
     align-items: center;
     position: relative;
     transition: background-size 0.5s ease;
-}
-
-.services__ai-chat-link:hover {
+  }
+  .services__ai-chat-link:hover {
     background-size: 100%;
-}
-
-.services__ai-chat-link:hover .services__ai-chat-logo {
+  }
+  .services__ai-chat-link:hover .services__ai-chat-logo {
     scale: 1.05;
-}
-
-.services__ai-chat-link:hover .services__ai-chat-text {
+  }
+  .services__ai-chat-link:hover .services__ai-chat-text {
     color: var(--secondary-color);
-}
-
-.services__ai-chat-logo {
+  }
+  .services__ai-chat-logo {
     width: 137px;
     height: 129px;
     transition: scale 0.2s ease;
-}
-
-.services__ai-chat-text {
+  }
+  .services__ai-chat-text {
     font-size: 16px;
     font-weight: 800;
     color: var(--white-color);
     position: absolute;
     bottom: 50px;
     transition: color 0.2s ease;
-}
+  }
 
 .services__actions {
     grid-area: actions;
