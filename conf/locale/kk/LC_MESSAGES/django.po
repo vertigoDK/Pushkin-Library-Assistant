@@ -17,26 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\app\news_app\models.py:7
-msgid "title"
-msgstr ""
-
-#: .\core\templates\blocks\header.html:14
-msgid "Library"
-msgstr "Кітапхана"
-
-#: .\core\templates\blocks\header.html:16
-msgid "Home"
-msgstr "Үй"
-
-#: .\core\templates\blocks\header.html:17
-msgid "About Us"
-msgstr "Біз туралы"
-
 #: .\templates\base.html:11
 #, fuzzy
 #| msgid "Library"
-msgid "Library-title"
+msgid "library-title"
 msgstr "Шығыс Қазақстан облыстық кітапханасы. А. С. Пушкин"
 
 # footer
