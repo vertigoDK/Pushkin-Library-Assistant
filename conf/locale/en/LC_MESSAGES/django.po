@@ -38,6 +38,31 @@ msgstr "About Us"
 #| msgid "Library"
 msgid "Library-title"
 msgstr "East Kazakhstan Regional Library named after. A.S. Pushkin"
+# footer
+
+msgid "library-title-2"
+msgstr "East Kazakhstan Region, Ust-Kamenogorsk, Kazakhstan Street, 102"
+
+msgid "guide"
+msgstr "Guide"
+
+msgid "project"
+msgstr "Projects"
+
+msgid "book-of-honorable-guests"
+msgstr "Book of Honorable Guests"
+
+msgid "mass-media-about-us"
+msgstr "Media about Us"
+
+msgid "become-a-reader"
+msgstr "Become a Reader"
+
+msgid "registration-for-courses"
+msgstr "Course Registration"
+
+msgid "contacts"
+msgstr "Contacts"
 
 
 # 1 item

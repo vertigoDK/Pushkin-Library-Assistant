@@ -193,6 +193,110 @@ html, body {
     background-color: #e3e3e3;
 }
 
+.footer {
+  background-color: var(--general-color);
+  font-size: 14px;
+  line-height: 1.8;
+  color: #fff;
+  padding: 50px 0 0;
+}
+
+.footer__row {
+  display: flex;
+  gap: 80px;
+}
+
+.footer__info {
+  display: grid;
+  gap: 5px;
+}
+
+.footer__logo {
+  width: 172px;
+  height: 44px;
+}
+
+.footer__text {
+  width: 220px;
+  font-weight: 400;
+}
+
+.footer-title {
+  color: var(--secondary-color);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer__about-title,
+.footer__services-title,
+.footer__contacts-title {
+  margin-bottom: 7px;
+}
+
+.footer__about-list,
+.footer__services-list {
+  display: grid;
+  gap: 10px;
+}
+
+.footer-item a {
+  color: #fff;
+  transition: all 0.2s ease;
+}
+.footer-item a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.footer__contacts-text {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+.footer__contacts-text:nth-child(4) {
+  margin-bottom: 20px;
+}
+.footer__contacts-text::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.footer__contacts-text-1::before {
+  background-image: url("/static/img/footer/location-icon.svg");
+}
+.footer__contacts-text-2::before {
+  background-image: url("/static/img/footer/phone-icon.svg");
+}
+.footer__contacts-text-3::before {
+  background-image: url("/static/img/footer/fax-icon.svg");
+}
+
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 30px;
+  width: 200px;
+}
+
+.footer__link {
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+.footer__link img {
+  width: 22px;
+  height: 22px;
+}
+.footer__link:hover {
+  opacity: 1;
+  scale: 1.05;
+}
 /* Blocks */
 .dosai {
     padding: 50px 0 100px;
@@ -1029,22 +1133,7 @@ html, body {
     color: var(--secondary-color);
 }
 
-.footer {
-    background-color: rgb(62, 62, 62);
-    padding: 50px 0;
-    font-size: 32px;
-    color: #fff;
-}
 
-.footer h1 {
-    font-size: 32px;
-}
-
-@media (max-width: 1200px) {
-    .footer {
-        font-size: 26px;
-    }
-}
 
 .header {
     background-color: var(--general-color);

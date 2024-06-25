@@ -25,7 +25,40 @@ msgstr "Ньюс"
 msgid "library-title"
 msgstr "Восточно-Казахстанская областная библиотека им. А.С. Пушкина"
 
+
+# footer
+
+msgid "library-title-2"
+msgstr "ВКО, г. Усть-Каменогорск ул. Казахстан, 102"
+
+msgid "guide"
+msgstr "Путеводитель"
+
+msgid "project"
+msgstr "Проекты"
+
+msgid "book-of-honorable-guests"
+msgstr "Книга почетных гостей"
+
+msgid "mass-media-about-us"
+msgstr "Сми о нас"
+
+msgid "become-a-reader"
+msgstr "Стать читателем"
+
+
+msgid "registration-for-courses"
+msgstr "Запись на курсы"
+
+msgid "contacts"
+msgstr "Контакты"
+
+
+
+
 # Hader Translate
+
+
 
 
 # 1 item

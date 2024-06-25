@@ -1,5 +1,56 @@
+{% load i18n %}
+{% load static %}
 <footer class="footer">
 	<div class="container">
-		<h2>Footer</h2>
-	</div>
+		<div class="footer__row">
+			<div class="footer__info">
+				<div class="footer__logo"><a href="#">
+						<img src="{% static 'img/header/logo.svg' %}" alt="Лого">
+					</a>
+				</div>
+				<p class="footer__text">1998-2024 © {% trans 'library-title' %}</p>
+			</div> <!-- /INFO -->
+
+			<div class="footer__about">
+				<h6 class="footer__about-title footer-title">{% trans 'about-us' %}</h6>
+				<ul class="footer__about-list">
+					<li class="footer__about-item footer-item"><a href="#!">{% trans 'about-us' %}</a></li>
+					<li class="footer__about-item footer-item"><a href="#!">{% trans 'history' %}</a></li>
+					<li class="footer__about-item footer-item"><a href="#!">{% trans 'guide' %}</a></li>
+					<li class="footer__about-item footer-item"><a href="#!">{% trans 'terms-of-use' %}</a></li>
+					<li class="footer__about-item footer-item"><a href="#!">{% trans 'project' %}</a> </li>
+					<li class="footer__about-item footer-item"><a href="#!">{% trans 'book-of-honorable-guests' %}</a></li>
+					<li class="footer__about-item footer-item"><a href="#!">{% trans 'mass-media-about-us' %}</a></li>
+				</ul>
+			</div> <!-- /ABOUT -->
+
+			<div class="footer__services">
+				<h6 class="footer__services-title footer-title">{% trans 'readers' %}</h6>
+				<ul class="footer__services-list">
+					<li class="footer__services-item footer-item"><a href="#!">{% trans 'become-a-reader' %}</a></li>
+					<li class="footer__services-item footer-item"><a href="#!">{% trans 'virtual-help' %}</a></li>
+					<li class="footer__services-item footer-item"><a href="#!">{% trans 'electronic-document-delivery' %}</a></li>
+					<li class="footer__services-item footer-item"><a href="#!">{% trans 'renew-your-book' %}</a></li>
+					<li class="footer__services-item footer-item"><a href="#!">{% trans 'registration-for-courses' %}</a></li>
+				</ul>
+			</div> <!-- /SERVICES -->
+
+			<div class="footer__contacts">
+				<h6 class="footer__contacts-title footer-title">{% trans 'contacts' %}</h6>
+				<p class="footer__contacts-text footer__contacts-text-1">{% trans 'library-title-2' %}</p>
+				<p class="footer__contacts-text footer__contacts-text-2">+7(7232) 261-333</p>
+				<p class="footer__contacts-text footer__contacts-text-3">+7(7232) 609-087</p>
+
+				<div class="footer__links">
+					<a class="footer__link" href="#!"><img src="{% static 'img/footer/whatsapp-icon.svg' %}" alt="WhatsApp" /></a>
+					<a class="footer__link" href="#!"><img src="{% static 'img/footer/inst-icon.svg' %}" alt="Instagram" /></a>
+					<a class="footer__link" href="#!"><img src="{% static 'img/footer/facebook-icon.svg' %}" alt="Facebook" /></a>
+					<a class="footer__link" href="#!"><img src="{% static 'img/footer/youtube-icon.svg' %}" alt="YouTube" /></a>
+					<a class="footer__link" href="#!"><img src="{% static 'img/footer/vk-icon.svg' %}" alt="VKontakte" /></a>
+					<a class="footer__link" href="#!"><img src="{% static 'img/footer/x-icon.svg' %}" alt="X" /></a>
+				</div> <!-- /LINKS -->
+			</div> <!-- /CONTACTS -->
+
+		</div> <!-- /ROW -->
+	</div> <!-- /CONTAINER -->
 </footer>

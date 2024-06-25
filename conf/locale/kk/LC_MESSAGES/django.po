@@ -39,6 +39,32 @@ msgstr "Біз туралы"
 msgid "Library-title"
 msgstr "Шығыс Қазақстан облыстық кітапханасы. А. С. Пушкин"
 
+# footer
+
+msgid "library-title-2"
+msgstr "ШҚО, Өскемен қаласы, Қазақстан көшесі, 102"
+
+msgid "guide"
+msgstr "Жолсілтемесі"
+
+msgid "project"
+msgstr "Жобалар"
+
+msgid "book-of-honorable-guests"
+msgstr "Құрметті қонақтар кітабы"
+
+msgid "mass-media-about-us"
+msgstr "БАҚ біз туралы"
+
+msgid "become-a-reader"
+msgstr "Оқырман болу"
+
+msgid "registration-for-courses"
+msgstr "Курстарға жазылу"
+
+msgid "contacts"
+msgstr "Байланыстар"
+
 
 # 1 item
 msgid "library"
