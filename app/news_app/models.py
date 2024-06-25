@@ -14,6 +14,8 @@ class News(models.Model):
     contact_info = models.CharField(max_length=100, blank=True, null=True, verbose_name='Контактная информация')
     is_archive = models.BooleanField(default=False)
 
+
+
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
