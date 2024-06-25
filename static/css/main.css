@@ -1046,100 +1046,100 @@ html, body {
     }
 }
 
-/*.header {*/
-/*    background-color: var(--general-color);*/
-/*    padding: 17px 0;*/
-/*}*/
+.header {
+    background-color: var(--general-color);
+    padding: 17px 0;
+}
 
-/*.header__row {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*    gap: 56px;*/
-/*    z-index: 10;*/
-/*}*/
+.header__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 56px;
+    z-index: 10;
+}
 
-/*.header__logo {*/
-/*    cursor: pointer;*/
-/*}*/
+.header__logo {
+    cursor: pointer;
+}
 
-/*.header__logo:hover img {*/
-/*    filter: drop-shadow(10px);*/
-/*}*/
+.header__logo:hover img {
+    filter: drop-shadow(10px);
+}
 
-/*.header__nav {*/
-/*    display: flex;*/
-/*    justify-content: space-around;*/
-/*    align-items: center;*/
-/*    column-gap: 40px;*/
-/*    margin-right: 25px;*/
-/*    text-align: center;*/
-/*}*/
+.header__nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    column-gap: 40px;
+    margin-right: 25px;
+    text-align: center;
+}
 
-/*.header__nav-item {*/
-/*    position: relative;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: center;*/
-/*    font-size: 14px;*/
-/*    font-weight: 500;*/
-/*    cursor: pointer;*/
-/*}*/
+.header__nav-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
 
-/*.header__nav-item-main {*/
-/*    position: relative;*/
-/*    color: var(--white-color);*/
-/*    transition: color 0.2s ease;*/
-/*    padding: 30px;*/
-/*    margin: -30px;*/
-/*    background-color: var(--general-color);*/
-/*}*/
+.header__nav-item-main {
+    position: relative;
+    color: var(--white-color);
+    transition: color 0.2s ease;
+    padding: 30px;
+    margin: -30px;
+    background-color: var(--general-color);
+}
 
-/*.header__nav-item-main:hover {*/
-/*    color: var(--secondary-color);*/
-/*}*/
+.header__nav-item-main:hover {
+    color: var(--secondary-color);
+}
 
-/*.header__nav-item-dropdown {*/
-/*    scale: 1 0;*/
-/*    opacity: 0;*/
-/*    position: absolute;*/
-/*    transition: opacity 0.3s ease-out, top 0.3s ease-out;*/
-/*    top: 28px;*/
-/*    left: 50%;*/
-/*    z-index: 99;*/
-/*    transform: translate(-50%, 0);*/
-/*}*/
+.header__nav-item-dropdown {
+    scale: 1 0;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.3s ease-out, top 0.3s ease-out;
+    top: 28px;
+    left: 50%;
+    z-index: 99;
+    transform: translate(-50%, 0);
+}
 
-/*.header__nav-item-dropdown li {*/
-/*    display: block;*/
-/*    text-align: center;*/
-/*    padding: 11px 30px;*/
-/*    width: 130%;*/
-/*    background-color: var(--general-tint-color);*/
-/*    border-bottom: 1px solid var(--secondary-color);*/
-/*    transition: background-color 0.2s ease;*/
-/*}*/
+.header__nav-item-dropdown li {
+    display: block;
+    text-align: center;
+    padding: 11px 30px;
+    width: 130%;
+    background-color: var(--general-tint-color);
+    border-bottom: 1px solid var(--secondary-color);
+    transition: background-color 0.2s ease;
+}
 
-/*.header__nav-item-dropdown li a {*/
-/*    text-decoration: none;*/
-/*    color: var(--white-color);*/
-/*}*/
+.header__nav-item-dropdown li a {
+    text-decoration: none;
+    color: var(--white-color);
+}
 
-/*.header__nav-item-dropdown li:hover {*/
-/*    background-color: var(--general-tint-2-color);*/
-/*    color: var(--secondary-color);*/
-/*}*/
+.header__nav-item-dropdown li:hover {
+    background-color: var(--general-tint-2-color);
+    color: var(--secondary-color);
+}
 
-/*.header__nav-item-dropdown li:last-child {*/
-/*    border-bottom: 0;*/
-/*    border-radius: 0 0 9px 9px;*/
-/*}*/
+.header__nav-item-dropdown li:last-child {
+    border-bottom: 0;
+    border-radius: 0 0 9px 9px;
+}
 
-/*.header__nav-item:hover .header__nav-item-dropdown {*/
-/*    opacity: 1;*/
-/*    top: 48px;*/
-/*    scale: 1 1;*/
-/*}*/
+.header__nav-item:hover .header__nav-item-dropdown {
+    opacity: 1;
+    top: 48px;
+    scale: 1 1;
+}
 
 .hero {
     margin-bottom: 130px;
