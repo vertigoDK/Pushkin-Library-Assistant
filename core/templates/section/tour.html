@@ -1,13 +1,16 @@
 {% load i18n %}
 {% load static %}
 
+
 <section class="tour">
     <div class="container">
         <div class="tour__row">
             <h3 class="tour__title title">{% trans 'library-tour' %}</h3>
             <div class="tour__box">
                 <div class="tour__list">
+
                     <div class="tour__swiper">
+
                         <div class="swiper-wrapper">
                             <div class="swiper-slide tour__location active" id='tour-lobby'>{% trans 'foyer' %}</div>
                             <div class="swiper-slide tour__location"
@@ -25,7 +28,7 @@
                             <img src="{% static 'img/hero/arrow-prev.svg' %}" alt="Arrow Prev">
                         </div>
                         <div class="swiper-button-next tour__arrow">
-                            <img src="{% static 'img/hero/arrow-next.svg' %}" alt="Arrow Next">
+                            <img src="{% static 'img/hero/arrow-prev.svg' %}" alt="Arrow Next">
                         </div>
                         <!-- /PAGINATION -->
                     </div> <!-- /TOUR SWIPER -->
@@ -49,7 +52,7 @@
                              alt="Фото фойе 4">
                     </div>
                     <a href="#!" class="tour__virtual-tour">
-                        Виртуальный тур <span>+</span>
+                        {% trans 'virtual-tour' %} <span>+</span>
                     </a>
                 </div> <!-- /IMAGES -->
             </div> <!-- /BOX -->

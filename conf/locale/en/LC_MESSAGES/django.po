@@ -17,12 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-
-#: .\templates\base.html:11
-#, fuzzy
-#| msgid "Library"
-msgid "library-title"
+msgid "library-title-1"
 msgstr "East Kazakhstan Regional Library named after. A.S. Pushkin"
+
 # footer
 
 msgid "library-title-2"
@@ -211,6 +208,9 @@ msgstr "Foyer 8"
 msgid "foyer-9"
 msgstr "Foyer 9"
 
+msgid "virtual-tour"
+msgstr "Virtual Tour"
+
 # hero
 
 msgid "our-abai"
@@ -223,3 +223,12 @@ msgstr "East Kazakhstan Region: Famous Places"
 msgid "east-kazakhstan-region-legends-and-tales"
 msgstr "East Kazakhstan Region: Legends and Tales"
 
+# catalog
+msgid "new-items"
+msgstr "New Items"
+
+msgid "go-to-catalog"
+msgstr "Go to Catalog"
+
+msgid "read"
+msgstr "Read"

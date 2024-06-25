@@ -20,7 +20,7 @@ msgstr ""
 #: .\templates\base.html:11
 #, fuzzy
 #| msgid "Library"
-msgid "library-title"
+msgid "library-title-1"
 msgstr "Шығыс Қазақстан облыстық кітапханасы. А. С. Пушкин"
 
 # footer
@@ -206,6 +206,8 @@ msgstr "Фойе 8"
 
 msgid "foyer-9"
 msgstr "Фойе 9"
+msgid "virtual-tour"
+msgstr "Виртуалды тур"
 
 
 # hero
@@ -219,3 +221,14 @@ msgstr "ШҚО: Танымал орындар"
 
 msgid "east-kazakhstan-region-legends-and-tales"
 msgstr "ШҚО: Аңыздар мен ертегілер"
+
+
+# catalog
+msgid "new-items"
+msgstr "Жаңа өнімдер"
+
+msgid "go-to-catalog"
+msgstr "Каталогқа өту"
+
+msgid "read"
+msgstr "Оқу"

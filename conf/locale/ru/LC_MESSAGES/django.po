@@ -22,7 +22,7 @@ msgid "title"
 msgstr "Ньюс"
 
 
-msgid "library-title"
+msgid "library-title-1"
 msgstr "Восточно-Казахстанская областная библиотека им. А.С. Пушкина"
 
 
@@ -230,6 +230,9 @@ msgstr "Фойе 8"
 msgid "foyer-9"
 msgstr "Фойе 9"
 
+msgid "virtual-tour"
+msgstr "Виртуальный тур"
+
 # hero
 
 msgid "our-abai"
@@ -240,3 +243,15 @@ msgstr "ВКО: Известные места"
 
 msgid "east-kazakhstan-region-legends-and-tales"
 msgstr "ВКО: Легенды и сказания"
+
+
+# catalog
+msgid "new-items"
+msgstr "Новинки"
+
+msgid "go-to-catalog"
+msgstr "Перейти в каталог"
+
+msgid "read"
+msgstr "Читать"
+
