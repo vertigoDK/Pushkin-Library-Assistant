@@ -1642,3 +1642,12 @@ body {
   transition: transform 0.2s ease;
   color: var(--secondary-color);
 }
+
+
+
+.catalog__bookcard-text-container {
+    height: 120px; /* Ограниченная высота контейнера */
+    overflow: hidden; /* Скрывает текст, выходящий за пределы контейнера */
+    position: relative;
+}
+
