@@ -44,7 +44,14 @@
                                     <div class="news-content">
                                         <a href="{% url 'news' %}"><h6
                                                 class="services__news-title">{% trans 'news' %}</h6></a>
-                                        <h6 class="services__news-desc">{{ item.title_ru }}</h6>
+                                        <h6 class="services__news-desc">
+                 {% if LANGUAGE_CODE == 'ru' %}
+                    {{ news_item.title_ru }}
+                {% elif LANGUAGE_CODE == 'kk' %}
+                    {{ news_item.title_kz }}
+                {% else %}
+                    {{ news_item.title_en }}
+                {% endif %}"></h6>
                                         <h6 class="services__news-link">{{ item.pub_date|date:"d M Y" }}</h6>
                                     </div>
                                 </a>
