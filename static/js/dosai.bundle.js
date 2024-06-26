@@ -100,3 +100,9 @@
         }
     });
 }();
+// Add this snippet to your existing JavaScript code
+
+document.getElementById('clear-chat-btn').addEventListener('click', function () {
+    localStorage.removeItem('messages');
+    document.querySelector('.dosai__box').innerHTML = ''; // Очищаем контейнер сообщений
+});
