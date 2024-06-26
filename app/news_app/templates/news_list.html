@@ -10,11 +10,11 @@
     <h1>Новости</h1>
 
 
-    <div class="container">
+    <div class="container-news">
         {% for news_item in news %}
-            <div class="card">
+            <div class="card-news">
                 {% if news_item.main_image %}
-                    <div class="card-header">
+                    <div class="card-header-news">
                     <img src="{{ news_item.main_image.url }}" alt="
                  {% if LANGUAGE_CODE == 'ru' %}
                     {{ news_item.title_ru }}
@@ -22,10 +22,10 @@
                     {{ news_item.title_kz }}
                 {% else %}
                     {{ news_item.title_en }}
-                {% endif %}" class="card-image">
+                {% endif %}" class="card-image-news">
                 {% endif %}
                 </div>
-                <div class="card-body">
+                <div class="card-body-news">
                     <h5>
 
                         {% if LANGUAGE_CODE == 'ru' %}
@@ -47,7 +47,7 @@
                         {% endif %}
                     </p>
                 </div>
-                <div class="card-footer-button">
+                <div class="card-footer-button-news">
                     <a href="{% url 'news_detail' slug=news_item.slug %}">
                         <button>читать далее</button>
                     </a>
@@ -57,6 +57,5 @@
             </div>
 
         {% endfor %}
-    </div>
     </div>
 {% endblock %}

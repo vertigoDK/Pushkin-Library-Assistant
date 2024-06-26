@@ -1,10 +1,11 @@
-.container {
+.container-news {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Создание столбцов минимум 300px, максимум - 1 доля доступного пространства */
     gap: 20px; /* Отступы между карточками */
+    padding: 20px;
 }
 
-.card {
+.card-news {
     font-family: Arial, sans-serif;
     border: 2px solid #000;
     border-radius: 10px;
@@ -17,35 +18,34 @@
 }
 
 
-.card-header {
+.card-header-news {
     padding: 0; /* Убираем внутренний отступ */
     width: 100%; /* Ширина заголовка равна ширине карточки */
     height: 150px; /* Фиксированная высота для изображения */
 }
 
-.card-image {
+.card-image-news {
     width: 100%; /* Занимает всю ширину header */
     height: 100%; /* Занимает всю высоту header */
     object-fit: cover; /* Обеспечивает покрытие всей области, возможно обрезание */
 }
 
-.card-body {
+.card-body-news {
     padding: 10px;
     color: #333;
 }
 
-.card-body h3 {
+.card-body-news h3 {
     margin-top: 0;
 }
 
-.card-body .price {
+.card-body-news .price {
     font-size: 24px;
     font-weight: bold;
     margin-top: 15px;
 }
-.card-footer-button {
+.card-footer-button-news {
     padding: 10px;
-    background: #f5f5f5;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     display: flex; /* Используем flexbox для выравнивания содержимого */
@@ -53,7 +53,7 @@
     justify-content: center; /* Центрируем содержимое по горизонтали */
 }
 
-.card-footer-button button {
+.card-footer-button-news button {
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -77,7 +77,7 @@
     outline: none; /* Убираем стандартный outline при фокусе */
 }
 
-.card-footer-button:hover button {
+.card-footer-button-news:hover button {
     box-shadow: 0 0 40px 40px #4A55A2 inset; /* Анимация тени при наведении */
     color: white;
 }
