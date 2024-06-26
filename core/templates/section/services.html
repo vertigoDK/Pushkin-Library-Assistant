@@ -33,10 +33,18 @@
                         {% for item in news %}
                             <div class="swiper-slide">
                                 <a href="{% url 'news_detail' slug=item.slug %}" class="news-link">
-                                    <img class="news-img" src="{{ item.main_image.url }}" alt="{{ item.title }}">
+                                    <img class="news-img" src="{{ item.main_image.url }}" alt="
+                 {% if LANGUAGE_CODE == 'ru' %}
+                    {{ news_item.title_ru }}
+                {% elif LANGUAGE_CODE == 'kk' %}
+                    {{ news_item.title_kz }}
+                {% else %}
+                    {{ news_item.title_en }}
+                {% endif %}">
                                     <div class="news-content">
-                                        <a href="{% url 'news' %}"><h6 class="services__news-title">{% trans 'news' %}</h6></a>
-                                        <h6 class="services__news-desc">{{ item.title }}</h6>
+                                        <a href="{% url 'news' %}"><h6
+                                                class="services__news-title">{% trans 'news' %}</h6></a>
+                                        <h6 class="services__news-desc">{{ item.title_ru }}</h6>
                                         <h6 class="services__news-link">{{ item.pub_date|date:"d M Y" }}</h6>
                                     </div>
                                 </a>
@@ -185,6 +193,10 @@
 
 
 
+
+
+
+
                                                     {% if LANGUAGE_CODE == 'ru' %}{{ event.title_event_ru }}{% elif LANGUAGE_CODE == 'kk' %}{{ event.title_event_kz }}{% elif LANGUAGE_CODE == 'en' %}{{ event.title_event_en }}{% endif %}">
                                             <div class=" services__events-slide-shadow">
                                             </div>
@@ -238,6 +250,10 @@
                         {% for course in courses %}
                             <div class="swiper-slide">
                                 <img src="{{ course.image.url }}" alt="
+
+
+
+
 
 
 
