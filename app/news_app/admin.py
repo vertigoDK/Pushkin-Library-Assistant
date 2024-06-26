@@ -14,6 +14,6 @@ class NewsImageInline(TabularInline):
 
 @register(News)
 class NewsAdmin(ModelAdmin):
-    list_display = ('title', 'pub_date', 'contact_info')
-    search_fields = ('title', 'content')
+    list_display = ('title_ru', 'pub_date', 'contact_info')
+    search_fields = ('title_ru', 'content')
     inlines = [NewsImageInline]  # Подключаем inline-модель для дополнительных изображений
