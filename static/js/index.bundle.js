@@ -489,7 +489,7 @@
         };
         const I = (e, t, s) => {
             t && !e.classList.contains(s) ? e.classList.add(s) : !t && e.classList.contains(s) && e.classList.remove(s)
-        }, O = (e, t, s) => {
+        }, $ = (e, t, s) => {
             t && !e.classList.contains(s) ? e.classList.add(s) : !t && e.classList.contains(s) && e.classList.remove(s)
         }, D = (e, t) => {
             if (!e || e.destroyed || !e.params) return;
@@ -500,7 +500,7 @@
                     s.shadowRoot && (t = s.shadowRoot.querySelector(`.${e.params.lazyPreloaderClass}`), t && t.remove())
                 }))), t && t.remove()
             }
-        }, $ = (e, t) => {
+        }, O = (e, t) => {
             if (!e.slides[t]) return;
             const s = e.slides[t].querySelector('[loading="lazy"]');
             s && s.removeAttribute("loading")
@@ -515,14 +515,14 @@
             if (e.params.grid && e.params.grid.rows > 1) {
                 const s = r, a = [s - t];
                 return a.push(...Array.from({length: t}).map(((e, t) => s + i + t))), void e.slides.forEach(((t, s) => {
-                    a.includes(t.column) && $(e, s)
+                    a.includes(t.column) && O(e, s)
                 }))
             }
             const a = r + i - 1;
             if (e.params.rewind || e.params.loop) for (let i = r - t; i <= a + t; i += 1) {
                 const t = (i % s + s) % s;
-                (t < r || t > a) && $(e, t)
-            } else for (let i = Math.max(r - t, 0); i <= Math.min(a + t, s - 1); i += 1) i !== r && (i > a || i < r) && $(e, i)
+                (t < r || t > a) && O(e, t)
+            } else for (let i = Math.max(r - t, 0); i <= Math.min(a + t, s - 1); i += 1) i !== r && (i > a || i < r) && O(e, i)
         };
         var G = {
             updateSize: function () {
@@ -730,7 +730,7 @@
                     }
                     return s
                 }(l, `.${s.slideClass}, swiper-slide`)[0], s.loop && 0 === !d && (d = t[t.length - 1]))), t.forEach((e => {
-                    O(e, e === l, s.slideActiveClass), O(e, e === p, s.slideNextClass), O(e, e === d, s.slidePrevClass)
+                    $(e, e === l, s.slideActiveClass), $(e, e === p, s.slideNextClass), $(e, e === d, s.slidePrevClass)
                 })), e.emitSlidesClasses()
             }, updateActiveIndex: function (e) {
                 const t = this, s = t.rtlTranslate ? t.translate : -t.translate, {
@@ -1272,7 +1272,7 @@
             }
         }
 
-        function V() {
+        function _() {
             const e = this, {params: t, el: s} = e;
             if (s && 0 === s.offsetWidth) return;
             t.breakpoints && e.setBreakpoint();
@@ -1284,7 +1284,7 @@
             }), 500)), e.allowSlidePrev = r, e.allowSlideNext = i, e.params.watchOverflow && a !== e.snapGrid && e.checkOverflow()
         }
 
-        function _(e) {
+        function V(e) {
             const t = this;
             t.enabled && (t.allowClick || (t.params.preventClicks && e.preventDefault(), t.params.preventClicksPropagation && t.animating && (e.stopPropagation(), e.stopImmediatePropagation())))
         }
@@ -1320,7 +1320,7 @@
             }), s[d]("pointermove", e.onTouchMove, {
                 passive: !1,
                 capture: l
-            }), s[d]("touchend", e.onTouchEnd, {passive: !0}), s[d]("pointerup", e.onTouchEnd, {passive: !0}), s[d]("pointercancel", e.onTouchEnd, {passive: !0}), s[d]("touchcancel", e.onTouchEnd, {passive: !0}), s[d]("pointerout", e.onTouchEnd, {passive: !0}), s[d]("pointerleave", e.onTouchEnd, {passive: !0}), s[d]("contextmenu", e.onTouchEnd, {passive: !0}), (i.preventClicks || i.preventClicksPropagation) && a[d]("click", e.onClick, !0), i.cssMode && n[d]("scroll", e.onScroll), i.updateOnWindowResize ? e[p](o.ios || o.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", V, !0) : e[p]("observerUpdate", V, !0), a[d]("load", e.onLoad, {capture: !0}))
+            }), s[d]("touchend", e.onTouchEnd, {passive: !0}), s[d]("pointerup", e.onTouchEnd, {passive: !0}), s[d]("pointercancel", e.onTouchEnd, {passive: !0}), s[d]("touchcancel", e.onTouchEnd, {passive: !0}), s[d]("pointerout", e.onTouchEnd, {passive: !0}), s[d]("pointerleave", e.onTouchEnd, {passive: !0}), s[d]("contextmenu", e.onTouchEnd, {passive: !0}), (i.preventClicks || i.preventClicksPropagation) && a[d]("click", e.onClick, !0), i.cssMode && n[d]("scroll", e.onScroll), i.updateOnWindowResize ? e[p](o.ios || o.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", _, !0) : e[p]("observerUpdate", _, !0), a[d]("load", e.onLoad, {capture: !0}))
         }, Q = (e, t) => e.grid && t.grid && t.grid.rows > 1;
         var K = {
             init: !0,
@@ -1503,7 +1503,7 @@
             }, events: {
                 attachEvents: function () {
                     const e = this, {params: t} = e;
-                    e.onTouchStart = R.bind(e), e.onTouchMove = X.bind(e), e.onTouchEnd = q.bind(e), e.onDocumentTouchStart = U.bind(e), t.cssMode && (e.onScroll = j.bind(e)), e.onClick = _.bind(e), e.onLoad = W.bind(e), Z(e, "on")
+                    e.onTouchStart = R.bind(e), e.onTouchMove = X.bind(e), e.onTouchEnd = q.bind(e), e.onDocumentTouchStart = U.bind(e), t.cssMode && (e.onScroll = j.bind(e)), e.onClick = V.bind(e), e.onLoad = W.bind(e), Z(e, "on")
                 }, detachEvents: function () {
                     Z(this, "off")
                 }
@@ -3004,7 +3004,7 @@
                 s.scale && 1 !== s.scale ? k() : z(e)
             }
 
-            function O() {
+            function $() {
                 return {
                     passiveListener: !!t.params.passiveListeners && {passive: !0, capture: !1},
                     activeListenerWithCapture: !t.params.passiveListeners || {passive: !1, capture: !0}
@@ -3015,17 +3015,17 @@
                 const e = t.zoom;
                 if (e.enabled) return;
                 e.enabled = !0;
-                const {passiveListener: s, activeListenerWithCapture: i} = O();
+                const {passiveListener: s, activeListenerWithCapture: i} = $();
                 t.wrapperEl.addEventListener("pointerdown", T, s), t.wrapperEl.addEventListener("pointermove", A, i), ["pointerup", "pointercancel", "pointerout"].forEach((e => {
                     t.wrapperEl.addEventListener(e, M, s)
                 })), t.wrapperEl.addEventListener("pointermove", P, i)
             }
 
-            function $() {
+            function O() {
                 const e = t.zoom;
                 if (!e.enabled) return;
                 e.enabled = !1;
-                const {passiveListener: s, activeListenerWithCapture: i} = O();
+                const {passiveListener: s, activeListenerWithCapture: i} = $();
                 t.wrapperEl.removeEventListener("pointerdown", T, s), t.wrapperEl.removeEventListener("pointermove", A, i), ["pointerup", "pointercancel", "pointerout"].forEach((e => {
                     t.wrapperEl.removeEventListener(e, M, s)
                 })), t.wrapperEl.removeEventListener("pointermove", P, i)
@@ -3044,7 +3044,7 @@
             }), i("init", (() => {
                 t.params.zoom.enabled && D()
             })), i("destroy", (() => {
-                $()
+                O()
             })), i("touchStart", ((e, s) => {
                 t.zoom.enabled && function (e) {
                     const s = t.device;
@@ -3074,7 +3074,7 @@
                 t.zoom.enabled && t.params.zoom.enabled && L()
             })), i("slideChange", (() => {
                 t.zoom.enabled && t.params.zoom.enabled && t.params.cssMode && L()
-            })), Object.assign(t.zoom, {enable: D, disable: $, in: z, out: k, toggle: I})
+            })), Object.assign(t.zoom, {enable: D, disable: O, in: z, out: k, toggle: I})
         }, function (e) {
             let {swiper: t, extendParams: s, on: i} = e;
 
@@ -4050,6 +4050,24 @@
         var fe = s(379), ge = s.n(fe), ve = s(795), we = s.n(ve), be = s(569), ye = s.n(be), xe = s(565), Ee = s.n(xe),
             Se = s(216), Te = s.n(Se), Ae = s(589), Me = s.n(Ae), Ce = s(541), Pe = {};
         Pe.styleTagTransform = Me(), Pe.setAttributes = Ee(), Pe.insert = ye().bind(null, "head"), Pe.domAPI = we(), Pe.insertStyleElement = Te(), ge()(Ce.Z, Pe), Ce.Z && Ce.Z.locals && Ce.Z.locals, function () {
+            const e = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+                t = ["января", "февраля", "марта", "апреля", "майя", "июня", "июля", "августа", "сентября", "октября", "ноября"];
+
+            function s() {
+                const e = new Date, t = document.querySelector("#services-current-time"),
+                    s = e.getHours().toString().padStart(2, "0"), i = e.getMinutes().toString().padStart(2, "0");
+                t.textContent = `${s}:${i}`
+            }
+
+            function i() {
+                const s = new Date, i = document.querySelector("#services-current-date"), r = e[s.getDay()],
+                    a = s.getDate(), n = t[s.getMonth()];
+                i.textContent = `${r} ${a} ${n}`
+            }
+
+
+
+        }(), function () {
             const e = document.querySelector(".services__actions-title");
             document.querySelectorAll(".services__actions-icon").forEach((t => {
                 t.addEventListener("mouseover", (function () {
@@ -4064,11 +4082,37 @@
             e.forEach((s => {
                 s.addEventListener("click", (function () {
                     s.classList.add("active");
-                    for (let e = 0; e < t.length; e++) t[e].src = `static/img/tour/${this.id}-${e + 1}.jpg`;
+                    for (let e = 0; e < t.length; e++) t[e].src = `./img/tour/${this.id}-${e + 1}.jpg`;
                     e.forEach((e => {
                         e !== this && e.classList.remove("active")
                     }))
                 }))
+            }))
+        }(), document.querySelectorAll(".catalog__bookcard-text").forEach((e => {
+            if (e.textContent.length > 197) {
+                const t = e.textContent.slice(0, 192);
+                e.textContent = `${t}...`
+            }
+        })), function () {
+            const e = document.querySelector(".dosai-fixed__chat-box"),
+                t = document.querySelector(".dosai-fixed__chat"), s = document.querySelector(".dosai-fixed__chat-form"),
+                i = document.querySelector(".dosai-fixed__chat-input");
+
+            function r() {
+                !function (t) {
+                    let s = t.split(""), i = 25, r = "";
+                    for (let e = 0; e < s.length; e++) r += s[e], e === i && (r += `\n${s[e]}`, i += 25);
+                    const a = document.createElement("div");
+                    a.textContent = r, a.classList.add("dosai__user-msg"), e.appendChild(a)
+                }(i.value), i.value = "", s.style.height = "49px", i.rows = 1
+            }
+
+            i.addEventListener("input", (function () {
+                t.style.height = "auto", s.style.height = "auto", this.rows = 2
+            })), s.addEventListener("keypress", (function (e) {
+                "Enter" === e.key && (e.preventDefault(), "" !== i.value && r())
+            })), s.addEventListener("submit", (function (e) {
+                e.preventDefault(), "" !== i.value && r()
             }))
         }(), new se(".hero__swiper", {
             slidesPerView: 1,

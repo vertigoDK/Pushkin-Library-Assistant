@@ -1,6 +1,9 @@
-from django.contrib import admin
-from .models import Event
+from unfold.admin import ModelAdmin, TabularInline
+from django.contrib.admin import register
 
-admin.site.register(Event)
+from app.events_app.models import Event
 
 
+@register(Event)
+class EventsAdmin(ModelAdmin):
+    pass
