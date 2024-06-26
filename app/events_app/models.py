@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Event(models.Model):
     title_event_ru = models.CharField(max_length=100, verbose_name='Заголовок на русском языке')
     title_event_kz = models.CharField(max_length=100, verbose_name='Заголовок на казахском языке')
