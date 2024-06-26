@@ -16,7 +16,7 @@
     async function query(data) {
         try {
             const response = await fetch(
-                "http://127.0.0.1:3000/api/v1/prediction/9cc42bb5-8781-46ee-95fc-d728b2b9de2d",
+                "http://127.0.0.1:3000/api/v1/prediction/57b5d771-32b8-46d4-9005-cf8ffc3f8600",
                 {
                     method: "POST",
                     headers: {
