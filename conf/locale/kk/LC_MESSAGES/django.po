@@ -60,6 +60,9 @@ msgstr "Басты бет"
 msgid "about-us"
 msgstr "Біз туралы"
 
+msgid "about-the-library"
+msgstr "Кітапхана туралы"
+
 msgid "history"
 msgstr "Тарих"
 

@@ -57,6 +57,9 @@ msgstr "Home"
 msgid "about-us"
 msgstr "About Us"
 
+msgid "about-the-library"
+msgstr "About the Library"
+
 msgid "history"
 msgstr "History"
 

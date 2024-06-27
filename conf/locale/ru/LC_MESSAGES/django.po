@@ -34,6 +34,9 @@ msgstr "ВКО, г. Усть-Каменогорск ул. Казахстан, 10
 msgid "guide"
 msgstr "Путеводитель"
 
+msgid "about-the-library"
+msgstr "О библиотеке"
+
 msgid "project"
 msgstr "Проекты"
 
