@@ -77,7 +77,9 @@
 
                     {% if user.is_authenticated and user.is_staff %}
                         <li class="header__nav-item">
-                            <a href="/admin"><div class='header__nav-item-main'>Админ</div></a>
+                            <a href="/admin">
+                                <div class='header__nav-item-main'>Админ</div>
+                            </a>
                         </li>
                     {% endif %}
                     <li class="header__nav-item">
@@ -101,9 +103,7 @@
                                             <input name="next" type="hidden" value="{{ request.path }}">
                                             <input type="hidden" name="language" value="{{ language.code }}">
                                             <a href="#"
-                                               onclick="this.parentNode.submit();">
-                                                <img src="{% static 'img/lang/'|add:language.code|add:'-icon.svg' %}"
-                                                     alt="{{ language.name_local }}"/>{{ language.name_local }}</a>
+                                               onclick="this.parentNode.submit();">{{ language.name_local }}</a>
                                         </form>
                                     </li>
 
