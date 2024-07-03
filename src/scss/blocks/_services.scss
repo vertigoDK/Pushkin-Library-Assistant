@@ -28,7 +28,11 @@
 .services__time {
 	position: relative;
 	grid-area: time;
-	background: linear-gradient(180deg, #185638 0%, #0a1128 100%);
+	background: linear-gradient(
+		180deg,
+		var(--general-color) 0%,
+		var(--black-color) 100%
+	);
 	padding: 26px;
 	&-item {
 		// text-align: center;
@@ -37,7 +41,7 @@
 			margin-top: 20px;
 		}
 		&:not(:last-child) {
-			border-bottom: 3px solid rgba(246, 174, 45, 0.8);
+			border-bottom: 3px solid rgba(249, 189, 77, 0.8);
 		}
 	}
 	&-num {
@@ -206,28 +210,40 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding: 113px 40px;
+		flex-direction: column;
+		padding: 20px 30px 40px;
 	}
 	&-title {
-		position: absolute;
-		top: 20px;
-		// left: 50%;
+		// position: absolute;
 		text-align: center;
 		font-size: 16px;
 		font-weight: 800;
 		color: var(--general-color);
+		margin-bottom: 20px;
 	}
 }
 .services__actions-icons {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-	column-gap: 25px;
-	row-gap: 32px;
+	justify-content: center;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	row-gap: 5px;
 }
 .services__actions-icon {
-	transition: all 0.2s ease;
+	padding: 2px 0;
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	width: 100%;
+	&:not(:last-child) {
+		border-bottom: 1px solid rgba(149, 140, 155, 0.2);
+	}
+	svg {
+		transition: all 0.2s ease;
+		height: 42px;
+		width: 42px;
+	}
 	svg path {
 		stroke: var(--gray-color);
 	}
@@ -236,7 +252,9 @@
 		stroke: none;
 	}
 	&:hover {
-		scale: 1.2;
+		svg {
+			scale: 1.2;
+		}
 		svg path {
 			stroke: var(--general-color);
 		}
@@ -245,7 +263,17 @@
 			stroke: none;
 			fill: var(--general-color);
 		}
+		.services__actions-text {
+			color: var(--gray-tint-color);
+		}
 	}
+}
+.services__actions-text {
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--gray-color);
+	text-align: center;
+	transition: color 0.2s ease;
 }
 
 // EVENTS =========================================
@@ -306,7 +334,11 @@
 	bottom: 0;
 	z-index: 12;
 	width: 100%;
-	background: linear-gradient(180deg, #185638 0%, #0a1128 100%);
+	background: linear-gradient(
+		180deg,
+		var(--general-color) 0%,
+		var(--black-color) 100%
+	);
 	border-radius: 32px 32px 9px 9px;
 	border-top: 4px solid var(--secondary-color);
 	padding: 30px 30px 10px;
@@ -325,10 +357,11 @@
 	font-size: 30px;
 	color: var(--white-color);
 	width: 100%;
-	border-bottom: 3px solid rgba(246, 174, 45, 0.8);
+	border-bottom: 3px solid rgba(249, 189, 77, 0.8);
 	padding-bottom: 2px;
 	margin-bottom: 10px;
 }
+
 .services__events-slide-location {
 	font-weight: 600;
 	font-size: 22px;

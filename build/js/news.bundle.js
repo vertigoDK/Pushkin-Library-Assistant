@@ -1,0 +1,1 @@
+document.querySelectorAll(".news__card-text").forEach((t=>{if(t.textContent.length>356){const e=t.textContent.slice(0,356);t.textContent=`${e}...`}}));

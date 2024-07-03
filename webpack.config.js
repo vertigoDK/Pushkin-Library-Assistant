@@ -3,6 +3,7 @@ const config = {
 	entry: {
 		index: './src/js/index.js',
 		dosai: './src/js/dosai.js',
+		news: './src/js/news.js',
 		// about: './src/js/about.js',
 	},
 	output: {

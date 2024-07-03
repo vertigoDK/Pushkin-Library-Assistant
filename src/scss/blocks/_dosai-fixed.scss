@@ -10,11 +10,11 @@
 	width: 62px;
 	height: 62px;
 	border-radius: 50px;
-	background-color: #185638;
+	background-color: var(--general-color);
 	box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
 	position: relative;
-	transition: scale 0.3s ease;
-	img {
+	transition: scale 0.2s ease;
+	.dosai-fixed-img {
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -24,7 +24,7 @@
 	}
 	&:hover {
 		scale: 1.1;
-		img {
+		.dosai-fixed-img {
 			opacity: 1;
 		}
 	}
@@ -34,8 +34,10 @@
 }
 
 .dosai-fixed__chat {
+	opacity: 0;
+	pointer-events: none;
 	position: fixed;
-	bottom: 11%;
+	bottom: 0%;
 	right: 5%;
 	border-top: 10px solid var(--general-color);
 	border-radius: 6px 6px 9px 9px;
@@ -44,6 +46,40 @@
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 	background-color: var(--white-color);
 	padding: 10px 20px 25px;
+	transition: all 0.2s ease;
+}
+
+#dosai-fixed-img-1 {
+	scale: 1.5;
+	// width: 84px;
+	// height: 85px;
+	transition: all 0.2s ease;
+}
+#dosai-fixed-img-2 {
+	opacity: 0;
+	width: 55px;
+	height: 55px;
+	transition: all 0.2s ease;
+	transform: rotate(180deg);
+}
+
+.dosai-fixed__chat.chat-shown {
+	opacity: 1;
+	pointer-events: visible;
+	bottom: 10%;
+
+	.dosai-fixed__chat-box {
+		height: 435px;
+	}
+}
+
+#dosai-fixed-img-1.chat-shown {
+	opacity: 0;
+	transform: rotate(90deg);
+}
+#dosai-fixed-img-2.chat-shown {
+	opacity: 1;
+	transform: rotate(0deg);
 }
 
 .dosai-fixed__chat-title {
@@ -60,14 +96,14 @@
 	margin-top: 10px;
 	padding: 0 10px;
 	margin-bottom: 20px;
-	height: 454px;
+	height: 400px;
 	overflow-y: scroll;
 	display: flex;
 	flex-direction: column;
 	row-gap: 20px;
 
 	.dosai__user-msg {
-		box-shadow: -1px 1px 5px 0 rgba(12, 43, 28, 0.7);
+		box-shadow: -1px 1px 5px 0 rgba(37, 139, 88, 0.7);
 	}
 }
 

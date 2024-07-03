@@ -85,6 +85,12 @@
 			opacity: 1;
 			top: 48px;
 			scale: 1 1;
+			@media (max-width: 1232px) {
+				top: 41px;
+				&-padding {
+					top: 52px;
+				}
+			}
 		}
 	}
 }

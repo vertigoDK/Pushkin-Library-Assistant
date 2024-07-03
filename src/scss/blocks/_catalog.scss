@@ -72,7 +72,7 @@
 .catalog__bookcard-btn {
 	// padding: 13px 36px;
 	text-align: center;
-	background-color: var(--black-color);
+	background-color: var(--general-color);
 	border-radius: 9px;
 	display: block;
 
@@ -85,4 +85,9 @@
 	font-weight: 700;
 	font-size: 14px;
 	color: var(--white-color);
+
+	transition: background-color 0.2s ease;
+	&:hover {
+		background-color: var(--general-tint-color);
+	}
 }

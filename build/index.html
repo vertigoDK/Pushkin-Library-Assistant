@@ -23,7 +23,6 @@
 					<li class="header__nav-item">
 						<div class='header__nav-item-main'>Библиотека</div>
 						<ul class='header__nav-item-dropdown'>
-							<li><a href='#'>Главная</a></li>
 							<li><a href='#'>О нас</a></li>
 							<li><a href='#'>История</a></li>
 							<li><a href='#'>Правила пользования</a></li>
@@ -52,7 +51,7 @@
 					<!-- ITEM-4 -->
 					<li class="header__nav-item">
 						<div class='header__nav-item-main'>Электронный каталог</div>
-						<ul class='header__nav-item-dropdown'>
+						<ul class='header__nav-item-dropdown header__nav-item-dropdown-padding'>
 							<li><a href='#'>Электронная библиотека "Наш Абай"</a></li>
 							<li><a href='#'>Краеведческая электронная библиотека</a></li>
 						</ul>
@@ -87,11 +86,11 @@
 					</li>
 					<li id='language-change' class="header__nav-item">
 						<div class='header__nav-item-main'>
-							<img src="./img/header/ru-icon.svg" alt="Флаг России">РУС
+							РУС
 						</div>
 						<ul class='header__nav-item-dropdown'>
-							<li><a href='#'><img src="./img/header/kz-icon.svg" alt="Флаг Казахстана" />Қазақ</a></li>
-							<li><a href='#'><img src="./img/header/en-icon.svg" alt="Флаг Великобритании" />English</a></li>
+							<li><a href='#'>ҚАЗ</a></li>
+							<li><a href='#'>ENG</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -114,7 +113,7 @@
 						<img src="./img/hero/photo_summer.jpg" alt="Library Summer">
 					</div>
 					<div class="swiper-slide">
-						<img src="./img/hero/photo_summer.jpg" alt="Library Summer">
+						<img src="./img/hero/photo_winter.jpg" alt="Library Winter">
 					</div>
 					<div class="swiper-slide">
 						<img src="./img/hero/photo_summer.jpg" alt="Library Summer">
@@ -208,12 +207,16 @@
 	<div class="services__news-swiper">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide"><img src="./img/services/news-img.jpg" alt="News Image">
-				<h6 class="services__news-title">Новости</h6>
+				<a href="../../news-page.html">
+					<h6 class="services__news-title">Новости</h6>
+				</a>
 				<p class="services__news-desc">Общереспубликанский фестиваль «KITAP шоу - 2024»</p>
 				<a class="services__news-link" href='#!'>Читать</a>
 			</div>
 			<div class="swiper-slide"><img src="./img/services/news-img.jpg" alt="News Image">
-				<h6 class="services__news-title">Новости</h6>
+				<a href="../../news-page.html">
+					<h6 class="services__news-title">Новости</h6>
+				</a>
 				<p class="services__news-desc">Новость 2</p>
 				<a class="services__news-link" href='#!'>Читать</a>
 			</div>
@@ -253,6 +256,7 @@
 					<path d="M32.0083 23.7172H36.7189" stroke="#7F7B82" stroke-width="2" stroke-miterlimit="10"
 						stroke-linecap="round" stroke-linejoin="round" />
 				</svg>
+				<p class="services__actions-text">Читателям</p>
 			</a>
 
 			<a class="services__actions-icon" data-name="Виртуальная справка" href="#!"><svg width="42" height="42"
@@ -261,6 +265,7 @@
 						d="M19.5999 12.6C23.4659 12.6 26.5999 15.734 26.5999 19.6M27.5222 27.5169L33.5999 33.6M30.7999 19.6C30.7999 25.7856 25.7855 30.8 19.5999 30.8C13.4143 30.8 8.3999 25.7856 8.3999 19.6C8.3999 13.4144 13.4143 8.40002 19.5999 8.40002C25.7855 8.40002 30.7999 13.4144 30.7999 19.6Z"
 						stroke="#7F7B82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 				</svg>
+				<p class="services__actions-text">Виртуальная справка</p>
 			</a>
 
 			<a class="services__actions-icon" data-name="Электронная доставка документов" href="#!">
@@ -284,7 +289,7 @@
 						d="M10.9199 27.3C10.9199 26.6041 10.3558 26.04 9.6599 26.04C8.96403 26.04 8.3999 26.6041 8.3999 27.3V27.93C8.3999 31.0615 10.9384 33.6 14.0699 33.6H14.6999C15.3958 33.6 15.9599 33.0359 15.9599 32.34C15.9599 31.6441 15.3958 31.08 14.6999 31.08H14.0699C12.3302 31.08 10.9199 29.6697 10.9199 27.93V27.3Z"
 						fill="#7F7B82" />
 				</svg>
-
+				<p class="services__actions-text">Доставка документов</p>
 			</a>
 
 			<a class="services__actions-icon" data-name="Продлить книгу" href="#!">
@@ -293,7 +298,7 @@
 						d="M9.6001 30.8V12.88C9.6001 11.3119 9.6001 10.5278 9.90528 9.92885C10.1737 9.40199 10.6021 8.97365 11.1289 8.70521C11.7279 8.40002 12.512 8.40002 14.0801 8.40002H27.5201C29.0882 8.40002 29.8724 8.40002 30.4713 8.70521C30.9981 8.97365 31.4265 9.40199 31.6949 9.92885C32.0001 10.5278 32.0001 11.3119 32.0001 12.88V28H12.4001C10.8537 28 9.6001 29.2536 9.6001 30.8ZM9.6001 30.8C9.6001 32.3465 10.8537 33.6 12.4001 33.6H32.0001M16.6001 14H25.0001M16.6001 19.6H25.0001M30.6001 28V33.6"
 						stroke="#7F7B82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 				</svg>
-
+				<p class="services__actions-text">Продлить книгу</p>
 			</a>
 
 			<a class="services__actions-icon" data-name="Знаменательный календарь" href="#!">
@@ -302,14 +307,7 @@
 						d="M8 16.3333H33M27.4444 21.8908L13.5556 21.8889M18.1851 27.4451L13.5556 27.4444M13.5556 8V10.7778M27.4444 8V10.7778M12.4444 33H28.5556C30.1112 33 30.8892 33 31.4833 32.6972C32.006 32.431 32.431 32.006 32.6972 31.4833C33 30.8892 33 30.1112 33 28.5556V15.2222C33 13.6665 33 12.8887 32.6972 12.2945C32.431 11.7718 32.006 11.3468 31.4833 11.0805C30.8892 10.7778 30.1112 10.7778 28.5556 10.7778H12.4444C10.8887 10.7778 10.1109 10.7778 9.51669 11.0805C8.99401 11.3468 8.56907 11.7718 8.30276 12.2945C8 12.8887 8 13.6665 8 15.2222V28.5556C8 30.1112 8 30.8892 8.30276 31.4833C8.56907 32.006 8.99401 32.431 9.51669 32.6972C10.1109 33 10.8887 33 12.4444 33Z"
 						stroke="#7F7B82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 				</svg>
-			</a>
-
-			<a class="services__actions-icon" href="#!">
-				<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path fill-rule="evenodd" clip-rule="evenodd"
-						d="M8 21.5C8 14.5964 13.5964 9 20.5 9C27.4035 9 32.9998 14.5964 32.9998 21.5C32.9998 28.4035 27.4035 34 20.5 34C13.5964 34 8 28.4035 8 21.5ZM20.5 10.793C14.5867 10.793 9.79304 15.5867 9.79304 21.5C9.79304 27.4131 14.5867 32.207 20.5 32.207C26.4132 32.207 31.2068 27.4131 31.2068 21.5C31.2068 15.5867 26.4132 10.793 20.5 10.793ZM21.9156 27.1627C21.9156 27.9445 21.2818 28.5782 20.5 28.5782C19.7182 28.5782 19.0844 27.9445 19.0844 27.1627C19.0844 26.3809 19.7182 25.7471 20.5 25.7471C21.2818 25.7471 21.9156 26.3809 21.9156 27.1627ZM17.7635 19.1412C17.7635 17.8618 18.8677 16.6404 20.5002 16.6404C22.1327 16.6404 23.2369 17.8618 23.2369 19.1412C23.2369 20.0683 22.7273 20.5419 21.8486 21.0757C21.7506 21.1353 21.6374 21.201 21.5164 21.2712C21.1707 21.472 20.7604 21.7103 20.452 21.9506C19.9946 22.307 19.4621 22.882 19.4621 23.7654C19.4621 24.3387 19.9269 24.8034 20.5002 24.8034C21.0709 24.8034 21.534 24.3429 21.5382 23.7732L21.5393 23.7716C21.5556 23.7457 21.6041 23.6849 21.728 23.5883C21.9196 23.4391 22.1329 23.3155 22.4171 23.1508C22.5653 23.0649 22.7329 22.9678 22.9266 22.8501C23.9353 22.2373 25.313 21.2246 25.313 19.1412C25.313 16.6459 23.2088 14.5643 20.5002 14.5643C17.7916 14.5643 15.6873 16.6459 15.6873 19.1412C15.6873 19.7145 16.1521 20.1793 16.7254 20.1793C17.2987 20.1793 17.7635 19.7145 17.7635 19.1412Z"
-						fill="#7F7B82" />
-				</svg>
+				<p class="services__actions-text">Знаменательный календарь</p>
 			</a>
 
 		</div> <!-- /ICONS -->
@@ -558,8 +556,12 @@
 	<div class="dosai-fixed">
 	<div class="dosai-fixed__circle">
 		<button class='dosai-fixed__btn'>
-			<img id='dosai-fixed-img-1' src="./img/dosai/logo-dosai-white.svg" alt="DosAI" />
-			<img id='dosai-fixed-img-2' src="./img/dosai/logo-dosai-white.svg" alt="DosAI" />
+			<div class="dosai-fixed-img">
+				<img id='dosai-fixed-img-1' src="./img/dosai/logo-dosai-white.svg" alt="DosAI" />
+			</div>
+			<div class="dosai-fixed-img">
+				<img id='dosai-fixed-img-2' src="../../img/dosai/arrow-up.svg" alt="DosAI" />
+			</div>
 		</button>
 	</div>
 	<div class="dosai-fixed__chat">
@@ -614,9 +616,10 @@
 
 			<div class="footer__contacts">
 				<h6 class="footer__contacts-title footer-title">Контакты</h6>
-				<p class="footer__contacts-text footer__contacts-text-1">ВКО, г. Усть-Каменогорск ул. Казахстан, 102</p>
-				<p class="footer__contacts-text footer__contacts-text-2">+7(7232) 261-333</p>
-				<p class="footer__contacts-text footer__contacts-text-3">+7(7232) 609-087</p>
+				<p class="footer__contacts-text footer__contacts-text-1">pushkinlibrary@yandex.kz</p>
+				<p class="footer__contacts-text footer__contacts-text-2">ВКО, г. Усть-Каменогорск ул. Казахстан, 102</p>
+				<p class="footer__contacts-text footer__contacts-text-3">+7(7232) 261-333</p>
+				<p class="footer__contacts-text footer__contacts-text-4">+7(7232) 609-087</p>
 
 				<div class="footer__links">
 					<a class="footer__link" href="#!"><img src="./img/footer/whatsapp-icon.svg" alt="WhatsApp" /></a>

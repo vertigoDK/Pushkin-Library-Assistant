@@ -1,5 +1,6 @@
 .hero {
-	margin-bottom: 130px;
+	// margin-bottom: 130px;
+	margin-bottom: 85px;
 }
 
 .hero__row {
@@ -7,8 +8,10 @@
 }
 
 .hero__swiper {
-	width: 1280px;
-	height: 451px;
+	max-width: 1280px;
+	width: 100%;
+	max-height: 451px;
+	height: 100%;
 	overflow: hidden;
 	position: relative;
 	border-radius: 0 0 9px 9px;
@@ -30,7 +33,7 @@
 	}
 	transition: box-shadow 0.1s ease-out, scale 0.1s ease-in;
 	&:hover {
-		box-shadow: 0 4px 10px rgba(243, 168, 0, 55%);
+		box-shadow: 0 4px 10px rgba(249, 189, 77, 55%);
 		scale: 1.02;
 	}
 	&:active {
@@ -73,7 +76,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(24, 86, 56, 0.8);
+	background-color: rgba(37, 139, 88, 0.8);
 	border-radius: 9px;
 	transition: background-color 0.2s ease, scale 0.3s ease-out;
 	&:hover {

@@ -33,8 +33,13 @@
 		font-weight: 700;
 		color: var(--gray-color);
 		padding: 21px 5px;
+
+		transition: color 0.2s ease;
 		&:not(:last-child) {
 			border-bottom: 1px solid #efefef;
+		}
+		&:hover {
+			color: var(--gray-tint-color);
 		}
 		&.active {
 			transition: background-color 0.2s ease-in;

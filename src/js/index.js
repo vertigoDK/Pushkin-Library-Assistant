@@ -6,12 +6,12 @@ import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 
 // Time
-import timeDate from './modules/time-date.js';
-timeDate();
+// import timeDate from './modules/time-date.js';
+// timeDate();
 
 // Actions
-import servicesActions from './modules/services-actions.js';
-servicesActions();
+// import servicesActions from './modules/services-actions.js';
+// servicesActions();
 
 // Tour location changes
 import tourLocationChanges from './modules/tour.js';

@@ -3,6 +3,10 @@ export default function dosaiFixed() {
 	const dosaiBox = document.querySelector('.dosai-fixed__chat');
 	const form = document.querySelector('.dosai-fixed__chat-form');
 	const textarea = document.querySelector('.dosai-fixed__chat-input');
+	// Show hide chat
+	const btn = document.querySelector('.dosai-fixed__btn');
+	const image1 = document.querySelector('#dosai-fixed-img-1');
+	const image2 = document.querySelector('#dosai-fixed-img-2');
 
 	textarea.addEventListener('input', function () {
 		dosaiBox.style.height = 'auto';
@@ -49,5 +53,12 @@ export default function dosaiFixed() {
 		if (textarea.value !== '') {
 			sendMessage();
 		}
+	});
+
+	// Show hide chat
+	btn.addEventListener('click', function () {
+		dosaiBox.classList.toggle('chat-shown');
+		image1.classList.toggle('chat-shown');
+		image2.classList.toggle('chat-shown');
 	});
 }
