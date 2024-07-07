@@ -230,10 +230,11 @@
 	width: 100%;
 	row-gap: 5px;
 }
+
 .services__actions-icon {
 	padding: 2px 0;
 	display: flex;
-	gap: 5px;
+	gap: 10px;
 	align-items: center;
 	width: 100%;
 	&:not(:last-child) {
@@ -268,12 +269,14 @@
 		}
 	}
 }
+
 .services__actions-text {
 	font-size: 14px;
 	font-weight: 700;
 	color: var(--gray-color);
 	text-align: center;
 	transition: color 0.2s ease;
+	flex-shrink: 12;
 }
 
 // EVENTS =========================================

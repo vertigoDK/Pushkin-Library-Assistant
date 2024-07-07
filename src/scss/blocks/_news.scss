@@ -1,5 +1,38 @@
+.news__picture {
+	height: 100%;
+	background: url('../../img/news/parallax-pic.jpg') center no-repeat;
+	background-size: auto;
+	background-attachment: fixed;
+}
+
 .news__title {
-	margin: 85px 0 43px;
+	margin-bottom: 10px;
+}
+
+.news__picture-text {
+	padding: 67px 0;
+	a,
+	p,
+	h1 {
+		color: var(--white-color);
+	}
+	.news__nav {
+		cursor: pointer;
+		font-size: 16px;
+		font-weight: 500;
+	}
+	a {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+.news__line {
+	margin: 15px auto;
+	background-color: var(--secondary-color);
+	width: 80%;
+	height: 3px;
+	border-radius: 3px;
 }
 
 .news__row {
@@ -12,6 +45,7 @@
 	margin-bottom: 85px;
 }
 
+// NEWS CARD ======================================
 .news__card {
 	width: 305px;
 	// height: 600px;
@@ -37,7 +71,7 @@
 }
 .news__card-contetnt {
 	padding: 0 20px 5px;
-	height: 250px;
+	height: 280px;
 }
 .news__card-title {
 	font-weight: 700;
@@ -50,6 +84,10 @@
 	font-weight: 300;
 	font-size: 14px;
 	color: var(--gray-color);
+
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--gray-color);
+	margin-bottom: 10px;
 }
 
 .news__card-link {
@@ -68,5 +106,96 @@
 	transition: background-color 0.2s ease;
 	&:hover {
 		background-color: var(--general-tint-color);
+	}
+}
+
+.news__card-date {
+	font-weight: 400;
+	font-size: 14px;
+	color: #000;
+	padding-left: 25px;
+	position: relative;
+	&::before {
+		content: '';
+		position: absolute;
+		top: -2px;
+		left: 0;
+		height: 20px;
+		width: 20px;
+		background-image: url('../../img/news/calendar_icon-card.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+}
+
+// ====================================== NEWS CARD
+
+// NEWS PAGE ========================================
+
+.newsletter__title {
+	text-align: center;
+	font-size: 30px;
+	font-weight: 800;
+	color: #000;
+	margin-bottom: 10px;
+}
+
+.newsletter__date {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	p {
+		color: var(--gray-color);
+		font-weight: 400;
+		font-size: 16px;
+	}
+	margin-bottom: 15px;
+}
+
+.newsletter__text {
+	font-size: 16px;
+	font-weight: 500;
+	color: #000;
+	line-height: 1.7;
+	text-indent: 20px;
+	&::first-letter {
+		font-size: 32px;
+	}
+	&::first-line {
+		line-height: 1.2;
+	}
+}
+
+// SWIPER IMAGE
+
+.newsletter__swiper {
+	width: 100%;
+	height: 100px;
+
+	border-radius: 3px;
+
+	.swiper-slide {
+		cursor: pointer;
+		overflow: hidden;
+		img {
+			transition: scale 0.2s ease;
+			&:hover {
+				scale: 1.05;
+			}
+			&:active {
+				scale: 1;
+			}
+		}
+	}
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+.newsletter__swiper-2 {
+	width: 800px;
+	height: 100%;
+	img {
+		border-radius: 9px;
 	}
 }
