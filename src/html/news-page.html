@@ -15,54 +15,44 @@
 			<div class="container">
 
 				<div class="news__picture-text">
-					<h1 class="news__title title">Новости</h1>
+					<!-- TITLE -->
+					<div class="news__title title-wrapper">
+						<div class="title-line"></div>
+						<h1 class="title">Новости</h1>
+					</div> <!-- TITLE -->
 					<p class='news__nav'><a href="index.html">Главная</a> > <strong>Новости</strong></p>
 				</div> <!-- /TEXT WRAPPER -->
 			</div> <!-- /CONTAINER -->
 		</div> <!-- /PICTURE -->
 
 		<div class="container">
+			<!-- PAGINATION -->
+			<div class="news__pagination">
+				<button class="news__pagination-btn arrow-left">
+					<img src="../img/hero/arrow-prev.svg" alt="Arrow Left" />
+				</button>
+				<button class="news__pagination-page" id='page-1'>1</button>
+				<button class="news__pagination-page" id='page-2'>2</button>
+				<button class="news__pagination-btn arrow-left">
+					<img src="../img/hero/arrow-next.svg" alt="Arrow Right" />
+				</button>
+			</div> <!-- PAGINATION -->
 			<div class="news__line"></div>
-		</div>
-
-
-		<div class="container">
 			<div class="news__row">
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-				@@include('blocks/elements/news-card.html')
-			</div>
+				@@loop('./blocks/elements/templates/news-card.html', './data/news-cards.json')
+			</div> <!-- ROW -->
+			<div class="news__line"></div>
+			<!-- PAGINATION -->
+			<div class="news__pagination">
+				<button class="news__pagination-btn arrow-left">
+					<img src="../img/hero/arrow-prev.svg" alt="Arrow Left" />
+				</button>
+				<button class="news__pagination-page" id='page-1'>1</button>
+				<button class="news__pagination-page" id='page-2'>2</button>
+				<button class="news__pagination-btn arrow-left">
+					<img src="../img/hero/arrow-next.svg" alt="Arrow Right" />
+				</button>
+			</div> <!-- PAGINATION -->
 		</div>
 	</main>
 	@@include('blocks/footer.html')

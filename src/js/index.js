@@ -196,7 +196,13 @@ ScrollReveal().reveal(`.services__events`, {
 });
 ScrollReveal().reveal(`.services__courses`, {
 	origin: 'left',
-	delay: 200,
-	duration: 1000,
+	delay: 100,
+	duration: 900,
+	distance: '30px',
+});
+
+ScrollReveal().reveal(`.title`, {
+	origin: 'left',
+	duration: 800,
 	distance: '30px',
 });

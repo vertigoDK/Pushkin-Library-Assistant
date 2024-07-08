@@ -29,3 +29,23 @@ const swiper2 = new Swiper('.newsletter__swiper-2', {
 		swiper: swiper,
 	},
 });
+
+// Scroll Reveal
+import ScrollReveal from 'scrollreveal';
+
+ScrollReveal({
+	distance: '60px',
+	duration: 2000,
+});
+
+ScrollReveal().reveal(`.title`, {
+	origin: 'left',
+	duration: 800,
+	distance: '30px',
+});
+
+ScrollReveal().reveal(`.news__nav`, {
+	origin: 'left',
+	duration: 900,
+	distance: '30px',
+});

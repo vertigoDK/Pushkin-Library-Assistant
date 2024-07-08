@@ -19,11 +19,21 @@
 	overflow-y: hidden;
 }
 
+.title-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+.title-line {
+	height: 30px;
+	width: 5px;
+	background-color: var(--secondary-color);
+}
 .title {
 	font-weight: 800;
 	font-size: 30px;
 	line-height: 133%;
 	color: var(--gray-color);
-	padding-left: 15px;
-	border-left: 5px solid var(--secondary-color);
+	// margin-left: 15px;
+	// border-left: 5px solid var(--secondary-color);
 }
