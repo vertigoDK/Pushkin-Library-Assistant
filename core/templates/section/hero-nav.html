@@ -37,8 +37,9 @@
 
                 {% for name, url in exl %}
 
-                    <a class='hero__social' target="_blank" href='{{ url }}'><img src="{% static 'img/logo/'|add:name|lower|add:'-logo.svg' %}"
-                                                           alt="{{ name }}"></a>
+                    <a class='hero__social' target="_blank" href='{{ url }}'><img
+                            src="{% static 'img/logo/'|add:name|lower|add:'-logo.svg' %}"
+                            alt="{{ name }}"></a>
                 {% endfor %}
             </div> <!-- /SOCIALS -->
         </div> <!-- /ROW -->
@@ -62,7 +63,7 @@
             </div>
             <!-- 03 -->
             <div class="hero__link">
-                <a href="https://esimder.pushkinlibrary.kz/index.php/ru"  target="_blank">
+                <a href="https://esimder.pushkinlibrary.kz/index.php/ru" target="_blank">
                     <div class="hero__link-frame hero__link-frame-3"
                          data-text="{% trans 'east-kazakhstan-region-famous-places' %}">
                         <img class='hero__link-img' src="{% static 'img/hero/mountain-icon.svg' %}" alt="Abai">
@@ -71,7 +72,8 @@
             </div>
             <!-- 04 -->
             <div class="hero__link">
-                <a href="https://anyz.pushkinlibrary.kz/ru/legendy-i-skazaniya-vostochnogo-kazakhstana/"  target="_blank">
+                <a href="https://anyz.pushkinlibrary.kz/ru/legendy-i-skazaniya-vostochnogo-kazakhstana/"
+                   target="_blank">
                     <div class="hero__link-frame hero__link-frame-4"
                          data-text="{% trans 'east-kazakhstan-region-legends-and-tales' %}">
                         <img class='hero__link-img' src="{% static 'img/hero/feather-icon.svg' %}" alt="Abai">
