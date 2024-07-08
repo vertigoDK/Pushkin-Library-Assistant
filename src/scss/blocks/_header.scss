@@ -1,6 +1,7 @@
 .header {
 	background-color: var(--general-color);
 	padding: 17px 0;
+	box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.5);
 	&__row {
 		display: flex;
 		justify-content: space-between;

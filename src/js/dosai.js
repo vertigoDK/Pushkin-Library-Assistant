@@ -18,18 +18,20 @@ textarea.addEventListener('input', function () {
 
 // Отрисовка сообщения юзера
 function createUserMessage(text) {
-	let textArr = text.split('');
-	let j = 55;
-	let result = '';
-	for (let i = 0; i < textArr.length; i++) {
-		result += textArr[i];
-		if (i === j) {
-			result += `\n${textArr[i]}`;
-			j += 55;
-		}
-	}
+	// let textArr = text.split('');
+	// let j = 55;
+	// let result = '';
+	// for (let i = 0; i < textArr.length; i++) {
+	// 	if (i === j) {
+	// 		result += `<br />${textArr[i]}`;
+	// 		j += 55;
+	// 	} else {
+	// 		result += textArr[i];
+	// 	}
+	// }
 	const newMessage = document.createElement('div');
-	newMessage.textContent = result;
+	// newMessage.innerHTML = result;
+	newMessage.textContent = text;
 	newMessage.classList.add('dosai__user-msg');
 	setTimeout(appendMessage, 500);
 	function appendMessage() {
@@ -85,8 +87,8 @@ function deleteBotMssgLoading() {
 	function deleteEl() {
 		loadEl.remove();
 	}
-	setTimeout(dissapearAnim, 1000);
-	setTimeout(deleteEl, 1100);
+	setTimeout(dissapearAnim, 1400);
+	setTimeout(deleteEl, 1500);
 }
 
 // Отрисовка сообщения бота
@@ -94,9 +96,10 @@ function createBotMessage() {
 	const newMessage = document.createElement('div');
 	newMessage.textContent = 'Привет я чат бот DosAI';
 	newMessage.classList.add('dosai__bot-msg');
-	setTimeout(appendMessage, 1200);
+	setTimeout(appendMessage, 1500);
 	function appendMessage() {
 		dosaiField.appendChild(newMessage);
+		dosaiField.scrollTop = dosaiField.scrollHeight;
 	}
 }
 
@@ -109,6 +112,7 @@ function sendMessage() {
 	form.style.height = '49px';
 	textarea.style.height = '18px';
 	isInputDisabled(true);
+	dosaiField.scrollTop = dosaiField.scrollHeight;
 }
 
 // Имитирование ответа бота
@@ -116,7 +120,8 @@ function sendReply() {
 	createBotMssgLoading();
 	deleteBotMssgLoading();
 	createBotMessage();
-	isInputDisabled(false);
+	setTimeout(() => isInputDisabled(false), 1400);
+	dosaiField.scrollTop = dosaiField.scrollHeight;
 }
 
 form.addEventListener('keypress', function (e) {
@@ -135,6 +140,6 @@ form.addEventListener('submit', function (e) {
 
 	if (textarea.value !== '') {
 		sendMessage();
-		sendReply();
+		setTimeout(sendReply, 600);
 	}
 });

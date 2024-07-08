@@ -7,7 +7,7 @@
 	flex-direction: column;
 	gap: 10px;
 	align-items: center;
-	height: 84vh;
+	height: 87vh;
 }
 
 .dosai__box {
@@ -15,14 +15,16 @@
 	background-position: 50% 30%;
 	background-repeat: no-repeat;
 	width: 100%;
-	// height: 520px;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	row-gap: 20px;
 	padding: 40px 15px 15px;
+	margin: 10px 0;
 	overflow-y: scroll;
+	scroll-behavior: smooth;
 
+	// transition: height 0.2s ease;
 	position: relative;
 }
 
@@ -74,6 +76,7 @@
 	font-weight: 500;
 	background-color: var(--general-color);
 	max-width: 600px;
+	height: auto;
 	align-self: end;
 	color: var(--white-color);
 	border-radius: 9px;
