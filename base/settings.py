@@ -163,4 +163,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 FLOWISE_CHATFLOW = '57b5d771-32b8-46d4-9005-cf8ffc3f8600'
 FLOWISE_HOST = 'http://127.0.0.1:3000:3000'
 
-DEFAULT_BOOKS_PATH = BASE_DIR / 'database/data.txt'
+DEFAULT_BOOKS_PATH = BASE_DIR / 'database/region-passport.txt'
