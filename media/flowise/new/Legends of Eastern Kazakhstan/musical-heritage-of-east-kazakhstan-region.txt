@@ -1,11 +1,5 @@
-url:https://olketanu.pushkinlibrary.kz/index.php/ru/folklor-zolotogo-altaya/audiokollektsiya.html
-text:Музыкальное наследие ВКО Домбыра күйлері, Домбыра күйлері, Домбыра күйлері, Домбыра күйлері, Домбыра күйлері, Сыбызғы күйлері, Сыбызғы күйлері, Сыбызғы күйлері, Әншілік дәстүрлер, Әншілік дәстүрлер, Әншілік дәстүрлер, Әншілік дәстүрлер, Әншілік дәстүрлер, Әншілік дәстүрлер, Әншілік дәстүрлер, Әншілік дәстүрлер, Әншілік дәстүрлер, Әншілік дәстүрлер
+url:https://olketanu pushkinlibrary kz/index php/ru/folklor zolotogo altaya/audiokollektsiya html
+text:музыкальное наследие вко домбыра күйлері, домбыра күйлері, домбыра күйлері, домбыра күйлері, домбыра күйлері, сыбызғы күйлері, сыбызғы күйлері, сыбызғы күйлері, әншілік дәстүрлер, әншілік дәстүрлер, әншілік дәстүрлер, әншілік дәстүрлер, әншілік дәстүрлер, әншілік дәстүрлер, әншілік дәстүрлер, әншілік дәстүрлер, әншілік дәстүрлер, әншілік дәстүрлер
 
-url:https://olketanu.pushkinlibrary.kz/index.php/ru/folklor-zolotogo-altaya/literaturnoe-nasledie-vostochnogo-kazakhstana.html
-text:Фольклор Восточного Казахстана на страницах книг
-
-
-
-
-
-
+url:https://olketanu pushkinlibrary kz/index php/ru/folklor zolotogo altaya/literaturnoe nasledie vostochnogo kazakhstana html
+text:фольклор восточного казахстана на страницах книг
