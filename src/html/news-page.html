@@ -27,33 +27,73 @@
 
 		<div class="container">
 			<!-- PAGINATION -->
-			<div class="news__pagination">
+			<div class="news__pagination news__pagination--top">
 				<button class="news__pagination-btn arrow-left">
 					<img src="../img/hero/arrow-prev.svg" alt="Arrow Left" />
 				</button>
-				<button class="news__pagination-page" id='page-1'>1</button>
-				<button class="news__pagination-page" id='page-2'>2</button>
+				<div class="news__pagination-page-btns">
+					<button class="news__pagination-page active">1</button>
+					<button class="news__pagination-page">2</button>
+					<button class="news__pagination-page">3</button>
+					<button class="news__pagination-page">4</button>
+					<button class="news__pagination-page">5</button>
+					<button class="news__pagination-page">6</button>
+					<button class="news__pagination-page">7</button>
+					<button class="news__pagination-page">8</button>
+					<button class="news__pagination-page">9</button>
+					<button class="news__pagination-page">10</button>
+					<button class="news__pagination-page">11</button>
+					<button class="news__pagination-page">12</button>
+					<button class="news__pagination-page">13</button>
+					<button class="news__pagination-page">14</button>
+					<button class="news__pagination-page">15</button>
+					<button class="news__pagination-page">16</button>
+					<button class="news__pagination-page">17</button>
+					<button class="news__pagination-page">18</button>
+					<button class="news__pagination-page">19</button>
+					<button class="news__pagination-page">20</button>
+				</div>
 				<button class="news__pagination-btn arrow-left">
 					<img src="../img/hero/arrow-next.svg" alt="Arrow Right" />
 				</button>
 			</div> <!-- PAGINATION -->
-			<div class="news__line"></div>
+			<div class="news__line news__line--top"></div>
 			<div class="news__row">
 				@@loop('./blocks/elements/templates/news-card.html', './data/news-cards.json')
 			</div> <!-- ROW -->
-			<div class="news__line"></div>
+			<div class="news__line news__line--bottom"></div>
 			<!-- PAGINATION -->
-			<div class="news__pagination">
+			<div class="news__pagination news__pagination--bottom">
 				<button class="news__pagination-btn arrow-left">
 					<img src="../img/hero/arrow-prev.svg" alt="Arrow Left" />
 				</button>
-				<button class="news__pagination-page" id='page-1'>1</button>
-				<button class="news__pagination-page" id='page-2'>2</button>
+				<div class="news__pagination-page-btns">
+					<button class="news__pagination-page">1</button>
+					<button class="news__pagination-page">2</button>
+					<button class="news__pagination-page">3</button>
+					<button class="news__pagination-page">4</button>
+					<button class="news__pagination-page">5</button>
+					<button class="news__pagination-page">6</button>
+					<button class="news__pagination-page">7</button>
+					<button class="news__pagination-page">8</button>
+					<button class="news__pagination-page">9</button>
+					<button class="news__pagination-page">10</button>
+					<button class="news__pagination-page">11</button>
+					<button class="news__pagination-page">12</button>
+					<button class="news__pagination-page">13</button>
+					<button class="news__pagination-page">14</button>
+					<button class="news__pagination-page">15</button>
+					<button class="news__pagination-page">16</button>
+					<button class="news__pagination-page">17</button>
+					<button class="news__pagination-page">18</button>
+					<button class="news__pagination-page">19</button>
+					<button class="news__pagination-page">20</button>
+				</div>
 				<button class="news__pagination-btn arrow-left">
 					<img src="../img/hero/arrow-next.svg" alt="Arrow Right" />
 				</button>
 			</div> <!-- PAGINATION -->
-		</div>
+		</div> <!-- CONTAINER -->
 	</main>
 	@@include('blocks/footer.html')
 

@@ -14,6 +14,7 @@
 
 .tour__list {
 	margin-left: 15px;
+	position: relative;
 }
 
 .tour__swiper {
@@ -106,10 +107,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
 	width: 32px;
-	height: 27px;
-	background-color: var(--general-color);
+	height: 32px;
+	background-color: var(--white-color);
+	// border: 1px solid var(--general-tint-color);
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 25%);
 	border-radius: 3px;
 	&::after {
 		content: '';
@@ -124,12 +128,42 @@
 	}
 }
 .tour__arrow.swiper-button-prev {
-	left: 90%;
+	top: 5px;
 }
 
 .tour__arrow.swiper-button-next {
+	top: 490px;
+}
+
+// Chgange location
+.tour__list-arrow {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: -15px;
+	cursor: pointer;
+	z-index: 10;
+	width: 32px;
+	height: 27px;
+	background-color: var(--general-color);
+	border-radius: 3px;
+	transition: box-shadow 0.1s ease-out, scale 0.1s ease-in;
+	&:hover {
+		box-shadow: 0 4px 10px rgba(249, 189, 77, 55%);
+		scale: 1.02;
+	}
+	&:active {
+		scale: 0.9;
+	}
+}
+.tour__list-arrow-prev {
+	right: 100px;
+}
+.tour__list-arrow-next {
 	right: 0;
 }
+// Chgange location
 
 .tour__virtual-tour {
 	font-size: 14px;
