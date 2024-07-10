@@ -10,26 +10,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% trans 'library-title-1' %}</title>
     <!-- Подключаем Bootstrap CSS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="{% static 'css/font.css' %}"/>
-    
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- Подключаем Font Awesome -->
     <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
-
     <meta name="keywords"
           content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина, пушкинка, библиотека пукшин, библиотека">
     <meta name="robots" content="index,follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="description" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
-
     <meta property="og:title" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pushkinlibrary.kz/ru/">
+    <meta property="og:image" content="{% static 'img/favicon.png' %}">
+    <meta property="og:description"
+          content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
     <meta property="og:site_name" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
-
+    <link rel="canonical" href="https://pushkinlibrary.kz/ru/">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
+    <meta name="twitter:site" content="@PushkinLibrary">
+    <meta name="twitter:image" content="{% static 'img/favicon.png' %}">
+    <meta name="twitter:description"
+          content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://pushkinlibrary.kz;">
+    <meta name="theme-color" content="#317EFB">
+
+    {% block content_meta %}
+
+    {% endblock %}
 
     {% block content_css %}
     {% endblock %}

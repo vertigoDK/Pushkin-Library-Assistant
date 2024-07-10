@@ -12,7 +12,7 @@ urlpatterns = [
     path('api/', include('app.api.urls')),
     path('search_books/', include("app.book_search_app.urls")),
     path('readers/', include("app.services.readers.urls")),
-    path('faq.txt/', include("app.services.faq.urls")),
+    path('faq/', include("app.services.faq.urls")),
     path('i18n/', include('django.conf.urls.i18n')),
     path('', include('core.urls')),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

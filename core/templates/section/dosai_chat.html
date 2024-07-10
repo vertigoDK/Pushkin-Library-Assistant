@@ -1,0 +1,27 @@
+{% load static %}
+
+
+<div class="dosai-fixed">
+    <div class="dosai-fixed__circle">
+        <button class="dosai-fixed__btn">
+            <div class="dosai-fixed-img">
+                <img id="dosai-fixed-img-1" src="{% static 'img/dosai/logo-dosai-white.svg' %}" alt="DosAI">
+            </div>
+            <div class="dosai-fixed-img">
+                <img id="dosai-fixed-img-2" src="{% static 'img/dosai/arrow-up.svg' %}" alt="DosAI">
+            </div>
+        </button>
+    </div>
+    <div class="dosai-fixed__chat">
+        <h5 class="dosai-fixed__chat-title">DosAI</h5>
+        <div class="dosai-fixed__chat-box"></div>
+
+        <form action="/" class="dosai-fixed__chat-form">
+            <textarea type="text" maxlength="100" class="dosai-fixed__chat-input" rows="1"
+                      placeholder="Сообщение DosAI"></textarea>
+            <button type="submit" class="dosai-fixed__chat-btn">
+                <img src="{%  static 'img/dosai/arrow-up.svg' %}" alt="Arrow up">
+            </button>
+        </form>
+    </div> <!-- /CHAT -->
+</div>
