@@ -1,7 +1,6 @@
 async function query(data) {
     try {
         const response = await fetch(
-
             "http://127.0.0.1:3000/api/v1/prediction/0e0dedea-a5b5-49fe-acd4-cc3d081c31de",
             {
                 method: "POST",
@@ -9,7 +8,9 @@ async function query(data) {
                     Authorization: "Bearer 4F1WwTSF2iTEulGQRlb8vh-AXnivDyWkvLI8luxliu8",
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data)
+                body: {
+                    "question": data,
+                }
             }
         );
 
