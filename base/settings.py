@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'autoslug',
 
     'rest_framework',
+    'corsheaders',
 
     'core',
 
@@ -62,7 +63,13 @@ INSTALLED_APPS = [
     'app.services.readers.apps.ReadersConfig',
     'app.services.faq.apps.FAQInfoConfig'
 ]
-
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000"
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,6 +79,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'base.urls'

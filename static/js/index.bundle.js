@@ -4623,10 +4623,10 @@
 
         At.isSupported = function () {
             return function () {
-                var e = document.documentElement.style;
+                const e = document.documentElement.style;
                 return "transform" in e || "WebkitTransform" in e
             }() && function () {
-                var e = document.documentElement.style;
+                const e = document.documentElement.style;
                 return "transition" in e || "WebkitTransition" in e
             }()
         }, Object.defineProperty(At, "debug", {
@@ -4638,6 +4638,11 @@
         }), At();
         var Mt = At;
         !function () {
+            const currentUrl = window.location.href;
+            const blockedPath = "/dosai/";
+            if (currentUrl.includes(blockedPath))
+                return
+
             const e = document.querySelectorAll(".tour__location"),
                 t = document.querySelectorAll(".tour__image-picture"),
                 i = document.querySelector(".tour__list-arrow-prev"),
@@ -4676,6 +4681,10 @@
                 e.textContent = `${t}...`
             }
         })), function () {
+                        const currentUrl = window.location.href;
+            const blockedPath = "/dosai/";
+            if (currentUrl.includes(blockedPath))
+                return
             const e = document.querySelector(".dosai-fixed__chat-box"),
                 t = document.querySelector(".dosai-fixed__chat"), i = document.querySelector(".dosai-fixed__chat-form"),
                 s = document.querySelector(".dosai-fixed__chat-input"), r = document.querySelector(".dosai-fixed__btn"),
