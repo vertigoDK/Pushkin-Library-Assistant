@@ -1,21 +1,19 @@
+# api/views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import SearchQuerySerializer
-from .services.book_search import SearchBook
+from .serializers import BookSearchParamsSerializer
+from .services.books_parser import BookSearchHandler
 
-
-class BookSearchView(APIView):
+class BookSearchAPIView(APIView):
     def post(self, request):
-        serializer = SearchQuerySerializer(data=request.data)
+        serializer = BookSearchParamsSerializer(data=request.data)
         if serializer.is_valid():
-            query = serializer.validated_data['query']
-            threshold = serializer.validated_data['threshold']
-            search_book = SearchBook()
-            similar_books = search_book.find_similar_books(query, threshold)
-            exact_match = any(book['title'] == query for book in similar_books)
-            return Response({
-                "exact_match": exact_match,
-                "results": similar_books
-            }, status=status.HTTP_200_OK)
+            search_params = serializer.validated_data
+            handler = BookSearchHandler(search_params)
+            try:
+                results = handler.execute_search()
+                return Response(results, status=status.HTTP_200_OK)
+            except Exception as e:
+                return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

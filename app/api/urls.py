@@ -1,6 +1,7 @@
+# api/urls.py
 from django.urls import path
-from .views import BookSearchView
+from .views import BookSearchAPIView
 
 urlpatterns = [
-    path('search-book/', BookSearchView.as_view(), name='book-search'),
+    path('search/', BookSearchAPIView.as_view(), name='book-search'),
 ]
