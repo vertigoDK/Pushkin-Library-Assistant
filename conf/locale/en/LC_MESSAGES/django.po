@@ -149,7 +149,7 @@ msgstr "New Arrivals"
 msgid "for-professionals"
 msgstr "For Professionals"
 
-msgid "methodological-service"
+msgid "methodological-services"
 msgstr "Methodological Service"
 
 msgid "spiritual-treasure"

@@ -1,0 +1,22 @@
+{% load i18n %}
+<div class="services__action services__time">
+
+    <div class="services__time-item">
+        <h6 class="services__time-num" id='services-current-time'>08:00</h6>
+        <p class="services__time-text" id='services-current-date'></p>
+    </div>
+
+    <div class="services__time-item">
+        <h6 class="services__time-num">08:00 - 19:00</h6>
+        <p class="services__time-text">{% trans 'schedule' %}</p>
+    </div>
+
+    <div class="services__time-item">
+        <h6 class="services__time-num" id='services-close-time'></h6>
+        <p class="services__time-text" id="library-status-close">{% trans 'before-the-library-opened' %}
+        <p class="services__time-text" id="library-status-open">{% trans 'before-the-library-closes' %}
+        </p>
+    </div>
+
+
+</div> <!-- /TIME -->

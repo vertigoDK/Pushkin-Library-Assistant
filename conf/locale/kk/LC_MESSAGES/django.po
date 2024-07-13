@@ -152,7 +152,7 @@ msgstr "Жаңа түскендер"
 msgid "for-professionals"
 msgstr "Мамандарға"
 
-msgid "methodological-service"
+msgid "methodological-services"
 msgstr "Әдістемелік қызмет"
 
 msgid "spiritual-treasure"

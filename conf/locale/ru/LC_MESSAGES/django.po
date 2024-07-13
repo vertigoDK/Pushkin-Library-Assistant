@@ -170,7 +170,7 @@ msgstr "Новые поступления"
 msgid "for-professionals"
 msgstr "Профессионалам"
 
-msgid "methodological-service"
+msgid "methodological-services"
 msgstr "Методическая служба"
 
 msgid "spiritual-treasure"
