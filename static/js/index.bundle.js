@@ -4638,10 +4638,12 @@
         }), At();
         var Mt = At;
         !function () {
-            const currentUrl = window.location.href;
-            const blockedPath = "/dosai/";
-            if (currentUrl.includes(blockedPath))
+            const currentPath = window.location.pathname;
+            const targetPath = "/";
+
+            if (currentPath !== targetPath) {
                 return
+            }
 
             const e = document.querySelectorAll(".tour__location"),
                 t = document.querySelectorAll(".tour__image-picture"),
@@ -4681,10 +4683,12 @@
                 e.textContent = `${t}...`
             }
         })), function () {
-                        const currentUrl = window.location.href;
-            const blockedPath = "/dosai/";
-            if (currentUrl.includes(blockedPath))
+            const currentPath = window.location.pathname;
+            const targetPath = "/";
+
+            if (currentPath !== targetPath) {
                 return
+            }
             const e = document.querySelector(".dosai-fixed__chat-box"),
                 t = document.querySelector(".dosai-fixed__chat"), i = document.querySelector(".dosai-fixed__chat-form"),
                 s = document.querySelector(".dosai-fixed__chat-input"), r = document.querySelector(".dosai-fixed__btn"),

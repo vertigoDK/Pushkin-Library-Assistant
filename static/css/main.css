@@ -1199,9 +1199,8 @@ body {
 
 .news__picture {
     height: 100%;
-    background: url("/static/img/news/parallax-pic.jpg") center no-repeat;
     background-size: auto;
-    background-attachment: fixed;
+    background: url("/static/img/news/parallax-pic.jpg") no-repeat fixed center;
 }
 
 .news__title {

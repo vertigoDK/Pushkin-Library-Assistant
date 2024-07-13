@@ -7,10 +7,12 @@ class News(models.Model):
     title_ru = models.CharField(max_length=255, verbose_name=_('titleRu'), default='')
     title_kz = models.CharField(max_length=255, verbose_name=_('titleKz'), default='')
     title_en = models.CharField(max_length=255, verbose_name=_('titleEn'), default='')
+
     slug = AutoSlugField(populate_from='title_ru', unique=True, default=None)
     content_ru = models.TextField(verbose_name='Содержание (рус)', blank=True, null=True, default='')
     content_kz = models.TextField(verbose_name='Содержание (каз)', blank=True, null=True, default='')
     content_eng = models.TextField(verbose_name='Содержание (анг)', blank=True, null=True, default='')
+
     pub_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     main_image = models.ImageField(upload_to='news_images/', blank=True, null=True, verbose_name='Основное изображение', default='')
     contact_info = models.CharField(max_length=100, blank=True, null=True, verbose_name='Контактная информация', default='')
