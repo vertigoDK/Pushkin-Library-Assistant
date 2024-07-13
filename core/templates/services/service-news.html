@@ -5,12 +5,14 @@
     <div class="services__news-swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
         <div class="swiper-wrapper" id="swiper-wrapper-c0a702af10f82664" aria-live="off"
              style="transition-duration: 0ms; transform: translate3d(-626px, 0px, 0px); transition-delay: 0ms;">
+
+
+
             {% for item in news %}
 
-                <div class="swiper-slide swiper-slide-next swiper-slide-prev" style="width: 626px;"
-                     role="group"
-                     aria-label="1 / 2" data-swiper-slide-index="0">
-                    <img src="{{ item.main_image.url }}" alt="
+            <div class="swiper-slide swiper-slide-next swiper-slide-prev" style="width: 626px;" role="group"
+                 aria-label="2 / 2" data-swiper-slide-index="1">
+                <img src="{{ item.main_image.url }}" alt="
                  {% if LANGUAGE_CODE == 'ru' %}
                     {{ item.title_ru }}
                 {% elif LANGUAGE_CODE == 'kk' %}
@@ -18,47 +20,23 @@
                 {% else %}
                     {{ item.title_en }}
                 {% endif %}">
-                    <a href="{% url 'news' %}">
-                        <h6 class="services__news-title">{% trans 'news' %}</h6>
-                    </a>
-                    <p class="services__news-desc">Общереспубликанский фестиваль «KITAP шоу - 2024»</p>
-                    <a class="services__news-link" href="#!">Читать</a>
-                </div>
+                <a href="{% url 'news' %}">
+                    <h6 class="services__news-title">{% trans 'news' %}</h6>
+                </a>
+                <p class="services__news-desc">{% if LANGUAGE_CODE == 'ru' %}
+                    {{ item.title_ru }}
+                {% elif LANGUAGE_CODE == 'kk' %}
+                    {{ item.title_kz }}
+                {% else %}
+                    {{ item.title_en }}
+                {% endif %}</p>
+                <a class="services__news-link" href="{% url 'news_detail' slug=item.slug %}">Читать</a>
+            </div>
 
 
             {% endfor %}
 
 
-            <div class="swiper-slide swiper-slide-next swiper-slide-prev" style="width: 626px;" role="group"
-                 aria-label="2 / 2" data-swiper-slide-index="1"><img src="{% static 'img/services/news-img.jpg' %}"
-                                                                     alt="News Image">
-                <a href="../../news-page.html">
-                    <h6 class="services__news-title">Новости</h6>
-                </a>
-                <p class="services__news-desc">Новость 2</p>
-                <a class="services__news-link" href="#!">Читать</a>
-            </div>
-
-            {#                        <div class="swiper-slide swiper-slide-active" style="width: 626px;" role="group"#}
-            {#                             aria-label="2 / 2" data-swiper-slide-index="1"><img#}
-            {#                                src="{% static 'img/services/news-img.jpg' %}"#}
-            {#                                alt="News Image">#}
-            {#                            <a href="../../news-page.html">#}
-            {#                                <h6 class="services__news-title">Новости</h6>#}
-            {#                            </a>#}
-            {#                            <p class="services__news-desc">Новость 2</p>#}
-            {#                            <a class="services__news-link" href="#!">Читать</a>#}
-            {#                        </div>#}
-
-            <div class="swiper-slide swiper-slide-active">
-                <a href="{% url 'news' %}" class="news-link">
-                    <img src="{% static 'img/header/logo.svg' %}" alt="">
-                    <div class="news-content">
-                        <h6 class="services-news">{% trans 'news' %}</h6>
-                        <p class="services__news-title">Посмотрите другие новости</p>
-                    </div>
-                </a>
-            </div>
         </div> <!-- /SWIPER-WRAPPER -->
         <div class="swiper-button-prev services__arrow" tabindex="0" role="button"
              aria-label="Previous slide" aria-controls="swiper-wrapper-c0a702af10f82664">
