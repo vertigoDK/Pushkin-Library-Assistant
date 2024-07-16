@@ -54,54 +54,6 @@
 {% if not hide_footer %}
     {% include 'blocks/footer.html' %}
 {% endif %}
-{% if show_chatbot %}
-    <script type="module">
-        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
-
-        Chatbot.init({
-            chatflowid: "{{ CHATFLOW_ID }}",
-            apiHost: "{{ API_HOST }}",
-            theme: {
-                button: {
-                    backgroundColor: "#15803d", // Цвет фона кнопки
-                    customIconSrc: "../static/img/services/logo-dosai-white.svg",
-                    right: 20,
-                    bottom: 20,
-                    size: "large",
-                    iconColor: "white", // Цвет иконки
-                },
-                chatWindow: {
-                    welcomeMessage: "Привет, я Дос, твой онлайн помощник в библиотеке Пушкина",
-                    backgroundColor: "#ffffff",
-                    height: 700,
-                    width: 400,
-                    fontSize: 16,
-                    poweredByTextColor: "#303235",
-                    botMessage: {
-                        backgroundColor: "#f7f8ff",
-                        textColor: "#303235",
-                        showAvatar: true,
-                        avatarSrc: "../static/img/services/logo-dosai-white.svg", // Аватар бота
-                    },
-                    userMessage: {
-                        backgroundColor: "#3B81F6",
-                        textColor: "#ffffff",
-                        showAvatar: true,
-                        avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png", // Аватар пользователя
-                    },
-                    textInput: {
-                        placeholder: "Задайте свой вопрос здесь",
-                        backgroundColor: "#ffffff",
-                        textColor: "#303235",
-                        sendButtonColor: "#3B81F6",
-                    }
-                }
-            }
-        })
-    </script>
-
-
-{% endif %}
 <script src="{% static 'js/index.bundle.js' %}"></script>
 <script src="{% static 'js/lib/swiper-element-bundle.min.js' %}"></script>
 <script src="{% static 'js/header.js' %}"></script>
