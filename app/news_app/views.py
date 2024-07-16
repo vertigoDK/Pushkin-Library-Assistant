@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import News
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def soon(request):
@@ -7,7 +8,17 @@ def soon(request):
 
 
 def news_list(request):
-    news = News.objects.all().order_by('-pub_date')
+    news_list = News.objects.all().order_by('-pub_date')
+    paginator = Paginator(news_list, 12)
+
+    page = request.GET.get('page')
+    try:
+        news = paginator.page(page)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+        news = paginator.page(paginator.num_pages)
+
     return render(request, 'news_list.html', {'news': news, 'show_chatbot': True})
 
 

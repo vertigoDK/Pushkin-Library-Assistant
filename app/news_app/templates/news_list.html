@@ -24,37 +24,7 @@
     </div> <!-- /PICTURE -->
 
     <div class="container">
-        <!-- PAGINATION -->
-        <div class="news__pagination news__pagination--top">
-            <button class="news__pagination-btn arrow-left">
-                <img src="{% static 'img/hero/arrow-prev.svg' %}" alt="Arrow Left">
-            </button>
-            <div class="news__pagination-page-btns">
-                <button class="news__pagination-page active">1</button>
-                <button class="news__pagination-page">2</button>
-                <button class="news__pagination-page">3</button>
-                <button class="news__pagination-page">4</button>
-                <button class="news__pagination-page">5</button>
-                <button class="news__pagination-page">6</button>
-                <button class="news__pagination-page">7</button>
-                <button class="news__pagination-page">8</button>
-                <button class="news__pagination-page">9</button>
-                <button class="news__pagination-page">10</button>
-                <button class="news__pagination-page">11</button>
-                <button class="news__pagination-page">12</button>
-                <button class="news__pagination-page">13</button>
-                <button class="news__pagination-page">14</button>
-                <button class="news__pagination-page">15</button>
-                <button class="news__pagination-page">16</button>
-                <button class="news__pagination-page">17</button>
-                <button class="news__pagination-page">18</button>
-                <button class="news__pagination-page">19</button>
-                <button class="news__pagination-page">20</button>
-            </div>
-            <button class="news__pagination-btn arrow-left">
-                <img src="{% static 'img/hero/arrow-next.svg' %}" alt="Arrow Right">
-            </button>
-        </div> <!-- PAGINATION -->
+
         <div class="news__line news__line--top"></div>
         <div class="news__row">
 
@@ -81,11 +51,11 @@
                     </div> <!-- /IMAGE -->
                     <div class="news__card-contetnt">
                         <h6 class="news__card-title"> {% if LANGUAGE_CODE == 'ru' %}
-                            {{ news_item.title_ru|truncatewords:10 }}
+                            {{ news_item.title_ru|truncatechars:50 }}
                         {% elif LANGUAGE_CODE == 'kk' %}
-                            {{ news_item.title_kz|truncatewords:10 }}
+                            {{ news_item.title_kz|truncatechars:50 }}
                         {% else %}
-                            {{ news_item.title_en|truncatewords:10 }}
+                            {{ news_item.title_en|truncatechars:50 }}
                         {% endif %}</h6>
                         <p class="news__card-text"> {% if LANGUAGE_CODE == 'ru' %}
                             {{ news_item.content_ru|truncatewords:30 }}
@@ -99,43 +69,13 @@
                     <a href="{% url 'news_detail' slug=news_item.slug %}" class="news__card-link">{% trans 'read' %}</a>
                 </div> <!-- /NEWSCARD -->
 
-
             {% endfor %}
 
 
         </div> <!-- ROW -->
         <div class="news__line news__line--bottom"></div>
         <!-- PAGINATION -->
-        <div class="news__pagination news__pagination--bottom">
-            <button class="news__pagination-btn arrow-left">
-                <img src="{% static 'img/hero/arrow-prev.svg' %}" alt="Arrow Left">
-            </button>
-            <div class="news__pagination-page-btns">
-                <button class="news__pagination-page">1</button>
-                <button class="news__pagination-page">2</button>
-                <button class="news__pagination-page">3</button>
-                <button class="news__pagination-page">4</button>
-                <button class="news__pagination-page">5</button>
-                <button class="news__pagination-page">6</button>
-                <button class="news__pagination-page">7</button>
-                <button class="news__pagination-page">8</button>
-                <button class="news__pagination-page">9</button>
-                <button class="news__pagination-page">10</button>
-                <button class="news__pagination-page">11</button>
-                <button class="news__pagination-page">12</button>
-                <button class="news__pagination-page">13</button>
-                <button class="news__pagination-page">14</button>
-                <button class="news__pagination-page">15</button>
-                <button class="news__pagination-page">16</button>
-                <button class="news__pagination-page">17</button>
-                <button class="news__pagination-page">18</button>
-                <button class="news__pagination-page">19</button>
-                <button class="news__pagination-page">20</button>
-            </div>
-            <button class="news__pagination-btn arrow-left">
-                <img src="{% static 'img/hero/arrow-next.svg' %}" alt="Arrow Right">
-            </button>
-        </div> <!-- PAGINATION -->
+        {% include 'news-pagination.html' %}
     </div> <!-- CONTAINER -->
 
 
