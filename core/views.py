@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.utils.timezone import now, timedelta
+
+from app.new_book_app.models import NewBook
 from app.news_app.models import News
 from app.events_app.models import Event
 from app.courses_app.models import Course
@@ -21,6 +23,7 @@ def index(request):
     news = News.objects.all().order_by('-pub_date')
     courses = Course.objects.all()
     events = Event.objects.all()
+    new_books = NewBook.objects.all()
 
     current_date = now().date()
     weekend_days = [0, 1]  # 0 - воскресенье, 1 - понедельник
@@ -46,6 +49,7 @@ def index(request):
         'events': events,
         'time_model_today': time_model_today,
         'time_model_next': time_model_next,
+        'new_books': new_books,
         'weekend_days': weekend_days,
     }
     return render(request=request, template_name='core.html', context=context)

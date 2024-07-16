@@ -223,7 +223,7 @@ body {
 
 .catalog__bookcard {
     width: 305px;
-    height: 600px;
+    height: 800px;
     box-shadow: 0 0 10px 2px rgba(24, 86, 56, 0.2);
     border-radius: 9px;
 }
@@ -289,7 +289,6 @@ body {
     text-align: center;
     background-color: var(--general-color);
     border-radius: 9px;
-    display: block;
     width: 214px;
     height: 44px;
     display: flex;
@@ -2088,6 +2087,8 @@ body {
     padding: 2px;
     border-radius: 3px;
 }
+
+
 
 .services__courses-link {
     position: absolute;
