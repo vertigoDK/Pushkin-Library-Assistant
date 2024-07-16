@@ -1,136 +1,138 @@
+{% load i18n %}
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const serverTime = new Date("{{ server_time|date:'c' }}");
-    const clientTime = new Date();
-    const timeDifference = serverTime - clientTime;
-    const lang = "{{ LANGUAGE_CODE }}";  // Исправление передачи языка
+    document.addEventListener('DOMContentLoaded', function () {
+        const serverTime = new Date("{{ server_time|date:'c' }}");
+        const clientTime = new Date();
+        const timeDifference = serverTime - clientTime;
+        const lang = "{{ LANGUAGE_CODE }}";
 
-    const timeModelToday = {
-        dateChange: "{{ time_model_today.date_change|date:'c' }}" || null,
-        timeStart: "{{ time_model_today.time_start|time:'H:i' }}" || null,
-        timeEnd: "{{ time_model_today.time_end|time:'H:i' }}" || null,
-        isHoliday: {{ time_model_today.is_holiday|yesno:"true,false" }},
-        customTimeStart: "{{ time_model_today.custom_time_start|time:'H:i' }}" || null,
-        customTimeEnd: "{{ time_model_today.custom_time_end|time:'H:i' }}" || null,
-    };
+        const timeModelToday = {
+            dateChange: "{{ time_model_today.date_change|date:'c' }}" || null,
+            isHoliday: {{ time_model_today.is_holiday|yesno:"true,false" }},
+            customTimeStart: "{{ time_model_today.custom_time_start|time:'H:i' }}" || null,
+            customTimeEnd: "{{ time_model_today.custom_time_end|time:'H:i' }}" || null,
+        };
 
-    const timeModelNext = {
-        dateChange: "{{ time_model_next.date_change|date:'c' }}" || null,
-        timeStart: "{{ time_model_next.time_start|time:'H:i' }}" || null,
-        timeEnd: "{{ time_model_next.time_end|time:'H:i' }}" || null,
-        isHoliday: {{ time_model_next.is_holiday|yesno:"true,false" }},
-        customTimeStart: "{{ time_model_next.custom_time_start|time:'H:i' }}" || null,
-        customTimeEnd: "{{ time_model_next.custom_time_end|time:'H:i' }}" || null,
-    };
+        const timeModelNext = {
+            dateChange: "{{ time_model_next.date_change|date:'c' }}" || "{{ time_model_next.date_change }}" || null,
+            isHoliday: {{ time_model_next.is_holiday|yesno:"true,false" }},
+            customTimeStart: "{{ time_model_next.custom_time_start|time:'H:i' }}" || null,
+            customTimeEnd: "{{ time_model_next.custom_time_end|time:'H:i' }}" || null,
+        };
 
+        console.log("{{ time_model_next }}")
+        console.log(timeModelToday)
+        console.log(timeModelNext)
 
-    console.log(timeModelToday)
-    console.log(timeModelNext)
-
-    function isWeekend(day) {
-        const weekendDays = [0, 1]; // 0 - воскресенье, 1 - понедельник
-        return weekendDays.includes(day);
-    }
-
-    function getNextWorkingDay(date) {
-        let nextDay = new Date(date);
-        while (isWeekend(nextDay.getDay())) {
-            nextDay.setDate(nextDay.getDate() + 1);
+        function isWeekend(day) {
+            const weekendDays = [0, 1]; // 0 - воскресенье, 1 - понедельник
+            return weekendDays.includes(day);
         }
-        return nextDay;
-    }
 
-    function updateTimes() {
-        let now = new Date(new Date().getTime() + timeDifference);
-
-        const dayOfWeek = now.getDay();
-        let openingTime, closingTime;
-
-        if (isWeekend(dayOfWeek) || timeModelToday.isHoliday) {
-            now = getNextWorkingDay(now);
-            if (timeModelNext.customTimeStart && timeModelNext.customTimeEnd) {
-                openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...timeModelNext.customTimeStart.split(':'));
-                closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...timeModelNext.customTimeEnd.split(':'));
-            } else {
-                openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
-                closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
+        function getNextWorkingDay(date) {
+            let nextDay = new Date(date);
+            while (isWeekend(nextDay.getDay()) || (nextDay.toISOString().split('T')[0] === timeModelNext.dateChange && timeModelNext.isHoliday)) {
+                nextDay.setDate(nextDay.getDate() + 1);
             }
-        } else {
-            if (timeModelToday.customTimeStart && timeModelToday.customTimeEnd) {
-                openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...timeModelToday.customTimeStart.split(':'));
-                closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...timeModelToday.customTimeEnd.split(':'));
-            } else {
-                openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
-                closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
-            }
+            return nextDay;
         }
 
-        if (clientTime >= closingTime) {
-            now = getNextWorkingDay(now);
-            if (timeModelNext.customTimeStart && timeModelNext.customTimeEnd) {
-                openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...timeModelNext.customTimeStart.split(':'));
-                closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...timeModelNext.customTimeEnd.split(':'));
-            } else {
-                openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
-                closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
-            }
-        }
+        function updateTimes() {
+            let now = new Date(new Date().getTime() + timeDifference);
+            const dayOfWeek = now.getDay();
+            let openingTime, closingTime;
 
-        let isLibraryOpen = now >= openingTime && now < closingTime;
-
-        const openStatus = document.getElementById('library-status-open');
-        const closeStatus = document.getElementById('library-status-close');
-
-        document.getElementById('services-current-date').textContent = now.toLocaleDateString(lang, {
-            weekday: 'long',
-            day: 'numeric',
-            month: 'long'
-        });
-
-        document.getElementById('services-current-time').textContent = now.toLocaleTimeString(lang, {
-            hour: '2-digit',
-            minute: '2-digit',
-        });
-
-        if (isLibraryOpen) {
-            closeStatus.style.display = 'none';
-            openStatus.style.display = 'block';
-        } else {
-            openStatus.style.display = 'none';
-            closeStatus.style.display = 'block';
-        }
-
-        // Обновление элемента services__time-num
-        const timeNum = document.getElementById('services__time-num');
-        if (timeNum) {
-            timeNum.textContent = `${openingTime.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit' })} - ${closingTime.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit' })}`;
-        }
-
-        let msUntilChange;
-        if (isLibraryOpen) {
-            msUntilChange = closingTime - now;
-        } else {
-            if (now < openingTime) {
-                msUntilChange = openingTime - now;
-            } else {
-                let nextOpeningTime = getNextWorkingDay(now);
-                nextOpeningTime.setHours(8, 0, 0, 0);
-                if (nextOpeningTime <= now) {
-                    nextOpeningTime.setDate(nextOpeningTime.getDate() + 1);
+            if (isWeekend(dayOfWeek) || timeModelToday.isHoliday) {
+                now = getNextWorkingDay(now);
+                if (timeModelNext.customTimeStart && timeModelNext.customTimeEnd) {
+                    const nextDate = new Date(timeModelNext.dateChange);
+                    openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeStart.split(':'));
+                    closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeEnd.split(':'));
+                } else {
+                    openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
+                    closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
                 }
-                msUntilChange = nextOpeningTime - now;
+            } else {
+                if (timeModelToday.customTimeStart && timeModelToday.customTimeEnd) {
+                    const nextDate = new Date(timeModelNext.dateChange);
+                    openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelToday.customTimeStart.split(':'));
+                    closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelToday.customTimeEnd.split(':'));
+                } else {
+                    openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
+                    closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
+                }
             }
+
+            if (clientTime >= closingTime) {
+                now = getNextWorkingDay(now);
+                if (timeModelNext.customTimeStart && timeModelNext.customTimeEnd) {
+                    const nextDate = new Date(timeModelNext.dateChange);
+                    openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeStart.split(':'));
+                    closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeEnd.split(':'));
+                } else {
+                    openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
+                    closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
+                }
+            }
+
+            let isLibraryOpen = now >= openingTime && now < closingTime;
+
+            const openStatus = document.getElementById('library-status-open');
+            const closeStatus = document.getElementById('library-status-close');
+
+            document.getElementById('services-current-date').textContent = now.toLocaleDateString(lang, {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long'
+            });
+
+            document.getElementById('services-current-time').textContent = now.toLocaleTimeString(lang, {
+                hour: '2-digit',
+                minute: '2-digit',
+            });
+
+            if (isLibraryOpen) {
+                closeStatus.style.display = 'none';
+                openStatus.style.display = 'block';
+            } else {
+                openStatus.style.display = 'none';
+                closeStatus.style.display = 'block';
+            }
+
+            // Обновление элемента services__time-num
+            const timeNum = document.getElementById('services__time-num');
+            if (timeNum) {
+                timeNum.textContent = `${openingTime.toLocaleTimeString(lang, {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })} - ${closingTime.toLocaleTimeString(lang, {hour: '2-digit', minute: '2-digit'})}`;
+            }
+
+            let msUntilChange;
+            if (isLibraryOpen) {
+                msUntilChange = closingTime - now;
+            } else {
+                if (now < openingTime) {
+                    msUntilChange = openingTime - now;
+                } else {
+                    let nextOpeningTime = getNextWorkingDay(now);
+                    nextOpeningTime.setHours(8, 0, 0, 0);
+                    if (nextOpeningTime <= now) {
+                        nextOpeningTime.setDate(nextOpeningTime.getDate() + 1);
+                    }
+                    msUntilChange = nextOpeningTime - now;
+                }
+            }
+
+            const hours = Math.floor(msUntilChange / 3600000);
+            const minutes = Math.floor((msUntilChange % 3600000) / 60000);
+            const seconds = Math.floor((msUntilChange % 60000) / 1000);
+
+            document.getElementById('services-close-time').textContent =
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
-        const hours = Math.floor(msUntilChange / 3600000);
-        const minutes = Math.floor((msUntilChange % 3600000) / 60000);
-        const seconds = Math.floor((msUntilChange % 60000) / 1000);
-
-        document.getElementById('services-close-time').textContent =
-            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-
-    updateTimes();
-    setInterval(updateTimes, 1000);
-});
+        updateTimes();
+        setInterval(updateTimes, 1000);
+    });
 </script>

@@ -11,7 +11,9 @@ def get_next_working_day(date, weekend_days):
     next_day = date + timedelta(days=1)
     while next_day.weekday() in weekend_days or TimeModel.objects.filter(date_change=next_day,
                                                                          is_holiday=True).exists():
+
         next_day += timedelta(days=1)
+    print(next_day)
     return next_day
 
 
@@ -33,7 +35,7 @@ def index(request):
     try:
         time_model_next = TimeModel.objects.get(date_change=next_working_day)
     except TimeModel.DoesNotExist:
-        time_model_next = None
+        time_model_next = TimeModel(date_change=next_working_day)
 
     context = {
         'show_chatbot': True,
