@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'app.courses_app.apps.CoursesAppConfig',
     'app.events_app.apps.EventsAppConfig',
     'app.news_app.apps.NewsAppConfig',
+    'app.time_app.apps.TimeAppConfig',
 
     'app.services.readers.apps.ReadersConfig',
     'app.services.faq.apps.FAQInfoConfig'
