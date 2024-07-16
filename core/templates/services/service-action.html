@@ -5,7 +5,8 @@
         <h6 class="services__actions-title">{% trans 'services' %}</h6>
         <div class="services__actions-icons">
 
-            <a class="services__actions-icon" data-name="{% url 'readers' %}" href="#!">
+            <a class="services__actions-icon" data-name="{% url 'readers' %}"
+               href="https://pushkinlibrary.kz/servicesru/stat-shitatelem.html">
                 <svg width="44" height="42" viewBox="0 0 44 42" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path d="M43 8.22379H1V34.0699H43V8.22379Z" stroke="#7F7B82" stroke-width="2"
@@ -29,11 +30,10 @@
                           style="--darkreader-inline-stroke: #a09689;"
                           data-darkreader-inline-stroke=""></path>
                 </svg>
-                <p class="services__actions-text">Читателям</p>
+                <p class="services__actions-text">{% trans 'readers' %}</p>
             </a>
-
             <a class="services__actions-icon" data-name="{% trans 'virtual-help' %}"
-               href="{% url 'virtual-help' %}">
+               href="https://pushkinlibrary.kz/servicesru/virkespravka.html">
                 <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.5999 12.6C23.4659 12.6 26.5999 15.734 26.5999 19.6M27.5222 27.5169L33.5999 33.6M30.7999 19.6C30.7999 25.7856 25.7855 30.8 19.5999 30.8C13.4143 30.8 8.3999 25.7856 8.3999 19.6C8.3999 13.4144 13.4143 8.40002 19.5999 8.40002C25.7855 8.40002 30.7999 13.4144 30.7999 19.6Z"
@@ -45,7 +45,7 @@
             </a>
 
             <a class="services__actions-icon" data-name="{% trans 'electronic-document-delivery' %}"
-               href="{% url 'electronic-document-delivery' %}">
+               href="https://pushkinlibrary.kz/servicesru/eddru.html">
                 <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.0699 10.92C12.3302 10.92 10.9199 12.3303 10.9199 14.07V14.7C10.9199 15.3959 10.3558 15.96 9.6599 15.96C8.96403 15.96 8.3999 15.3959 8.3999 14.7V14.07C8.3999 10.9385 10.9384 8.39999 14.0699 8.39999H14.6999C15.3958 8.39999 15.9599 8.96412 15.9599 9.65999C15.9599 10.3559 15.3958 10.92 14.6999 10.92H14.0699Z"
@@ -72,7 +72,7 @@
             </a>
 
             <a class="services__actions-icon" data-name="{% trans 'renew-your-book' %}"
-               href="{% url 'renew-your-book' %}">
+               href="https://pushkinlibrary.kz/servicesru/prodlit-knigu.html">
                 <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.6001 30.8V12.88C9.6001 11.3119 9.6001 10.5278 9.90528 9.92885C10.1737 9.40199 10.6021 8.97365 11.1289 8.70521C11.7279 8.40002 12.512 8.40002 14.0801 8.40002H27.5201C29.0882 8.40002 29.8724 8.40002 30.4713 8.70521C30.9981 8.97365 31.4265 9.40199 31.6949 9.92885C32.0001 10.5278 32.0001 11.3119 32.0001 12.88V28H12.4001C10.8537 28 9.6001 29.2536 9.6001 30.8ZM9.6001 30.8C9.6001 32.3465 10.8537 33.6 12.4001 33.6H32.0001M16.6001 14H25.0001M16.6001 19.6H25.0001M30.6001 28V33.6"
@@ -84,7 +84,7 @@
             </a>
 
             <a class="services__actions-icon" data-name="{% trans 'significant-calendar' %}"
-               href="{% url 'significant-calendar' %}">
+               href="https://olketanu.pushkinlibrary.kz/index.php/kraevedenie-vko/3367-kalendar-znamenatelnykh-i-pamyatnykh-dat-po-vostochno-kazakhstanskoj-oblasti-2024.html">
                 <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 16.3333H33M27.4444 21.8908L13.5556 21.8889M18.1851 27.4451L13.5556 27.4444M13.5556 8V10.7778M27.4444 8V10.7778M12.4444 33H28.5556C30.1112 33 30.8892 33 31.4833 32.6972C32.006 32.431 32.431 32.006 32.6972 31.4833C33 30.8892 33 30.1112 33 28.5556V15.2222C33 13.6665 33 12.8887 32.6972 12.2945C32.431 11.7718 32.006 11.3468 31.4833 11.0805C30.8892 10.7778 30.1112 10.7778 28.5556 10.7778H12.4444C10.8887 10.7778 10.1109 10.7778 9.51669 11.0805C8.99401 11.3468 8.56907 11.7718 8.30276 12.2945C8 12.8887 8 13.6665 8 15.2222V28.5556C8 30.1112 8 30.8892 8.30276 31.4833C8.56907 32.006 8.99401 32.431 9.51669 32.6972C10.1109 33 10.8887 33 12.4444 33Z"

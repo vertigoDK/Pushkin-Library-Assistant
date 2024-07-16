@@ -1644,8 +1644,8 @@ body {
 
 .services__news-title {
     position: absolute;
-    bottom: 90px;
-    left: 25px;
+    top: 5px;
+    left: 5px;
     z-index: 8;
     padding: 3px 12px;
     background-color: var(--general-color);
@@ -1663,6 +1663,9 @@ body {
     color: var(--white-color);
     font-size: 16px;
     font-weight: 600;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px;
+    border-radius: 3px;
 }
 
 .services__news-link {
@@ -2081,6 +2084,9 @@ body {
     color: var(--white-color);
     font-size: 16px;
     font-weight: 600;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px;
+    border-radius: 3px;
 }
 
 .services__courses-link {

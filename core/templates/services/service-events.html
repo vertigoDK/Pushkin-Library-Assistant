@@ -19,11 +19,11 @@
                             <div class="services__events-slide-content">
                                 <h6 class="services__events-slide-title">
                                     {% if LANGUAGE_CODE == 'ru' %}
-                                        {{ event.title_event_ru }}
+                                        {{ event.title_event_ru|truncatechars:30  }}
                                     {% elif LANGUAGE_CODE == 'kk' %}
-                                        {{ event.title_event_kz }}
+                                        {{ event.title_event_kz|truncatechars:30  }}
                                     {% elif LANGUAGE_CODE == 'en' %}
-                                        {{ event.title_event_en }}
+                                        {{ event.title_event_en|truncatechars:30  }}
                                     {% endif %}
                                 </h6>
                                 <p class="services__events-slide-location">{{ event.location }}</p>
@@ -32,11 +32,11 @@
                                     - {{ event.end_time }}</p>
                                 <p class="services__events-slide-desc">
                                     {% if LANGUAGE_CODE == 'ru' %}
-                                        {{ event.content_event_ru }}
+                                        {{ event.content_event_ru|truncatechars:275  }}
                                     {% elif LANGUAGE_CODE == 'kk' %}
-                                        {{ event.content_event_kz }}
+                                        {{ event.content_event_kz|truncatechars:275 }}
                                     {% elif LANGUAGE_CODE == 'en' %}
-                                        {{ event.content_event_en }}
+                                        {{ event.content_event_en|truncatechars:275 }}
                                     {% endif %}
                                 </p>
                             </div> <!-- CONTENT -->

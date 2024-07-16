@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 {% block content %}
     <main class='main news-page'>
@@ -7,8 +8,9 @@
         {% include 'section/tour.html' %}
         {% include 'section/catalog.html' %}
     </main>
-    {% include 'section/dosai_chat.html' %}
 
+{% endblock %}
+{% block content_js %}
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const serverTime = new Date("{{ server_time|date:'c' }}");
@@ -18,10 +20,8 @@
             function updateTimes() {
                 let now = new Date(new Date().getTime() + timeDifference);
 
-                // Проверяем текущий день недели
-                const dayOfWeek = now.getDay(); // 0 - Воскресенье, 1 - Понедельник, ..., 6 - Суббота
+                const dayOfWeek = now.getDay();
 
-                // Если сегодня воскресенье (0) или понедельник (1), переключаемся на вторник (2)
                 if (dayOfWeek === 0 || dayOfWeek === 1) {
                     now.setDate(now.getDate() + ((2 - dayOfWeek) % 7));
                 }
@@ -34,14 +34,13 @@
                 const openStatus = document.getElementById('library-status-open');
                 const closeStatus = document.getElementById('library-status-close');
 
-                document.getElementById('services-current-date').textContent = now.toLocaleDateString('ru-RU', {
+                document.getElementById('services-current-date').textContent = now.toLocaleDateString("{% trans 'lang' %}", {
                     weekday: 'long',
                     day: 'numeric',
                     month: 'long'
                 });
 
-                // Обновление текущего времени
-                document.getElementById('services-current-time').textContent = now.toLocaleTimeString('ru-RU', {
+                document.getElementById('services-current-time').textContent = now.toLocaleTimeString("{% trans 'lang' %}", {
                     hour: '2-digit',
                     minute: '2-digit',
                 });

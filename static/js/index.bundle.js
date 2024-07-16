@@ -4683,6 +4683,7 @@
                 e.textContent = `${t}...`
             }
         })), function () {
+            return;
             const currentPath = window.location.pathname;
             const targetPath = "/";
 

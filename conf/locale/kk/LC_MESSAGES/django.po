@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-21 22:56+0500\n"
+"POT-Creation-Date: 2024-07-16 21:04+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,64 +17,77 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\templates\base.html:11
-#, fuzzy
-#| msgid "Library"
-msgid "library-title-1"
-msgstr "Шығыс Қазақстан облыстық кітапханасы. А. С. Пушкин"
+msgid "lang"
+msgstr "kk-KZ"
 
-# footer
-
-msgid "library-title-2"
-msgstr "ШҚО, Өскемен қаласы, Қазақстан көшесі, 102"
-
-msgid "guide"
-msgstr "Жолсілтемесі"
-
-msgid "project"
-msgstr "Жобалар"
-
-msgid "book-of-honorable-guests"
-msgstr "Құрметті қонақтар кітабы"
-
-msgid "mass-media-about-us"
-msgstr "БАҚ біз туралы"
-
-msgid "become-a-reader"
-msgstr "Оқырман болу"
-
-msgid "registration-for-courses"
-msgstr "Курстарға жазылу"
-
-msgid "contacts"
-msgstr "Байланыстар"
+msgid "dosai-message"
+msgstr "Сәлем, мен Досмын, Пушкин кітапханасындағы сенің онлайн көмекшіңмін"
 
 
-# 1 item
-msgid "library"
-msgstr "Кітапхана"
-
+#: .\app\news_app\templates\news_detail.html:22
+#: .\app\news_app\templates\news_list.html:21
+#: .\core\templates\blocks\header.html:16
 msgid "home"
 msgstr "Басты бет"
 
+# 3 item
+#: .\app\news_app\templates\news_detail.html:22
+#: .\app\news_app\templates\news_list.html:17
+#: .\app\news_app\templates\news_list.html:21
+#: .\core\templates\services\service-news.html:24
+msgid "news"
+msgstr "Жаңалықтар"
+
+#: .\app\news_app\templates\news_list.html:69
+#: .\core\templates\section\catalog.html:118
+msgid "read"
+msgstr "Оқу"
+
+#: .\core\templates\blocks\footer.html:11
+#: .\core\templates\section\hero-nav.html:33 .\templates\base.html:11
+msgid "library-title-1"
+msgstr "Шығыс Қазақстан облыстық кітапханасы. А. С. Пушкин"
+
+#: .\core\templates\blocks\footer.html:15
+#: .\core\templates\blocks\header.html:17
 msgid "about-us"
 msgstr "Біз туралы"
 
+#: .\core\templates\blocks\footer.html:17
 msgid "about-the-library"
 msgstr "Кітапхана туралы"
 
+#: .\core\templates\blocks\footer.html:18
+#: .\core\templates\blocks\header.html:18
 msgid "history"
 msgstr "Тарих"
 
+#: .\core\templates\blocks\footer.html:19
+msgid "guide"
+msgstr "Жолсілтемесі"
+
+#: .\core\templates\blocks\footer.html:20
+#: .\core\templates\blocks\header.html:19
 msgid "terms-of-use"
 msgstr "Пайдалану шарттары"
 
-# 2 item
+#: .\core\templates\blocks\footer.html:21
+msgid "project"
+msgstr "Жобалар"
+
+#: .\core\templates\blocks\footer.html:22
+msgid "book-of-honorable-guests"
+msgstr "Құрметті қонақтар кітабы"
+
+#: .\core\templates\blocks\footer.html:23
+msgid "mass-media-about-us"
+msgstr "БАҚ біз туралы"
+
 msgid "readers"
 msgstr "Оқырмандар"
 
-msgid "sign-up-for-readers"
-msgstr "Оқырмандарға тіркелу"
+msgid "become-a-reader"
+msgstr "Оқырман болу"
 
 msgid "virtual-help"
 msgstr "Виртуалды көмек"
@@ -82,157 +95,197 @@ msgstr "Виртуалды көмек"
 msgid "electronic-document-delivery"
 msgstr "Құжаттарды электрондық жеткізу"
 
+
 msgid "renew-your-book"
 msgstr "Кітабыңызды жаңартыңыз"
 
+#: .\core\templates\blocks\footer.html:34
+msgid "registration-for-courses"
+msgstr "Курстарға жазылу"
+
+#: .\core\templates\blocks\footer.html:39
+msgid "contacts"
+msgstr "Байланыстар"
+
+# footer
+#: .\core\templates\blocks\footer.html:40
+msgid "library-title-2"
+msgstr "ШҚО, Өскемен қаласы, Қазақстан көшесі, 102"
+
+# 1 item
+#: .\core\templates\blocks\header.html:14
+msgid "library"
+msgstr "Кітапхана"
+
+#: .\core\templates\blocks\header.html:26
+msgid "sign-up-for-readers"
+msgstr "Оқырмандарға тіркелу"
+
+#: .\core\templates\blocks\header.html:30
 msgid "sign-up-for-courses"
 msgstr "Курстарға жазылу"
 
-msgid "legal-consultations"
-msgstr "Заңгерлік кеңестер"
-
+#: .\core\templates\blocks\header.html:31
 msgid "circles-and-clubs"
 msgstr "Үйірмелер мен клубтар"
 
-msgid "significant-calendar"
-msgstr "Маңызды күндер күнтізбесі"
-
-
-# 3 item
-msgid "news"
-msgstr "Жаңалықтар"
-
-msgid "news-archive"
-msgstr "Жаңалықтар мұрағаты"
-
-
 # 4 item
+#: .\core\templates\blocks\header.html:36
 msgid "digital-catalogue"
 msgstr "Электрондық каталог"
 
+#: .\core\templates\blocks\header.html:38
+#: .\core\templates\blocks\header.html:46
+msgid "electronic-library-our-abai"
+msgstr "«Біздің Абай» электрондық кітапханасы"
+
+#: .\core\templates\blocks\header.html:39
 msgid "local-history-electronic-library"
 msgstr "Жергілікті тарих электрондық кітапханасы"
 
 # 5 item
+#: .\core\templates\blocks\header.html:44
+#: .\core\templates\section\hero-nav.html:59
 msgid "local-history"
 msgstr "Жергілікті тарих"
 
-msgid "electronic-library-our-abai"
-msgstr "«Біздің Абай» электрондық кітапханасы"
-
+#: .\core\templates\blocks\header.html:47
 msgid "east-kazakhstan-local-history"
 msgstr "Шығыс Қазақстан жергілікті тарихы"
 
+#: .\core\templates\blocks\header.html:48
 msgid "famous-names-east-kazakhstan"
 msgstr "Шығыс Қазақстан: танымал тұлғалар"
 
+#: .\core\templates\blocks\header.html:49
 msgid "kayum-mukhamedkhanov-index"
 msgstr "Қаюм Мұхамедханов: библиографиялық көрсеткіш"
 
+#: .\core\templates\blocks\header.html:50
 msgid "significant-dates-calendar"
 msgstr "ШҚО маңызды және есте қаларлықтай күндер күнтізбесі"
 
 # 6 item
+#: .\core\templates\blocks\header.html:55
 msgid "resources"
 msgstr "Ресурстар"
 
+#: .\core\templates\blocks\header.html:57
 msgid "our-rarities"
 msgstr "Біздің сирек кездесетіндер"
 
+#: .\core\templates\blocks\header.html:58
 msgid "virtual-exhibitions"
 msgstr "Виртуалды көрмелер"
 
+#: .\core\templates\blocks\header.html:59
 msgid "one-country-one-book"
 msgstr "Бір ел - бір кітап"
 
+#: .\core\templates\blocks\header.html:60
 msgid "new-arrivals"
 msgstr "Жаңа түскендер"
 
+#: .\core\templates\blocks\header.html:61
+msgid "news-archive"
+msgstr "Жаңалықтар мұрағаты"
+
 # 7 item
+#: .\core\templates\blocks\header.html:68
 msgid "for-professionals"
 msgstr "Мамандарға"
 
+#: .\core\templates\blocks\header.html:70
 msgid "methodological-services"
 msgstr "Әдістемелік қызмет"
 
+#: .\core\templates\blocks\header.html:71
 msgid "spiritual-treasure"
 msgstr "Рухани қазына"
 
-#Services
-
-# time open close
-
-msgid "before-the-library-opened"
-msgstr "Кітапхана ашылғанға дейін"
-
-msgid "before-the-library-closes"
-msgstr "Кітапхана жабылғанға дейін"
-
-msgid "schedule"
-msgstr "Жұмыс кестесі"
-
-# AI CHAT
-
-msgid "chatbot-assistant-dos-ai"
-msgstr "DosAI чат-бот көмекшісі"
-
-msgid "services"
-msgstr "Қызметтер"
-
-# tour
-
-msgid "library-tour"
-msgstr "Кітапхана бойынша экскурсия"
-
-msgid "foyer"
-msgstr "Фойе"
-
-msgid "children-sector"
-msgstr "Балалар секторы"
-
-msgid "school-of-masters"
-msgstr "Шеберлер мектебі"
-
-msgid "robotics-room"
-msgstr "Робототехника бөлмесі"
-
-msgid "it-center"
-msgstr "АҚ орталығы"
-
-msgid "american-corner"
-msgstr "Америкалық бұрыш"
-
-msgid "maker-space"
-msgstr "Жасаушы кеңістігі"
-
-msgid "foyer-8"
-msgstr "Фойе 8"
-
-msgid "foyer-9"
-msgstr "Фойе 9"
-msgid "virtual-tour"
-msgstr "Виртуалды тур"
-
-
-# hero
-
-msgid "our-abai"
-msgstr "Біздің Абай"
-
-
-msgid "east-kazakhstan-region-famous-places"
-msgstr "ШҚО: Танымал орындар"
-
-msgid "east-kazakhstan-region-legends-and-tales"
-msgstr "ШҚО: Аңыздар мен ертегілер"
-
-
 # catalog
+#: .\core\templates\section\catalog.html:8
 msgid "new-items"
 msgstr "Жаңа өнімдер"
 
 msgid "go-to-catalog"
 msgstr "Каталогқа өту"
 
-msgid "read"
-msgstr "Оқу"
+# hero
+#: .\core\templates\section\hero-nav.html:51
+msgid "our-abai"
+msgstr "Біздің Абай"
+
+#: .\core\templates\section\hero-nav.html:68
+msgid "east-kazakhstan-region-famous-places"
+msgstr "ШҚО: Танымал орындар"
+
+#: .\core\templates\section\hero-nav.html:78
+msgid "east-kazakhstan-region-legends-and-tales"
+msgstr "ШҚО: Аңыздар мен ертегілер"
+
+# tour
+#: .\core\templates\section\tour.html:72
+msgid "library-tour"
+msgstr "Кітапхана бойынша экскурсия"
+
+#: .\core\templates\section\tour.html:80
+msgid "foyer"
+msgstr "Фойе"
+
+#: .\core\templates\section\tour.html:83
+msgid "children-sector"
+msgstr "Балалар секторы"
+
+#: .\core\templates\section\tour.html:85
+msgid "school-of-masters"
+msgstr "Шеберлер мектебі"
+
+#: .\core\templates\section\tour.html:88
+msgid "robotics-room"
+msgstr "Робототехника бөлмесі"
+
+#: .\core\templates\section\tour.html:90
+msgid "it-center"
+msgstr "АҚ орталығы"
+
+#: .\core\templates\section\tour.html:92
+msgid "american-corner"
+msgstr "Америкалық бұрыш"
+
+#: .\core\templates\section\tour.html:94
+msgid "maker-space"
+msgstr "Жасаушы кеңістігі"
+
+#: .\core\templates\section\tour.html:136
+msgid "virtual-tour"
+msgstr "Виртуалды тур"
+
+#: .\core\templates\services\service-action.html:5
+msgid "services"
+msgstr "Қызметтер"
+
+#: .\core\templates\services\service-action.html:86
+#: .\core\templates\services\service-action.html:95
+msgid "significant-calendar"
+msgstr "Маңызды күндер күнтізбесі"
+
+# AI CHAT
+#: .\core\templates\services\service-ai-chat.html:7
+msgid "chatbot-assistant-dos-ai"
+msgstr "DosAI чат-бот көмекшісі"
+
+#: .\core\templates\services\service-time.html:11
+msgid "schedule"
+msgstr "Жұмыс кестесі"
+
+# Services
+# time open close
+#: .\core\templates\services\service-time.html:16
+msgid "before-the-library-opened"
+msgstr "Кітапхана ашылғанға дейін"
+
+#: .\core\templates\services\service-time.html:17
+msgid "before-the-library-closes"
+msgstr "Кітапхана жабылғанға дейін"
+

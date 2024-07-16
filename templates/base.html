@@ -56,7 +56,7 @@
 {% endif %}
 {% if show_chatbot %}
     <script type="module">
-        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+        import Chatbot from "{% static 'js/lib/web.js' %}"
 
         Chatbot.init({
             chatflowid: "{{ CHATFLOW_ID }}",
@@ -64,14 +64,14 @@
             theme: {
                 button: {
                     backgroundColor: "#15803d", // Цвет фона кнопки
-                    customIconSrc: "../static/img/services/logo-dosai-white.svg",
+                    customIconSrc: "{% static 'img/services/logo-dosai-white.svg' %}",
                     right: 20,
                     bottom: 20,
                     size: "large",
                     iconColor: "white", // Цвет иконки
                 },
                 chatWindow: {
-                    welcomeMessage: "Привет, я Дос, твой онлайн помощник в библиотеке Пушкина",
+                    welcomeMessage: "{% trans 'dosai-message' %}",
                     backgroundColor: "#ffffff",
                     height: 700,
                     width: 400,
@@ -81,7 +81,7 @@
                         backgroundColor: "#f7f8ff",
                         textColor: "#303235",
                         showAvatar: true,
-                        avatarSrc: "../static/img/services/logo-dosai-white.svg", // Аватар бота
+                        avatarSrc: "{% static 'img/services/logo-dosai-white.svg' %}", // Аватар бота
                     },
                     userMessage: {
                         backgroundColor: "#3B81F6",
@@ -107,6 +107,7 @@
 <script src="{% static 'js/header.js' %}"></script>
 <script src="{% static 'js/lib/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'js/news.bundle.js' %}"></script>
+
 
 {% block content_js %}
 {% endblock %}
