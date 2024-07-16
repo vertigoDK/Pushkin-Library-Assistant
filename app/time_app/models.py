@@ -17,6 +17,9 @@ class TimeModel(models.Model):
     custom_time_end = models.TimeField(verbose_name='Измененное время окончания работы', blank=True,
                                        default=datetime.time(19, 0))
 
+    class Meta:
+        verbose_name = "Изменение Времени"
+        verbose_name_plural = "Список Изменений Времени"
 
     def save(self, *args, **kwargs):
         if self.is_holiday:
