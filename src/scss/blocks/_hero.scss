@@ -11,10 +11,18 @@
 	max-width: 1280px;
 	width: 100%;
 	max-height: 451px;
+	// max-height: 100px;
 	height: 100%;
 	overflow: hidden;
 	position: relative;
 	border-radius: 0 0 9px 9px;
+	// .swiper-slide {
+	// 	width: 1300px;
+	// 	img {
+	// 		object-fit: cover;
+	// 		width: 1300px;
+	// 	}
+	// }
 }
 
 .swiper-button-prev.hero__arrow,
@@ -56,6 +64,15 @@
 	font-weight: 600;
 	color: #fff;
 	width: 736px;
+	@media (max-width: $tablet-landscape) {
+		font-size: 28px;
+		top: 290px;
+		left: 110px;
+	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 22px;
+		width: 536px;
+	}
 }
 
 .hero__socials {
@@ -96,6 +113,9 @@
 .hero__links {
 	display: flex;
 	width: 100%;
+	@media (max-width: $tablet-portrait) {
+		flex-wrap: wrap;
+	}
 }
 
 .hero__link {
@@ -103,16 +123,39 @@
 	background-color: var(--general-color);
 	width: 320px;
 	height: 150px;
+	@media (max-width: $tablet-portrait) {
+		width: 50%;
+		border: 0;
+	}
 	&:first-child {
 		border-radius: 9px 0 0 9px;
+		@media (max-width: $tablet-portrait) {
+			border-radius: 9px 0 0 0;
+		}
 	}
 	&:nth-child(2),
 	&:nth-child(3),
 	&:nth-child(4) {
 		border-left: 4px solid #fff;
+		@media (max-width: $tablet-portrait) {
+			border-left: 0;
+		}
+	}
+	&:nth-child(2) {
+		@media (max-width: $tablet-portrait) {
+			border-radius: 0 9px 0 0;
+		}
+	}
+	&:nth-child(3) {
+		@media (max-width: $tablet-portrait) {
+			border-radius: 0 0 0 9px;
+		}
 	}
 	&:last-child {
 		border-radius: 0 9px 9px 0;
+		@media (max-width: $tablet-portrait) {
+			border-radius: 0 0 9px 0;
+		}
 	}
 	&-frame {
 		background: transparent;

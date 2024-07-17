@@ -4,10 +4,9 @@
 	line-height: 1.8;
 	color: #fff;
 	padding: 50px 0 0;
-
-	// @media (max-width: 1200px) {
-	// 	font-size: 26px;
-	// }
+	@media (max-width: $tablet-landscape) {
+		font-size: 12px;
+	}
 }
 
 .footer__row {
@@ -111,6 +110,10 @@
 	img {
 		width: 22px;
 		height: 22px;
+		@media (max-width: $tablet-landscape) {
+			width: 20px;
+			height: 20px;
+		}
 	}
 	transition: all 0.2s ease;
 	&:hover {

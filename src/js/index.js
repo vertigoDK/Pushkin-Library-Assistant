@@ -1,5 +1,5 @@
-// import mobileNav from './modules/mobile-nav.js';
-// mobileNav();
+import mobileNav from './modules/mobile-nav.js';
+mobileNav();
 
 // Swiper
 import Swiper from 'swiper/bundle';
@@ -22,8 +22,8 @@ import symbolLimit from './modules/catalog.js';
 symbolLimit();
 
 // Dosai Fixed
-import dosaiFixed from './modules/dosai-fixed.js';
-dosaiFixed();
+// import dosaiFixed from './modules/dosai-fixed.js';
+// dosaiFixed();
 
 // Hero Swiper:
 const swiperHero = new Swiper('.hero__swiper', {

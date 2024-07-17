@@ -28,12 +28,16 @@
 	height: 30px;
 	width: 5px;
 	background-color: var(--secondary-color);
+	@media (max-width: $tablet-landscape) {
+		height: 22px;
+	}
 }
 .title {
 	font-weight: 800;
 	font-size: 30px;
 	line-height: 133%;
 	color: var(--gray-color);
-	// margin-left: 15px;
-	// border-left: 5px solid var(--secondary-color);
+	@media (max-width: $tablet-landscape) {
+		font-size: 22px;
+	}
 }

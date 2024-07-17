@@ -1,5 +1,11 @@
 .services {
 	margin-bottom: 85px;
+	@media (max-width: $tablet-landscape) {
+		margin-bottom: 75px;
+	}
+	@media (max-width: $tablet-portrait) {
+		margin-bottom: 65px;
+	}
 }
 
 .services__row {
@@ -20,6 +26,15 @@
 		&:hover {
 			box-shadow: 2px 2px 12px 4px rgba(0, 0, 0, 0.25);
 		}
+	}
+	@media (max-width: $tablet-landscape) {
+		grid-template-rows: repeat(3, 250px);
+		gap: 18px;
+		height: auto;
+	}
+	@media (max-width: $tablet-portrait) {
+		grid-template-rows: repeat(3, 200px);
+		gap: 16px;
 	}
 }
 
@@ -69,6 +84,48 @@
 		background-repeat: no-repeat;
 		background-position: left 50% bottom 26px;
 		pointer-events: none;
+	}
+	@media (max-width: $tablet-landscape) {
+		&-item {
+			padding-bottom: 18px;
+			&:not(:first-child) {
+				margin-top: 18px;
+			}
+		}
+		&-num {
+			font-size: 28px;
+		}
+		&-text {
+			font-family: var(--font-family);
+			font-weight: 800;
+			font-size: 12px;
+			color: var(--white-color);
+			opacity: 0.8;
+		}
+		&::after {
+			background-size: 180px;
+		}
+	}
+	@media (max-width: $tablet-portrait) {
+		&-item {
+			padding-bottom: 12px;
+			&:not(:first-child) {
+				margin-top: 12px;
+			}
+		}
+		&-num {
+			font-size: 22px;
+		}
+		&-text {
+			font-family: var(--font-family);
+			font-weight: 800;
+			font-size: 10px;
+			color: var(--white-color);
+			opacity: 0.8;
+		}
+		&::after {
+			background-size: 120px;
+		}
 	}
 }
 
@@ -131,6 +188,13 @@
 	text-transform: uppercase;
 	font-size: 16px;
 	font-weight: 800;
+	@media (max-width: $tablet-landscape) {
+		font-size: 12px;
+	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 10px;
+		bottom: 100px;
+	}
 }
 .services__news-desc {
 	position: absolute;
@@ -139,7 +203,14 @@
 	color: var(--white-color);
 	font-size: 16px;
 	font-weight: 600;
+	@media (max-width: $tablet-landscape) {
+		font-size: 14px;
+	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 12px;
+	}
 }
+
 .services__news-link {
 	position: absolute;
 	left: 30px;
@@ -151,6 +222,13 @@
 	transition: filter 0.2s ease;
 	&:hover {
 		filter: drop-shadow(2px 2px 2px black);
+	}
+
+	@media (max-width: $tablet-landscape) {
+		font-size: 12px;
+	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 10px;
 	}
 }
 
@@ -186,11 +264,18 @@
 				color: var(--secondary-color);
 			}
 		}
+		@media (max-width: $tablet-portrait) {
+			background-size: 180px;
+		}
 	}
 	&-logo {
 		width: 137px;
 		height: 129px;
 		transition: scale 0.2s ease;
+		@media (max-width: $tablet-portrait) {
+			width: 130px;
+			height: 119px;
+		}
 	}
 	&-text {
 		font-size: 16px;
@@ -199,6 +284,11 @@
 		position: absolute;
 		bottom: 50px;
 		transition: color 0.2s ease;
+
+		@media (max-width: $tablet-landscape) {
+			bottom: 35px;
+			font-size: 14px;
+		}
 	}
 }
 
@@ -212,6 +302,9 @@
 		align-items: center;
 		flex-direction: column;
 		padding: 20px 30px 40px;
+		@media (max-width: $tablet-landscape) {
+			padding: 12px;
+		}
 	}
 	&-title {
 		// position: absolute;
@@ -220,6 +313,9 @@
 		font-weight: 800;
 		color: var(--general-color);
 		margin-bottom: 20px;
+		@media (max-width: $tablet-landscape) {
+			font-size: 12px;
+		}
 	}
 }
 .services__actions-icons {
@@ -237,6 +333,9 @@
 	gap: 10px;
 	align-items: center;
 	width: 100%;
+	@media (max-width: $tablet-landscape) {
+		padding: 0;
+	}
 	&:not(:last-child) {
 		border-bottom: 1px solid rgba(149, 140, 155, 0.2);
 	}
@@ -244,6 +343,10 @@
 		transition: all 0.2s ease;
 		height: 42px;
 		width: 42px;
+		@media (max-width: $tablet-landscape) {
+			height: 32px;
+			width: 32px;
+		}
 	}
 	svg path {
 		stroke: var(--gray-color);
@@ -277,6 +380,9 @@
 	text-align: center;
 	transition: color 0.2s ease;
 	flex-shrink: 12;
+	@media (max-width: $tablet-landscape) {
+		font-size: 10px;
+	}
 }
 
 // EVENTS =========================================
@@ -304,7 +410,7 @@
 	display: block;
 	position: relative;
 	// visibility: hidden;
-	height: 560px;
+	height: auto;
 	width: 100%;
 	&:hover {
 		img {
@@ -342,7 +448,7 @@
 		var(--general-color) 0%,
 		var(--black-color) 100%
 	);
-	border-radius: 32px 32px 9px 9px;
+	// border-radius: 32px 32px 9px 9px;
 	border-top: 4px solid var(--secondary-color);
 	padding: 30px 30px 10px;
 	height: 220px;
@@ -352,6 +458,13 @@
 		.services__events-slide-desc {
 			opacity: 1;
 		}
+		@media (max-width: $tablet-landscape) {
+			height: 55%;
+		}
+	}
+	@media (max-width: $tablet-landscape) {
+		padding: 20px 20px 10px;
+		height: 180px;
 	}
 }
 
@@ -363,6 +476,10 @@
 	border-bottom: 3px solid rgba(249, 189, 77, 0.8);
 	padding-bottom: 2px;
 	margin-bottom: 10px;
+	@media (max-width: $tablet-landscape) {
+		font-size: 26px;
+		border-bottom: 2px solid rgba(249, 189, 77, 0.8);
+	}
 }
 
 .services__events-slide-location {
@@ -372,6 +489,9 @@
 	padding-left: 30px;
 	margin-bottom: 10px;
 	position: relative;
+	@media (max-width: $tablet-landscape) {
+		font-size: 16px;
+	}
 	&:before {
 		content: '';
 		width: 22px;
@@ -383,6 +503,10 @@
 		background-image: url('../../img/services/events-door-icon.svg');
 		background-position: center;
 		background-repeat: no-repeat;
+		@media (max-width: $tablet-landscape) {
+			width: 20px;
+			height: 20px;
+		}
 	}
 }
 .services__events-slide-date {
@@ -392,6 +516,9 @@
 	padding-left: 30px;
 	margin-bottom: 10px;
 	position: relative;
+	@media (max-width: $tablet-landscape) {
+		font-size: 16px;
+	}
 	&:before {
 		content: '';
 		width: 22px;
@@ -403,6 +530,10 @@
 		background-image: url('../../img/services/events-calendar-icon.svg');
 		background-position: center;
 		background-repeat: no-repeat;
+		@media (max-width: $tablet-landscape) {
+			width: 20px;
+			height: 20px;
+		}
 	}
 }
 .services__events-slide-time {
@@ -412,6 +543,9 @@
 	padding-left: 30px;
 	margin-bottom: 10px;
 	position: relative;
+	@media (max-width: $tablet-landscape) {
+		font-size: 16px;
+	}
 	&:before {
 		content: '';
 		width: 22px;
@@ -423,6 +557,10 @@
 		background-image: url('../../img/services/events-time-icon.svg');
 		background-position: center;
 		background-repeat: no-repeat;
+		@media (max-width: $tablet-landscape) {
+			width: 20px;
+			height: 20px;
+		}
 	}
 }
 .services__events-slide-desc {
@@ -432,6 +570,10 @@
 	opacity: 0;
 	line-height: 1.7;
 	transition: opacity 0.3s ease;
+	@media (max-width: $tablet-landscape) {
+		margin-top: 12px;
+		line-height: 1.4;
+	}
 }
 
 // PAGINATION EVENTS
@@ -459,6 +601,9 @@
 }
 .services__events-arrow.swiper-button-prev {
 	left: 500px;
+	@media (max-width: $tablet-landscape) {
+		left: 350px;
+	}
 }
 .services__events-arrow.swiper-button-next {
 	right: 20px;
@@ -520,6 +665,10 @@
 	text-transform: uppercase;
 	font-size: 16px;
 	font-weight: 800;
+
+	@media (max-width: $tablet-landscape) {
+		font-size: 12px;
+	}
 }
 .services__сourses-desc {
 	position: absolute;
@@ -528,6 +677,9 @@
 	color: var(--white-color);
 	font-size: 16px;
 	font-weight: 600;
+	@media (max-width: $tablet-landscape) {
+		font-size: 14px;
+	}
 }
 .services__courses-link {
 	position: absolute;
@@ -540,5 +692,8 @@
 	transition: filter 0.2s ease;
 	&:hover {
 		filter: drop-shadow(2px 2px 2px black);
+	}
+	@media (max-width: $tablet-landscape) {
+		font-size: 12px;
 	}
 }

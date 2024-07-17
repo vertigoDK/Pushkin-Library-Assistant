@@ -33,18 +33,27 @@
 	padding: 0 20px 10px;
 	height: 180px;
 }
+
 .catalog__bookcard-title {
 	font-weight: 700;
 	font-size: 14px;
 	color: var(--black-color);
 	margin-bottom: 22px;
+	@media (max-width: $tablet-landscape) {
+		font-size: 13px;
+		margin-bottom: 16px;
+	}
 }
 
 .catalog__bookcard-text {
 	font-weight: 300;
 	font-size: 14px;
 	color: var(--gray-color);
+	@media (max-width: $tablet-landscape) {
+		font-size: 12px;
+	}
 }
+
 .catalog__bookcard-link {
 	font-weight: 600;
 	font-size: 14px;
@@ -61,6 +70,9 @@
 	transition: background-color 0.2s ease;
 	&:hover {
 		background-color: var(--general-tint-color);
+	}
+	@media (max-width: $tablet-landscape) {
+		font-size: 12px;
 	}
 }
 
@@ -89,5 +101,8 @@
 	transition: background-color 0.2s ease;
 	&:hover {
 		background-color: var(--general-tint-color);
+	}
+	@media (max-width: $tablet-landscape) {
+		font-size: 12px;
 	}
 }

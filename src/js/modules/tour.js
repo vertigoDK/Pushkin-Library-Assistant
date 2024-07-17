@@ -11,6 +11,11 @@ export default function tourLocationChanges() {
 	function changeImages() {
 		for (let i = 0; i < images.length; i++) {
 			images[i].src = `./img/tour/${active.id}-${i + 1}.jpg`;
+			images[i].style.animation = 'imageAppear .3s ease-in';
+			setTimeout(removeAnim, 350);
+			function removeAnim() {
+				images[i].style.removeProperty('animation');
+			}
 		}
 	}
 
@@ -19,9 +24,6 @@ export default function tourLocationChanges() {
 			active = location;
 			active.classList.add('active');
 
-			// for (let i = 0; i < images.length; i++) {
-			// 	images[i].src = `./img/tour/${active.id}-${i + 1}.jpg`;
-			// }
 			changeImages();
 
 			// delete classes on other elements
@@ -37,6 +39,7 @@ export default function tourLocationChanges() {
 	btnPrev.addEventListener('click', function () {
 		for (let i = 0; i < locations.length; i++) {
 			if (i !== 0 && locations[i] === active) {
+				// active.style.animation = 'slideOnTop 0.3s ease';
 				active.classList.remove('active');
 				active = locations[i - 1];
 				active.classList.add('active');
