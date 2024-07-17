@@ -15,3 +15,6 @@ class BookSearchParamsSerializer(serializers.Serializer):
     document_type = serializers.CharField(max_length=255, required=False, allow_blank=True)
     document_form = serializers.CharField(max_length=255, required=False, allow_blank=True)
     document_language = serializers.CharField(max_length=255, required=False, allow_blank=True)
+
+class ExaSearchSerializer(serializers.Serializer):
+    query = serializers.CharField(required=True)
