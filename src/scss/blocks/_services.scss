@@ -36,6 +36,32 @@
 		grid-template-rows: repeat(3, 200px);
 		gap: 16px;
 	}
+	@media (max-width: $medium-mobile) {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(6, 200px);
+		gap: 12px;
+		grid-template-areas:
+			'time time'
+			'news news'
+			'ai-chat actions'
+			'courses courses'
+			'events events'
+			'events events';
+	}
+	@media (max-width: $small-mobile) {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 200px 200px 180px 200px 250px 180px 200px 200px;
+		gap: 12px;
+		grid-template-areas:
+			'time time'
+			'time time'
+			'news news'
+			'ai-chat ai-chat'
+			'actions actions'
+			'courses courses'
+			'events events'
+			'events events';
+	}
 }
 
 // TIME ==========================================
@@ -85,6 +111,7 @@
 		background-position: left 50% bottom 26px;
 		pointer-events: none;
 	}
+
 	@media (max-width: $tablet-landscape) {
 		&-item {
 			padding-bottom: 18px;
@@ -107,6 +134,7 @@
 		}
 	}
 	@media (max-width: $tablet-portrait) {
+		padding: 12px;
 		&-item {
 			padding-bottom: 12px;
 			&:not(:first-child) {
@@ -127,9 +155,46 @@
 			background-size: 120px;
 		}
 	}
+	@media (max-width: $medium-mobile) {
+		&-text {
+			font-size: 12px;
+			margin-bottom: 0;
+		}
+		&-item {
+			width: 60%;
+			padding-bottom: 5px;
+			&:not(:first-child) {
+				margin-top: 10px;
+			}
+		}
+		&::after {
+			background-size: 130px;
+			background-position: 290px;
+		}
+	}
+	@media (max-width: $small-mobile) {
+		padding: 20px;
+		&-text {
+			font-size: 16px;
+		}
+		&-num {
+			font-size: 26px;
+		}
+		&-item {
+			width: 100%;
+			padding-bottom: 5px;
+			&:not(:first-child) {
+				margin-top: 20px;
+			}
+		}
+		&::after {
+			background-size: 120px;
+			background-position: 50% 250px;
+		}
+	}
 }
 
-// NEWS =============================================
+// *NEWS =============================================
 
 .services__news {
 	grid-area: news;
@@ -137,11 +202,15 @@
 	overflow: hidden;
 	position: relative;
 }
+
 .services__news-swiper {
 	width: 100%;
 	height: 100%;
 	.swiper-slide {
 		position: relative;
+		img {
+			object-fit: cover;
+		}
 	}
 	img {
 		width: 100%;
@@ -168,13 +237,25 @@
 	&:active {
 		scale: 0.9;
 	}
+	@media (max-width: $tablet-portrait) {
+		width: 14px;
+		height: 10px;
+	}
 }
+
 .swiper-button-prev.services__arrow {
 	left: 7px;
+	@media (max-width: $tablet-portrait) {
+		left: 3px;
+	}
 }
 .swiper-button-next.services__arrow {
 	right: 7px;
+	@media (max-width: $tablet-portrait) {
+		right: 30px;
+	}
 }
+
 .services__news-title {
 	position: absolute;
 	bottom: 90px;
@@ -193,9 +274,18 @@
 	}
 	@media (max-width: $tablet-portrait) {
 		font-size: 10px;
-		bottom: 100px;
+		bottom: 80px;
+	}
+	@media (max-width: $medium-mobile) {
+		bottom: 70px;
+	}
+	@media (max-width: $small-mobile) {
+		top: 10px;
+		height: 20px;
+		left: 10px;
 	}
 }
+
 .services__news-desc {
 	position: absolute;
 	left: 30px;
@@ -208,6 +298,10 @@
 	}
 	@media (max-width: $tablet-portrait) {
 		font-size: 12px;
+		bottom: 50px;
+	}
+	@media (max-width: $medium-mobile) {
+		font-size: 14px;
 	}
 }
 
@@ -229,6 +323,10 @@
 	}
 	@media (max-width: $tablet-portrait) {
 		font-size: 10px;
+	}
+	@media (max-width: $medium-mobile) {
+		font-size: 14px;
+		bottom: 20px;
 	}
 }
 
@@ -276,6 +374,10 @@
 			width: 130px;
 			height: 119px;
 		}
+		@media (max-width: $tablet-portrait) {
+			width: 110px;
+			height: 98px;
+		}
 	}
 	&-text {
 		font-size: 16px;
@@ -287,6 +389,14 @@
 
 		@media (max-width: $tablet-landscape) {
 			bottom: 35px;
+			font-size: 14px;
+		}
+		@media (max-width: $tablet-portrait) {
+			bottom: 30px;
+			font-size: 12px;
+		}
+		@media (max-width: $medium-mobile) {
+			bottom: 20px;
 			font-size: 14px;
 		}
 	}
@@ -305,6 +415,9 @@
 		@media (max-width: $tablet-landscape) {
 			padding: 12px;
 		}
+		@media (max-width: $tablet-portrait) {
+			padding: 10px;
+		}
 	}
 	&-title {
 		// position: absolute;
@@ -315,6 +428,13 @@
 		margin-bottom: 20px;
 		@media (max-width: $tablet-landscape) {
 			font-size: 12px;
+		}
+		@media (max-width: $tablet-portrait) {
+			font-size: 10px;
+			margin-bottom: 10px;
+		}
+		@media (max-width: $small-mobile) {
+			font-size: 14px;
 		}
 	}
 }
@@ -336,6 +456,9 @@
 	@media (max-width: $tablet-landscape) {
 		padding: 0;
 	}
+	@media (max-width: $small-mobile) {
+		padding: 2px;
+	}
 	&:not(:last-child) {
 		border-bottom: 1px solid rgba(149, 140, 155, 0.2);
 	}
@@ -344,6 +467,14 @@
 		height: 42px;
 		width: 42px;
 		@media (max-width: $tablet-landscape) {
+			height: 32px;
+			width: 32px;
+		}
+		@media (max-width: $tablet-portrait) {
+			height: 26px;
+			width: 26px;
+		}
+		@media (max-width: $small-mobile) {
 			height: 32px;
 			width: 32px;
 		}
@@ -383,6 +514,9 @@
 	@media (max-width: $tablet-landscape) {
 		font-size: 10px;
 	}
+	@media (max-width: $small-mobile) {
+		font-size: 12px;
+	}
 }
 
 // EVENTS =========================================
@@ -409,7 +543,6 @@
 .services__events-slide-image {
 	display: block;
 	position: relative;
-	// visibility: hidden;
 	height: auto;
 	width: 100%;
 	&:hover {
@@ -461,9 +594,21 @@
 		@media (max-width: $tablet-landscape) {
 			height: 55%;
 		}
+		@media (max-width: $tablet-portrait) {
+			height: 60%;
+		}
+		@media (max-width: $small-mobile) {
+			height: 79%;
+		}
 	}
 	@media (max-width: $tablet-landscape) {
 		padding: 20px 20px 10px;
+		height: 180px;
+	}
+	@media (max-width: $tablet-portrait) {
+		height: 150px;
+	}
+	@media (max-width: $small-mobile) {
 		height: 180px;
 	}
 }
@@ -480,6 +625,9 @@
 		font-size: 26px;
 		border-bottom: 2px solid rgba(249, 189, 77, 0.8);
 	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 20px;
+	}
 }
 
 .services__events-slide-location {
@@ -491,6 +639,9 @@
 	position: relative;
 	@media (max-width: $tablet-landscape) {
 		font-size: 16px;
+	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 14px;
 	}
 	&:before {
 		content: '';
@@ -519,6 +670,9 @@
 	@media (max-width: $tablet-landscape) {
 		font-size: 16px;
 	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 14px;
+	}
 	&:before {
 		content: '';
 		width: 22px;
@@ -534,6 +688,10 @@
 			width: 20px;
 			height: 20px;
 		}
+		@media (max-width: $tablet-portrait) {
+			width: 18px;
+			height: 18px;
+		}
 	}
 }
 .services__events-slide-time {
@@ -545,6 +703,9 @@
 	position: relative;
 	@media (max-width: $tablet-landscape) {
 		font-size: 16px;
+	}
+	@media (max-width: $tablet-landscape) {
+		font-size: 14px;
 	}
 	&:before {
 		content: '';
@@ -574,6 +735,13 @@
 		margin-top: 12px;
 		line-height: 1.4;
 	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 12px;
+		margin-top: 10px;
+	}
+	@media (max-width: $small-mobile) {
+		font-size: 14px;
+	}
 }
 
 // PAGINATION EVENTS
@@ -598,18 +766,30 @@
 	&:active {
 		scale: 0.9;
 	}
+	@media (max-width: $tablet-portrait) {
+		top: 40px;
+	}
 }
 .services__events-arrow.swiper-button-prev {
 	left: 500px;
 	@media (max-width: $tablet-landscape) {
 		left: 350px;
 	}
+	@media (max-width: $tablet-portrait) {
+		left: 250px;
+	}
+	@media (max-width: $small-mobile) {
+		left: 160px;
+	}
 }
 .services__events-arrow.swiper-button-next {
 	right: 20px;
+	@media (max-width: $tablet-portrait) {
+		right: 10px;
+	}
 }
 
-// COURCES ==========================================
+// *COURCES ==========================================
 .services__courses {
 	grid-area: courses;
 	background-color: #185638;
@@ -652,6 +832,7 @@
 .swiper-button-next.services__arrow {
 	right: 7px;
 }
+
 .services__courses-title {
 	position: absolute;
 	bottom: 90px;
@@ -669,7 +850,19 @@
 	@media (max-width: $tablet-landscape) {
 		font-size: 12px;
 	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 10px;
+	}
+	@media (max-width: $medium-mobile) {
+		bottom: 70px;
+	}
+	@media (max-width: $small-mobile) {
+		top: 10px;
+		height: 20px;
+		left: 10px;
+	}
 }
+
 .services__сourses-desc {
 	position: absolute;
 	left: 30px;
@@ -680,7 +873,15 @@
 	@media (max-width: $tablet-landscape) {
 		font-size: 14px;
 	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 12px;
+		bottom: 50px;
+	}
+	@media (max-width: $medium-mobile) {
+		font-size: 14px;
+	}
 }
+
 .services__courses-link {
 	position: absolute;
 	left: 30px;
@@ -695,5 +896,12 @@
 	}
 	@media (max-width: $tablet-landscape) {
 		font-size: 12px;
+	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 10px;
+	}
+	@media (max-width: $medium-mobile) {
+		font-size: 14px;
+		bottom: 20px;
 	}
 }

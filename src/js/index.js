@@ -13,6 +13,10 @@ import 'swiper/css/bundle';
 // import servicesActions from './modules/services-actions.js';
 // servicesActions();
 
+// Hero Fixed
+import fixedHeader from './modules/fixed-header.js';
+fixedHeader();
+
 // Tour location changes
 import tourLocationChanges from './modules/tour.js';
 tourLocationChanges();
@@ -98,11 +102,23 @@ const swiperCourses = new Swiper('.services__courses-swiper', {
 // Tour Swiper:
 const swiperTour = new Swiper('.tour__swiper', {
 	// Optional parameters
-	direction: 'vertical',
-	slidesPerView: 7,
 	spaceBetween: 0,
 	loop: false,
 	speed: 400,
+	breakpoints: {
+		0: {
+			direction: 'horizontal',
+			slidesPerView: 3,
+		},
+		321: {
+			direction: 'horizontal',
+			slidesPerView: 4,
+		},
+		481: {
+			direction: 'vertical',
+			slidesPerView: 7,
+		},
+	},
 
 	// Navigation arrows
 	navigation: {
@@ -129,31 +145,37 @@ ScrollReveal().reveal(`.hero__social-1`, {
 	duration: 1000,
 	distance: '20px',
 });
+
 ScrollReveal().reveal(`.hero__social-2`, {
 	origin: 'bottom',
 	duration: 1100,
 	distance: '20px',
 });
+
 ScrollReveal().reveal(`.hero__social-3`, {
 	origin: 'bottom',
 	duration: 1200,
 	distance: '20px',
 });
+
 ScrollReveal().reveal(`.hero__social-4`, {
 	origin: 'bottom',
 	duration: 1300,
 	distance: '21px',
 });
+
 ScrollReveal().reveal(`.hero__social-5`, {
 	origin: 'bottom',
 	duration: 1400,
 	distance: '22px',
 });
+
 ScrollReveal().reveal(`.hero__social-6`, {
 	origin: 'bottom',
 	duration: 1500,
 	distance: '23px',
 });
+
 ScrollReveal().reveal(`.hero__social-7`, {
 	origin: 'bottom',
 	duration: 1600,
@@ -171,29 +193,34 @@ ScrollReveal().reveal(`.services__time`, {
 	duration: 800,
 	distance: '30px',
 });
+
 ScrollReveal().reveal(`.services__news`, {
 	origin: 'bottom',
 	duration: 1100,
 	distance: '40px',
 });
+
 ScrollReveal().reveal(`.services__ai-chat`, {
 	origin: 'right',
 	delay: 200,
 	duration: 1100,
 	distance: '30px',
 });
+
 ScrollReveal().reveal(`.services__actions`, {
 	origin: 'bottom',
 	delay: 100,
 	duration: 1000,
 	distance: '40px',
 });
+
 ScrollReveal().reveal(`.services__events`, {
 	origin: 'right',
 	delay: 200,
 	duration: 1400,
 	distance: '45px',
 });
+
 ScrollReveal().reveal(`.services__courses`, {
 	origin: 'left',
 	delay: 100,

@@ -16,7 +16,7 @@
 }
 
 .no-scroll {
-	overflow-y: hidden;
+	overflow: hidden;
 }
 
 .title-wrapper {
@@ -24,12 +24,16 @@
 	align-items: center;
 	gap: 15px;
 }
+
 .title-line {
 	height: 30px;
 	width: 5px;
 	background-color: var(--secondary-color);
 	@media (max-width: $tablet-landscape) {
 		height: 22px;
+	}
+	@media (max-width: $tablet-portrait) {
+		height: 18px;
 	}
 }
 .title {
@@ -39,5 +43,15 @@
 	color: var(--gray-color);
 	@media (max-width: $tablet-landscape) {
 		font-size: 22px;
+	}
+	@media (max-width: $tablet-portrait) {
+		font-size: 18px;
+	}
+}
+
+.main {
+	margin-bottom: 130px;
+	@media (max-width: $tablet-portrait) {
+		margin-bottom: 85px;
 	}
 }

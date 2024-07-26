@@ -8,6 +8,15 @@
 	gap: 10px;
 	align-items: center;
 	height: 87vh;
+	@media (max-width: $tablet-landscape) {
+		height: 86vh;
+	}
+	@media (max-width: $tablet-portrait) {
+		height: 84vh;
+	}
+	@media (max-width: $small-desktop) {
+		height: 83vh;
+	}
 }
 
 .dosai__box {
@@ -26,12 +35,16 @@
 
 	// transition: height 0.2s ease;
 	position: relative;
+	@media (max-width: $small-mobile) {
+		padding: 20px 8px 15px;
+	}
 }
 
 .dosai__chat-bar {
 	background-color: rgba(24, 42, 100, 35%);
 	max-width: 800px;
 	width: 100%;
+	height: 47px;
 	max-height: 800px;
 	padding: 10px;
 	border-radius: 3px;
@@ -40,7 +53,11 @@
 	align-items: center;
 	border: 1px solid var(--black-color);
 	transition: height 0.2s ease;
+	@media (max-width: $small-mobile) {
+		height: 40px;
+	}
 }
+
 .dosai__chat-bar-input {
 	display: flex;
 	align-items: center;
@@ -82,6 +99,10 @@
 	border-radius: 9px;
 	box-shadow: -4px 5px 17px 2px rgba(37, 139, 88, 0.7);
 	animation: appearMssg 0.3s ease;
+	@media (max-width: $small-mobile) {
+		font-size: 12px;
+		padding: 15px;
+	}
 }
 
 @keyframes appearMssg {
@@ -107,6 +128,10 @@
 	box-shadow: 4px 5px 17px 2px rgba(24, 42, 100, 0.7);
 
 	animation: appearMssg 0.3s ease;
+	@media (max-width: $small-mobile) {
+		font-size: 12px;
+		padding: 15px;
+	}
 }
 
 // Loading

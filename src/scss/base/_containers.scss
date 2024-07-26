@@ -25,3 +25,9 @@
 		padding-right: var(--container-padding);
 	}
 }
+
+.container.hero__container {
+	@media (max-width: $small-mobile) {
+		padding: 0;
+	}
+}

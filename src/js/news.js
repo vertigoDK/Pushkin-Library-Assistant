@@ -2,6 +2,14 @@
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 
+// Mobile nav
+import mobileNav from './modules/mobile-nav.js';
+mobileNav();
+
+// Fixed Header
+import fixedHeader from './modules/fixed-header.js';
+fixedHeader();
+
 const cardsText = document.querySelectorAll('.news__card-text');
 
 cardsText.forEach(cardText => {

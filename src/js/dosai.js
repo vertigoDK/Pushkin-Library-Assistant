@@ -1,3 +1,9 @@
+import mobileNav from './modules/mobile-nav.js';
+mobileNav();
+
+import fixedHeader from './modules/fixed-header.js';
+fixedHeader();
+
 const dosaiField = document.querySelector('.dosai__box');
 const sendBtn = document.querySelector('.dosai__chat-bar-btn');
 const form = document.querySelector('.dosai__chat-bar');
