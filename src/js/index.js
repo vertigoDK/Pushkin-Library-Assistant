@@ -166,9 +166,15 @@ ScrollReveal().reveal(`.hero__social-4`, {
 
 ScrollReveal().reveal(`.hero__social-5`, {
 	origin: 'bottom',
-	duration: 1400,
-	distance: '22px',
+	duration: 1300,
+	distance: '21px',
 });
+// ScrollReveal({ mobile: true }).reveal('.hero__social-5', {
+// 	origin: 'bottom',
+// 	distance: '50px',
+// 	duration: 1000,
+// 	easing: 'ease-in-out',
+// });
 
 ScrollReveal().reveal(`.hero__social-6`, {
 	origin: 'bottom',

@@ -137,6 +137,10 @@
 		background-color: var(--general-color);
 		scale: 1.12;
 	}
+	@media (max-width: $medium-mobile) {
+		opacity: 1 !important;
+		transform: translate(0) !important ;
+	}
 }
 
 .hero__line {
