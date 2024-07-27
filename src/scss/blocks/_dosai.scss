@@ -14,9 +14,6 @@
 	@media (max-width: $tablet-portrait) {
 		height: 84vh;
 	}
-	@media (max-width: $small-desktop) {
-		height: 83vh;
-	}
 }
 
 .dosai__box {
@@ -72,7 +69,11 @@
 	height: auto;
 	width: 90%;
 	transition: height 0.2s ease;
+	@media (max-width: $small-mobile) {
+		font-size: 14px;
+	}
 }
+
 .dosai__chat-bar-btn {
 	transition: box-shadow 0.2s ease;
 	&:hover {
@@ -88,6 +89,7 @@
 }
 
 .dosai__user-msg {
+	overflow-wrap: break-word;
 	padding: 20px;
 	font-size: 16px;
 	font-weight: 500;
@@ -102,6 +104,7 @@
 	@media (max-width: $small-mobile) {
 		font-size: 12px;
 		padding: 15px;
+		max-width: 270px;
 	}
 }
 
@@ -117,6 +120,7 @@
 }
 
 .dosai__bot-msg {
+	overflow-wrap: break-word;
 	padding: 20px;
 	background-color: var(--black-color);
 	font-size: 16px;
@@ -131,6 +135,7 @@
 	@media (max-width: $small-mobile) {
 		font-size: 12px;
 		padding: 15px;
+		max-width: 270px;
 	}
 }
 
