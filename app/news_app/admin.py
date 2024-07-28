@@ -1,8 +1,9 @@
 # admin.py
 
 
-from unfold.admin import ModelAdmin, TabularInline
 from django.contrib.admin import register
+from unfold.admin import ModelAdmin, TabularInline
+
 from .models import News, NewsImage
 
 

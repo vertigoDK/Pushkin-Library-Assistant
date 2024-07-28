@@ -68,8 +68,7 @@
             <div class="tour__title title-wrapper">
                 <div class="title-line"></div>
                 <h3 class="title" data-sr-id="16"
-                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);">
-                    Тур по библиотеке</h3>
+                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);">{% trans 'library-tour' %}</h3>
             </div> <!-- TITLE -->
             <div class="tour__box">
                 <div class="tour__list">
@@ -96,7 +95,7 @@
                             <div class="swiper-slide tour__location">Фойе 9</div> -->
                         </div> <!-- /SWIPER WRAPER -->
                         <!-- PAGINATION -->
-                        <div class="swiper-button-prev tour__arrow swiper-button-disabled swiper-button-lock"
+                       {% comment %} <div class="swiper-button-prev tour__arrow swiper-button-disabled swiper-button-lock"
                              tabindex="-1" role="button" aria-label="Previous slide"
                              aria-controls="swiper-wrapper-d9c5947dda6362e9" aria-disabled="true">
                             <img src="{% static 'img/tour/arrow-up.svg' %}" alt="Arrow Prev">
@@ -105,7 +104,7 @@
                              tabindex="-1" role="button" aria-label="Next slide"
                              aria-controls="swiper-wrapper-d9c5947dda6362e9" aria-disabled="true">
                             <img src="{% static 'img/tour/arrow-down.svg' %}" alt="Arrow Next">
-                        </div>
+                        </div>{% endcomment %}
                         <!-- /PAGINATION -->
                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                     <!-- /TOUR SWIPER -->

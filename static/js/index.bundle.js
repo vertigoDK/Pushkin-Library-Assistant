@@ -4678,11 +4678,12 @@
                 n()
             }))
         }(), document.querySelectorAll(".catalog__bookcard-text").forEach((e => {
-            if (e.textContent.length > 197) {
-                const t = e.textContent.slice(0, 192);
+            if (e.textContent.length > 500) {
+                const t = e.textContent.slice(0, 600);
                 e.textContent = `${t}...`
             }
         })), function () {
+            return;
             const currentPath = window.location.pathname;
             const targetPath = "/";
 

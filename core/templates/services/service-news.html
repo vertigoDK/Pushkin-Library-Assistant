@@ -24,13 +24,13 @@
                     <h6 class="services__news-title">{% trans 'news' %}</h6>
                 </a>
                 <p class="services__news-desc">{% if LANGUAGE_CODE == 'ru' %}
-                    {{ item.title_ru }}
+                    {{ item.title_ru|truncatechars:50  }}
                 {% elif LANGUAGE_CODE == 'kk' %}
-                    {{ item.title_kz }}
+                    {{ item.title_kz|truncatechars:50  }}
                 {% else %}
-                    {{ item.title_en }}
+                    {{ item.title_en|truncatechars:50  }}
                 {% endif %}</p>
-                <a class="services__news-link" href="{% url 'news_detail' slug=item.slug %}">Читать</a>
+                <a class="services__news-link" href="{% url 'news_detail' slug=item.slug %}">{% trans 'read' %}</a>
             </div>
 
 

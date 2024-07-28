@@ -1,0 +1,19 @@
+.catalog__bookcard-image {
+    width: 300px;
+    height: 400px;
+    overflow: hidden; /* Обрезает части изображения, выходящие за границы контейнера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catalog__bookcard-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняет контейнер, обрезая лишние части */
+    object-position: center; /* Центрирует изображение внутри контейнера */
+}
+
+.catalog__bookcard-contetnt {
+    height: 335px;
+}
