@@ -22,6 +22,7 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     '*',
     '192.168.1.109',
+    'colab.research.google.com',
 ]
 
 UNFOLD = {
