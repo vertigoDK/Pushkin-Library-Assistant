@@ -1,6 +1,8 @@
 {% load i18n %}
 {% load static %}
-<header class="header">
+
+<div class="header-wrapper">
+    <header class="header">
     <div class="container">
         <div class="header__row">
             <a href='{% url 'core' %}' class="header__logo logo">
@@ -110,10 +112,91 @@
                     </li>
                 </ul>
             </nav> <!-- /HEADER NAV -->
-            <!-- <button class="mobile-nav-btn">
+            <button class="mobile-nav-btn">
                 <div class="nav-icon"></div>
-            </button> -->
+            </button>
         </div>
     </div>
 </header>
+</div>
 <!-- @@include('mobile-nav.html') -->
+
+<div class="mobile-nav">
+    <ul class='mobile-nav__list'>
+        <li class="mobile-nav__item">
+            <button class='mobile-nav__btn'>Библиотека</button>
+            <div class="mobile-nav__dropdown">
+                <a class='mobile-nav__link' href="#!">О нас</a>
+                <a class='mobile-nav__link' href="#!">История</a>
+                <a class='mobile-nav__link' href="#!">Правила Пользования</a>
+            </div>
+        </li>
+        <li class="mobile-nav__item">
+            <button class='mobile-nav__btn'>Читателям</button>
+            <div class="mobile-nav__dropdown">
+                <a class='mobile-nav__link' href="#!">Записаться читателям</a>
+                <a class='mobile-nav__link' href="#!">Виртуальная справка</a>
+                <a class='mobile-nav__link' href="#!">Электронная доставка документов</a>
+                <a class='mobile-nav__link' href="#!">Продлить книгу</a>
+                <a class='mobile-nav__link' href="#!">Записаться на курсы</a>
+                <a class='mobile-nav__link' href="#!">Консультации юриста</a>
+                <a class='mobile-nav__link' href="#!">Кружки и клубы</a>
+            </div>
+        </li>
+        <li class="mobile-nav__item">
+            <button class='mobile-nav__btn'>Новости</button>
+            <div class="mobile-nav__dropdown">
+                <a class='mobile-nav__link' href="../news-page.html">Все новости</a>
+                <a class='mobile-nav__link' href="#!">Архив</a>
+            </div>
+        </li>
+        <li class="mobile-nav__item">
+            <button class='mobile-nav__btn'>Электронный каталог</button>
+            <div class="mobile-nav__dropdown">
+                <a class='mobile-nav__link' href="#!">Электронная бибилиотека "Наш Абай"</a>
+                <a class='mobile-nav__link' href="#!">
+                    Краеведческая электронная библиотека
+                </a>
+            </div>
+        </li>
+        <li class="mobile-nav__item">
+            <button class='mobile-nav__btn'>Краеведение</button>
+            <div class="mobile-nav__dropdown">
+                <a class='mobile-nav__link' href="#!">Краеведение Восточного Казахстана</a>
+                <a class='mobile-nav__link' href="#!">
+                    Восточный Казахстан: известные имена
+                </a>
+                <a class='mobile-nav__link' href="#!">
+                    Каюм Мухамедханов: библиографический указатель
+                </a>
+                <a class='mobile-nav__link' href="#!">
+                    Календарь знаментельных и памятных дат по ВКО
+                </a>
+            </div>
+        </li>
+        <li class="mobile-nav__item">
+            <button class='mobile-nav__btn'>Ресурсы</button>
+            <div class="mobile-nav__dropdown">
+                <a class='mobile-nav__link' href="#!">Наши раритеты</a>
+                <a class='mobile-nav__link' href="#!">Виртульные выставки</a>
+                <a class='mobile-nav__link' href="#!">Одна страна - одна книга</a>
+                <a class='mobile-nav__link' href="#!">Новые поступления</a>
+            </div>
+        </li>
+        <li class="mobile-nav__item">
+            <button class='mobile-nav__btn'>Профессионалам</button>
+            <div class="mobile-nav__dropdown">
+                <a class='mobile-nav__link' href="#!">Методическая служба</a>
+                <a class='mobile-nav__link' href="#!">"Рухани қазына"</a>
+            </div>
+        </li>
+        <li class="mobile-nav__item">
+            <button class='mobile-nav__btn'>РУС</button>
+            <div class="mobile-nav__dropdown">
+                <a class='mobile-nav__link' href="#!">ҚАЗ</a>
+                <a class='mobile-nav__link' href="#!">ENG</a>
+            </div>
+        </li>
+    </ul>
+</div>
+</div>

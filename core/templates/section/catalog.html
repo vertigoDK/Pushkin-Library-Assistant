@@ -6,8 +6,10 @@
 <section class="catalog">
     <div class="container">
         <div class="catalog__row">
-            <div class="catalog__title title">{% trans 'new-items' %}</div>
-
+            <div class="catalog__title title-wrapper">
+                <div class="title-line"></div>
+                <h3 class="title">{% trans 'new-items' %}</h3>
+            </div> <!-- TITLE -->
             <div class="catalog__bookcards">
 
                 {% for item in new_books %}
