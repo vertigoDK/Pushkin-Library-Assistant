@@ -1,4 +1,4 @@
-import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+import Chatbot from "{% static 'js/lib/web.js' %}"
 
 Chatbot.init({
     chatflowid: "bca6d8e7-2894-417d-8527-a38b0a072cdf",
@@ -13,7 +13,7 @@ Chatbot.init({
             bottom: 20,
             size: "medium",
             iconColor: "black",
-            customIconSrc: "../img/dosai/logo-dosai-white-bg.svg",
+            customIconSrc: "/static/img/dosai/logo-dosai-white-bg.svg",
         },
         chatWindow: {
             welcomeMessage: "Привет, я Дос твой онлайн помощник в библиотеке Пушкина",
