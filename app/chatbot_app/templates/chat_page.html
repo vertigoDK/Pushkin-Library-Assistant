@@ -4,21 +4,53 @@
 
 {% block content %}
     <div class="container">
-        <div class="dosai__row">
-            <div class="dosai__box"></div>
-            <form action='/' class="dosai__chat-bar">
-                <label for="chat-input"></label>
-                <textarea maxlength="300" type="text" class="dosai__chat-bar-input" rows='1'
-                          placeholder='Сообщение DosAI'></textarea>
-                <button type='submit' class="dosai__chat-bar-btn">
-                    <img src="{% static 'img/dosai/arrow-up.svg' %}" alt="Arrow up"/>
-                </button>
-                <button id="clear-chat-btn" class="dosai__clear-chat-btn">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </form>
-        </div> <!-- /ROW -->
+            <div class="dosai__box">
+                <div class="chat-container">
+                    <flowise-fullchatbot></flowise-fullchatbot>
+                </div>
+            </div>
     </div> <!-- /CONTAINER -->
 
-    <script src='{% static 'js/dosai.bundle.js' %}'></script>
+    <script type="module">
+        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+        Chatbot.initFull({
+            chatflowid: "d86144c7-026f-4a69-867e-cea2495bc0b5",
+            apiHost: "http://127.0.0.1:3000",
+            theme: {
+                chatWindow: {
+                    showTitle: true,
+                    welcomeMessage: '',
+                    errorMessage: 'This is a custom error message',
+                    backgroundColor: "transparent",
+                    fontSize: 16,
+                    height: '100%',
+                    poweredByTextColor: "transparent",
+                    botMessage: {
+                        backgroundColor: "#2D4273",
+                        textColor: "#ffffff",
+                        showAvatar: true,
+                        avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png",
+                    },
+                    userMessage: {
+                        backgroundColor: "#4CAF50",
+                        textColor: "#ffffff",
+                        showAvatar: true,
+                        avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png",
+                    },
+                    textInput: {
+                        placeholder: 'Type your question',
+                        backgroundColor: '#ffffff',
+                        textColor: '#000000',
+                        sendButtonColor: '#4CAF50',
+                        maxChars: 300,
+                        maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 300 characters.',
+                        autoFocus: true,
+                    },
+                    feedback: {
+                        color: '#000000',
+                    },
+                }
+            }
+        })
+    </script>
 {% endblock %}

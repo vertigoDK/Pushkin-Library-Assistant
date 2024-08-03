@@ -5,7 +5,7 @@ from .HTMLParser import HTMLParser
 
 class BaseAPIHandler:
     BASE_URL: str = "http://irbis.pushkinlibrary.kz:8087/jirbis2/components/com_irbis/ajax_provider.php"
-    
+
     @staticmethod
     def _generate_random_string(length: int = 8) -> str:
         """Generate a random string of letters and digits."""
@@ -76,7 +76,7 @@ class BookSearchHandler(BaseAPIHandler):
 
     def _set_selected_databases(self) -> requests.Response:
         """Set the selected databases for the search."""
-        url = f"{self.BASE_URL}?task=set_selected_bases&bl_id_array_selected%5B1%5D=1&bl_id_array_selected%5B2%5D=2&bl_id_array_selected%5B3%5D=3&bl_id_array_selected%5B2%5D=2&bl_id_array_selected%5B6%5D=6&bl_id_array_selected%5B7%5D=7&bl_id_array_selected%5B8%5D=8&bl_id_array_selected%5B10%5D=10&bl_id_array_selected%5B27%5D=27&_={self.form_request_id}"
+        url = f"{self.BASE_URL}?task=set_selected_bases&bl_id_array_selected%5B1%5D=1&bl_id_array_selected%5B2%5D=2&bl_id_array_selected%5B3%5D=3&_={self.form_request_id}"
         return self._get_request(url)
 
     def _set_user_profile(self) -> requests.Response:
@@ -103,6 +103,6 @@ class BookSearchHandler(BaseAPIHandler):
 
             results_json['recs'] = htmlParser.start_parsing_data()
             return results_json
-        
+
         except Exception as e:
             print(f"An error occurred: {e}")
