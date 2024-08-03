@@ -1,9 +1,11 @@
+{% load compress %}
 {% load static %}
 {% load i18n %}
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    {% compress css %}
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,14 +42,20 @@
 
     {% block content_css %}
     {% endblock %}
+
+
+        <link rel="stylesheet" href="{% static 'css/header/header.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/newbooks.css' %}"/>
+
+
+    {% endcompress %}
+
     {% block head_content_js %}
     {% endblock %}
 
-    <link rel="stylesheet" href="{% static 'css/header/header.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/newbooks.css' %}"/>
-
 </head>
 <body>
+
 {% include 'blocks/header.html' %}
 <main class='main'>
     {% block content %}
@@ -56,6 +64,8 @@
 {% if not hide_footer %}
     {% include 'blocks/footer.html' %}
 {% endif %}
+
+{% compress js file base %}
 {% if show_chatbot %}
     <script type="module">
         import Chatbot from "{% static 'js/lib/web.js' %}"
@@ -112,5 +122,6 @@
 
 {% block content_js %}
 {% endblock %}
+{% endcompress %}
 </body>
 </html>
