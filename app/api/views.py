@@ -10,10 +10,18 @@ class BookSearchAPIView(APIView):
         serializer = BookSearchParamsSerializer(data=request.data)
         if serializer.is_valid():
             search_params = serializer.validated_data
-            handler = BookSearchHandler(search_params)
+            first_handler = BookSearchHandler(search_params=search_params, first_number=1)
+            second_handler = BookSearchHandler(search_params=search_params, first_number=10)
+            
             try:
-                results = handler.execute_search()
-                return Response(results, status=status.HTTP_200_OK)
+                first_result = first_handler.execute_search()
+                second_result = second_handler.execute_search()
+                
+                # Объединение результатов
+                combined_results = first_result
+                combined_results['recs'].extend(second_result['recs'])
+                
+                return Response(combined_results, status=status.HTTP_200_OK)
             except Exception as e:
                 return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

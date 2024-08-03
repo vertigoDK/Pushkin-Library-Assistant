@@ -2,6 +2,7 @@ import requests
 import random
 import string
 from .HTMLParser import HTMLParser
+from typing import Dict
 
 class BaseAPIHandler:
     BASE_URL: str = "http://irbis.pushkinlibrary.kz:8087/jirbis2/components/com_irbis/ajax_provider.php"
@@ -36,7 +37,7 @@ class BaseAPIHandler:
 
 class BookSearchHandler(BaseAPIHandler):
 
-    def __init__(self, search_params: dict):
+    def __init__(self, search_params: dict, first_number: int):
         """Initialize the handler with search parameters and set up the session."""
         self.session = requests.Session()
         self.session.headers.update({
@@ -49,9 +50,14 @@ class BookSearchHandler(BaseAPIHandler):
         self.search_params = search_params
         self.client_request_id = self._generate_random_number_string(10)
         self.form_request_id = self._generate_random_number_string(10)
+        self.first_number = 1 if first_number < 1 else first_number
 
-    def _search_request(self) -> requests.Response:
+    def _search_request(self, first_number: int = None) -> requests.Response:
         """Send a search request with the current search parameters."""
+        if first_number is None:
+            first_number = self.first_number
+        if first_number < 1:
+            first_number = 1
         data = {
             'req_static': '0',
             'author': self.search_params.get('author', ''),
@@ -68,7 +74,7 @@ class BookSearchHandler(BaseAPIHandler):
             'document_form': self.search_params.get('document_form', ''),
             'document_language': self.search_params.get('document_language', ''),
             'task': 'search_broadcast',
-            'first_number': '1',
+            'first_number': first_number,
             'req_id_client': self.client_request_id,
             'selected_search_flag': '0'
         }
@@ -89,20 +95,22 @@ class BookSearchHandler(BaseAPIHandler):
         url = f"{self.BASE_URL}?task=show_results&req_id_client={self.client_request_id}&first_number=1&recs_outputed=0&reqs_outputed=0&last_output_time=0&finish_flag=last&_={self.form_request_id}"
         return self._get_request(url)
 
-    def execute_search(self) -> None:
+    def execute_search(self) -> Dict:
         """Execute the full search process."""
         try:
             self._search_request()
             self._set_selected_databases()
             self._set_user_profile()
             self._search_request()
+
             results = self._get_search_results()
-            results_json = results.json()
+            results_json_first = results.json()
 
-            htmlParser: HTMLParser = HTMLParser(results_json['recs'])
+            htmlParser = HTMLParser(results_json_first['recs'])
+            results_json_first['recs'] = htmlParser.start_parsing_data()
 
-            results_json['recs'] = htmlParser.start_parsing_data()
-            return results_json
+            return results_json_first
 
         except Exception as e:
             print(f"An error occurred: {e}")
+            return {}
