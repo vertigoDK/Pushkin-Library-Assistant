@@ -22,8 +22,8 @@
     <script type="module">
         import Chatbot from "{% static 'js/lib/web-full.js' %}"
         Chatbot.initFull({
-            chatflowid: "d86144c7-026f-4a69-867e-cea2495bc0b5",
-            apiHost: "http://127.0.0.1:3000",
+            chatflowid: "{{ CHATFLOW_ID }}",
+            apiHost: "{{ API_HOST }}",
             theme: {
                 chatWindow: {
                     showTitle: true,
