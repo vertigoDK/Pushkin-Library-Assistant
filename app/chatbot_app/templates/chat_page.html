@@ -3,27 +3,28 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
-            <div class="dosai__box">
-                <div class="chat-container">
-                    <flowise-fullchatbot></flowise-fullchatbot>
-                </div>
-            </div>
-    </div> <!-- /CONTAINER -->
+    <div class="page-container">
+
+        <main class="chat-container">
+            <flowise-fullchatbot></flowise-fullchatbot>
+        </main>
+    </div>
+    <!-- 
+    На время сделал статичным chatFlowId и apiHost
+    -->
 
     <script type="module">
-        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+        import Chatbot from "https://cdn.jsdelivr.net/gh/HenryHengZJ/FlowiseChatEmbed-Test/dist/web.js"
         Chatbot.initFull({
             chatflowid: "d86144c7-026f-4a69-867e-cea2495bc0b5",
             apiHost: "http://127.0.0.1:3000",
             theme: {
                 chatWindow: {
                     showTitle: true,
-                    welcomeMessage: '',
+                    welcomeMessage: 'Привет',
                     errorMessage: 'This is a custom error message',
                     backgroundColor: "transparent",
                     fontSize: 16,
-                    height: '100%',
                     poweredByTextColor: "transparent",
                     botMessage: {
                         backgroundColor: "#2D4273",
