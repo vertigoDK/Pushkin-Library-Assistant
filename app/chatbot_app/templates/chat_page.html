@@ -6,7 +6,13 @@
     <div class="page-container">
 
         <main class="chat-container">
-            <flowise-fullchatbot></flowise-fullchatbot>
+            <div class="container">
+                <div class="dosai__box">
+            <flowise-fullchatbot>
+
+            </flowise-fullchatbot>
+                </div>
+            </div>
         </main>
     </div>
     <!-- 
@@ -14,7 +20,7 @@
     -->
 
     <script type="module">
-        import Chatbot from "https://cdn.jsdelivr.net/gh/HenryHengZJ/FlowiseChatEmbed-Test/dist/web.js"
+        import Chatbot from "{% static 'js/lib/web-full.js' %}"
         Chatbot.initFull({
             chatflowid: "d86144c7-026f-4a69-867e-cea2495bc0b5",
             apiHost: "http://127.0.0.1:3000",

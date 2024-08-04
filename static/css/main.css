@@ -562,6 +562,8 @@ body {
     height: 435px;
 }
 
+
+
 #dosai-fixed-img-1.chat-shown {
     opacity: 0;
     transform: rotate(90deg);
@@ -577,23 +579,11 @@ body {
     font-weight: 800;
     font-size: 16px;
     color: var(--gray-color);
-    padding-bottom: 10px;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(127, 123, 130, 0.5);
 }
 
-.dosai-fixed__chat-box {
-    margin-top: 10px;
-    padding: 0 10px;
-    margin-bottom: 20px;
-    height: 400px;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-}
-
-.dosai-fixed__chat-box .dosai__user-msg {
+.dosai__user-msg {
     box-shadow: -1px 1px 5px 0 rgba(37, 139, 88, 0.7);
 }
 
@@ -664,7 +654,6 @@ body {
     flex-direction: column;
     row-gap: 20px;
     padding: 40px 15px 15px;
-    margin: 60px 0;
     overflow-y: scroll;
     scroll-behavior: smooth;
     position: relative;
@@ -2946,27 +2935,29 @@ body {
     font-weight: 800;
     color: var(--white-color);
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
+    right: 10px;
+    left: 10px;
     transition: color 0.2s ease;
 }
 
 @media (max-width: 1025px) {
     .services__ai-chat-text {
-        bottom: 35px;
+        bottom: 30px;
         font-size: 14px;
     }
 }
 
 @media (max-width: 768px) {
     .services__ai-chat-text {
-        bottom: 30px;
+        bottom: 20px;
         font-size: 12px;
     }
 }
 
 @media (max-width: 481px) {
     .services__ai-chat-text {
-        bottom: 20px;
+        bottom: 10px;
         font-size: 14px;
     }
 }
