@@ -3,9 +3,10 @@
 /* Base */
 /* Reset and base styles  */
 * {
-    padding: 0px;
-    margin: 0px;
-    border: none;
+    padding: 0;
+    margin: 0;
+    /*border: none;*/
+    border: red solid 1px;
 }
 
 *,
@@ -197,7 +198,6 @@ body {
 }
 
 .container {
-    padding: 0 var(--container-padding);
     max-width: var(--container-width);
     margin: 0 auto;
 }
@@ -1528,6 +1528,7 @@ body {
     font-weight: 600;
     color: #fff;
     width: 736px;
+    max-width: 700px;
 }
 
 @media (max-width: 1025px) {
@@ -1535,13 +1536,16 @@ body {
         font-size: 28px;
         top: 290px;
         left: 110px;
+        max-width: 875px;
     }
 }
 
 @media (max-width: 768px) {
     .hero__title {
+        top: 100px;
         font-size: 22px;
         width: 536px;
+        max-width: 436px;
     }
 }
 
@@ -1551,6 +1555,7 @@ body {
         top: 300px;
         left: 20px;
         width: 436px;
+        max-width: 300px;
     }
 }
 
@@ -1559,6 +1564,7 @@ body {
         left: 10px;
         width: 290px;
         font-size: 18px;
+        max-width: 220px;
     }
 }
 
@@ -1888,7 +1894,7 @@ body {
     transition: height 0.3s ease, scale 0.1s ease;
 }
 
-.mobile-nav__dropdown a {
+.mobile-nav__dropdown form {
     width: 100vw;
     padding: 15px;
     border-bottom: 1px solid var(--gray-color);
@@ -1896,7 +1902,7 @@ body {
 }
 
 @media (max-width: 320px) {
-    .mobile-nav__dropdown a {
+    .mobile-nav__dropdown form {
         padding: 12px;
         font-size: 16px;
     }

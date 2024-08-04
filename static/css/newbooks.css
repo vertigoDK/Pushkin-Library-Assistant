@@ -1,5 +1,4 @@
 .catalog__bookcard-image {
-    width: 300px;
     height: 400px;
     overflow: hidden; /* Обрезает части изображения, выходящие за границы контейнера */
     display: flex;

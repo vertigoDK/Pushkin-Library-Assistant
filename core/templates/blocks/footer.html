@@ -36,10 +36,13 @@
 			</div> <!-- /SERVICES -->
 
 			<div class="footer__contacts">
-				<h6 class="footer__contacts-title footer-title">{% trans 'contacts' %}</h6>
-				<p class="footer__contacts-text footer__contacts-text-1">{% trans 'library-title-2' %}</p>
-				<p class="footer__contacts-text footer__contacts-text-2">+7(7232) 261-333</p>
-				<p class="footer__contacts-text footer__contacts-text-3">+7(7232) 609-087</p>
+				<div class='footer__helpinfo'>
+					<h6 class="footer__contacts-title footer-title">{% trans 'contacts' %}</h6>
+					<p class="footer__contacts-text footer__contacts-text-1">pushkinlibrary@yandex.kz</p>
+					<p class="footer__contacts-text footer__contacts-text-2">{% trans 'library-title-2' %}</p>
+					<p class="footer__contacts-text footer__contacts-text-3">+7(7232) 261-333</p>
+					<p class="footer__contacts-text footer__contacts-text-4">+7(7232) 609-087</p>
+				</div>
 
 				<div class="footer__links">
                      {% for name, url in exl %}
