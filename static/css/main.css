@@ -5,8 +5,8 @@
 * {
     padding: 0;
     margin: 0;
-    /*border: none;*/
-    border: red solid 1px;
+    border: none;
+    /*border: red solid 1px;*/
 }
 
 *,
@@ -3191,9 +3191,6 @@ body {
     height: 50%;
 }
 
-.services__events-slide-content:hover .services__events-slide-desc {
-    opacity: 1;
-}
 
 @media (max-width: 1025px) {
     .services__events-slide-content:hover {
@@ -3389,15 +3386,18 @@ body {
     margin-top: 15px;
     font-weight: 400;
     color: var(--white-color);
-    opacity: 0;
+    height: 130px; /* Высота элемента */
+    overflow-y: auto; /* Включаем вертикальную прокрутку */
     line-height: 1.7;
-    transition: opacity 0.3s ease;
 }
-
+.services__events-slide-content:hover .services__events-slide-desc {
+    opacity: 1;
+}
 @media (max-width: 1025px) {
     .services__events-slide-desc {
         margin-top: 12px;
         line-height: 1.4;
+        height: 100px; /* Меньшая высота для меньших экранов */
     }
 }
 
@@ -3405,12 +3405,14 @@ body {
     .services__events-slide-desc {
         font-size: 12px;
         margin-top: 10px;
+        height: 70px; /* Еще меньше для мобильных устройств */
     }
 }
 
 @media (max-width: 320px) {
     .services__events-slide-desc {
         font-size: 14px;
+        height: 70px; /* Минимальная высота для самых маленьких экранов */
     }
 }
 

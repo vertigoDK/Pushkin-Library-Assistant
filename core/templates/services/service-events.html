@@ -30,13 +30,13 @@
                                 <p class="services__events-slide-date">{{ event.date|date:"l d F" }}</p>
                                 <p class="services__events-slide-time">{{ event.start_time }}
                                     - {{ event.end_time }}</p>
-                                <p class="services__events-slide-desc">
+                                <p class="services__events-slide-desc tooltip">
                                     {% if LANGUAGE_CODE == 'ru' %}
-                                        {{ event.content_event_ru|truncatechars:275  }}
+                                        {{ event.content_event_ru  }}
                                     {% elif LANGUAGE_CODE == 'kk' %}
-                                        {{ event.content_event_kz|truncatechars:275 }}
+                                        {{ event.content_event_kz }}
                                     {% elif LANGUAGE_CODE == 'en' %}
-                                        {{ event.content_event_en|truncatechars:275 }}
+                                        {{ event.content_event_en }}
                                     {% endif %}
                                 </p>
                             </div> <!-- CONTENT -->
