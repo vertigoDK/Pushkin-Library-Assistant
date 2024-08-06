@@ -2134,14 +2134,14 @@ const jr = te('<div class="flex justify-end mb-2 items-end guest-container"><div
             get when() {
                 return void 0 === e.footer?.showFooter || null === e.footer?.showFooter || !0 === e.footer?.showFooter
             }, get children() {
-                const o = ko(), t = o.firstChild, a = t.firstChild;
-                a.firstChild, se(o, (() => e.footer?.text ?? "Powered by"), t);
+/*                const o = ko(), t = o.firstChild, a = t.firstChild;
+                a.firstChild, se(o, (() => e.footer?.text ?? "Ytq"), t);
                 return "function" == typeof r ? ne(r, t) : r = t, t.style.setProperty("font-weight", "bold"), se(a, (() => e.footer?.company ?? "Flowise"), null), b((r => {
                     var a = e.footer?.textColor ?? e.poweredByTextColor ?? Ro, l = e.badgeBackgroundColor ?? "#ffffff",
-                        i = e.footer?.companyLink ?? "https://flowiseai.com",
+                        i = e.footer?.companyLink ?? "",
                         d = e.footer?.textColor ?? e.poweredByTextColor ?? Ro;
                     return a !== r._v$ && (null != (r._v$ = a) ? o.style.setProperty("color", a) : o.style.removeProperty("color")), l !== r._v$2 && (null != (r._v$2 = l) ? o.style.setProperty("background-color", l) : o.style.removeProperty("background-color")), i !== r._v$3 && le(t, "href", r._v$3 = i), d !== r._v$4 && (null != (r._v$4 = d) ? t.style.setProperty("color", d) : t.style.removeProperty("color")), r
-                }), {_v$: void 0, _v$2: void 0, _v$3: void 0, _v$4: void 0}), o
+                }), {_v$: void 0, _v$2: void 0, _v$3: void 0, _v$4: void 0}), o*/
             }
         }), V(Y, {
             get when() {
