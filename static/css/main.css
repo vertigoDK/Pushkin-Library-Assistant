@@ -1520,7 +1520,7 @@ body {
 
 .hero__title {
     position: absolute;
-    top: 280px;
+    bottom: 80px;
     left: 140px;
     z-index: 10;
     font-size: 32px;
@@ -1533,9 +1533,9 @@ body {
 @media (max-width: 1025px) {
     .hero__title {
         font-size: 28px;
-        top: 290px;
+        top: 150px;
         left: 110px;
-        max-width: 875px;
+        max-width: 575px;
     }
 }
 
@@ -1654,7 +1654,7 @@ body {
     }
 }
 
-@media (max-width: 481px) {
+@media (max-width: 510px) {
     .hero__link {
         width: 100%;
         border-radius: 0;
