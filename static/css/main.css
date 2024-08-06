@@ -3760,7 +3760,7 @@ body {
     }
 }
 
-@media (max-width: 481px) {
+@media (max-width: 600px) {
     .tour__swiper .swiper-slide {
         font-size: 12px;
         text-align: center;
@@ -3811,7 +3811,7 @@ body {
     }
 }
 
-@media (max-width: 481px) {
+@media (max-width: 600px) {
     .tour__images {
         padding-top: 10px;
         gap: 8px;
@@ -3867,7 +3867,7 @@ body {
     }
 }
 
-@media (max-width: 481px) {
+@media (max-width: 600px) {
     .tour__image-1 {
         height: 216px;
     }
@@ -4053,7 +4053,7 @@ body {
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 420px) {
     .tour__arrow.swiper-button-next {
         left: 278px;
     }
