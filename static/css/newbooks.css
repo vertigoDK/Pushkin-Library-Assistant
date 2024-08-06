@@ -12,7 +12,3 @@
     object-fit: cover; /* Заполняет контейнер, обрезая лишние части */
     object-position: center; /* Центрирует изображение внутри контейнера */
 }
-
-.catalog__bookcard-contetnt {
-    height: 335px;
-}

@@ -76,6 +76,8 @@ INSTALLED_APPS = [
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
+    "https://8ea1-81-91-183-79.ngrok-free.app",
+    "http://localhost:3000",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:8000",
@@ -181,7 +183,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-FLOWISE_CHATFLOW = '0e0dedea-a5b5-49fe-acd4-cc3d081c31de'
-FLOWISE_HOST = 'http://127.0.0.1:3000'
+FLOWISE_CHATFLOW = 'd86144c7-026f-4a69-867e-cea2495bc0b5'
+FLOWISE_HOST = 'https://8ea1-81-91-183-79.ngrok-free.app/'
 
 DEFAULT_BOOKS_PATH = BASE_DIR / 'database/region-passport.txt'
