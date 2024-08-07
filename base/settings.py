@@ -61,18 +61,13 @@ INSTALLED_APPS = [
     'core',
 
     'app.api',
-    'app.book_search_app.apps.BookSearchAppConfig',
     'app.chatbot_app.apps.ChatbotAppConfig',
-    'app.new_release_app',
     'app.courses_app.apps.CoursesAppConfig',
     'app.events_app.apps.EventsAppConfig',
     'app.news_app.apps.NewsAppConfig',
     'app.time_app.apps.TimeAppConfig',
     'app.new_book_app.apps.NewBookAppConfig',
 
-
-    'app.services.readers.apps.ReadersConfig',
-    'app.services.faq.apps.FAQInfoConfig'
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
