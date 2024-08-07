@@ -183,7 +183,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-FLOWISE_CHATFLOW = 'd86144c7-026f-4a69-867e-cea2495bc0b5'
-FLOWISE_HOST = 'https://8ea1-81-91-183-79.ngrok-free.app/'
+FLOWISE_CHATFLOW = env('FLOWISE_CHATFLOW')
+FLOWISE_HOST = env('FLOWISE_HOST')
 
 DEFAULT_BOOKS_PATH = BASE_DIR / 'database/region-passport.txt'
