@@ -6,7 +6,7 @@
     padding: 0;
     margin: 0;
     border: none;
-    /*border: red solid 0.1px;*/
+    border: red solid 0.1px;
 }
 
 *,
@@ -891,7 +891,7 @@ body {
 
 .footer__row {
     display: flex;
-    gap: 80px;
+    /*gap: 80px;*/
 }
 
 @media (max-width: 768px) {
@@ -1251,7 +1251,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    column-gap: 40px;
+    column-gap: 10px;
     margin-right: 25px;
     text-align: center;
 }
@@ -1284,7 +1284,7 @@ body {
     transition: color 0.2s ease;
     padding: 30px;
     margin: -30px;
-    background-color: var(--general-color);
+    /*background-color: var(--general-color);*/
 }
 
 .header__nav-item-main:hover {

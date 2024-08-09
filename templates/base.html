@@ -1,3 +1,4 @@
+
 {% load compress %}
 {% load static %}
 {% load i18n %}
@@ -65,7 +66,7 @@
     {% include 'blocks/footer.html' %}
 {% endif %}
 
-{% compress js file base %}
+{#{% compress js file base %}#}
 {% if show_chatbot %}
     <script type="module">
         import Chatbot from "{% static 'js/lib/web.js' %}"
@@ -121,6 +122,6 @@
 
 {% block content_js %}
 {% endblock %}
-{% endcompress %}
+{#{% endcompress %}#}
 </body>
 </html>
