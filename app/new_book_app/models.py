@@ -8,6 +8,7 @@ class NewBook(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     description = models.TextField()
+    link_to_read = models.URLField(max_length=200, blank=True, null=True)
     cover = models.ImageField(upload_to='cover')
 
     class Meta:
