@@ -4683,7 +4683,7 @@
             function n() {
                 for (let e = 0; e < t.length; e++) {
                     function i() {
-                        t[e].style.removeProperty("animation")
+                        // t[e].style.removeProperty("animation")
                     }
 
                     t[e].src = `/static/img/tour/${r.id}-${e + 1}.jpg`, t[e].style.animation = "imageAppear .3s ease-in", setTimeout(i, 350)
@@ -4745,9 +4745,9 @@
             loop: !1,
             speed: 400,
             breakpoints: {
-                0: {direction: "horizontal", slidesPerView: 3},
-                321: {direction: "horizontal", slidesPerView: 4},
-                481: {direction: "vertical", slidesPerView: 7}
+                // 0: {direction: "horizontal", slidesPerView: 3},
+                // 321: {direction: "horizontal", slidesPerView: 4},
+                // 481: {direction: "vertical", slidesPerView: 7}
             },
             navigation: {prevEl: ".swiper-button-prev", nextEl: ".swiper-button-next"}
         }), Mt({distance: "60px", duration: 2e3}), Mt().reveal(".hero__title", {

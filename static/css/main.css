@@ -6,7 +6,7 @@
     padding: 0;
     margin: 0;
     border: none;
-    border: red solid 0.1px;
+    /*border: red solid 0.1px;*/
 }
 
 *,
@@ -3694,6 +3694,7 @@ body {
 }
 @media (max-width: 768px) {
     .tour__swiper {
+        display: flex;
         width: 180px;
         height: 340px;
     }
