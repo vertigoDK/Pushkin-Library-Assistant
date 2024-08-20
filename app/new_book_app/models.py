@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 
 
@@ -10,6 +9,7 @@ class NewBook(models.Model):
     description = models.TextField()
     link_to_read = models.URLField(max_length=200, blank=True, null=True)
     cover = models.ImageField(upload_to='cover')
+
 
     class Meta:
         verbose_name = 'New Book'
