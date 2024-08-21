@@ -1,5 +1,8 @@
+from gc import get_objects
+
 from django.shortcuts import render, get_object_or_404
-from .models import News
+
+from .models import News, NewsImage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -24,4 +27,5 @@ def news_list(request):
 
 def news_detail(request, slug):
     news_item = get_object_or_404(News, slug=slug)
-    return render(request, 'news_detail.html', {'news_item': news_item, 'show_chatbot': True})
+    news_images = NewsImage.objects.filter(news=news_item)
+    return render(request, 'news_detail.html', {'news_item': news_item, 'news_images': news_images, 'show_chatbot': True})

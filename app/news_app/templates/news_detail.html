@@ -56,26 +56,26 @@
                      class="swiper newsletter__swiper-2 swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
                     <div class="swiper-wrapper" id="swiper-wrapper-291611240455850e" aria-live="polite">
 
+
+
+
                         <div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active"
                              style="width: 800px; opacity: 1; transform: translate3d(0px, 0px, 0px);" role="group"
-                             aria-label="1 / 4">
-                            <img src="{{ news_item.main_image.url }}">
+                             aria-label="1 / {{ news_images|length|add:1 }}">
+                            <img src="{{ news_item.main_image.url }}" alt="{{ news_item.title_ru }}">
                         </div>
-                        <div class="swiper-slide swiper-slide-next"
-                             style="width: 800px; opacity: 0; transform: translate3d(-800px, 0px, 0px);" role="group"
-                             aria-label="2 / 4">
-                            <img src="{{ news_item.main_image.url }}">
-                        </div>
-                        <div class="swiper-slide"
-                             style="width: 800px; opacity: 0; transform: translate3d(-1600px, 0px, 0px);" role="group"
-                             aria-label="3 / 4">
-                            <img src="{{ news_item.main_image.url }}">
-                        </div>
-                        <div class="swiper-slide"
-                             style="width: 800px; opacity: 0; transform: translate3d(-2400px, 0px, 0px);" role="group"
-                             aria-label="4 / 4">
-                            <img src="{{ news_item.main_image.url }}">
-                        </div>
+                    
+
+                        {% for image in news_images %}
+                            
+                            <div class="swiper-slide"
+                                 style="width: 800px; opacity: 1; transform: translate3d(0px, 0px, 0px);" role="group"
+                                 aria-label="{{ forloop.counter|add:1 }} / {{ news_images|length }}">
+                                <img src="{{ image.image.url }}" alt="{{ image.news.title_ru }}">
+                            </div>
+                        {% endfor %}
+
+                    
                     </div> <!-- /WRAPPER -->
                     <span class="swiper-notification" aria-live="assertive" aria-atomic="true">
 
@@ -87,21 +87,21 @@
                      class="swiper newsletter__swiper swiper-initialized swiper-horizontal swiper-backface-hidden swiper-thumbs">
                     <div class="swiper-wrapper" id="swiper-wrapper-7509f603a9daef61" aria-live="polite"
                          style="transform: translate3d(0px, 0px, 0px);">
+
                         <div class="swiper-slide swiper-slide-active swiper-slide-visible swiper-slide-fully-visible swiper-slide-thumb-active"
-                             style="width: 196.25px; margin-right: 5px;" role="group" aria-label="1 / 4">
-                            <img src="{{ news_item.main_image.url }}">
+                             style="width: 196.25px; margin-right: 5px;" role="group"
+                             aria-label="1 / {{ news_images|length|add:1 }}">
+                            <img src="{{ news_item.main_image.url }}" alt="{{ news_item.title_ru }}">
                         </div>
-                        <div class="swiper-slide swiper-slide-next swiper-slide-visible swiper-slide-fully-visible"
-                             style="width: 196.25px; margin-right: 5px;" role="group" aria-label="2 / 4"><img
-                                src="{{ news_item.main_image.url }}">
-                        </div>
-                        <div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible"
-                             style="width: 196.25px; margin-right: 5px;" role="group" aria-label="3 / 4"><img
-                                src="{{ news_item.main_image.url }}">
-                        </div>
-                        <div class="swiper-slide swiper-slide-visible" style="width: 196.25px; margin-right: 5px;"
-                             role="group" aria-label="4 / 4"><img src="{{ news_item.main_image.url }}">
-                        </div>
+
+                        {% for image in news_images %}
+                            <div class="swiper-slide swiper-slide-next swiper-slide-visible swiper-slide-fully-visible"
+                                 style="width: 196.25px; margin-right: 5px;" role="group"
+                                 aria-label="{{ forloop.counter|add:1 }} / {{ news_images|length }}">
+                                <img src="{{ image.image.url }}" alt="{{ image.news.title_ru }}">
+                            </div>
+                        {% endfor %}
+                       
                     </div> <!-- /WRAPPER -->
                     <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                 <!-- /SWIPER 1 -->
@@ -126,99 +126,4 @@
         </section>
     </main>
 
-
-    {% comment %}
-
-
-
-
-    <div class="news__picture">
-        <div class="container">
-
-            <div class="news__picture-text">
-                <!-- TITLE -->
-                <div class="news__title title-wrapper">
-                    <div class="title-line"></div>
-                    <h1 class="title" data-sr-id="0"
-                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);">
-                        Новости</h1>
-                </div> <!-- TITLE -->
-                <p class="news__nav" data-sr-id="2"
-                   style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 0.9s cubic-bezier(0.5, 0, 0, 1), transform 0.9s cubic-bezier(0.5, 0, 0, 1);">
-                    <a href="/">Главная</a> &gt; <a href="{% url 'news' %}">Новости</a> &gt;
-                    <strong>Общереспубликанский фестиваль «KITAP шоу - 2024»</strong>
-                </p>
-            </div> <!-- /TEXT WRAPPER -->
-        </div> <!-- /CONTAINER -->
-    </div>
-
-
-
-    <section class="newsletter">
-        <div class="container">
-            {% if news_item.main_image %}
-
-                <!-- PICTURE SLIDER -->
-                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                     class="swiper newsletter__swiper-2">
-                <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                <img src="{{ news_item.main_image.url }}" alt="
-                 {% if LANGUAGE_CODE == 'ru' %}
-                    {{ news_item.title_ru }}
-                {% elif LANGUAGE_CODE == 'kk' %}
-                    {{ news_item.title_kz }}
-                {% else %}
-                    {{ news_item.title_en }}
-                {% endif %}">
-            {% endif %}
-            </div>
-            <div class="swiper-slide">
-                <img src="{% static 'img/news/news-slider-pic-2.jpg' %}"/>
-            </div>
-            <div class="swiper-slide">
-                <img src="{% static 'img/news/news-slider-pic-3.jpg' %}"/>
-            </div>
-            <div class="swiper-slide">
-                <img src="{% static 'img/news/news-slider-pic-4.jpg' %}"/>
-            </div>
-            </div> <!-- /WRAPPER -->
-            </div> <!-- /SWIPER 2 -->
-
-            <div thumbsSlider="" class="swiper newsletter__swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="{% static 'img/news/news-slider-pic.jpg' %}"/>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="{% static 'img/news/news-slider-pic-2.jpg' %}"/>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="{% static 'img/news/news-slider-pic-3.jpg' %}"/>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="{% static 'img/news/news-slider-pic-4.jpg' %}"/>
-                    </div>
-                </div> <!-- /WRAPPER -->
-            </div> <!-- /SWIPER 1 -->
-            <!-- /PICTURE SLIDER -->
-
-            <div class="newsletter__oyu">
-                <img src="{% static 'img/news/oyu-ornek.svg' %}" alt=" Kazakh Oyu">
-            </div>
-
-            <div class="newsletter__text">
-                <p>{% if LANGUAGE_CODE == 'ru' %}
-                    {{ news_item.content_ru }}
-                {% elif LANGUAGE_CODE == 'kk' %}
-                    {{ news_item.content_kz }}
-                {% elif LANGUAGE_CODE == 'en' %}
-                    {{ news_item.content_eng }}
-                {% else %}
-                    {{ news_item.content_ru }}
-                {% endif %}</p>
-            </div> <!-- TEXT -->
-        </div>
-    </section>
-    {% endcomment %}
 {% endblock %}
