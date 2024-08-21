@@ -4741,6 +4741,7 @@
             autoplay: {delay: 6e3},
             navigation: {prevEl: ".swiper-button-prev", nextEl: ".swiper-button-next"}
         }), new ie(".tour__swiper", {
+            slidesPerView: 1,
             spaceBetween: 0,
             loop: !1,
             speed: 400,

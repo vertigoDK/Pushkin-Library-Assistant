@@ -62,7 +62,13 @@
                         <div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active"
                              style="width: 800px; opacity: 1; transform: translate3d(0px, 0px, 0px);" role="group"
                              aria-label="1 / {{ news_images|length|add:1 }}">
-                            <img src="{{ news_item.main_image.url }}" alt="{{ news_item.title_ru }}">
+                            <img style="height: 400px"  src="{{ news_item.main_image.url }}" alt="{% if LANGUAGE_CODE == 'ru' %}
+                    {{ news_item.title_ru  }}
+                {% elif LANGUAGE_CODE == 'kk' %}
+                    {{ news_item.title_kz  }}
+                {% else %}
+                    {{ news_item.title_en  }}
+                {% endif %}">
                         </div>
                     
 
@@ -71,7 +77,13 @@
                             <div class="swiper-slide"
                                  style="width: 800px; opacity: 1; transform: translate3d(0px, 0px, 0px);" role="group"
                                  aria-label="{{ forloop.counter|add:1 }} / {{ news_images|length }}">
-                                <img src="{{ image.image.url }}" alt="{{ image.news.title_ru }}">
+                                <img style="height: 400px"  src="{{ image.image.url }}" alt="{% if LANGUAGE_CODE == 'ru' %}
+                    {{ news_item.title_ru  }}
+                {% elif LANGUAGE_CODE == 'kk' %}
+                    {{ news_item.title_kz  }}
+                {% else %}
+                    {{ news_item.title_en  }}
+                {% endif %}">
                             </div>
                         {% endfor %}
 
@@ -91,14 +103,26 @@
                         <div class="swiper-slide swiper-slide-active swiper-slide-visible swiper-slide-fully-visible swiper-slide-thumb-active"
                              style="width: 196.25px; margin-right: 5px;" role="group"
                              aria-label="1 / {{ news_images|length|add:1 }}">
-                            <img src="{{ news_item.main_image.url }}" alt="{{ news_item.title_ru }}">
+                            <img src="{{ news_item.main_image.url }}" alt="{% if LANGUAGE_CODE == 'ru' %}
+                    {{ news_item.title_ru  }}
+                {% elif LANGUAGE_CODE == 'kk' %}
+                    {{ news_item.title_kz  }}
+                {% else %}
+                    {{ news_item.title_en  }}
+                {% endif %}">
                         </div>
 
                         {% for image in news_images %}
                             <div class="swiper-slide swiper-slide-next swiper-slide-visible swiper-slide-fully-visible"
                                  style="width: 196.25px; margin-right: 5px;" role="group"
                                  aria-label="{{ forloop.counter|add:1 }} / {{ news_images|length }}">
-                                <img src="{{ image.image.url }}" alt="{{ image.news.title_ru }}">
+                                <img src="{{ image.image.url }}" alt="{% if LANGUAGE_CODE == 'ru' %}
+                    {{ image.news.title_ru  }}
+                {% elif LANGUAGE_CODE == 'kk' %}
+                    {{ image.news.title_kz  }}
+                {% else %}
+                    {{ image.news.title_en  }}
+                {% endif %}">
                             </div>
                         {% endfor %}
                        

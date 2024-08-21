@@ -7,12 +7,12 @@
              style="transition-duration: 0ms; transform: translate3d(-626px, 0px, 0px); transition-delay: 0ms;">
 
 
-
             {% for item in news %}
 
-            <div class="swiper-slide swiper-slide-next swiper-slide-prev" style="width: 626px;" role="group"
-                 aria-label="2 / 2" data-swiper-slide-index="1">
-                <img src="{{ item.main_image.url }}" alt="
+                <div class="swiper-slide swiper-slide-next swiper-slide-prev" style="width: 626px;" role="group"
+                     aria-label="2 / 2" data-swiper-slide-index="1">
+                    <a href="{% url 'news_detail' slug=item.slug %}">
+                        <img src="{{ item.main_image.url }}" alt="
                  {% if LANGUAGE_CODE == 'ru' %}
                     {{ item.title_ru }}
                 {% elif LANGUAGE_CODE == 'kk' %}
@@ -20,18 +20,19 @@
                 {% else %}
                     {{ item.title_en }}
                 {% endif %}">
-                <a href="{% url 'news' %}">
-                    <h6 class="services__news-title">{% trans 'news' %}</h6>
-                </a>
-                <p class="services__news-desc">{% if LANGUAGE_CODE == 'ru' %}
-                    {{ item.title_ru|truncatechars:50  }}
-                {% elif LANGUAGE_CODE == 'kk' %}
-                    {{ item.title_kz|truncatechars:50  }}
-                {% else %}
-                    {{ item.title_en|truncatechars:50  }}
-                {% endif %}</p>
-                <a class="services__news-link" href="{% url 'news_detail' slug=item.slug %}">{% trans 'read' %}</a>
-            </div>
+                        <a href="{% url 'news' %}">
+                            <h6 class="services__news-title">{% trans 'news' %}</h6>
+                        </a>
+                        <p class="services__news-desc">{% if LANGUAGE_CODE == 'ru' %}
+                            {{ item.title_ru|truncatechars:50 }}
+                        {% elif LANGUAGE_CODE == 'kk' %}
+                            {{ item.title_kz|truncatechars:50 }}
+                        {% else %}
+                            {{ item.title_en|truncatechars:50 }}
+                        {% endif %}</p>
+                        <a class="services__news-link"
+                           href="{% url 'news_detail' slug=item.slug %}">{% trans 'read' %}</a></a>
+                </div>
 
 
             {% endfor %}

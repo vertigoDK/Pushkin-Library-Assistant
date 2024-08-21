@@ -2816,6 +2816,11 @@ body {
     color: var(--white-color);
     font-size: 16px;
     font-weight: 600;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    border-radius: 10px;
+
 }
 
 @media (max-width: 1025px) {
@@ -2941,8 +2946,6 @@ body {
     color: var(--white-color);
     position: absolute;
     bottom: 30px;
-    right: 10px;
-    left: 10px;
     transition: color 0.2s ease;
 }
 
@@ -3108,7 +3111,6 @@ body {
     font-size: 14px;
     font-weight: 700;
     color: var(--gray-color);
-    text-align: center;
     transition: color 0.2s ease;
     flex-shrink: 12;
 }
@@ -3587,6 +3589,11 @@ body {
     color: var(--white-color);
     font-size: 16px;
     font-weight: 600;
+
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    border-radius: 10px;
 }
 
 @media (max-width: 1025px) {

@@ -1,41 +1,31 @@
 {% load static %}
 <div class="services__action services__courses">
-                <div class="services__courses-swiper">
-                    <div class="swiper-wrapper">
+    <div class="services__courses-swiper">
+        <div class="swiper-wrapper">
 
-                        {% for course in courses %}
-                            <div class="swiper-slide">
-                                <img src="{{ course.image.url }}" alt="
+            {% for course in courses %}
+                <div class="swiper-slide">
+                    <img src="{{ course.image.url }}" alt="{% if LANGUAGE_CODE == 'ru' %} {{ course.course_title_ru }} {% elif LANGUAGE_CODE == 'kk' %}{{ course.course_title_kz }}{% elif LANGUAGE_CODE == 'en' %}{{ course.course_title_en }}{% endif %}"/>
+                    <h6 class="services-courses">Курсы</h6>
+                    <p class="services__сourses-desc">
+                        {% if LANGUAGE_CODE == 'ru' %}
+                            {{ course.course_title_ru }}
+                        {% elif LANGUAGE_CODE == 'kk' %}
+                            {{ course.course_title_kz }}
+                        {% elif LANGUAGE_CODE == 'en' %}
+                            {{ course.course_title_en }}
+                        {% endif %}
+                    </p>
+                    <a class="services__courses-link" href='{{ course.url }}'>Записаться</a>
+                </div>
+            {% endfor %}
 
-
-
-
-
-
-
-
-
-                                        {% if LANGUAGE_CODE == 'ru' %}{{ course.course_title_ru }}{% elif LANGUAGE_CODE == 'kk' %}{{ course.course_title_kz }}{% elif LANGUAGE_CODE == 'en' %}{{ course.course_title_en }}{% endif %}"/>
-                                <h6 class="services-courses">Курсы</h6>
-                                <p class="services__сourses-desc">
-                                    {% if LANGUAGE_CODE == 'ru' %}
-                                        {{ course.course_title_ru }}
-                                    {% elif LANGUAGE_CODE == 'kk' %}
-                                        {{ course.course_title_kz }}
-                                    {% elif LANGUAGE_CODE == 'en' %}
-                                        {{ course.course_title_en }}
-                                    {% endif %}
-                                </p>
-                                <a class="services__courses-link" href='#!'>Записаться</a>
-                            </div>
-                        {% endfor %}
-
-                    </div> <!-- /SWIPER-WRAPPER -->
-                    <div class="swiper-button-prev services__arrow">
-                        <img src="{% static 'img/services/arrow-left.svg' %}" alt="Arrow Prev">
-                    </div> <!-- /NEXT -->
-                    <div class="swiper-button-next services__arrow">
-                        <img src="{% static 'img/services/arrow-right.svg' %}" alt="Arrow Next">
-                    </div> <!-- /PREV -->
-                </div> <!-- SWIPER -->
-            </div>
+        </div> <!-- /SWIPER-WRAPPER -->
+        <div class="swiper-button-prev services__arrow">
+            <img src="{% static 'img/services/arrow-left.svg' %}" alt="Arrow Prev">
+        </div> <!-- /NEXT -->
+        <div class="swiper-button-next services__arrow">
+            <img src="{% static 'img/services/arrow-right.svg' %}" alt="Arrow Next">
+        </div> <!-- /PREV -->
+    </div> <!-- SWIPER -->
+</div>
