@@ -897,7 +897,7 @@ body {
 @media (max-width: 768px) {
     .footer__row {
         font-size: 10px;
-        gap: 10px;
+        /*gap: 10px;*/
     }
 }
 
@@ -950,6 +950,12 @@ body {
 .footer__text {
     width: 220px;
     font-weight: 400;
+}
+
+@media (max-width: 700px) {
+    .footer__text {
+    width: 160px;
+    }
 }
 
 @media (max-width: 481px) {
