@@ -4746,9 +4746,9 @@
             loop: !1,
             speed: 400,
             breakpoints: {
-                0: {direction: "horizontal", slidesPerView: 3},
-                321: {direction: "horizontal", slidesPerView: 4},
-                481: {direction: "vertical", slidesPerView: 7}
+                0: {direction: "horizontal", slidesPerView: 1},
+                500: {direction: "horizontal", slidesPerView: 4},
+                600: {direction: "vertical", slidesPerView: 7}
             },
             navigation: {prevEl: ".swiper-button-prev", nextEl: ".swiper-button-next"}
         }), Mt({distance: "60px", duration: 2e3}), Mt().reveal(".hero__title", {
