@@ -4747,7 +4747,7 @@
             speed: 400,
             breakpoints: {
                 0: {direction: "horizontal", slidesPerView: 1},
-                500: {direction: "horizontal", slidesPerView: 4},
+                // 500: {direction: "horizontal", slidesPerView: 4},
                 600: {direction: "vertical", slidesPerView: 7}
             },
             navigation: {prevEl: ".swiper-button-prev", nextEl: ".swiper-button-next"}

@@ -877,7 +877,7 @@ body {
     }
 }
 
-@media (max-width: 481px) {
+@media (max-width: 600px) {
     .footer {
         padding: 20px;
     }
@@ -901,7 +901,7 @@ body {
     }
 }
 
-@media (max-width: 481px) {
+@media (max-width: 600px) {
     .footer__row {
         flex-wrap: wrap;
         justify-content: center;
@@ -919,7 +919,7 @@ body {
     gap: 5px;
 }
 
-@media (max-width: 481px) {
+@media (max-width: 600px) {
     .footer__info {
         display: flex;
         margin-bottom: 15px;
@@ -984,7 +984,7 @@ body {
     }
 }
 
-@media (max-width: 481px) {
+@media (max-width: 500px) {
     .footer__contacts {
         margin-top: 20px;
         display: flex;
