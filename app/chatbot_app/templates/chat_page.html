@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% load static %}
 
@@ -26,20 +27,20 @@
             apiHost: "{{ API_HOST }}",
             theme: {
                 chatWindow: {
-                    welcomeMessage: 'Здравствуйте меня зовут дос, я онлайн ассистент в библиотеке имени А.С. Пушкина чем могу помочь?',
+                    welcomeMessage: "{% trans 'dosai-message' %}",
                     errorMessage: 'This is a custom error message',
                     backgroundColor: "transparent",
                     fontSize: 16,
                     poweredByTextColor: "transparent",
                     botMessage: {
-                        backgroundColor: "#2D4273",
-                        textColor: "#ffffff",
+                        backgroundColor: "#1684A7",//"#2D4273",
+                        textColor: "#EFFFFB",
                         showAvatar: true,
-                        avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png",
+                        avatarSrc: "{% static 'img/dosai/book.png' %}",
                     },
                     userMessage: {
-                        backgroundColor: "#4CAF50",
-                        textColor: "#ffffff",
+                        backgroundColor: "#16C79A",//"#4CAF50",
+                        textColor: "#EFFFFB",
                         showAvatar: true,
                         avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png",
                     },
@@ -49,7 +50,7 @@
                         textColor: '#000000',
                         sendButtonColor: '#4CAF50',
                         maxChars: 300,
-                        maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 300 characters.',
+                        maxCharsWarningMessage: "{% trans 'dosai-chars-warning' %}",
                         autoFocus: true,
                     },
                     feedback: {

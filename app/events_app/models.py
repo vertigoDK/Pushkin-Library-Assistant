@@ -21,4 +21,4 @@ class Event(models.Model):
 
     class Meta:
         verbose_name = 'Событие'
-        verbose_name_plural = 'События'
+        verbose_name_plural = 'Все События'

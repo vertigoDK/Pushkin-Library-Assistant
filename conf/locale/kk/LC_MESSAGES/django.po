@@ -21,7 +21,7 @@ msgid "lang"
 msgstr "kk-KZ"
 
 msgid "dosai-message"
-msgstr "Сәлем, мен Досмын, Пушкин кітапханасындағы сенің онлайн көмекшіңмін"
+msgstr "Сәлем! Менің атым DosAI, мен сіздің А.С. атындағы кітапханадағы онлайн көмекшісімін. Пушкин. Қалай көмектесе аламын?"
 
 
 #: .\app\news_app\templates\news_detail.html:22
