@@ -1285,12 +1285,12 @@ body {
 }
 
 .header__nav-item-main {
+    display: block;
     position: relative;
     color: var(--white-color);
     transition: color 0.2s ease;
-    padding: 30px;
-    margin: -30px;
-    /*background-color: var(--general-color);*/
+    padding: 10px;
+    margin: -5px;
 }
 
 .header__nav-item-main:hover {
