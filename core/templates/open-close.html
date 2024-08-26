@@ -25,7 +25,7 @@
         console.log(timeModelNext)
 
         function isWeekend(day) {
-            const weekendDays = [0, 1]; // 0 - воскресенье, 1 - понедельник
+            const weekendDays = [0, 1];
             return weekendDays.includes(day);
         }
 
@@ -42,38 +42,46 @@
             const dayOfWeek = now.getDay();
             let openingTime, closingTime;
 
-            if (isWeekend(dayOfWeek) || timeModelToday.isHoliday) {
+            if (isWeekend(dayOfWeek) && timeModelToday.isHoliday) {
                 now = getNextWorkingDay(now);
                 if (timeModelNext.customTimeStart && timeModelNext.customTimeEnd) {
+                    console.log("if 1")
                     const nextDate = new Date(timeModelNext.dateChange);
                     openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeStart.split(':'));
                     closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeEnd.split(':'));
                 } else {
+                    console.log("if 2")
                     openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
                     closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
                 }
             } else {
                 if (timeModelToday.customTimeStart && timeModelToday.customTimeEnd) {
+                    console.log("if 3")
                     const nextDate = new Date(timeModelNext.dateChange);
                     openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelToday.customTimeStart.split(':'));
                     closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelToday.customTimeEnd.split(':'));
                 } else {
+                    console.log("if 4")
                     openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
                     closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
                 }
             }
 
-            if (clientTime >= closingTime) {
+            if (clientTime >= closingTime || (isWeekend(dayOfWeek) || timeModelToday.isHoliday)) {
                 now = getNextWorkingDay(now);
                 if (timeModelNext.customTimeStart && timeModelNext.customTimeEnd) {
+                    console.log("if 5")
                     const nextDate = new Date(timeModelNext.dateChange);
                     openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeStart.split(':'));
                     closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeEnd.split(':'));
                 } else {
+                    console.log("if 6")
                     openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
                     closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
                 }
             }
+            
+            console.log(getNextWorkingDay(now))
 
             let isLibraryOpen = now >= openingTime && now < closingTime;
 

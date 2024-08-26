@@ -10,12 +10,11 @@ from .link import EXTERNAL_LINKS
 
 
 def get_next_working_day(date, weekend_days):
-    next_day = date + timedelta(days=1)
+    next_day = date
     while next_day.weekday() in weekend_days or TimeModel.objects.filter(date_change=next_day,
-                                                                         is_holiday=True).exists():
+                                                                         is_holiday=False).exists():
 
         next_day += timedelta(days=1)
-    print(next_day)
     return next_day
 
 
@@ -27,11 +26,11 @@ def index(request):
 
     current_date = now().date()
     weekend_days = [0, 1]  # 0 - воскресенье, 1 - понедельник
-
+    current_day_of_week = current_date.weekday()
     try:
         time_model_today = TimeModel.objects.get(date_change=current_date)
     except TimeModel.DoesNotExist:
-        time_model_today = None
+        time_model_today = TimeModel(date_change=current_date, is_holiday=current_day_of_week in weekend_days)
 
     next_working_day = get_next_working_day(current_date, weekend_days)
 
@@ -39,6 +38,9 @@ def index(request):
         time_model_next = TimeModel.objects.get(date_change=next_working_day)
     except TimeModel.DoesNotExist:
         time_model_next = TimeModel(date_change=next_working_day)
+
+    print(time_model_today)
+    print(time_model_next)
 
     context = {
         'show_chatbot': True,

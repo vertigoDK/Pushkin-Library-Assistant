@@ -22,5 +22,15 @@ class TimeModel(models.Model):
         verbose_name_plural = "Список Изменений Времени"
 
     def __str__(self):
-        f = 'HH:MM'
-        return f"{self.date_change} {'- Выходной' if self.is_holiday else f'{self.custom_time_start.strftime(f)} - {self.custom_time_end.strftime(f)}'}"
+        time_format = '%H:%M'  # Формат времени в 24-часовом формате (часы:минуты)
+
+        if self.is_holiday:
+            # Если это выходной день
+            return f"{self.date_change} - Выходной"
+        else:
+            # Если это рабочий день, форматируем время начала и конца
+            custom_time_start_str = self.custom_time_start.strftime(
+                time_format) if self.custom_time_start else "Не указано"
+            custom_time_end_str = self.custom_time_end.strftime(time_format) if self.custom_time_end else "Не указано"
+
+            return f"{self.date_change} {custom_time_start_str} - {custom_time_end_str}"

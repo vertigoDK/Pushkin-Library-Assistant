@@ -1189,10 +1189,11 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
     z-index: 100;
     background-color: var(--general-color);
-    padding: 17px 0;
+    /*padding: 17px 0;*/
     box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.5);
     transition: background-color 0.2s ease-out;
 }
@@ -1223,6 +1224,7 @@ body {
     align-items: center;
     gap: 56px;
     z-index: 10;
+    padding: 10px;
 }
 
 @media (max-width: 1025px) {
@@ -1289,27 +1291,14 @@ body {
     position: relative;
     color: var(--white-color);
     transition: color 0.2s ease;
-    padding: 10px;
     margin: -5px;
+    padding: 20px 10px;
 }
 
 .header__nav-item-main:hover {
     color: var(--secondary-color);
 }
 
-@media (max-width: 1025px) {
-    .header__nav-item-main {
-        padding: 30px 8px;
-        margin: -30px -10px;
-    }
-}
-
-@media (max-width: 1025px) {
-    .header__nav-item-main-padding {
-        padding: 24px;
-        margin: -24px;
-    }
-}
 
 @media (max-width: 1280px) {
     .header__nav-item-main-padding {
@@ -1322,7 +1311,7 @@ body {
     opacity: 0;
     position: absolute;
     transition: opacity 0.3s ease-out, top 0.3s ease-out;
-    top: 28px;
+    top: 10px;
     left: 50%;
     z-index: 99;
     transform: translate(-50%, 0);
