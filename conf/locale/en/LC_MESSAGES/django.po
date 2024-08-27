@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "dosai-message"
-msgstr "Hello, I'm Dos, your online assistant at the Pushkin Library"
+msgstr "Hello! My name is DosAI, I am your online assistant in the library named after A.S. Pushkin. How can I help?"
 
 
 #: .\app\news_app\models.py:7

@@ -19,56 +19,33 @@
             customTimeStart: "{{ time_model_next.custom_time_start|time:'H:i' }}" || null,
             customTimeEnd: "{{ time_model_next.custom_time_end|time:'H:i' }}" || null,
         };
-
-        console.log("{{ time_model_next }}")
+        
         console.log(timeModelToday)
         console.log(timeModelNext)
-
-        function isWeekend(day) {
-            const weekendDays = [0, 1]; // 0 - воскресенье, 1 - понедельник
-            return weekendDays.includes(day);
-        }
-
-        function getNextWorkingDay(date) {
-            let nextDay = new Date(date);
-            while (isWeekend(nextDay.getDay()) || (nextDay.toISOString().split('T')[0] === timeModelNext.dateChange && timeModelNext.isHoliday)) {
-                nextDay.setDate(nextDay.getDate() + 1);
-            }
-            return nextDay;
-        }
 
         function updateTimes() {
             let now = new Date(new Date().getTime() + timeDifference);
             const dayOfWeek = now.getDay();
             let openingTime, closingTime;
 
-            if (isWeekend(dayOfWeek) || timeModelToday.isHoliday) {
-                now = getNextWorkingDay(now);
+            // Проверяем, выходной ли сегодня или праздничный день
+            if (timeModelToday.isHoliday || dayOfWeek === 0 || dayOfWeek === 1) {
+                // Если сегодня выходной, используем время следующего рабочего дня
                 if (timeModelNext.customTimeStart && timeModelNext.customTimeEnd) {
                     const nextDate = new Date(timeModelNext.dateChange);
                     openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeStart.split(':'));
                     closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeEnd.split(':'));
                 } else {
-                    openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
-                    closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
+                    const nextDate = new Date(timeModelNext.dateChange);
+                    openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), 8, 0, 0);
+                    closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), 19, 0, 0);
                 }
             } else {
+                // Если сегодня рабочий день
                 if (timeModelToday.customTimeStart && timeModelToday.customTimeEnd) {
-                    const nextDate = new Date(timeModelNext.dateChange);
-                    openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelToday.customTimeStart.split(':'));
-                    closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelToday.customTimeEnd.split(':'));
-                } else {
-                    openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
-                    closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
-                }
-            }
-
-            if (clientTime >= closingTime) {
-                now = getNextWorkingDay(now);
-                if (timeModelNext.customTimeStart && timeModelNext.customTimeEnd) {
-                    const nextDate = new Date(timeModelNext.dateChange);
-                    openingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeStart.split(':'));
-                    closingTime = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), ...timeModelNext.customTimeEnd.split(':'));
+                    const todayDate = new Date(timeModelToday.dateChange);
+                    openingTime = new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate(), ...timeModelToday.customTimeStart.split(':'));
+                    closingTime = new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate(), ...timeModelToday.customTimeEnd.split(':'));
                 } else {
                     openingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0);
                     closingTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
@@ -99,7 +76,6 @@
                 closeStatus.style.display = 'block';
             }
 
-            // Обновление элемента services__time-num
             const timeNum = document.getElementById('services__time-num');
             if (timeNum) {
                 timeNum.textContent = `${openingTime.toLocaleTimeString(lang, {
@@ -112,16 +88,7 @@
             if (isLibraryOpen) {
                 msUntilChange = closingTime - now;
             } else {
-                if (now < openingTime) {
-                    msUntilChange = openingTime - now;
-                } else {
-                    let nextOpeningTime = getNextWorkingDay(now);
-                    nextOpeningTime.setHours(8, 0, 0, 0);
-                    if (nextOpeningTime <= now) {
-                        nextOpeningTime.setDate(nextOpeningTime.getDate() + 1);
-                    }
-                    msUntilChange = nextOpeningTime - now;
-                }
+                msUntilChange = openingTime - now;
             }
 
             const hours = Math.floor(msUntilChange / 3600000);
