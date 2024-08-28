@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.formats import date_format
 
 
 class Event(models.Model):
@@ -11,14 +12,22 @@ class Event(models.Model):
     content_event_en = models.TextField(verbose_name='Контент на английском языке')
 
     location = models.CharField(max_length=200, verbose_name='Место проведения')
-    date = models.DateField(verbose_name='Дата проведения')
+    date_change = models.DateField(verbose_name='Дата проведения')
     start_time = models.TimeField(verbose_name='Время начала')
     end_time = models.TimeField(verbose_name='Время окончания')
     image = models.ImageField(upload_to='event_images/', verbose_name='Изображение события', blank=True, null=True)
 
-    def __str__(self):
-        return self.title_event_ru
-
     class Meta:
         verbose_name = 'Событие'
         verbose_name_plural = 'Все События'
+        ordering = ('date_change', 'start_time')
+
+    def __str__(self):
+        # Используем встроенную функцию date_format для форматирования даты в соответствии с локалью
+        date_str = date_format(self.date_change, format='j b ', use_l10n=True)
+        time_format = '%H:%M'  # Формат времени в 24-часовом формате (часы:минуты)
+
+        start_time = self.start_time.strftime(time_format)
+        end_time = self.end_time.strftime(time_format)
+
+        return f"{self.title_event_ru} | {date_str} | {start_time} - {end_time}"

@@ -7,6 +7,7 @@ from app.events_app.models import Event
 from app.courses_app.models import Course
 from app.time_app.models import TimeModel
 from .link import EXTERNAL_LINKS
+from django.utils import timezone
 
 
 def get_next_working_day(date, weekend_days):
@@ -30,14 +31,14 @@ def get_next_working_day(date, weekend_days):
 
 
 def index(request):
-    news = News.objects.all().order_by('-pub_date')
-    courses = Course.objects.all()
-    events = Event.objects.all()
-    new_books = NewBook.objects.all()
-
     current_date = now().date()
     weekend_days = [6, 0]  # 0 - воскресенье, 1 - понедельник
     current_day_of_week = current_date.weekday()
+
+    news = News.objects.all().order_by('-pub_date')
+    courses = Course.objects.all()
+    events = Event.objects.filter(date_change__gte=current_date).order_by("-date_change")
+    new_books = NewBook.objects.all()
 
     try:
         time_model_today = TimeModel.objects.get(date_change=current_date)
