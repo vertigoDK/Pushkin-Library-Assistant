@@ -5,6 +5,7 @@ from rest_framework import status
 from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer
 from .services.books_parser import BookSearchHandler
 from .services.news_fetcher import NewsFetcher
+from .services.events_fetcher import get_events
 
 class BookSearchAPIView(APIView):
     def post(self, request):
@@ -38,19 +39,18 @@ class LatestNewsView(APIView):
         if serializer.is_valid():
             news_count = serializer.validated_data.get('news_count', 10)
             news_fetcher = NewsFetcher(news_count=news_count)
-            latest_news = news_fetcher._get_latest_news()
+            latest_news = news_fetcher.get_latest_news()
 
-            # Формируем ответ в формате JSON
-            response_data = [
-                {
-                    'title': news[0],
-                    'content': news[1],
-                    'pub_date': news[2].isoformat(),  # Преобразуем datetime в строку ISO
-                    'slug': news[3]
-                }
-                for news in latest_news
-            ]
+            # Преобразуем pub_date в ISO формат
+            for news in latest_news:
+                news['pub_date'] = news['pub_date'].isoformat()
 
-            return Response(response_data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(latest_news, status=status.HTTP_200_OK)
         
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class EventsFetcherView(APIView):
+    def get(self, request, *args, **kwargs):
+        events = get_events()
+        return Response(events)
+

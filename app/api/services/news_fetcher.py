@@ -4,7 +4,7 @@ from app.news_app.models import News
 
 class NewsFetcher:
     """
-    Класс, благодаря которому чат-бот может рассказать о последних 1-5 новостях.
+    Класс, благодаря которому чат-бот может рассказать о последних 1-15 новостях.
     """
     
     def __init__(self, news_count: int):
@@ -19,22 +19,20 @@ class NewsFetcher:
         else:
             self._news_count = 5
     
-    def _get_latest_news(self) -> t.List[t.List[t.Any]]:
+    def get_latest_news(self) -> t.List[dict]:
         """
         Получает последние новости в количестве, заданном при инициализации.
 
         Returns:
-            QuerySet[News]: QuerySet с последними новостями.
+             t.List[dict] с последними новостями.
         """
-        latest_news: QuerySet[News] = News.objects.order_by('-pub_date')[:self._news_count]
-        result: t.List[t.List[t.Any]] = []
-        for news in latest_news:
-            temp_result: t.List[t.Any] = []
-            temp_result.append(news.title_en)
-            temp_result.append(news.content_eng)
-            temp_result.append(news.pub_date)
-            temp_result.append(news.slug)
-
-            result.append(temp_result)
+        latest_news = News.objects.order_by('-pub_date').values(
+            'title_en',
+            'content_eng',
+            'pub_date',
+            'slug'
+        )[:self._news_count]
+        
+        result: t.List[dict] = list(latest_news)
         
         return result
