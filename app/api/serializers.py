@@ -18,3 +18,6 @@ class BookSearchParamsSerializer(serializers.Serializer):
 
 class ExaSearchSerializer(serializers.Serializer):
     query = serializers.CharField(required=True)
+
+class NewsFetcherParamsSerializer(serializers.Serializer):
+    news_count = serializers.IntegerField(required=False)

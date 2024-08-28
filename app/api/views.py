@@ -2,8 +2,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import BookSearchParamsSerializer
+from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer
 from .services.books_parser import BookSearchHandler
+from .services.news_fetcher import NewsFetcher
 
 class BookSearchAPIView(APIView):
     def post(self, request):
@@ -25,3 +26,31 @@ class BookSearchAPIView(APIView):
             except Exception as e:
                 return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LatestNewsView(APIView):
+    """
+    Представление для получения последних новостей.
+    """
+    
+    def get(self, request, *args, **kwargs):
+        serializer = NewsFetcherParamsSerializer(data=request.query_params)
+        if serializer.is_valid():
+            news_count = serializer.validated_data.get('news_count', 10)
+            news_fetcher = NewsFetcher(news_count=news_count)
+            latest_news = news_fetcher._get_latest_news()
+
+            # Формируем ответ в формате JSON
+            response_data = [
+                {
+                    'title': news[0],
+                    'content': news[1],
+                    'pub_date': news[2].isoformat(),  # Преобразуем datetime в строку ISO
+                    'slug': news[3]
+                }
+                for news in latest_news
+            ]
+
+            return Response(response_data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
