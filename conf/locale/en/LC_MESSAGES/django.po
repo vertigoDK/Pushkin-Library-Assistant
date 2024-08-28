@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "dosai-message"
-msgstr "Hello! My name is DosAI, I am your online assistant in the library named after A.S. Pushkin. How can I help?"
+msgstr "Hello! My name is DOS. I am an online consultant for the A.S. Pushkin East Kazakhstan Regional Library. I can plot the best route to the library, show information about upcoming events, library clubs and clubs, tell the latest news, help in finding local history information, and most importantly, I can search for books in an electronic catalog. Write me what you are interested in (title, author), and I will try to help you."
 
 
 #: .\app\news_app\models.py:7
