@@ -4,11 +4,11 @@ from django.db.models.query import QuerySet
 
 
 def get_events() -> t.List[dict]:
-    events = Event.objects.order_by('-date').values_list(
+    events = Event.objects.order_by('-date_change').values_list(
         'title_event_en',
         'content_event_en',
         'location',
-        'date',
+        'date_change',
         'start_time',
         'end_time',
     )
