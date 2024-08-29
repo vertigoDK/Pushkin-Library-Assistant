@@ -1,13 +1,44 @@
+"""
+Модуль для парсинга HTML-контента и извлечения информации о записях из таблиц.
+
+Использует BeautifulSoup для парсинга HTML и регулярные выражения для очистки текста.
+
+Класс:
+    HTMLParser: Предназначен для обработки HTML-контента и извлечения данных о записях из таблиц.
+"""
+
 import re
 from bs4 import BeautifulSoup
 import json
 from typing import List, Dict
 
 class HTMLParser:
+    """
+    Класс для парсинга HTML-контента и извлечения информации о записях.
+
+    Атрибуты:
+        _html_content (str): HTML-контент для парсинга.
+    """
+
     def __init__(self, html_content: str):
+        """
+        Инициализирует экземпляр класса с HTML-контентом.
+
+        Args:
+            html_content (str): HTML-контент для парсинга.
+        """
         self._html_content = html_content
 
     def clean_html(self, html_content: str) -> str:
+        """
+        Очищает HTML-контент от ненужных символов и тегов.
+
+        Args:
+            html_content (str): Исходный HTML-контент.
+
+        Returns:
+            str: Очищенный HTML-контент.
+        """
         html_content = re.sub(r'\\[trn]', '', html_content).replace('\\', '')
         soup = BeautifulSoup(html_content, 'html.parser')
         
@@ -17,6 +48,15 @@ class HTMLParser:
         return str(soup)
 
     def parse_records_table(self, soup: BeautifulSoup) -> List[Dict[str, str]]:
+        """
+        Извлекает данные о записях из таблиц в HTML-контенте.
+
+        Args:
+            soup (BeautifulSoup): Проанализированный HTML-контент.
+
+        Returns:
+            List[Dict[str, str]]: Список словарей, содержащих информацию о записях.
+        """
         records = []
         for record in soup.find_all('table', class_='record'):
             record_data = {}
@@ -49,6 +89,12 @@ class HTMLParser:
         return records
 
     def start_parsing_data(self) -> List[Dict[str, str]]:
+        """
+        Начинает процесс парсинга данных.
+
+        Возвращает:
+            List[Dict[str, str]]: Список словарей с извлеченной информацией о записях.
+        """
         clean_html_content = self.clean_html(self._html_content)
         soup = BeautifulSoup(clean_html_content, 'html.parser')
         return self.parse_records_table(soup)

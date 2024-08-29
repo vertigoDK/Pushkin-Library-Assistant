@@ -136,10 +136,16 @@ venv.bak/
 # mkdocs documentation
 /site
 
+#pylint
+.pylintrc
+
+
 # mypy
 .mypy_cache/
 .dmypy.json
 dmypy.json
+mypy.ini
+.mypyignore
 
 # Pyre type checker
 .pyre/
