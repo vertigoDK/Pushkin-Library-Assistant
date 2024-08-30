@@ -1,7 +1,6 @@
 """
 Здесь реализован базовый класс для парсеров
 """
-import requests
 
 class BaseParser:
     """
