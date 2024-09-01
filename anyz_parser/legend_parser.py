@@ -1,17 +1,16 @@
-import asyncio
 import json
 from typing import List
 from aiohttp import ClientSession
 from playwright.async_api import async_playwright
-from links import AnyzLinks
+from links import anyz_links
 from bs4 import BeautifulSoup
 class AnyzLegendParser:
     
     async def _get_all_legend_links(self, class_for_search: str = "elementor-cta__button elementor-button elementor-size-sm") -> List[str]:
         async with ClientSession() as session:
-            async with session.get(AnyzLinks.ANYZ_LEGEND_LINK) as response:
+            async with session.get(anyz_links['ANYZ_LEGEND_LINK']) as response:
                 if response.status != 200:
-                    raise ValueError(f"Не удалось получить данные с URL: {AnyzLinks.ANYZ_LEGEND_LINK}")
+                    raise ValueError(f"Не удалось получить данные с URL: {anyz_links['ANYZ_LEGEND_LINK']}")
                 html = await response.text()
 
         # Парсим HTML-код с помощью BeautifulSoup
@@ -41,7 +40,7 @@ class AnyzLegendParser:
             content_list = [await p_element.inner_text() for p_element in p_elements]
             
             await browser.close()
-            print('Ура пабеда')
+            print(f'Сайт {legend_link} успешно обработан.')
             # Объединяем все тексты в одну строку
             return "\n".join(content_list)
 
