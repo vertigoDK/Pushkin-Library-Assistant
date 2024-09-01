@@ -4,6 +4,7 @@ const config = {
 		index: './src/js/index.js',
 		dosai: './src/js/dosai.js',
 		news: './src/js/news.js',
+		errorPage: './src/js/errorPage.js',
 		// about: './src/js/about.js',
 	},
 	output: {

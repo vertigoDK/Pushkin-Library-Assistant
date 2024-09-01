@@ -14,6 +14,9 @@
 	@media (max-width: $tablet-portrait) {
 		height: 84vh;
 	}
+	@media (max-width: $medium-mobile) {
+		height: 89vh;
+	}
 }
 
 .dosai__box {
@@ -101,10 +104,10 @@
 	border-radius: 9px;
 	box-shadow: -4px 5px 17px 2px rgba(37, 139, 88, 0.7);
 	animation: appearMssg 0.3s ease;
-	@media (max-width: $small-mobile) {
+	@media (max-width: $medium-mobile) {
+		max-width: 270px;
 		font-size: 12px;
 		padding: 15px;
-		max-width: 270px;
 	}
 }
 
@@ -132,10 +135,10 @@
 	box-shadow: 4px 5px 17px 2px rgba(24, 42, 100, 0.7);
 
 	animation: appearMssg 0.3s ease;
-	@media (max-width: $small-mobile) {
+	@media (max-width: $medium-mobile) {
+		max-width: 270px;
 		font-size: 12px;
 		padding: 15px;
-		max-width: 270px;
 	}
 }
 

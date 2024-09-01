@@ -1,0 +1,53 @@
+.error {
+	background-image: url('../../img/error_pages/error_picture.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.error__content {
+	padding: 166px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.error__title {
+	position: relative;
+	font-weight: 800;
+	font-size: 62px;
+	color: var(--white-color);
+	margin-bottom: 10px;
+}
+
+.error__icon {
+	position: absolute;
+	top: 50%;
+	left: -75px;
+	transform: translateY(-50%);
+}
+
+.error__subtitle {
+	font-weight: 800;
+	font-size: 32px;
+	color: var(--white-color);
+	margin-bottom: 61px;
+}
+
+.btn {
+	cursor: pointer;
+	border-radius: 9px;
+	padding: 13px 36px;
+	background: var(--general-color);
+
+	font-weight: 700;
+	font-size: 14px;
+	transition: background 0.2s ease;
+	a {
+		color: var(--white-color);
+	}
+	&:hover {
+		background: var(--general-tint-color);
+	}
+}
