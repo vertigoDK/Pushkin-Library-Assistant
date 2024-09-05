@@ -76,6 +76,7 @@
             apiHost: "{{ API_HOST }}",
             theme: {
                 button: {
+                    
                     backgroundColor: "#15803d", // Цвет фона кнопки
                     customIconSrc: "{% static 'img/services/logo-dosai-white.svg' %}",
                     right: 20,
@@ -91,16 +92,16 @@
                     fontSize: 16,
                     poweredByTextColor: "#303235",
                     botMessage: {
-                        backgroundColor: "#f7f8ff",
-                        textColor: "#303235",
+                        backgroundColor: "#1684A7",//"#2D4273",
+                        textColor: "#EFFFFB",
                         showAvatar: true,
-                        avatarSrc: "{% static 'img/services/logo-dosai-white.svg' %}", // Аватар бота
+                        avatarSrc: "{% static 'img/dosai/book.png' %}",
                     },
                     userMessage: {
-                        backgroundColor: "#3B81F6",
-                        textColor: "#ffffff",
+                        backgroundColor: "#258b58",//"#4CAF50",
+                        textColor: "#EFFFFB",
                         showAvatar: true,
-                        avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png", // Аватар пользователя
+                        avatarSrc: "{% static 'img/dosai/library-svgrepo-com.svg' %}",
                     },
                     textInput: {
                         placeholder: "Задайте свой вопрос здесь",

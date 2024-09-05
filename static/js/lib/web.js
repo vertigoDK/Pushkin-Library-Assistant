@@ -1036,7 +1036,7 @@ const Re = ({
             return b((() => le(r, "stroke", e.color ?? "#1684A7"))), r
         }
     },
-    rr = te('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"></path><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4">'),
+    rr = te('<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"></path><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4">'),
     or = e => {
         {
             const r = rr();
@@ -2678,7 +2678,7 @@ const so = te('<div class="flex items-center justify-center max-w-[128px] mr-[10
             return r.$$click = () => e.onPromptClick?.(), o.style.setProperty("width", "max-content"), o.style.setProperty("border-radius", "15px"), o.style.setProperty("cursor", "pointer"), se(o, (() => e.prompt)), b((() => null != (e.starterPromptFontSize ? e.starterPromptFontSize + "px" : "15px") ? o.style.setProperty("font-size", e.starterPromptFontSize ? e.starterPromptFontSize + "px" : "15px") : o.style.removeProperty("font-size"))), r
         }
     },
-    Yo = (ae(["click"]), te('<span class="w-full text-center px-[10px] pt-[6px] pb-[10px] m-auto text-[13px]"><a target="_blank" rel="noopener noreferrer" class="lite-badge" id="lite-badge"><span>&nbsp;')),
+    // Yo = (ae(["click"]), te('<span class="w-full text-center px-[10px] pt-[6px] pb-[10px] m-auto text-[13px]"><a target="_blank" rel="noopener noreferrer" class="lite-badge" id="lite-badge"><span>&nbsp;')),
     zo = te('<span class="w-full text-center px-[10px] pt-[6px] pb-[10px] m-auto text-[13px]">'),
     Jo = "#303235",
     jo = e => {
@@ -2702,20 +2702,20 @@ const so = te('<div class="flex items-center justify-center max-w-[128px] mr-[10
                 return void 0 === e.footer?.showFooter || null === e.footer?.showFooter || !0 === e.footer?.showFooter
             },
             get children() {
-                const o = Yo(),
-                    t = o.firstChild,
-                    a = t.firstChild;
-                a.firstChild, se(o, (() => e.footer?.text ?? ""), t);
-                return "function" == typeof r ? ne(r, t) : r = t, t.style.setProperty("font-weight", "bold"), se(a, (() => e.footer?.company ?? ""), null), b((r => {
-                    var a = e.footer?.textColor ?? e.poweredByTextColor ?? Jo,
-                        d = e.footer?.textColor ?? e.poweredByTextColor ?? Jo;
-                    return ""
-                }), {
-                    _v$: void 0,
-                    _v$2: void 0,
-                    _v$3: void 0,
-                    _v$4: void 0
-                }), o
+                // const o = Yo(),
+                //     t = o.firstChild,
+                //     a = t.firstChild;
+                // a.firstChild, se(o, (() => e.footer?.text ?? ""), t);
+                // return "function" == typeof r ? ne(r, t) : r = t, t.style.setProperty("font-weight", "bold"), se(a, (() => e.footer?.company ?? ""), null), b((r => {
+                //     var a = e.footer?.textColor ?? e.poweredByTextColor ?? Jo,
+                //         d = e.footer?.textColor ?? e.poweredByTextColor ?? Jo;
+                //     return ""
+                // }), {
+                //     _v$: void 0,
+                //     _v$2: void 0,
+                //     _v$3: void 0,
+                //     _v$4: void 0
+                // }), o
             }
         }), V(Y, {
             get when() {
@@ -45533,14 +45533,14 @@ const Cs = te('<span class="flex items-center gap-2">Saving...'),
                         get children() {
                             const e = cm(),
                                 o = e.firstChild.firstChild;
-                            return e.$$click = n, b((() => le(o, "fill", r.theme?.button?.iconColor ?? Sm))), e
+                            return e.$$click = n, b((() => le(o, "fill", "#1c6543" ?? Sm))), e
                         }
                     }), null), se(t, V(sm, {
                         get badgeBackgroundColor() {
                             return r.theme?.chatWindow?.backgroundColor
                         },
                         get bubbleBackgroundColor() {
-                            return r.theme?.button?.backgroundColor ?? "#1684A7"
+                            return /*r.theme?.button?.backgroundColor ??*/ "transparent"
                         },
                         get bubbleTextColor() {
                             return r.theme?.button?.iconColor ?? Sm
@@ -45725,7 +45725,7 @@ const Cs = te('<span class="flex items-center gap-2">Saving...'),
                     }
                 })), b((o => {
                     var t = e.theme?.chatWindow?.backgroundColor || "#ffffff",
-                        a = e.theme?.chatWindow?.height ? e.theme?.chatWindow?.height.toString() + "px" : "100dvh",
+                        a = e.theme?.chatWindow?.height ? e.theme?.chatWindow?.height.toString() + "px" : "85dvh",
                         l = e.theme?.chatWindow?.width ? e.theme?.chatWindow?.width.toString() + "px" : "100%";
                     return t !== o._v$ && (null != (o._v$ = t) ? r.style.setProperty("background-color", t) : r.style.removeProperty("background-color")), a !== o._v$2 && (null != (o._v$2 = a) ? r.style.setProperty("height", a) : r.style.removeProperty("height")), l !== o._v$3 && (null != (o._v$3 = l) ? r.style.setProperty("width", l) : r.style.removeProperty("width")), o
                 }), {

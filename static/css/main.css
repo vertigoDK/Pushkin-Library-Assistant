@@ -188,12 +188,12 @@ body {
 }
 
 .main {
-    margin-bottom: 130px;
+    /*margin-bottom: 130px;*/
 }
 
 @media (max-width: 768px) {
     .main {
-        margin-bottom: 85px;
+        /*margin-bottom: 85px;*/
     }
 }
 
