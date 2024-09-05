@@ -86,9 +86,16 @@
 
             let msUntilChange;
             if (isLibraryOpen) {
+
                 msUntilChange = closingTime - now;
             } else {
+                // Время до следующего открытия (если текущий момент уже позже времени открытия)
+                if (openingTime < now) {
+                    // Если текущее время позже открытия, переносим открытие на следующий день
+                    openingTime.setDate(openingTime.getDate() + 1);
+                }
                 msUntilChange = openingTime - now;
+            
             }
 
             const hours = Math.floor(msUntilChange / 3600000);
