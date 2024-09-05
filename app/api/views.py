@@ -2,10 +2,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer
+from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer, ExaSearchSerializer, ExaResultSerializer
 from app.api.services.books_api.books_parser import BookSearchHandler
 from app.api.services.data_extractors.news_fetcher import NewsFetcher
 from app.api.services.data_extractors.events_fetcher import get_events
+from app.api.services.exa_api import exa_handler
+from .services.exa_api.exa_handler import ExaHandler
+
 
 class BookSearchAPIView(APIView):
     def post(self, request):
@@ -54,3 +57,18 @@ class EventsFetcherView(APIView):
         events = get_events()
         return Response(events)
 
+
+class ExaSearchView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        query = request.query_params.get('query', '')
+        num_result = int(request.query_params.get('num_result', 3))
+        max_characters = int(request.query_params.get('max_characters', 10000))
+
+        # Инициализируем объект ExaHandler
+        exa_handler = ExaHandler()
+        result = exa_handler.send_request(query, num_result, max_characters)
+
+        # Сериализуем результат
+        serializer = ExaResultSerializer(result, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

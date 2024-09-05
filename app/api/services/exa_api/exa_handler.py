@@ -1,7 +1,7 @@
 from exa_py import Exa
 from dotenv import load_dotenv
 import os
-from typing import List
+
 
 class ExaHandler:
 
@@ -12,27 +12,31 @@ class ExaHandler:
     def __init__(self):
         load_dotenv()
         self._exa_api = os.getenv('EXA_API')
-
         self._exa: Exa = Exa(self._exa_api)
-
 
     def send_request(self, query: str,
                      num_result: int,
-                     max_characters: int = 500
-                     ):
-        result = self._exa.search_and_contents(query=query,
-                                               num_results=num_result,
-                                               include_domains=self.INCLUDE_DOMAINS,
-                                               type="keyword",
-                                               text={
-                                                   "max_characters": max_characters
-                                               })
-        return result
+                     max_characters: int = 1024):
+        # Выполняем запрос
+        response = self._exa.search_and_contents(query=query,
+                                                 num_results=num_result,
+                                                 include_domains=self.INCLUDE_DOMAINS,
+                                                 type="keyword",
+                                                 text={"max_characters": max_characters})
+
+        # Обрабатываем результат, обращаясь к атрибутам объектов напрямую
+        formatted_result = [{
+            "title": item.title,
+            "url": item.url,
+            "content": item.text # Обрезаем текст по лимиту символов
+        } for item in response.results]  # Переходим по правильному атрибуту results
+
+        return formatted_result
 
 
 def main():
     exa: ExaHandler = ExaHandler()
-    result = exa.send_request("абай кунанбаев", 3, 500)
+    result = exa.send_request("абай кунанбаев", 3, 1024)
     print(result)
 
 
