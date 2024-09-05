@@ -3,9 +3,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer
-from .services.books_parser import BookSearchHandler
-from .services.news_fetcher import NewsFetcher
-from .services.events_fetcher import get_events
+from app.api.services.books_api.books_parser import BookSearchHandler
+from app.api.services.data_extractors.news_fetcher import NewsFetcher
+from app.api.services.data_extractors.events_fetcher import get_events
 
 class BookSearchAPIView(APIView):
     def post(self, request):
