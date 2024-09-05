@@ -28,6 +28,7 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = [
     '*',
     '192.168.1.109',
+    'localhost:3000',
     'colab.research.google.com',
 ]
 
