@@ -9,7 +9,7 @@
         <main class="chat-container">
             <div class="container">
                 <div class="dosai__box">
-            <flowise-fullchatbot>
+                    <flowise-fullchatbot id="flowise">
 
             </flowise-fullchatbot>
                 </div>
@@ -62,5 +62,31 @@
                 }
             }
         })
+    </script>
+
+    <script>
+        // Получаем высоту шапки
+        window.addEventListener('load', function () {
+            // Этот код выполнится, когда все ресурсы, включая картинки, полностью загружены
+            const header = document.getElementById('header');
+            const content = document.getElementById('flowise');
+            console.log('Страница и все ресурсы загружены');
+
+            function adjustHeight() {
+                const headerHeight = header.offsetHeight; // Узнаем высоту header
+                const windowHeight = window.innerHeight;  // Высота окна
+
+                // Устанавливаем высоту контента, которая будет равна оставшейся части окна
+                content.style.height = `${windowHeight - headerHeight}px`;
+            console.log(`${windowHeight - headerHeight}px`);
+            }
+
+            // Выполняем расчет высоты при загрузке страницы
+            adjustHeight();
+
+            // Обновляем высоту при изменении размера окна
+            window.addEventListener('resize', adjustHeight);
+        });
+
     </script>
 {% endblock %}
