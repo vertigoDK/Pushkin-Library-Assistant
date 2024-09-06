@@ -25,12 +25,14 @@
             chatflowid: "{{ CHATFLOW_ID }}",
             apiHost: "{{ API_HOST }}",
             theme: {
+
                 chatWindow: {
+                    showTitle: false,
                     welcomeMessage: "{% trans 'dosai-message' %}",
                     errorMessage: 'This is a custom error message',
                     backgroundColor: "transparent",
                     fontSize: 16,
-                    poweredByTextColor: "transparent",
+                    height: 800,
                     botMessage: {
                         backgroundColor: "#1684A7",//"#2D4273",
                         textColor: "#EFFFFB",
@@ -44,7 +46,7 @@
                         avatarSrc: "{% static 'img/dosai/library-svgrepo-com.svg' %}",
                     },
                     textInput: {
-                        placeholder: 'Type your question',
+                        placeholder: 'Введите ваш вопрос',
                         backgroundColor: '#ffffff',
                         textColor: '#000000',
                         sendButtonColor: '#4CAF50',
@@ -52,8 +54,10 @@
                         maxCharsWarningMessage: "{% trans 'dosai-chars-warning' %}",
                         autoFocus: true,
                     },
-                    feedback: {
-                        color: '#000000',
+                    footer: {
+                        textColor: '#303235',
+                        text: 'Нейросети могут ошибаться,',
+                        company: 'пожалуйста перепроверяйте важную информацию',
                     },
                 }
             }
