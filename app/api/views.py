@@ -62,7 +62,7 @@ class ExaSearchView(APIView):
 
     def get(self, request, *args, **kwargs):
         query = request.query_params.get('query', '')
-        num_result = int(request.query_params.get('num_result', 3))
+        num_result = int(request.query_params.get('num_result', 6))
         max_characters = int(request.query_params.get('max_characters', 10000))
 
         # Инициализируем объект ExaHandler

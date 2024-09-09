@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from settings import FLOWISE_CHATFLOW, FLOWISE_HOST
+from base.settings import FLOWISE_CHATFLOW, FLOWISE_HOST
+
 
 
 def chat_page(request):

@@ -6,7 +6,7 @@ from app.news_app.models import News
 from app.events_app.models import Event
 from app.courses_app.models import Course
 from app.time_app.models import TimeModel
-from settings import FLOWISE_CHATFLOW, FLOWISE_HOST
+from base.settings import FLOWISE_CHATFLOW, FLOWISE_HOST
 from .link import EXTERNAL_LINKS
 from django.utils import timezone
 
