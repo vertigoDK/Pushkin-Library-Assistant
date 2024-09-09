@@ -452,13 +452,13 @@ body {
 .catalog__bookcard-wrapper {
     display: flex;
     justify-content: center;
+    padding-bottom: 20px;
 }
 
 .catalog__bookcard-btn {
     text-align: center;
     background-color: var(--general-color);
     border-radius: 9px;
-    display: block;
     width: 214px;
     height: 44px;
     display: flex;
@@ -466,6 +466,7 @@ body {
     align-items: center;
     font-weight: 700;
     font-size: 14px;
+
     color: var(--white-color);
     transition: background-color 0.2s ease;
 }

@@ -11,7 +11,7 @@
                 <div class="dosai__box">
                     <flowise-fullchatbot id="flowise">
 
-            </flowise-fullchatbot>
+                    </flowise-fullchatbot>
                 </div>
             </div>
         </main>
@@ -21,6 +21,7 @@
 
     <script type="module">
         import Chatbot from "{% static 'js/lib/web.js' %}"
+
         Chatbot.initFull({
             chatflowid: "{{ CHATFLOW_ID }}",
             apiHost: "{{ API_HOST }}",
@@ -78,7 +79,7 @@
 
                 // Устанавливаем высоту контента, которая будет равна оставшейся части окна
                 content.style.height = `${windowHeight - headerHeight}px`;
-            console.log(`${windowHeight - headerHeight}px`);
+                console.log(`${windowHeight - headerHeight}px`);
             }
 
             // Выполняем расчет высоты при загрузке страницы
