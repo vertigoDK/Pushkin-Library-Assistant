@@ -9,6 +9,7 @@ class ExaHandler:
                        "https://olketanu.pushkinlibrary.kz/", "http://irbis.pushkinlibrary.kz:8087",
                        "https://anyz.pushkinlibrary.kz"]
 
+
     def __init__(self):
         load_dotenv()
         self._exa_api = os.getenv('EXA_API')
@@ -36,7 +37,7 @@ class ExaHandler:
 
 def main():
     exa: ExaHandler = ExaHandler()
-    result = exa.send_request("абай кунанбаев", 3, 1024)
+    result = exa.send_request("легенда о рахмановских ключах", 3, 1024)
     print(result)
 
 
