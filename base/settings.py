@@ -4,7 +4,6 @@ from pathlib import Path
 import environ
 import os
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
@@ -25,11 +24,13 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
+
 ALLOWED_HOSTS = [
     '*',
     '192.168.1.109',
+    '127.0.0.1',
+    '127.0.0.1:8080',
     'localhost:3000',
-    'colab.research.google.com',
 ]
 
 UNFOLD = {
@@ -89,6 +90,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    # white noise
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'base.urls'
@@ -174,6 +178,17 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+#
+# COMPRESS_ENABLED = True
+# COMPRESS_URL = STATIC_URL
+# COMPRESS_ROOT = STATIC_ROOT
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -183,3 +198,14 @@ FLOWISE_CHATFLOW = env('FLOWISE_CHATFLOW')
 FLOWISE_HOST = env('FLOWISE_HOST')
 
 DEFAULT_BOOKS_PATH = BASE_DIR / 'database/region-passport.txt'
+
+SECURE_HSTS_SECONDS = 31536000  # 1 год (в секундах)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Если хотите включить HSTS для поддоменов
+SECURE_HSTS_PRELOAD = True  # Включить поддержку HSTS preload
+
+# SECURE_SSL_REDIRECT = True
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -13,6 +13,8 @@ urlpatterns = [
     # path('search_books/', include("app.book_search_app.urls")),
     path('i18n/', include('django.conf.urls.i18n')),
     path('', include('core.urls')),
-    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 ]
+
+if settings.DEBUG:
+    urlpatterns.append(*static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
