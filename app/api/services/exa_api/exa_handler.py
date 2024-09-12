@@ -2,37 +2,46 @@ from exa_py import Exa
 from dotenv import load_dotenv
 import os
 
-
 class ExaHandler:
 
-    INCLUDE_DOMAINS = ["https://pushkinlibrary.kz/", "https://esimder.pushkinlibrary.kz",
-                       "https://olketanu.pushkinlibrary.kz/", "http://irbis.pushkinlibrary.kz:8087",
-                       "https://anyz.pushkinlibrary.kz"]
+    def __init__(self, site_name: str = None):
+        PERMITTED_NAMES = {
+            "pushkinlibrary": "https://pushkinlibrary.kz/", 
+            "esimder": "https://esimder.pushkinlibrary.kz",
+            "olketanu": "https://olketanu.pushkinlibrary.kz/", 
+            "irbis": "http://irbis.pushkinlibrary.kz:8087",
+            "anyz": "https://anyz.pushkinlibrary.kz"
+        }
+        
+        # Проверяем, указан ли site_name и включен ли он в разрешенные домены
+        if site_name and site_name in PERMITTED_NAMES:
+            self.INCLUDE_DOMAINS = [PERMITTED_NAMES[site_name]]
+        else:
+            # Печатаем для отладки
+            print(f"Invalid domain: {site_name}")
+            raise ValueError(f"Invalid domain: {site_name}")
 
-
-    def __init__(self):
         load_dotenv()
         self._exa_api = os.getenv('EXA_API')
         self._exa: Exa = Exa(self._exa_api)
 
-    def send_request(self, query: str,
-                     num_result: int,
-                     max_characters: int = 1024):
-        # Выполняем запрос
-        response = self._exa.search_and_contents(query=query,
-                                                 num_results=num_result,
-                                                 include_domains=self.INCLUDE_DOMAINS,
-                                                 type="keyword",
-                                                 text={"max_characters": max_characters})
+    def send_request(self, query: str, num_result: int, max_characters: int = 1024):
+        response = self._exa.search_and_contents(
+            query=query,
+            num_results=num_result,
+            include_domains=self.INCLUDE_DOMAINS,
+            type="keyword",
+        )
 
-        # Обрабатываем результат, обращаясь к атрибутам объектов напрямую
         formatted_result = [{
             "title": item.title,
             "url": item.url,
-            "content": item.text # Обрезаем текст по лимиту символов
-        } for item in response.results]  # Переходим по правильному атрибуту results
+            "content": item.text[:max_characters]
+        } for item in response.results]
 
         return formatted_result
+
+
 
 
 def main():
