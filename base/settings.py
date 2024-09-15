@@ -3,6 +3,9 @@ from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 import environ
 import os
+import copy
+from django.conf import global_settings
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -175,15 +178,20 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+STORAGES = copy.deepcopy(global_settings.STORAGES)
+
+STORAGES.update(
+    {
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        },
+    }
+)
+
 #
 # COMPRESS_ENABLED = True
 # COMPRESS_URL = STATIC_URL
