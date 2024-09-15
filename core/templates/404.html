@@ -1,0 +1,7 @@
+{% extends 'error.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block error_title %}404{% endblock %}
+{% block error_img %}{% static 'img/errors/notFound.svg' %}{% endblock %}
+{% block error_desc %}{% trans 'error404' %}{% endblock %}

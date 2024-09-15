@@ -28,4 +28,8 @@ def news_list(request):
 def news_detail(request, slug):
     news_item = get_object_or_404(News, slug=slug)
     news_images = NewsImage.objects.filter(news=news_item)
-    return render(request, 'news_detail.html', {'news_item': news_item, 'news_images': news_images, 'show_chatbot': True})
+    return render(request, 'news_detail.html',
+                  {'news_item': news_item, 'news_images': news_images, 'show_chatbot': True})
+
+
+

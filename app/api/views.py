@@ -61,14 +61,20 @@ class EventsFetcherView(APIView):
 class ExaSearchView(APIView):
 
     def get(self, request, *args, **kwargs):
+        # Получаем параметры запроса
         query = request.query_params.get('query', '')
-        num_result = int(request.query_params.get('num_result', 3))
+        num_result = int(request.query_params.get('num_result', 5))
         max_characters = int(request.query_params.get('max_characters', 10000))
+        type_site = request.query_params.get('type_site', None)
 
-        # Инициализируем объект ExaHandler
-        exa_handler = ExaHandler()
+        try:
+            exa_handler = ExaHandler(type_site)
+        except ValueError as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
         result = exa_handler.send_request(query, num_result, max_characters)
 
         # Сериализуем результат
         serializer = ExaResultSerializer(result, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+

@@ -3,6 +3,8 @@ from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 import environ
 import os
+import copy
+from django.conf import global_settings
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,11 +27,13 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
+
 ALLOWED_HOSTS = [
     '*',
     '192.168.1.109',
+    '127.0.0.1',
+    '127.0.0.1:8080',
     'localhost:3000',
-    'colab.research.google.com',
 ]
 
 UNFOLD = {
@@ -89,6 +93,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    # white noise
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'base.urls'
@@ -171,8 +178,22 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STORAGES = copy.deepcopy(global_settings.STORAGES)
+
+STORAGES.update(
+    {
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        },
+    }
+)
+
+#
+# COMPRESS_ENABLED = True
+# COMPRESS_URL = STATIC_URL
+# COMPRESS_ROOT = STATIC_ROOT
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -183,3 +204,14 @@ FLOWISE_CHATFLOW = env('FLOWISE_CHATFLOW')
 FLOWISE_HOST = env('FLOWISE_HOST')
 
 DEFAULT_BOOKS_PATH = BASE_DIR / 'database/region-passport.txt'
+
+SECURE_HSTS_SECONDS = 31536000  # 1 год (в секундах)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Если хотите включить HSTS для поддоменов
+SECURE_HSTS_PRELOAD = True  # Включить поддержку HSTS preload
+
+# SECURE_SSL_REDIRECT = True
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

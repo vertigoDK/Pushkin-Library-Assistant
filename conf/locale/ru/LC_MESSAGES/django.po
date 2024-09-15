@@ -319,3 +319,14 @@ msgstr "До закрытия библиотеки"
 
 #~ msgid "foyer-9"
 #~ msgstr "Фойе 9"
+msgid "error404"
+msgstr "Страница не найдена"
+
+msgid "error403"
+msgstr "Доступ запрещён"
+
+msgid "error500"
+msgstr "Внутренняя ошибка сервера"
+
+msgid "go-back"
+msgstr "Вернуться на главную"

@@ -289,3 +289,14 @@ msgstr "Кітапхана ашылғанға дейін"
 msgid "before-the-library-closes"
 msgstr "Кітапхана жабылғанға дейін"
 
+msgid "error404"
+msgstr "Бет табылмады"
+
+msgid "error403"
+msgstr "Қол жеткізу рұқсат етілмеді"
+
+msgid "error500"
+msgstr "Сервердегі ішкі қате"
+
+msgid "go-back"
+msgstr "Басты бетке оралу"

@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.utils.timezone import now, timedelta
 
+from app.courses_app.models import Course
+from app.events_app.models import Event
 from app.new_book_app.models import NewBook
 from app.news_app.models import News
-from app.events_app.models import Event
-from app.courses_app.models import Course
 from app.time_app.models import TimeModel
+from base.settings import FLOWISE_CHATFLOW, FLOWISE_HOST
 from .link import EXTERNAL_LINKS
-from django.utils import timezone
 
 
 def get_next_working_day(date, weekend_days):
@@ -55,8 +55,6 @@ def index(request):
         # Если на следующий рабочий день нет записи, создаем модель с этим днем
         time_model_next = TimeModel(date_change=next_working_day)
 
-    print(time_model_today)
-    print(time_model_next)
 
     context = {
         'show_chatbot': True,
@@ -69,5 +67,19 @@ def index(request):
         'time_model_next': time_model_next,
         'new_books': new_books,
         'weekend_days': weekend_days,
+        'FLOWISE_CHATFLOW': FLOWISE_CHATFLOW,
+        'FLOWISE_HOST': FLOWISE_HOST
     }
     return render(request=request, template_name='core.html', context=context)
+
+
+def handler404(request, exception=None):
+    return render(request, '404.html')
+
+
+def handler403(request, exception=None):
+    return render(request, '403.html')
+
+
+def handler500(request, exception=None):
+    return render(request, '500.html')
