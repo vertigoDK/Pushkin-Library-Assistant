@@ -319,11 +319,16 @@ msgstr "Before the library opens"
 msgid "before-the-library-closes"
 msgstr "Before the library closes"
 
-#~ msgid "legal-consultations"
-#~ msgstr "Legal Consultations"
 
-#~ msgid "foyer-8"
-#~ msgstr "Foyer 8"
 
-#~ msgid "foyer-9"
-#~ msgstr "Foyer 9"
+msgid "error404"
+msgstr "Page not found"
+
+msgid "error403"
+msgstr "Access denied"
+
+msgid "error500"
+msgstr "Internal Server Error"
+
+msgid "go-back"
+msgstr "Return to home"

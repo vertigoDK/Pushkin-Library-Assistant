@@ -1,0 +1,7 @@
+{% extends 'error.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block error_title %}403{% endblock %}
+{% block error_img %}{% static 'img/errors/forbidden.svg' %}{% endblock %}
+{% block error_desc %}{% trans 'error403' %}{% endblock %}
