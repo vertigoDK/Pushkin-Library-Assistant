@@ -2373,6 +2373,17 @@ body {
     color: #000;
     line-height: 1.7;
     text-indent: 20px;
+    padding-bottom: 30px;
+}
+
+
+.newsletter__text p {
+    padding-bottom: 16px;
+    margin: 0;
+    text-indent: 0;
+    line-height: 1.5;
+    font-size: 20px;
+    text-align: justify;
 }
 
 .newsletter__text::first-letter {
