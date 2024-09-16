@@ -92,7 +92,7 @@
             console.log('Страница и все ресурсы загружены');
 
             function adjustHeight() {
-                const headerHeight = header.offsetHeight; // Узнаем высоту header
+                const headerHeight = header?.offsetHeight || 0; // Узнаем высоту header
                 const windowHeight = window.innerHeight;  // Высота окна
 
                 // Устанавливаем высоту контента, которая будет равна оставшейся части окна
