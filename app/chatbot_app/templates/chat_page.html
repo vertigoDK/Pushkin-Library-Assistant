@@ -3,6 +3,24 @@
 
 {% load static %}
 
+{% block meta %}
+    <title>DosAI</title>
+    <!-- Подключаем Font Awesome -->
+    {#    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">#}
+    <meta name="keywords"
+          content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина, пушкинка, библиотека пукшин, библиотека">
+    <meta name="description" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
+    <meta property="og:title" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
+    <meta property="og:url" content="https://pushkinlibrary.kz/ru/">
+
+    <meta property="og:site_name" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
+    <link rel="canonical" href="https://pushkinlibrary.kz/ru/">
+    <meta name="twitter:site" content="@PushkinLibrary">
+    <meta name="twitter:image" content="{% static 'img/favicon.png' %}">
+    <meta name="twitter:description"
+          content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
+{% endblock %}
+
 {% block content %}
     <div class="page-container">
 
@@ -28,7 +46,7 @@
             apiHost: "{{ FLOWISE_HOST }}",
             theme: {
                 chatWindow: {
-                    showTitle: false,
+                    {#showTitle: false,#}
                     welcomeMessage: "{% trans 'dosai-message' %}",
                     errorMessage: 'This is a custom error message',
                     backgroundColor: "transparent",
