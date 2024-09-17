@@ -10,11 +10,6 @@ urlpatterns = [
     path('events/', include('app.events_app.urls')),
     path('courses/', include('app.courses_app.urls')),
     path('api/', include('app.api.urls')),
-    # path('search_books/', include("app.book_search_app.urls")),
     path('i18n/', include('django.conf.urls.i18n')),
     path('', include('core.urls')),
-
-]
-
-if settings.DEBUG:
-    urlpatterns.append(*static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Обработка медиа-файлов
