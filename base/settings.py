@@ -77,7 +77,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'autoslug',
-    "compressor",
+    # "compressor",
 
     'rest_framework',
     'corsheaders',
@@ -168,11 +168,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-]
+# STATICFILES_FINDERS = [
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#     'compressor.finders.CompressorFinder',
+# ]
 
 
 # Internationalization
@@ -201,7 +201,6 @@ LANGUAGES = [
 
 
 
-
 STORAGES = copy.deepcopy(global_settings.STORAGES)
 
 STORAGES.update(
@@ -213,7 +212,6 @@ STORAGES.update(
 )
 
 #
-COMPRESS_ENABLED = True
 # COMPRESS_URL = STATIC_URL
 # COMPRESS_ROOT = STATIC_ROOT
 
@@ -248,3 +246,4 @@ else:
 
 
 MEDIA_ROOT = [os.path.join(BASE_DIR, 'media')]
+

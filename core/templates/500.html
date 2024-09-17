@@ -1,0 +1,7 @@
+{% extends 'error.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block error_title %}500{% endblock %}
+{% block error_img %}{% static 'img/errors/InternalServerError.svg' %}{% endblock %}
+{% block error_desc %}{% trans 'error500' %}{% endblock %}
