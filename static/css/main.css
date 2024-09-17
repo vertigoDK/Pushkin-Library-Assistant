@@ -1992,9 +1992,8 @@ body {
 
 .news__picture {
     height: 100%;
-    background: url("/static/img/news/parallax-pic.jpg") center no-repeat;
     background-size: auto;
-    background-attachment: fixed;
+    background: url("/static/img/news/parallax-pic.jpg") no-repeat fixed center;
 }
 
 @media (max-width: 768px) {
@@ -2595,9 +2594,7 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    background: url("/static/img/services/book-logo.svg");
-    background-repeat: no-repeat;
-    background-position: left 50% bottom 26px;
+    background: url("/static/img/services/book-logo.svg") no-repeat left 50% bottom 26px;
     pointer-events: none;
 }
 
@@ -2900,9 +2897,7 @@ body {
 }
 
 .services__ai-chat-link {
-    background: url("/static/img/services/logo-dosai-white-bg.svg");
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url("/static/img/services/logo-dosai-white-bg.svg") no-repeat center;
     background-size: 90%;
     display: flex;
     flex-direction: column;
@@ -4133,10 +4128,22 @@ body {
 
 
 .error {
-  background-image: url("/static/img/errors/error_picture.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    background: url("/static/img/errors/error_picture.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.error a {
+    color: var(--white-color); /* Цвет текста ссылки по умолчанию */
+    text-decoration: none; /* Убираем подчеркивание (по желанию) */
+    margin: 15px auto;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+
+}
+
+.error a:hover {
+    color: lightgray; /* Цвет текста ссылки при наведении курсора */
 }
 
 .error__content {
@@ -4167,4 +4174,19 @@ body {
   font-size: 32px;
   color: var(--white-color);
   margin-bottom: 61px;
+}
+.btn {
+  cursor: pointer;
+  border-radius: 9px;
+  padding: 13px 36px;
+  background: var(--general-color);
+  font-weight: 700;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+.btn a {
+  color: var(--white-color);
+}
+.btn:hover {
+  background: var(--general-tint-color);
 }
