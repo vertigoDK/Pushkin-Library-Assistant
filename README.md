@@ -2,6 +2,8 @@
 
 ## Содержание
 
+# Содержание
+
 - [Установка и настройка](#установка-и-настройка)
   - [1. Клонирование репозитория](#1-клонирование-репозитория)
   - [2. Создание виртуального окружения](#2-создание-виртуального-окружения)
@@ -10,6 +12,36 @@
   - [5. Настройка файла `.env`](#5-настройка-файла-env)
   - [6. Применение миграций](#6-применение-миграций)
   - [7. Запуск сервера разработки](#7-запуск-сервера-разработки)
+- [Развертывание Django-проекта с Gunicorn и Nginx](#развертывание-django-проекта-с-gunicorn-и-nginx)
+  - [Установка необходимых пакетов](#установка-необходимых-пакетов)
+  - [Настройка проекта Django](#настройка-проекта-django)
+    - [Создание директории проекта](#создание-директории-проекта)
+    - [Создание и активация виртуального окружения](#создание-и-активация-виртуального-окружения)
+    - [Установка зависимостей](#установка-зависимостей)
+    - [Настройка файла `settings.py`](#настройка-файла-settingspy)
+  - [Настройка Gunicorn](#настройка-gunicorn)
+    - [Создание сокета Gunicorn](#создание-сокета-gunicorn)
+    - [Создание службы Gunicorn](#создание-службы-gunicorn)
+    - [Проверка конфигурации Gunicorn](#проверка-конфигурации-gunicorn)
+  - [Настройка Nginx](#настройка-nginx)
+    - [Создание конфигурации сайта](#создание-конфигурации-сайта)
+    - [Активация конфигурации сайта](#активация-конфигурации-сайта)
+    - [Проверка и перезапуск Nginx](#проверка-и-перезапуск-nginx)
+  - [Запуск служб](#запуск-служб)
+    - [Запуск Gunicorn](#запуск-gunicorn)
+    - [Проверка создания сокета](#проверка-создания-сокета)
+    - [Перезапуск Gunicorn после изменений](#перезапуск-gunicorn-после-изменений)
+    - [Управление службой Gunicorn](#управление-службой-gunicorn)
+  - [Применение миграций Django](#применение-миграций-django)
+  - [Получение SSL-сертификата](#получение-ssl-сертификата)
+    - [Установка Certbot](#установка-certbot)
+    - [Получение сертификата](#получение-сертификата)
+    - [Автоматическое обновление конфигурации Nginx](#автоматическое-обновление-конфигурации-nginx)
+    - [Перезапуск Nginx](#перезапуск-nginx)
+  - [Дополнительные команды](#дополнительные-команды)
+    - [Перезагрузка демона systemd](#перезагрузка-демона-systemd)
+    - [Проверка логов Gunicorn](#проверка-логов-gunicorn)
+    - [Проверка логов Nginx](#проверка-логов-nginx)
 - [Структура проекта](#структура-проекта)
 - [Установка и настройка Flowise](#установка-и-настройка-flowise)
   - [1. Установка Node.js](#1-установка-nodejs)
@@ -17,6 +49,9 @@
   - [3. Запуск Flowise](#3-запуск-flowise)
   - [4. Запуск Flowise с аутентификацией](#4-запуск-flowise-с-аутентификацией)
   - [5. Открытие Flowise в браузере](#5-открытие-flowise-в-браузере)
+  - [Docker](#docker)
+    - [1. Установка Docker](#1-установка-docker)
+    - [Docker Compose](#docker-compose)
 - [Frontend](#frontend)
   - [Построенный проект](#построенный-проект)
 - [Работа с Django](#работа-с-django)
@@ -28,7 +63,6 @@
     - [Компиляция переводов](#компиляция-переводов)
   - [Использование Django Shell](#использование-django-shell)
   - [Доступ к административной панели](#доступ-к-административной-панели)
-
 ---
 
 ## Установка и настройка
@@ -94,7 +128,279 @@ python manage.py runserver
 
 ---
 
-## Структура проекта
+# Развертывание Django-проекта с Gunicorn и Nginx
+
+Данное руководство поможет вам развернуть Django-приложение на сервере с использованием **Gunicorn** и **Nginx**.
+
+## Установка необходимых пакетов
+
+Обновите список пакетов и установите Nginx:
+
+```sh
+sudo apt-get update
+sudo apt-get install nginx
+```
+
+## Настройка проекта Django
+
+### Создание директории проекта
+
+Рекомендуется хранить файлы сайта в каталоге `/var/www/`. Создайте директорию для вашего проекта:
+
+```sh
+sudo mkdir -p /var/www/geekhero
+sudo chown $USER:$USER /var/www/geekhero
+cd /var/www/geekhero
+```
+
+### Создание и активация виртуального окружения
+
+Создайте виртуальное окружение и активируйте его:
+
+```sh
+python3 -m venv geekhero_env
+source geekhero_env/bin/activate
+```
+
+### Установка зависимостей
+
+Установите необходимые пакеты:
+
+```sh
+pip install -r requirements.txt
+pip install gunicorn
+```
+
+### Настройка файла `settings.py`
+
+В файле `settings.py` убедитесь, что указаны следующие настройки для статических файлов:
+
+```python
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+```
+
+## Настройка Gunicorn
+
+### Создание сокета Gunicorn
+
+Создайте файл `/etc/systemd/system/gunicorn.socket` со следующим содержимым:
+
+```ini
+[Unit]
+Description=Gunicorn socket
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+```
+
+### Создание службы Gunicorn
+
+Создайте файл `/etc/systemd/system/gunicorn.service` со следующим содержимым:
+
+```ini
+[Unit]
+Description=Gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/geekhero
+ExecStart=/var/www/geekhero/geekhero_env/bin/gunicorn \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          pushkinLibrary.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+```
+
+**Примечание:** Убедитесь, что `WorkingDirectory` указывает на каталог, содержащий файл `manage.py`.
+
+### Проверка конфигурации Gunicorn
+
+Проверьте файл `gunicorn.service` на наличие ошибок:
+
+```sh
+sudo systemd-analyze verify gunicorn.service
+```
+
+## Настройка Nginx
+
+### Создание конфигурации сайта
+
+Создайте файл `/etc/nginx/sites-available/geekhero` со следующим содержимым:
+
+```nginx
+server {
+    listen 80;
+    server_name dosai.pushkinlibrary.kz www.dosai.pushkinlibrary.kz;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    
+    location /static/ {
+        root /var/www/geekhero;
+    }
+    
+    location /media/ {
+        root /var/www/geekhero;
+    }
+    
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+}
+```
+
+### Активация конфигурации сайта
+
+Создайте символическую ссылку в каталоге `sites-enabled`:
+
+```sh
+sudo ln -s /etc/nginx/sites-available/geekhero /etc/nginx/sites-enabled/
+```
+
+### Проверка и перезапуск Nginx
+
+Проверьте конфигурацию Nginx:
+
+```sh
+sudo nginx -t
+```
+
+Перезапустите Nginx:
+
+```sh
+sudo systemctl restart nginx
+```
+
+## Запуск служб
+
+### Запуск Gunicorn
+
+Активируйте и запустите сокет Gunicorn:
+
+```sh
+sudo systemctl enable gunicorn.socket
+sudo systemctl start gunicorn.socket
+```
+
+Проверьте статус службы:
+
+```sh
+sudo systemctl status gunicorn.socket
+```
+
+### Проверка создания сокета
+
+Убедитесь, что сокет `/run/gunicorn.sock` создан:
+
+```sh
+file /run/gunicorn.sock
+```
+
+Ожидаемый вывод:
+
+```
+/run/gunicorn.sock: socket
+```
+
+### Перезапуск Gunicorn после изменений
+
+При изменении кода приложения или HTML-шаблонов перезапустите Gunicorn:
+
+```sh
+sudo systemctl restart gunicorn
+```
+
+### Управление службой Gunicorn
+
+- Запуск: `sudo systemctl start gunicorn`
+- Остановка: `sudo systemctl stop gunicorn`
+- Перезапуск: `sudo systemctl restart gunicorn`
+- Статус: `sudo systemctl status gunicorn`
+
+## Применение миграций Django
+
+При изменении моделей данных выполните миграции:
+
+```sh
+python manage.py makemigrations
+python manage.py migrate
+```
+
+## Получение SSL-сертификата
+
+### Установка Certbot
+
+Установите Certbot и плагин для Nginx:
+
+```sh
+sudo apt-get install certbot python3-certbot-nginx
+```
+
+### Получение сертификата
+
+Получите SSL-сертификат для вашего домена:
+
+```sh
+sudo certbot --nginx -d example.com -d www.example.com
+```
+
+Следуйте инструкциям в терминале.
+
+### Автоматическое обновление конфигурации Nginx
+
+Certbot автоматически обновит конфигурацию Nginx для использования SSL.
+
+### Перезапуск Nginx
+
+Перезапустите Nginx для применения изменений:
+
+```sh
+sudo systemctl restart nginx
+```
+
+## Дополнительные команды
+
+### Перезагрузка демона systemd
+
+После изменения файлов службы необходимо перезагрузить демон systemd:
+
+```sh
+sudo systemctl daemon-reload
+```
+
+### Проверка логов Gunicorn
+
+Просмотр логов Gunicorn:
+
+```sh
+sudo journalctl -u gunicorn
+```
+
+### Проверка логов Nginx
+
+Просмотр логов доступа и ошибок Nginx:
+
+```sh
+sudo tail -f /var/log/nginx/access.log
+sudo tail -f /var/log/nginx/error.log
+```
+
+
+
+----
+
+
+
+# Структура проекта
 
 - **base/** — главный модуль проекта
   - `manage.py` — основной скрипт управления проектом
@@ -147,7 +453,7 @@ python manage.py runserver
 
 ---
 
-## Установка и настройка Flowise
+# Установка и настройка Flowise
 
 **Flowise** — инструмент с открытым исходным кодом, позволяющий разработчикам создавать индивидуальные потоки оркестрации LLM и агенты искусственного интеллекта.
 
@@ -218,10 +524,10 @@ docker compose up -d
 docker compose stop
 ```
 
-
 ----
 
-## Frontend
+
+# Frontend
 
 ### Построенный проект
 
