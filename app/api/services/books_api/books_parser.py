@@ -28,6 +28,7 @@ from typing import Dict, Optional
 from .HTMLParser import HTMLParser
 from typing import Union, Any
 
+
 class BaseAPIHandler:
     BASE_URL: str = "http://irbis.pushkinlibrary.kz:8087/jirbis2/components/com_irbis/ajax_provider.php"
 
@@ -180,7 +181,7 @@ class BookSearchHandler(BaseAPIHandler):
             self._search_request()
             self._set_selected_databases()
             self._set_user_profile()
-            self._search_request() # Я не знаю почему оно так работает, у меня сроки горели :)
+            self._search_request()  # Я не знаю почему оно так работает, у меня сроки горели :)
 
             results = self._get_search_results()
             results_json_first = results.json()
