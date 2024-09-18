@@ -80,6 +80,7 @@
                 },
                 chatWindow: {
                     welcomeMessage: "{% trans 'dosai-message' %}",
+                    errorMessage: '{% trans 'dosai-error' %}',
                     backgroundColor: "#ffffff",
                     height: 700,
                     width: 400,
@@ -98,11 +99,18 @@
                         avatarSrc: "{% static 'img/dosai/library-svgrepo-com.svg' %}",
                     },
                     textInput: {
-                        placeholder: "Задайте свой вопрос здесь",
+                        placeholder: "{% trans 'dosai-question' %}",
                         backgroundColor: "#ffffff",
                         textColor: "#303235",
                         sendButtonColor: "#3B81F6",
-                    }
+                        maxChars: 300,
+                        maxCharsWarningMessage: "{% trans 'dosai-chars-warning' %}",
+                    },
+                    footer: {
+                        textColor: '#303235',
+                        text: '{% trans 'dosai-warning-1' %}',
+                        company: '{% trans 'dosai-warning-2' %}',
+                    },
                 }
             }
         })
