@@ -1,45 +1,40 @@
-{% load compress %}
 {% load static %}
 {% load i18n %}
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    {% compress css %}
-        <meta charset="UTF-8">
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans 'library-title-1' %}</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- Подключаем Font Awesome -->
+{#    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">#}
+    <meta name="keywords"
+          content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина, пушкинка, библиотека пукшин, библиотека">
+    <meta name="robots" content="index,follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="description" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+    <meta property="og:title" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pushkinlibrary.kz/ru/">
+    <meta property="og:image" content="{% static 'img/favicon.png' %}">
+    <meta property="og:description"
+          content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
+    <meta property="og:site_name" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
+    <link rel="canonical" href="https://pushkinlibrary.kz/ru/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@PushkinLibrary">
+    <meta name="twitter:image" content="{% static 'img/favicon.png' %}">
+    <meta name="twitter:description"
+          content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
+    <meta name="theme-color" content="#317EFB">
 
-        <!-- Подключаем Bootstrap CSS -->
-        <link rel="stylesheet" href="{% static 'css/font.css' %}">
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
-        <meta name="robots" content="index,follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-        <meta property="og:image" content="{% static 'img/favicon.png' %}">
-        <meta property="og:description"
-              content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
-        <meta name="theme-color" content="#317EFB">
-        <meta name="twitter:card" content="summary">
-        <meta property="og:type" content="website">
-        {% block meta %}
-            <title>{% trans 'library-title-1' %}</title>
-            <!-- Подключаем Font Awesome -->
-            {#    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">#}
-            <meta name="keywords"
-                  content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина, пушкинка, библиотека пукшин, библиотека">
-            <meta name="description" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
-            <meta property="og:title" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
-            <meta property="og:url" content="https://pushkinlibrary.kz/ru/">
-
-            <meta property="og:site_name" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
-            <link rel="canonical" href="https://pushkinlibrary.kz/ru/">
-            <meta name="twitter:site" content="@PushkinLibrary">
-            <meta name="twitter:image" content="{% static 'img/favicon.png' %}">
-            <meta name="twitter:description"
-                  content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
-        {% endblock %}
-        {% block content_meta %}
+    {% block content_meta %}
 
         {% endblock %}
 
@@ -51,7 +46,6 @@
         <link rel="stylesheet" href="{% static 'css/newbooks.css' %}"/>
 
 
-    {% endcompress %}
 
     {% block head_content_js %}
     {% endblock %}
@@ -68,7 +62,6 @@
     {% include 'blocks/footer.html' %}
 {% endif %}
 
-{#{% compress js file base %}#}
 {% if show_chatbot %}
     <script type="module">
         import Chatbot from "{% static 'js/lib/web.js' %}"
@@ -87,6 +80,7 @@
                 },
                 chatWindow: {
                     welcomeMessage: "{% trans 'dosai-message' %}",
+                    errorMessage: '{% trans 'dosai-error' %}',
                     backgroundColor: "#ffffff",
                     height: 700,
                     width: 400,
@@ -96,7 +90,7 @@
                         backgroundColor: "#1684A7",//"#2D4273",
                         textColor: "#EFFFFB",
                         showAvatar: true,
-                        avatarSrc: "{% static 'img/dosai/book.png' %}",
+                        avatarSrc: "{% static 'img/dosai/book-opened.svg' %}",
                     },
                     userMessage: {
                         backgroundColor: "#258b58",//"#4CAF50",
@@ -105,11 +99,18 @@
                         avatarSrc: "{% static 'img/dosai/library-svgrepo-com.svg' %}",
                     },
                     textInput: {
-                        placeholder: "Задайте свой вопрос здесь",
+                        placeholder: "{% trans 'dosai-question' %}",
                         backgroundColor: "#ffffff",
                         textColor: "#303235",
                         sendButtonColor: "#3B81F6",
-                    }
+                        maxChars: 300,
+                        maxCharsWarningMessage: "{% trans 'dosai-chars-warning' %}",
+                    },
+                    footer: {
+                        textColor: '#303235',
+                        text: '{% trans 'dosai-warning-1' %}',
+                        company: '{% trans 'dosai-warning-2' %}',
+                    },
                 }
             }
         })
@@ -124,6 +125,5 @@
 
 {% block content_js %}
 {% endblock %}
-{#{% endcompress %}#}
 </body>
 </html>

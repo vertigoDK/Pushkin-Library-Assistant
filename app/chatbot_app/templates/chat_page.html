@@ -3,23 +3,6 @@
 
 {% load static %}
 
-{% block meta %}
-    <title>DosAI</title>
-    <!-- Подключаем Font Awesome -->
-    {#    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">#}
-    <meta name="keywords"
-          content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина, пушкинка, библиотека пукшин, библиотека">
-    <meta name="description" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
-    <meta property="og:title" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
-    <meta property="og:url" content="https://pushkinlibrary.kz/ru/">
-
-    <meta property="og:site_name" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
-    <link rel="canonical" href="https://pushkinlibrary.kz/ru/">
-    <meta name="twitter:site" content="@PushkinLibrary">
-    <meta name="twitter:image" content="{% static 'img/favicon.png' %}">
-    <meta name="twitter:description"
-          content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
-{% endblock %}
 
 {% block content %}
     <div class="page-container">
@@ -45,10 +28,10 @@
             chatflowid: "{{ FLOWISE_CHATFLOW }}",
             apiHost: "{{ FLOWISE_HOST }}",
             theme: {
+
                 chatWindow: {
-                    {#showTitle: false,#}
                     welcomeMessage: "{% trans 'dosai-message' %}",
-                    errorMessage: 'This is a custom error message',
+                    errorMessage: '{% trans 'dosai-error' %}',
                     backgroundColor: "transparent",
                     fontSize: 16,
                     height: 800,
@@ -56,7 +39,7 @@
                         backgroundColor: "#1684A7",//"#2D4273",
                         textColor: "#EFFFFB",
                         showAvatar: true,
-                        avatarSrc: "{% static 'img/dosai/book.png' %}",
+                        avatarSrc: "{% static 'img/dosai/book-opened.svg' %}",
                     },
                     userMessage: {
                         backgroundColor: "#258b58",//"#4CAF50",
@@ -65,7 +48,7 @@
                         avatarSrc: "{% static 'img/dosai/library-svgrepo-com.svg' %}",
                     },
                     textInput: {
-                        placeholder: 'Введите ваш вопрос',
+                        placeholder: '{% trans 'dosai-question' %}',
                         backgroundColor: '#ffffff',
                         textColor: '#000000',
                         sendButtonColor: '#4CAF50',
@@ -75,8 +58,8 @@
                     },
                     footer: {
                         textColor: '#303235',
-                        text: 'Нейросети могут ошибаться,',
-                        company: 'пожалуйста перепроверяйте важную информацию',
+                        text: '{% trans 'dosai-warning-1' %}',
+                        company: '{% trans 'dosai-warning-2' %}',
                     },
                 }
             }
@@ -92,7 +75,7 @@
             console.log('Страница и все ресурсы загружены');
 
             function adjustHeight() {
-                const headerHeight = header?.offsetHeight || 0; // Узнаем высоту header
+                const headerHeight = header.offsetHeight; // Узнаем высоту header
                 const windowHeight = window.innerHeight;  // Высота окна
 
                 // Устанавливаем высоту контента, которая будет равна оставшейся части окна
@@ -106,6 +89,12 @@
             // Обновляем высоту при изменении размера окна
             window.addEventListener('resize', adjustHeight);
         });
+    </script>
+
 
     </script>
 {% endblock %}
+
+
+{% load static %}
+{% load i18n %}

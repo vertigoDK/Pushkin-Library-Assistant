@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 
+{% block content_meta %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock %}
 {% block error_title %}403{% endblock %}
 {% block error_img %}{% static 'img/errors/forbidden.svg' %}{% endblock %}
 {% block error_desc %}{% trans 'error403' %}{% endblock %}

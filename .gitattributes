@@ -1,0 +1,6 @@
+# Указать, что файлы JavaScript должны быть проигнорированы для подсчета языка
+*.js linguist-language=JavaScript
+*.js linguist-vendored
+
+# Указать Python в качестве основного языка
+*.py linguist-detectable
