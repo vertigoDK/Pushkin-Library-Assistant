@@ -30,9 +30,8 @@
             theme: {
 
                 chatWindow: {
-                    showTitle: false,
                     welcomeMessage: "{% trans 'dosai-message' %}",
-                    errorMessage: 'This is a custom error message',
+                    errorMessage: '{% trans 'dosai-error' %}',
                     backgroundColor: "transparent",
                     fontSize: 16,
                     height: 800,
@@ -40,7 +39,7 @@
                         backgroundColor: "#1684A7",//"#2D4273",
                         textColor: "#EFFFFB",
                         showAvatar: true,
-                        avatarSrc: "{% static 'img/dosai/book.png' %}",
+                        avatarSrc: "{% static 'img/dosai/book-opened.svg' %}",
                     },
                     userMessage: {
                         backgroundColor: "#258b58",//"#4CAF50",
@@ -49,7 +48,7 @@
                         avatarSrc: "{% static 'img/dosai/library-svgrepo-com.svg' %}",
                     },
                     textInput: {
-                        placeholder: 'Введите ваш вопрос',
+                        placeholder: '{% trans 'dosai-question' %}',
                         backgroundColor: '#ffffff',
                         textColor: '#000000',
                         sendButtonColor: '#4CAF50',
@@ -59,8 +58,8 @@
                     },
                     footer: {
                         textColor: '#303235',
-                        text: 'Нейросети могут ошибаться,',
-                        company: 'пожалуйста перепроверяйте важную информацию',
+                        text: '{% trans 'dosai-warning-1' %}',
+                        company: '{% trans 'dosai-warning-2' %}',
                     },
                 }
             }

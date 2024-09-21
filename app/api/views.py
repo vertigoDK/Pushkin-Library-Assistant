@@ -2,13 +2,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer, ExaSearchSerializer, ExaResultSerializer
+from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer, GoogleLLMSerializer
 from app.api.services.books_api.books_parser import BookSearchHandler
 from app.api.services.data_extractors.news_fetcher import NewsFetcher
 from app.api.services.data_extractors.events_fetcher import get_events
 from app.api.services.exa_api import exa_handler
 from .services.exa_api.exa_handler import ExaHandler
-
+from .services.llm import google_llm as gllm
 
 class BookSearchAPIView(APIView):
     def post(self, request):
@@ -58,23 +58,13 @@ class EventsFetcherView(APIView):
         return Response(events)
 
 
-class ExaSearchView(APIView):
-
-    def get(self, request, *args, **kwargs):
-        # Получаем параметры запроса
-        query = request.query_params.get('query', '')
-        num_result = int(request.query_params.get('num_result', 5))
-        max_characters = int(request.query_params.get('max_characters', 10000))
-        type_site = request.query_params.get('type_site', None)
-
-        try:
-            exa_handler = ExaHandler(type_site)
-        except ValueError as e:
-            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-
-        result = exa_handler.send_request(query, num_result, max_characters)
-
-        # Сериализуем результат
-        serializer = ExaResultSerializer(result, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
+class IntentsRecognize(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = GoogleLLMSerializer(data=request.data)
+        if serializer.is_valid():
+            user_message: str = serializer['user_message']
+            glm = gllm.GoogleLLM()
+            intents: list[str] = glm.intents_recognize(user_message=user_message)
+            return Response(intents, status=status.HTTP_200_OK)
+            
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

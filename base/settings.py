@@ -6,7 +6,6 @@ import os
 import copy
 from django.conf import global_settings
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -17,8 +16,8 @@ env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
-DEBUG=True
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+DEBUG = env('DEBUG')
 
 LOGGING = {
     'version': 1,
@@ -39,7 +38,6 @@ LOGGING = {
         },
     },
 }
-
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
@@ -113,8 +111,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     # white noise
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'base.urls'
@@ -200,16 +197,15 @@ LANGUAGES = [
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 
+# STORAGES = copy.deepcopy(global_settings.STORAGES)
 
-STORAGES = copy.deepcopy(global_settings.STORAGES)
-
-STORAGES.update(
-    {
-        "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-        },
-    }
-)
+# STORAGES.update(
+#     {
+#         "staticfiles": {
+#             "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+#         },
+#     }
+# )
 
 #
 # COMPRESS_URL = STATIC_URL
@@ -236,6 +232,11 @@ CSRF_COOKIE_SECURE = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',  # Добавьте эту строку
+)
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
@@ -244,6 +245,4 @@ if DEBUG:
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
 MEDIA_ROOT = [os.path.join(BASE_DIR, 'media')]
-

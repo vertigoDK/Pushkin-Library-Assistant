@@ -23,6 +23,21 @@ msgstr "kk-KZ"
 msgid "dosai-message"
 msgstr "Сәлеметсіз бе! Менің атым ДОС. Мен-А. С. Пушкин атындағы Шығыс Қазақстан облыстық кітапханасының онлайн-кеңесшісімін. Мен кітапханаға оңтайлы бағыт құра аламын, жақын маңдағы іс - шаралар, кітапхана клубтары мен үйірмелер туралы ақпаратты көрсете аламын, соңғы жаңалықтарды айта аламын, өлкетану ақпаратын іздеуге көмектесемін, ең бастысы-электронды каталогтан кітаптар іздей аламын. Сізді не қызықтыратынын жазыңыз (тақырып, автор), Мен сізге көмектесуге тырысамын."
 
+msgid "dosai-chars-warning"
+msgstr "You have exceeded the character limit. Please enter fewer than 300 characters."
+
+
+msgid "dosai-error"
+msgstr "Қате пайда болды"
+
+msgid "dosai-warning-1"
+msgstr "Нейрожелілер қате жіберуі мүмкін,"
+
+msgid "dosai-warning-2"
+msgstr "маңызды ақпаратты қайта тексеріңіз"
+
+msgid "dosai-question"
+msgstr "Сұрағыңызды енгізіңіз"
 
 #: .\app\news_app\templates\news_detail.html:22
 #: .\app\news_app\templates\news_list.html:21
