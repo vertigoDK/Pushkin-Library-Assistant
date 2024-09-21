@@ -12,7 +12,7 @@ def soon(request):
 
 def news_list(request):
     news_list = News.objects.all().order_by('-pub_date')
-    paginator = Paginator(news_list, 12)
+    paginator = Paginator(news_list, 12)    
 
     page = request.GET.get('page')
     try:

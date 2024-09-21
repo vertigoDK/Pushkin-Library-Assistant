@@ -27,3 +27,6 @@ class ExaResultSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=255)
     url = serializers.URLField()
     content = serializers.CharField()
+    
+class GoogleLLMSerializer(serializers.Serializer):
+    user_message = serializers.CharField(max_length=300 ,required=True)
