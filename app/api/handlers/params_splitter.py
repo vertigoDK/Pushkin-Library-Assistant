@@ -2,6 +2,7 @@ from . import baseai
 import json
 import re
 
+
 class Prompts:
     BOOKS_SEARCH_PROMPT = """Тебе передают какой-то пользовательский запрос по поиску книги, у тебя есть конкретная задача: ты должен разбить этот запрос на параметры. Всего есть следующие параметры: author, title, year1, year2. Вернуть ответ ты должен в формате ключ-значение, то есть 'author': 'абай', и т.д.
     
@@ -17,7 +18,7 @@ class Prompts:
 
 
 class ParamsSplitter(baseai.BaseAI):
-    
+
     def __init__(self, task_classification: str = "error", model_name: str = "gemini-1.5-flash"):
         super().__init__(model_name)
         self._task_classification = task_classification
@@ -32,13 +33,12 @@ class ParamsSplitter(baseai.BaseAI):
             raise Exception("Беда")
 
         # Формируем запрос к модели
-        
+
         # Отправляем запрос и получаем ответ
         model_response: str = self.send_request(user_message=user_message, model_prompt=Prompts.BOOKS_SEARCH_PROMPT)
         print(model_response)
         # Обрабатываем строку, чтобы извлечь JSON
         result_dict = json.loads(model_response)
         return result_dict
-
 
         return {}

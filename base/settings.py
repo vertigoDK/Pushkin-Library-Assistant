@@ -110,6 +110,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+
+
     # white noise
     # "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
@@ -197,20 +199,6 @@ LANGUAGES = [
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 
-# STORAGES = copy.deepcopy(global_settings.STORAGES)
-
-# STORAGES.update(
-#     {
-#         "staticfiles": {
-#             "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-#         },
-#     }
-# )
-
-#
-# COMPRESS_URL = STATIC_URL
-# COMPRESS_ROOT = STATIC_ROOT
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -225,7 +213,7 @@ SECURE_HSTS_SECONDS = 31536000  # 1 год (в секундах)
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Если хотите включить HSTS для поддоменов
 SECURE_HSTS_PRELOAD = True  # Включить поддержку HSTS preload
 
-# SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True

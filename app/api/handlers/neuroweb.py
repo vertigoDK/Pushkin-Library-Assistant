@@ -5,6 +5,7 @@ from app.api.services import (
     exa_api,
 )
 
+
 class AIHandler(baseai.BaseAI):
 
     def __init__(self, model_name: str = "gemini-1.5-flash"):
@@ -29,6 +30,7 @@ class AIHandler(baseai.BaseAI):
 
     def classify_requested_tools(self, user_message: str):
         return self.send_request(user_message=user_message, model_prompt=self.MODEL_PROMPT)
+
 
 if __name__ == '__main__':
     aiHandler: AIHandler = AIHandler()

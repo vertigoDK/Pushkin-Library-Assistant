@@ -2,6 +2,7 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 
+
 class BaseAI:
     def __init__(self, model_name: str = "gemini-1.5-flash"):
         load_dotenv()
