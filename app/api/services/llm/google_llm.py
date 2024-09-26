@@ -6,7 +6,7 @@ from langchain_openai import ChatOpenAI
 from app.api.services.llm.tools.books_search import BooksSearchQuery
 from pydantic import BaseModel, Field
 from typing import Optional
-class GoogleLLM:
+class OpenaiLLM:
     def __init__(self):
         load_dotenv()
         self._llm = ChatOpenAI(model="gpt-4o-mini", api_key=os.getenv('OPENAI_API_KEY'))
@@ -18,7 +18,7 @@ class GoogleLLM:
             other: Optional[str] = Field(description="other")
         
         prompt = ChatPromptTemplate.from_messages([
-            ("system", "Ты должен распознать намерение человека. Если человек хочет найти книги ВАЖНО именно найти а не что бы ты ему порекомендовал, то это books_search, если человек хочет записаться в библиотеку это register, если ничего из этого other. {format_instructions}"),
+            ("system", "Ты должен распознать намерение человека. Если человек хочет найти книги ВАЖНО именно найти а не что бы ты ему порекомендовал, то это books_search, если ничего из этого other. {format_instructions}"),
             ("human", "{input}")
         ])
 
@@ -30,7 +30,6 @@ class GoogleLLM:
             "input": user_message,
             "format_instructions": format_instructions
         })
-    
     
     
 if __name__ == '__main__':

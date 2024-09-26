@@ -2,13 +2,15 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer, GoogleLLMSerializer
+from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer, LLMSerializer
 from app.api.services.books_api.books_parser import BookSearchHandler
 from app.api.services.data_extractors.news_fetcher import NewsFetcher
 from app.api.services.data_extractors.events_fetcher import get_events
 from app.api.services.exa_api import exa_handler
 from .services.exa_api.exa_handler import ExaHandler
 from .services.llm import google_llm as gllm
+from pydantic import BaseModel
+
 
 class BookSearchAPIView(APIView):
     def post(self, request):
@@ -58,12 +60,13 @@ class EventsFetcherView(APIView):
         return Response(events)
 
 
-class IntentsRecognize(APIView):
+class AIRequestHandlerView(APIView):
+
     def post(self, request, *args, **kwargs):
-        serializer = GoogleLLMSerializer(data=request.data)
+        serializer = LLMSerializer(data=request.data)
         if serializer.is_valid():
-            user_message: str = serializer['user_message']
-            glm = gllm.GoogleLLM()
+            user_message: str = serializer.validated_data['user_message']
+            glm = gllm.OpenaiLLM()
             intents: list[str] = glm.intents_recognize(user_message=user_message)
             return Response(intents, status=status.HTTP_200_OK)
             

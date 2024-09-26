@@ -1,100 +1,34 @@
 {% extends 'base.html' %}
 {% load i18n %}
-
 {% load static %}
-
 
 {% block content %}
     <div class="page-container">
-
         <main class="chat-container">
             <div class="container">
                 <div class="dosai__box">
-                    <flowise-fullchatbot id="flowise">
-
-                    </flowise-fullchatbot>
                 </div>
+                <form action='/' class="dosai__chat-bar">
+                    <textarea maxlength="300" type="text" class="dosai__chat-bar-input" rows='1'
+                        placeholder='Сообщение DosAI'></textarea>
+                    <button type='submit' class="dosai__chat-bar-btn">
+                        <img src="{% static 'img/dosai/arrow-up.svg' %}" alt="Arrow up" />
+                    </button>
+                </form>
             </div>
         </main>
     </div>
-    <!-- 
-    -->
 
-    <script type="module">
-        import Chatbot from "{% static 'js/lib/web.js' %}"
+    <!-- Ваша модальная форма -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <h2>Поиск книг</h2>
+            <div class="button-container">
+                <button type="submit">Поиск</button>
+            </div>
+            <div id="bookList" class="book-list"></div>
+        </div>
+    </div>
 
-        Chatbot.initFull({
-            // Времено захардкодил
-            chatflowid: "{{ FLOWISE_CHATFLOW }}",
-            apiHost: "{{ FLOWISE_HOST }}",
-            theme: {
-
-                chatWindow: {
-                    welcomeMessage: "{% trans 'dosai-message' %}",
-                    errorMessage: '{% trans 'dosai-error' %}',
-                    backgroundColor: "transparent",
-                    fontSize: 16,
-                    height: 800,
-                    botMessage: {
-                        backgroundColor: "#1684A7",//"#2D4273",
-                        textColor: "#EFFFFB",
-                        showAvatar: true,
-                        avatarSrc: "{% static 'img/dosai/book-opened.svg' %}",
-                    },
-                    userMessage: {
-                        backgroundColor: "#258b58",//"#4CAF50",
-                        textColor: "#EFFFFB",
-                        showAvatar: true,
-                        avatarSrc: "{% static 'img/dosai/library-svgrepo-com.svg' %}",
-                    },
-                    textInput: {
-                        placeholder: '{% trans 'dosai-question' %}',
-                        backgroundColor: '#ffffff',
-                        textColor: '#000000',
-                        sendButtonColor: '#4CAF50',
-                        maxChars: 300,
-                        maxCharsWarningMessage: "{% trans 'dosai-chars-warning' %}",
-                        autoFocus: true,
-                    },
-                    footer: {
-                        textColor: '#303235',
-                        text: '{% trans 'dosai-warning-1' %}',
-                        company: '{% trans 'dosai-warning-2' %}',
-                    },
-                }
-            }
-        })
-    </script>
-
-    <script>
-        // Получаем высоту шапки
-        window.addEventListener('load', function () {
-            // Этот код выполнится, когда все ресурсы, включая картинки, полностью загружены
-            const header = document.getElementById('header');
-            const content = document.getElementById('flowise');
-            console.log('Страница и все ресурсы загружены');
-
-            function adjustHeight() {
-                const headerHeight = header.offsetHeight; // Узнаем высоту header
-                const windowHeight = window.innerHeight;  // Высота окна
-
-                // Устанавливаем высоту контента, которая будет равна оставшейся части окна
-                content.style.height = `${windowHeight - headerHeight}px`;
-                console.log(`${windowHeight - headerHeight}px`);
-            }
-
-            // Выполняем расчет высоты при загрузке страницы
-            adjustHeight();
-
-            // Обновляем высоту при изменении размера окна
-            window.addEventListener('resize', adjustHeight);
-        });
-    </script>
-
-
-    </script>
 {% endblock %}
-
-
-{% load static %}
-{% load i18n %}
