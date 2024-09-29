@@ -1,77 +1,6 @@
+let books = [
 
-
-const books = [
-    {
-        "Автор": "Лев Толстой",
-        "Персоналия": "Лев Николаевич Толстой",
-        "Заглавие": "Война и мир",
-        "Ключевые слова": "Роман, История",
-        "Предметная рубрика": "Художественная литература",
-        "Год издания": "1869",
-        "Издательство": "Издательство 1",
-        "ISBN": "978-5-4327-1024-5",
-        "Характер документа": "Текст",
-        "Вид документа": "Книга",
-        "Язык документа": "Русский",
-        "cover": "https://avatars.mds.yandex.net/get-mpic/5236458/img_id5739883478692037103.jpeg/orig" 
-    },
-    {
-        "Автор": "Федор Достоевский",
-        "Персоналия": "Федор Михайлович Достоевский",
-        "Заглавие": "Преступление и наказание",
-        "Ключевые слова": "Роман, Психология",
-        "Предметная рубрика": "Художественная литература",
-        "Год издания": "1866",
-        "Издательство": "Издательство 2",
-        "ISBN": "978-5-1234-5678-1",
-        "Характер документа": "Текст",
-        "Вид документа": "Книга",
-        "Язык документа": "Русский",
-        "cover": "https://avatars.mds.yandex.net/get-mpic/5236458/img_id5739883478692037103.jpeg/orig" 
-    },
-    {
-        "Автор": "Антон Чехов",
-        "Персоналия": "Антон Павлович Чехов",
-        "Заглавие": "Три сестры",
-        "Ключевые слова": "Драма, Театр",
-        "Предметная рубрика": "Драматургия",
-        "Год издания": "1901",
-        "Издательство": "Издательство 3",
-        "ISBN": "978-5-8765-4321-0",
-        "Характер документа": "Текст",
-        "Вид документа": "Книга",
-        "Язык документа": "Русский",
-        "cover": "https://avatars.mds.yandex.net/get-mpic/5236458/img_id5739883478692037103.jpeg/orig" 
-    },
-    {
-        "Автор": "Михаил Булгаков",
-        "Персоналия": "Михаил Афанасьевич Булгаков",
-        "Заглавие": "Мастер и Маргарита",
-        "Ключевые слова": "Роман, Фантастика",
-        "Предметная рубрика": "Художественная литература",
-        "Год издания": "1967",
-        "Издательство": "Издательство 4",
-        "ISBN": "978-5-7754-3210-9",
-        "Характер документа": "Текст",
-        "Вид документа": "Книга",
-        "Язык документа": "Русский",
-        "cover": "https://avatars.mds.yandex.net/get-mpic/5236458/img_id5739883478692037103.jpeg/orig" 
-    },
-    {
-        "Автор": "Борис Пастернак",
-        "Персоналия": "Борис Леонидович Пастернак",
-        "Заглавие": "Доктор Живаго",
-        "Ключевые слова": "Роман, Любовь",
-        "Предметная рубрика": "Художественная литература",
-        "Год издания": "1957",
-        "Издательство": "Издательство 5",
-        "ISBN": "978-5-3456-7890-1",
-        "Характер документа": "Текст",
-        "Вид документа": "Книга",
-        "Язык документа": "Русский",
-        "cover": "https://avatars.mds.yandex.net/get-mpic/5236458/img_id5739883478692037103.jpeg/orig" 
-    }
-];
+]
 
 document.addEventListener('DOMContentLoaded', () => {
     const chatBarInput = document.querySelector('.dosai__chat-bar-input');
@@ -96,16 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chatBarInput.addEventListener('keyup', (event) => {
         if (event.key === 'Enter') {
-            event.preventDefault(); 
+            event.preventDefault();
             sendMessage();
         }
     });
 
     function sendMessage() {
-        const userMessage = chatBarInput.value.trim(); 
+        const userMessage = chatBarInput.value.trim();
         if (userMessage !== '') {
             addUserMessage(userMessage);
-            chatBarInput.value = ''; 
+            chatBarInput.value = '';
             sendPostRequest(userMessage);  // Отправляем сообщение пользователя на сервер
         }
     }
@@ -128,14 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addSearchButton() {
         const buttonElement = document.createElement('button');
-        buttonElement.className = 'search-button'; 
+        buttonElement.className = 'search-button';
         buttonElement.textContent = 'Результаты поиска';
-        
+
         buttonElement.onclick = openModal;  // Обработчик клика для кнопки
-        
+
         const buttonContainer = document.createElement('div');
         buttonContainer.appendChild(buttonElement);
-        
+
         dosaiBox.appendChild(buttonContainer);
         scrollToBottom();
     }
@@ -147,32 +76,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayBooks() {
         bookList.innerHTML = ''; // Очищаем список книг
+
+        if (books.length === 0) {
+            bookList.innerHTML = '<p>Книги не найдены.</p>';
+            return;
+        }
+
         books.forEach(book => {
             let bookInfo = '';
             for (const key in book) {
-                if (key !== "cover") { 
+                if (key !== "cover_url") { // Проверяем на cover_url
                     bookInfo += `<p><strong>${key}:</strong> ${book[key]}</p>`;
                 }
             }
 
-            const bookElement = `
-                <div class="book">
-                    <img src="${book.cover}" alt="${book["Заглавие"]}">
-                    <div class="book-info">
-                        ${bookInfo}
-                    </div>
+            const bookElement = document.createElement('div');
+            bookElement.className = 'book';
+            bookElement.innerHTML = `
+                <img src="http://irbis.pushkinlibrary.kz:8087/${book.cover_url}" alt="${book.title}">
+                <div class="book-info">
+                    ${bookInfo}
                 </div>
             `;
-            
-            bookList.innerHTML += bookElement; 
+
+            bookList.appendChild(bookElement); // Добавляем элемент книги в список
         });
     }
 
-    closeModal.onclick = function() {
+
+    closeModal.onclick = function () {
         modal.style.display = 'none'; // Закрываем модальное окно
     }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = 'none';
         }
@@ -196,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return cookieValue;
     }
-    
+
     const csrftoken = getCookie('csrftoken');
 
     function sendPostRequest(userMessage) {
@@ -208,23 +144,40 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify({ user_message: userMessage })  // Отправляем сообщение в формате JSON
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);  // Обработка ответа
-            addDosaiMessage(getRandomResponse()); // Добавляем рандомный ответ
-            
-            // Проверяем intent и добавляем кнопку, если нужно
-            if (checkIntent('books_search', data)) {
-                addSearchButton();
-            }
-        })
-        .catch(error => console.error('Ошибка при отправке запроса:', error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);  // Обработка ответа
+                addDosaiMessage(getRandomResponse()); // Добавляем рандомный ответ
+
+                // Проверяем intent и добавляем кнопку, если нужно
+                if (checkIntent('books_search', data)) {
+                    addSearchButton();
+
+                    // Перебираем все элементы из data.books_search.books_result.recs
+                    const recs = data[0][1].find(item => item[0] === "books_result")[1].recs;
+
+
+                    // Сохраняем книги в переменную
+                    books = recs.map(rec => ({
+                        number: rec.number,
+                        author: rec.author,
+                        title: rec.title,
+                        publish_info: rec.publish_info,
+                        cover_url: rec.cover_url
+                    }));
+
+                    // Вызываем функцию для отображения книг
+                    displayBooks();
+                }
+            })
+            .catch(error => console.error('Ошибка при отправке запроса:', error));
     }
+
 
     function checkIntent(intent, apiResponse) {
         for (let i = 0; i < apiResponse.length; i++) {
@@ -235,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return false;
     }
-    
+
 
     function getRandomResponse() {
         const randomIndex = Math.floor(Math.random() * responses.length);

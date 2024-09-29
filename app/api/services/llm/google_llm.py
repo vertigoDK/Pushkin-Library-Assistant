@@ -21,7 +21,6 @@ class OpenaiLLM:
             ("system", "Ты должен распознать намерение человека. Если человек хочет найти книги ВАЖНО именно найти а не что бы ты ему порекомендовал, то это books_search, если ничего из этого other. {format_instructions}"),
             ("human", "{input}")
         ])
-
         parser = PydanticOutputParser(pydantic_object=Intents)
         format_instructions = parser.get_format_instructions()
         chain = prompt | self._llm | parser

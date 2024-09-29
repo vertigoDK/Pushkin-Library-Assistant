@@ -90,7 +90,7 @@ class BaseAPIHandler:
 
 
 class BookSearchHandler(BaseAPIHandler):
-    def __init__(self, search_params: Dict[str, str], first_number: int):
+    def __init__(self, search_params: Dict[str, str], first_number: int = 1):
         """
         Инициализирует обработчик с параметрами поиска и настраивает сессию.
 
@@ -193,3 +193,9 @@ class BookSearchHandler(BaseAPIHandler):
         except Exception as e:
             print(f"Произошла ошибка: {e}")
             return {}
+
+
+
+if __name__ == '__main__':
+    bParser = BookSearchHandler({"author": "Абай"})
+    print(bParser)

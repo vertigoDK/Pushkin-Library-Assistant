@@ -62,12 +62,23 @@ class EventsFetcherView(APIView):
 
 class AIRequestHandlerView(APIView):
 
+    from app.api.services.books_api.books_parser import BookSearchHandler
+
     def post(self, request, *args, **kwargs):
         serializer = LLMSerializer(data=request.data)
         if serializer.is_valid():
             user_message: str = serializer.validated_data['user_message']
             glm = gllm.OpenaiLLM()
             intents: list[str] = glm.intents_recognize(user_message=user_message)
+
+            bsearch = intents.books_search
+            # print(bsearch.author)
+            # Отправлять список книг тута
+            if bsearch:
+                bHandler: BookSearchHandler = BookSearchHandler({'author': bsearch.author, 'title': bsearch.title})
+
+                intents.books_search.books_result = bHandler.execute_search()
+
             return Response(intents, status=status.HTTP_200_OK)
             
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
