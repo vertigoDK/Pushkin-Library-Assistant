@@ -50,6 +50,7 @@ ALLOWED_HOSTS = [
     '192.168.1.109',
     '127.0.0.1',
     '127.0.0.1:8080',
+    'localhost:8080',
     'localhost:3000',
 ]
 
@@ -209,22 +210,18 @@ FLOWISE_HOST = env('FLOWISE_HOST')
 
 DEFAULT_BOOKS_PATH = BASE_DIR / 'database/region-passport.txt'
 
-SECURE_HSTS_SECONDS = 31536000  # 1 год (в секундах)
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Если хотите включить HSTS для поддоменов
-SECURE_HSTS_PRELOAD = True  # Включить поддержку HSTS preload
-
-SECURE_SSL_REDIRECT = True
-
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SECURE_HSTS_SECONDS = 31536000  # 1 год (в секундах)
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Если хотите включить HSTS для поддоменов
+# SECURE_HSTS_PRELOAD = True  # Включить поддержку HSTS preload
+#
+# SECURE_SSL_REDIRECT = True
+#
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',  # Добавьте эту строку
-)
+
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
