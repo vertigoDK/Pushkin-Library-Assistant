@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
+{% block content_css %}
+
+    <link rel="stylesheet" href="{% static 'css/dosai.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="page-container">

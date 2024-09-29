@@ -448,7 +448,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 FLOWISE_CHATFLOW = env('FLOWISE_CHATFLOW')
 FLOWISE_HOST = env('FLOWISE_HOST')
 
-DEFAULT_BOOKS_PATH = BASE_DIR / 'database/region-passport.txt'
 
 # SECURE_HSTS_SECONDS = 31536000  # 1 год (в секундах)
 # SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Если хотите включить HSTS для поддоменов
