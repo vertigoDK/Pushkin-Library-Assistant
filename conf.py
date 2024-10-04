@@ -1,0 +1,1 @@
+ALLOWED_MODEL=['gemini-pro']
