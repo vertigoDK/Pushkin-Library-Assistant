@@ -1,5 +1,5 @@
-
-body, html {
+body,
+html {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -42,4 +42,62 @@ body, html {
 .dosai__chat-bar-btn {
     padding: 10px 20px;
     cursor: pointer;
+}
+
+/* Стили для панели поиска */
+.search-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-panel input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 40%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.search-panel button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.search-panel button:hover {
+    background-color: #45a049;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.pagination-btn {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.pagination-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.page-info {
+    font-size: 16px;
+    margin: 0 10px;
 }

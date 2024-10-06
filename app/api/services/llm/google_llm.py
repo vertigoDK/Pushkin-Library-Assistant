@@ -15,10 +15,9 @@ class OpenaiLLM:
 
         class Intents(BaseModel):
             books_search: Optional[BooksSearchQuery] = Field(description="если человек хочет найти книги")
-            other: Optional[str] = Field(description="other")
         
         prompt = ChatPromptTemplate.from_messages([
-            ("system", "Ты должен распознать намерение человека. Если человек хочет найти книги ВАЖНО именно найти а не что бы ты ему порекомендовал, то это books_search, если ничего из этого other. {format_instructions}"),
+            ("system", "Ты должен распознать намерение человека. Если человек хочет найти книги ВАЖНО именно найти а не что бы ты ему порекомендовал, то это books_search. {format_instructions}"),
             ("human", "{input}")
         ])
         parser = PydanticOutputParser(pydantic_object=Intents)
@@ -30,7 +29,9 @@ class OpenaiLLM:
             "format_instructions": format_instructions
         })
     
-    
+    # def send_request(self, user_message: str):
+    #     prompt: ChatPromptTemplate = 
+
 if __name__ == '__main__':
     gLLM = GoogleLLM()
     result = gLLM.intents_recognize("Книги абая с 1900 по 2000 год")

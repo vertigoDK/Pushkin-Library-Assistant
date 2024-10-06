@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -13,9 +14,9 @@
     <link rel="stylesheet" href="{% static 'css/font.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- Подключаем Font Awesome -->
-{#    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
     <meta name="keywords"
-          content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина, пушкинка, библиотека пукшин, библиотека">
+        content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина, пушкинка, библиотека пукшин, библиотека">
     <meta name="robots" content="index,follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="description" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
@@ -24,26 +25,26 @@
     <meta property="og:url" content="https://pushkinlibrary.kz/ru/">
     <meta property="og:image" content="{% static 'img/favicon.png' %}">
     <meta property="og:description"
-          content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
+        content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
     <meta property="og:site_name" content="Восточно-Казахстанская областная библиотека им. А.С. Пушкина">
     <link rel="canonical" href="https://pushkinlibrary.kz/ru/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@PushkinLibrary">
     <meta name="twitter:image" content="{% static 'img/favicon.png' %}">
     <meta name="twitter:description"
-          content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
+        content="Исследуйте мир книг и знаний с Восточно-Казахстанской областной библиотекой им. А.С. Пушкина">
     <meta name="theme-color" content="#317EFB">
 
     {% block content_meta %}
 
-        {% endblock %}
+    {% endblock %}
 
-        {% block content_css %}
-        {% endblock %}
+    {% block content_css %}
+    {% endblock %}
 
 
-        <link rel="stylesheet" href="{% static 'css/header/header.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/newbooks.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/header/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/newbooks.css' %}" />
 
 
 
@@ -51,79 +52,28 @@
     {% endblock %}
 
 </head>
+
 <body>
 
-{% include 'blocks/header.html' %}
-<main class='main'>
-    {% block content %}
-    {% endblock %}
-</main>
-{% if not hide_footer %}
+    {% include 'blocks/header.html' %}
+    <main class='main'>
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% if not hide_footer %}
     {% include 'blocks/footer.html' %}
-{% endif %}
+    {% endif %}
 
-{% if show_chatbot %}
-    <script type="module">
-        import Chatbot from "{% static 'js/lib/web.js' %}"
-
-        Chatbot.init({
-            chatflowid: "{{ FLOWISE_CHATFLOW }}",
-            apiHost: "{{ FLOWISE_HOST }}",
-            theme: {
-                button: {
-                    backgroundColor: "#15803d", // Цвет фона кнопки
-                    customIconSrc: "{% static 'img/services/logo-dosai-white.svg' %}",
-                    right: 20,
-                    bottom: 20,
-                    size: "large",
-                    iconColor: "white", // Цвет иконки
-                },
-                chatWindow: {
-                    welcomeMessage: "{% trans 'dosai-message' %}",
-                    errorMessage: '{% trans 'dosai-error' %}',
-                    backgroundColor: "#ffffff",
-                    height: 700,
-                    width: 400,
-                    fontSize: 16,
-                    poweredByTextColor: "#303235",
-                    botMessage: {
-                        backgroundColor: "#1684A7",//"#2D4273",
-                        textColor: "#EFFFFB",
-                        showAvatar: true,
-                        avatarSrc: "{% static 'img/dosai/book-opened.svg' %}",
-                    },
-                    userMessage: {
-                        backgroundColor: "#258b58",//"#4CAF50",
-                        textColor: "#EFFFFB",
-                        showAvatar: true,
-                        avatarSrc: "{% static 'img/dosai/library-svgrepo-com.svg' %}",
-                    },
-                    textInput: {
-                        placeholder: "{% trans 'dosai-question' %}",
-                        backgroundColor: "#ffffff",
-                        textColor: "#303235",
-                        sendButtonColor: "#3B81F6",
-                        maxChars: 300,
-                        maxCharsWarningMessage: "{% trans 'dosai-chars-warning' %}",
-                    },
-                    footer: {
-                        textColor: '#303235',
-                        text: '{% trans 'dosai-warning-1' %}',
-                        company: '{% trans 'dosai-warning-2' %}',
-                    },
-                }
-            }
-        })
-    </script>
+    <script src="{% static 'js/index.bundle.js' %}"></script>
+    <script src="{% static 'js/news.bundle.js' %}"></script>
+    <script type="module" src="{% static 'js/chat.js' %}"></script>
+    <script type="module" src="{% static 'js/booksSearch.js' %}"></script>
+    <script src="{% static 'js/helpers.js' %}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
 
 
-{% endif %}
-<script src="{% static 'js/index.bundle.js' %}"></script>
-<script src="{% static 'js/news.bundle.js' %}"></script>
-<script src="{% static 'js/dosai.bundle.js' %}"></script>
-
-
-{% block content_js %}
-{% endblock %}
+    {% block content_js %}
+    {% endblock %}
 </body>
+
 </html>

@@ -2,12 +2,10 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import BookSearchParamsSerializer, NewsFetcherParamsSerializer, LLMSerializer
+from .serializers import NewsFetcherParamsSerializer, LLMSerializer, BookSearchParamsSerializer
 from app.api.services.books_api.books_parser import BookSearchHandler
 from app.api.services.data_extractors.news_fetcher import NewsFetcher
 from app.api.services.data_extractors.events_fetcher import get_events
-from app.api.services.exa_api import exa_handler
-from .services.exa_api.exa_handler import ExaHandler
 from .services.llm import google_llm as gllm
 from pydantic import BaseModel
 
@@ -16,23 +14,22 @@ class BookSearchAPIView(APIView):
     def post(self, request):
         serializer = BookSearchParamsSerializer(data=request.data)
         if serializer.is_valid():
+            
+            if serializer.validated_data['first_number'] != None:
+                first_number = serializer.validated_data['first_number']
+            else:
+                first_number = 1
+
             search_params = serializer.validated_data
-            first_handler = BookSearchHandler(search_params=search_params, first_number=1)
-            second_handler = BookSearchHandler(search_params=search_params, first_number=10)
+            first_handler = BookSearchHandler(search_params=search_params, first_number=first_number)
             
             try:
-                first_result = first_handler.execute_search()
-                second_result = second_handler.execute_search()
+                result = first_handler.execute_search()
                 
-                # Объединение результатов
-                combined_results = first_result
-                combined_results['recs'].extend(second_result['recs'])
-                
-                return Response(combined_results, status=status.HTTP_200_OK)
+                return Response(result, status=status.HTTP_200_OK)
             except Exception as e:
                 return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class LatestNewsView(APIView):
     """
@@ -69,6 +66,8 @@ class AIRequestHandlerView(APIView):
         if serializer.is_valid():
             user_message: str = serializer.validated_data['user_message']
             glm = gllm.OpenaiLLM()
+
+
             intents: list[str] = glm.intents_recognize(user_message=user_message)
 
             bsearch = intents.books_search
@@ -79,6 +78,6 @@ class AIRequestHandlerView(APIView):
 
                 intents.books_search.books_result = bHandler.execute_search()
 
-            return Response(intents, status=status.HTTP_200_OK)
+            return Response({"intents": intents}, status=status.HTTP_200_OK)
             
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

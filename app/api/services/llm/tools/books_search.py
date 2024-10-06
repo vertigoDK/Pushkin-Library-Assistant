@@ -1,10 +1,8 @@
 from pydantic import BaseModel, Field
 from typing import Optional
 
-    
-
 class BooksSearchQuery(BaseModel):
-    author: Optional[str] = Field(None, description="Автор книги")
+    author: Optional[str] = Field(None, description="Автор книги, к примеру если человек говорит книги абая то передавай сюда абай")
     personality: Optional[str] = Field(None, description="Персоналия (выдающиеся личности, связанные с книгой)")
     title: Optional[str] = Field(None, description="Заглавие книги")
     keywords: Optional[str] = Field(None, description="Ключевые слова для поиска")

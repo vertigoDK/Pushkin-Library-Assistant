@@ -3,36 +3,36 @@
 {% load static %}
 {% block content_css %}
 
-    <link rel="stylesheet" href="{% static 'css/dosai.css' %}">
+<link rel="stylesheet" href="{% static 'css/dosai.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div class="page-container">
-        <main class="chat-container">
-            <div class="container">
-                <div class="dosai__box">
-                </div>
-                <form action='/' class="dosai__chat-bar">
-                    <textarea maxlength="300" type="text" class="dosai__chat-bar-input" rows='1'
-                        placeholder='Сообщение DosAI'></textarea>
-                    <button type='submit' class="dosai__chat-bar-btn">
-                        <img src="{% static 'img/dosai/arrow-up.svg' %}" alt="Arrow up" />
-                    </button>
-                </form>
+<div class="page-container">
+    <main class="chat-container">
+        <div class="container">
+            <div class="dosai__box">
             </div>
-        </main>
-    </div>
-
-    <!-- Ваша модальная форма -->
-    <div id="bookModal" class="modal">
-        <div class="modal-content">
-            <span class="closeBtn">&times;</span>
-            <h2>Поиск книг</h2>
-            <div class="button-container">
-                <button type="submit">Поиск</button>
-            </div>
-            <div id="bookList" class="book-list"></div>
+            <form action='/' class="dosai__chat-bar">
+                <textarea maxlength="300" type="text" class="dosai__chat-bar-input" rows='1'
+                    placeholder='Сообщение DosAI'></textarea>
+                <button type='submit' class="dosai__chat-bar-btn">
+                    <img src="{% static 'img/dosai/arrow-up.svg' %}" alt="Arrow up" />
+                </button>
+            </form>
         </div>
+    </main>
+</div>
+
+<!-- Ваша модальная форма -->
+<div id="bookModal" class="modal">
+    <div class="modal-content">
+        <span class="closeBtn">&times;</span>
+        <h2>Поиск книг</h2>
+        <div class="button-container">
+            <button type="submit">Поиск</button>
+        </div>
+        <div id="bookList" class="book-list"></div>
     </div>
+</div>
 
 {% endblock %}
