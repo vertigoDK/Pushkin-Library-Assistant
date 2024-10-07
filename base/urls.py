@@ -14,8 +14,6 @@ urlpatterns = [
     path('', include('core.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Обработка медиа-файлов
 
-
-
 handler404 = "core.views.handler404"
 handler403 = "core.views.handler403"
 handler500 = "core.views.handler500"
