@@ -18,6 +18,7 @@
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
   --featured-services-color: #258b58;
+  --featured-services-border-color: #eade5a;
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -161,7 +162,7 @@ section,
 
 .hero .hero-bg::before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 15%);
+  background: color-mix(in srgb, black, transparent 65%);
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -174,7 +175,8 @@ section,
 
 .hero h1 {
   margin: 0;
-  font-size: 48px;
+  font-size: 36px;
+  color: var(--background-color);
   font-weight: 700;
   line-height: 56px;
 }
@@ -272,11 +274,11 @@ section,
     background-color: var(--featured-services-color);
     box-shadow: 0 5px 90px 0 rgba(0, 0, 0, 0.1);
     height: 100%;
-    padding: 40px 30px;
+    padding: 10px;
     text-align: center;
     transition: 0.3s;
     border-radius: 20px;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
 }
 
 .featured-services .service-item .icon {
@@ -315,6 +317,13 @@ section,
 
 .featured-services .service-item:hover {
     box-shadow: 0 5px 35px 0 rgba(0, 0, 0, 0.1);
+}
+.featured-services .service-item:hover {
+    box-shadow: 0 5px 35px 0 rgba(0, 0, 0, 0.1);
+}
+
+.featured-services .service-item:hover {
+    border-color: var(--featured-services-border-color);
 }
 
 

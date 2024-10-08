@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <section id="featured-services" class="featured-services section">
 
@@ -10,47 +11,42 @@
                     <div class="icon">
                         <img src="{% static 'img/hero/abai-icon.svg' %}" alt="abai" class="bi"/>
                     </div>
-                    <a href="service-details.html" class="stretched-link">
-                        <h3>Наш Абай</h3>
+                    <a href="http://irbis.pushkinlibrary.kz:8087/jirbis2/index.php?lang=ru" class="stretched-link">
+                        <h3>{% trans 'our-abai' %}</h3>
                     </a>
-                    <p>Весы — дело жизни нашего коллектива. Мы радеем за качество 14 лет и ревностно бьемся с
-                        повсеместной халтурой.</p>
                 </div>
             </div><!-- End Service Item -->
 
             <div class="col-lg-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                 <div class="service-item item-orange position-relative">
                     <div class="icon">
-                        <i class="bi bi-broadcast"></i>
+                        <img src="{% static 'img/hero/map-icon.svg' %}" alt="abai" class="bi"/>
                     </div>
-                    <a href="service-details.html" class="stretched-link">
-                        <h3>Сверхточность</h3>
+                    <a href="https://olketanu.pushkinlibrary.kz/index.php/ru" class="stretched-link">
+                        <h3>{% trans 'local-history' %}</h3>
                     </a>
-                    <p>Метрологические характеристики наших весов зачастую превосходят нормы ГОСТа РК.</p>
                 </div>
             </div><!-- End Service Item -->
 
             <div class="col-lg-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
                 <div class="service-item item-teal position-relative">
                     <div class="icon">
-                        <i class="bi bi-easel"></i>
+                        <img src="{% static 'img/hero/mountain-icon.svg' %}" alt="abai" class="bi"/>
                     </div>
-                    <a href="service-details.html" class="stretched-link">
-                        <h3>Оптом дешевле</h3>
+                    <a href="https://esimder.pushkinlibrary.kz/index.php/ru/" class="stretched-link">
+                        <h3>{% trans 'east-kazakhstan-region-famous-places' %}</h3>
                     </a>
-                    <p>При заказе 2-х и более весов гарантированная скидка от 5% до 15%.</p>
                 </div>
             </div><!-- End Service Item -->
 
             <div class="col-lg-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
                 <div class="service-item item-red position-relative">
                     <div class="icon">
-                        <i class="bi bi-bounding-box-circles"></i>
+                        <img src="{% static 'img/hero/feather-icon.svg' %}" alt="abai" class="bi"/>
                     </div>
-                    <a href="service-details.html" class="stretched-link">
-                        <h3>Есть склад </h3>
+                    <a href="https://anyz.pushkinlibrary.kz/ru/legendy-i-skazaniya-vostochnogo-kazakhstana/" class="stretched-link">
+                        <h3>{% trans 'east-kazakhstan-region-legends-and-tales' %}</h3>
                     </a>
-                    <p>Постоянное наличие необходимых запчастей и комплектующих для всего деопазона весовых систем.</p>
                 </div>
             </div><!-- End Service Item -->
         </div>
