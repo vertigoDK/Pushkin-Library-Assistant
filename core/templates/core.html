@@ -3,11 +3,12 @@
 {% load static %}
 
 {% block content %}
-    <main class='main news-page'>
-        {% include 'section/hero-nav.html' %}
-        {% include 'section/services.html' %}
-        {% include 'section/tour.html' %}
-        {% include 'section/catalog.html' %}
+    <main class="main">
+        {% include 'section/hero-section.html' %}
+        {% include 'section/featured-services.html' %}
+{#        {% include 'section/services.html' %}#}
+{#        {% include 'section/tour.html' %}#}
+{#        {% include 'section/catalog.html' %}#}
     </main>
 
 {% endblock %}

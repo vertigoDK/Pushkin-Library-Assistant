@@ -192,33 +192,11 @@ LANGUAGES = [
     ('kk', 'Қаз'),
 ]
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-
-# STORAGES = copy.deepcopy(global_settings.STORAGES)
-
-# STORAGES.update(
-#     {
-#         "staticfiles": {
-#             "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-#         },
-#     }
-# )
-
-#
-# COMPRESS_URL = STATIC_URL
-# COMPRESS_ROOT = STATIC_ROOT
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 FLOWISE_CHATFLOW = env('FLOWISE_CHATFLOW')
 FLOWISE_HOST = env('FLOWISE_HOST')
 
-DEFAULT_BOOKS_PATH = BASE_DIR / 'database/region-passport.txt'
 
 SECURE_HSTS_SECONDS = 31536000  # 1 год (в секундах)
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Если хотите включить HSTS для поддоменов
