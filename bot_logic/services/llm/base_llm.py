@@ -27,3 +27,6 @@ class LLMBase:
             "phrase": text_query,
             "format_instruction": parser.get_format_instructions()
         })
+
+class DosAI(LLMBase):
+    ...

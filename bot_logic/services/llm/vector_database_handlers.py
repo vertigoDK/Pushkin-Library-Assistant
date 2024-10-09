@@ -12,5 +12,5 @@ class VectorDatabaseHandlers:
         )
 
     def search_in_database(self, query_text: str):
-        results = self._db.similarity_search(query_text, k=5)
+        results = self._db.similarity_search(query_text, k=3)
         return results
