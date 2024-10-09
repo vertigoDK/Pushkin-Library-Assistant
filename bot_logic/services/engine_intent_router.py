@@ -1,15 +1,26 @@
 from .llm.base_llm import LLMBase
 from pydantic import BaseModel, Field
 
+
+class BookSearchEngineParams(BaseModel):
+    author: str = Field(description="Автор книги")
+    title: str = Field(description="Название книги")
+
+class LegendSearchEngineParams(BaseModel):
+    legend_name: str = Field(description="Название легенды")
+
+
 class EngineIntentModel(BaseModel):
-    use_books_engine: bool = Field(description="if user want to use books engine, for example книги абая")
-    use_legends_engine: bool = Field(description="if user want to use legends engine, for example легенда о рахмановских ключах")
+    use_books_engine: bool = Field(description="if user want to use books engine, for example книги абая", default=False)
+    use_legends_engine: bool = Field(description="if user want to use legends engine, for example легенда о рахмановских ключах", default=False)
+    book_search_params: BookSearchEngineParams = Field(description="Параметры для того что бы можно было сделать поиск по книгам")
+    legend_search_params: LegendSearchEngineParams = Field(description="Параметры для того что бы можно было сделать запрос по легендам")
 
 class EngineIntentRouter(LLMBase):
 
     def __init__(self):
         super().__init__()
-        self._llm_prompt = "йоу"
+        self._llm_prompt = "Ты должен извлекать правильные данные, ТВОЯ ЗАДАЧА ПРОСТО ИЗВЛЕЧЬ ДАННЫЕ, НЕ НУЖНО ОТВЕЧАТЬ НА ЗАПРОС"
 
     def extract_engine_intents(self, text_request: str):
         return self.call_json_output_parser(text_query=text_request,
