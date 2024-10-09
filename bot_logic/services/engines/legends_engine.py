@@ -9,8 +9,6 @@ from ..llm.vector_database_handlers import VectorDatabaseHandlers
 
 load_dotenv()
 
-
-
 class LegendsEngine(VectorDatabaseHandlers):
     
     def __init__(self):
