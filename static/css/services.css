@@ -1,0 +1,143 @@
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.services .service-item {
+    background-color: var(--surface-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+    height: 100%;
+    min-height: 150px;
+    min-width: 150px;
+    padding: 30px;
+    transition: 0.3s;
+    border-radius: 10px;
+    display: flex;
+}
+
+.services .service-item .icon {
+    font-size: 32px;
+    border-radius: 10px;
+    position: relative;
+    margin-right: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+}
+
+.services .service-item h3 {
+    color: color-mix(in srgb, var(--heading-color), transparent 25%);
+    font-weight: 700;
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.services .service-item p {
+    margin-bottom: 0;
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+    transition: 0.3s;
+}
+
+.services .service-item .read-more {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 10px;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.services .service-item .read-more i {
+    margin-left: 10px;
+}
+
+.services .service-item.item-cyan .icon {
+    color: #0dcaf0;
+    border: 1px solid #0dcaf0;
+    background: rgba(13, 202, 240, 0.1);
+}
+
+.services .service-item.item-orange .icon {
+    color: #fd7e14;
+    border: 1px solid #fd7e14;
+    background: rgba(253, 126, 20, 0.1);
+}
+
+.services .service-item.item-teal .icon {
+    color: #20c997;
+    border: 1px solid #20c997;
+    background: rgba(32, 201, 151, 0.1);
+}
+
+.services .service-item.item-red .icon {
+    color: #df1529;
+    border: 1px solid #df1529;
+    background: rgba(223, 21, 4, 0.1);
+}
+
+.services .service-item.item-indigo .icon {
+    color: #6610f2;
+    border: 1px solid #6610f2;
+    background: rgba(102, 16, 242, 0.1);
+}
+
+.services .service-item.item-pink .icon {
+    color: #f3268c;
+    border: 1px solid #f3268c;
+    background: rgba(243, 38, 140, 0.1);
+}
+
+.services .service-item:hover {
+    box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+}
+
+.services .service-item:hover h3 {
+    color: var(--heading-color);
+}
+
+.services .service-item:hover p {
+    color: color-mix(in srgb, var(--default-color), transparent 10%);
+}
+
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 столбца */
+    grid-template-rows: repeat(3, 1fr); /* 3 строки */
+    gap: 10px;
+}
+
+/* Позиционирование элементов */
+.services .time {
+    grid-column: 1 / 2; /* Столбец 1 */
+    grid-row: 1 / 3; /* Строки 1-2 */
+    background: url("/static/img/services/book-logo.svg") left 50% bottom 26px no-repeat;
+}
+
+.services  .news {
+    grid-column: 2 / 4; /* Столбцы 2-3 */
+    grid-row: 1 / 2; /* Строка 1 */
+}
+
+.services  .dosai {
+    grid-column: 4 / 5; /* Столбец 4 */
+    grid-row: 1 / 2; /* Строка 1 */
+}
+
+.services  .services_s {
+    grid-column: 2 / 3; /* Столбец 2 */
+    grid-row: 2 / 3; /* Строка 2 */
+}
+
+.services .course {
+    grid-column: 1 / 3; /* Столбцы 1-2 */
+    grid-row: 3 / 4; /* Строка 3 */
+}
+
+.services .event {
+    grid-column: 3 / 5; /* Столбцы 3-4 */
+    grid-row: 2 / 4; /* Строки 2-3 */
+}

@@ -1,23 +1,23 @@
 {% load i18n %}
 {% load static %}
-<section id="hero" class="hero section">
-      <div class="hero-bg">
+<section id="hero" class="hero section d-flex align-items-end">
+    <div class="hero-bg">
         <img src="{% static 'img/hero/photo_summer.jpg' %}" alt="">
-      </div>
-      <div class="container text-center">
+    </div>
+    <div class="container">
         <div class="d-flex flex-column justify-content-center align-items-center">
-          <h1 data-aos="fade-up" class="aos-init aos-animate">{% trans 'library-title-1' %}</h1>
-<div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-          <div class="d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-            
-          </div>
-{#          <img src="{% static 'img/hero/photo_summer.jpg' %}" class="img-fluid hero-img aos-init aos-animate" alt="" data-aos="zoom-out" data-aos-delay="300">#}
-        </div>
-      </div>
+            <h1 data-aos="fade-up" class="aos-init aos-animate">{% trans 'library-title-1' %}</h1>
+                
+            <div class="d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+            </div>
 
-    </section>
+            <div class="mt-auto hero-socials">
+                {% for name, url in exl %}
+                    <a target="_blank" href='{{ url }}'>
+                        <img class="img-rounded" src="{% static 'img/logo/'|add:name|lower|add:'-logo.svg' %}" alt="{{ name }}">
+                    </a>
+                {% endfor %}
+            </div> <!-- /SOCIALS -->
+        </div>
+    </div>
+</section>

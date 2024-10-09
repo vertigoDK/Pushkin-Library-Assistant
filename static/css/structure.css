@@ -82,7 +82,7 @@
 /* Index Page Header on Scroll
 ------------------------------*/
 .index-page.scrolled .header {
-    --background-color: #ffffff;
+    /*--background-color: #ffffff;*/
 }
 
 /*--------------------------------------------------------------
@@ -614,7 +614,7 @@
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
     [data-aos-delay] {
-        transition-delay: 0 !important;
+        transition-delay: 0s !important;
     }
 }
 
