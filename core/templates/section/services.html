@@ -3,20 +3,43 @@
 
 <section id="services" class="services section light-background">
     <div class="container">
+        <!-- Создаем CSS Grid контейнер -->
         <div class="grid-container">
-            <div class="time service-item position-relative">
-                
+            <!-- Элемент 1: занимает одну колонку и две строки -->
+            <div class="service-item time">
                 {% include 'services/service-time.html' %}
-            
             </div>
-            <div class="news service-item position-relative">Элемент 2<br>[1][2] - [1][3]</div>
-            <div class="dosai service-item position-relative">Элемент 3<br>[1][4]</div>
-            <div class="services_s service-item position-relative">Элемент 4<br>[2][2]</div>
-            <div class="course service-item position-relative">Элемент 5<br>[3][1] - [3][2]</div>
-            <div class="event service-item position-relative">Элемент 6<br>[2][3] - [3][4]</div>
+
+            <!-- Элемент 2: занимает две колонки и одну строку -->
+            <div class="service-item news">
+                Элемент 2<br>[1][2] - [1][3]
+            </div>
+
+            <!-- Элемент 3: занимает одну колонку и одну строку -->
+            <div class="service-item dosai">
+                Элемент 3<br>[1][4]
+            </div>
+
+            <!-- Элемент 4: занимает одну колонку и одну строку -->
+            <div class="service-item services_s">
+                Элемент 4<br>[2][2]
+            </div>
+
+            <!-- Элемент 5: занимает две колонки и одну строку -->
+            <div class="service-item course">
+                Элемент 5<br>[3][1] - [3][2]
+            </div>
+
+            <!-- Элемент 6: занимает две колонки и две строки -->
+            <div class="service-item event">
+                Элемент 6<br>[2][3] - [3][4]
+            </div>
         </div>
     </div>
 </section>
+
+
+
 <!-- Services Section -->
 <section id="services" class="services section light-background">
 

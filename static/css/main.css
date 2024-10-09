@@ -15,6 +15,8 @@
     --default-color: #3d4348; /* Default color used for the majority of the text content across the entire website */
     --heading-color: #3e5055; /* Color for headings, subheadings and title throughout the website */
     --accent-color: #258b58; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+    --secondry-color: #eade5a;
+
     --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
     --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
     --featured-services-color: #258b58;
@@ -586,106 +588,6 @@ section,
 .features-details .features-item img {
     border-radius: 15px;
 }
-
-/*--------------------------------------------------------------
-# Services Section
---------------------------------------------------------------*/
-.services .service-item {
-    background-color: var(--surface-color);
-    border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
-    height: 100%;
-    padding: 30px;
-    transition: 0.3s;
-    border-radius: 10px;
-    display: flex;
-}
-
-.services .service-item .icon {
-    font-size: 32px;
-    border-radius: 10px;
-    position: relative;
-    margin-right: 25px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 72px;
-    height: 72px;
-    flex-shrink: 0;
-}
-
-.services .service-item h3 {
-    color: color-mix(in srgb, var(--heading-color), transparent 25%);
-    font-weight: 700;
-    font-size: 22px;
-    transition: 0.3s;
-}
-
-.services .service-item p {
-    margin-bottom: 0;
-    color: color-mix(in srgb, var(--default-color), transparent 40%);
-    transition: 0.3s;
-}
-
-.services .service-item .read-more {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 10px;
-    transition: 0.3s;
-    font-size: 14px;
-}
-
-.services .service-item .read-more i {
-    margin-left: 10px;
-}
-
-.services .service-item.item-cyan .icon {
-    color: #0dcaf0;
-    border: 1px solid #0dcaf0;
-    background: rgba(13, 202, 240, 0.1);
-}
-
-.services .service-item.item-orange .icon {
-    color: #fd7e14;
-    border: 1px solid #fd7e14;
-    background: rgba(253, 126, 20, 0.1);
-}
-
-.services .service-item.item-teal .icon {
-    color: #20c997;
-    border: 1px solid #20c997;
-    background: rgba(32, 201, 151, 0.1);
-}
-
-.services .service-item.item-red .icon {
-    color: #df1529;
-    border: 1px solid #df1529;
-    background: rgba(223, 21, 4, 0.1);
-}
-
-.services .service-item.item-indigo .icon {
-    color: #6610f2;
-    border: 1px solid #6610f2;
-    background: rgba(102, 16, 242, 0.1);
-}
-
-.services .service-item.item-pink .icon {
-    color: #f3268c;
-    border: 1px solid #f3268c;
-    background: rgba(243, 38, 140, 0.1);
-}
-
-.services .service-item:hover {
-    box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
-}
-
-.services .service-item:hover h3 {
-    color: var(--heading-color);
-}
-
-.services .service-item:hover p {
-    color: color-mix(in srgb, var(--default-color), transparent 10%);
-}
-
 /*--------------------------------------------------------------
 # More Features Section
 --------------------------------------------------------------*/
@@ -780,7 +682,7 @@ section,
     border-radius: 5px;
     font-size: 16px;
     font-weight: 500;
-    font-family: var(--heading-font);
+    font-family: var(--heading-font), serif;
     transition: 0.3s;
     margin-top: 20px;
     margin-bottom: 6px;
