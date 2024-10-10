@@ -88,7 +88,7 @@ class HTMLParser:
         return self.parse_records_table(soup)
 
 
-class BookSearchHandler(BaseAPIHandler):
+class BookSearchEngine(BaseAPIHandler):
     def __init__(self, search_params: Dict[str, str], first_number: int = 1):
         """Инициализирует обработчик с параметрами поиска и настраивает сессию."""
         super().__init__()
@@ -171,6 +171,6 @@ class BookSearchHandler(BaseAPIHandler):
 
 
 if __name__ == '__main__':
-    bParser = BookSearchHandler({"author": "Абай"})
+    bParser = BooksSearchEngine({"author": "Абай"})
     results = bParser.execute_search()
     print(results)

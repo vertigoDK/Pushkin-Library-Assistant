@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import LegendSerializer, BookSearchSerializer, TextQuerySerualizer
 from .services.engines.legends_engine import LegendsEngine
-from .services.engines.book_search_engine import BookSearchHandler
+from .services.engines.book_search_engine import BookSearchEngine
 from .services.engine_intent_router import EngineIntentRouter
 from .services.llm.dosai import DosAI
 from django.http import HttpRequest
@@ -33,7 +33,7 @@ def book_search_view(request: HttpRequest):
         search_params = serializer.validated_data
 
         # Создаем экземпляр обработчика поиска
-        search_handler = BookSearchHandler(search_params=search_params)
+        search_handler = BookSearchEngine(search_params=search_params)
 
         # Выполняем поиск
         search_results = search_handler.execute_search()
