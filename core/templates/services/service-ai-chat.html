@@ -1,12 +1,11 @@
 {% load static %}
 {% load i18n %}
-<div class="service-item dosai" >
+<div class="service-item dosai">
     <a href="{% url 'chat_page' %}">
         <!-- Центральная картинка -->
         <img src="{% static 'img/services/logo-dosai-white.svg' %}" alt="DosAI Logo" class="center-image">
         <!-- Текстовая надпись -->
-        <div class="text">
-            <h2>{% trans 'chatbot-assistant-dos-ai' %}</h2>
-        </div>
+        <h2>{% trans 'chatbot-assistant-dos-ai' %}</h2>
+        
     </a>
 </div>

@@ -117,6 +117,14 @@
     grid-template-rows: repeat(3, auto); /* 3 строки */
     gap: 10px; /* Отступы между элементами */
 }
+/* Базовые стили для сетки */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки для десктопа */
+    grid-template-rows: auto; /* Высота строк адаптируется */
+    gap: 20px; /* Пространство между элементами */
+    padding: 10px; /* Внутренний отступ */
+}
 
 /* Позиционирование для десктопа */
 .news {
@@ -134,7 +142,7 @@
     grid-row: 1 / 2;
 }
 
-.services_s {
+.action {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 }
@@ -149,54 +157,48 @@
     grid-row: 2 / 4;
 }
 
-/* Адаптивная версия для мобильных устройств (двухколоночная сетка) */
+/* Адаптивная версия для мобильных устройств */
 @media (max-width: 768px) {
     .grid-container {
-        display: grid;
         grid-template-columns: 1fr 1fr; /* Две колонки */
         grid-template-rows: auto; /* Высота строк адаптируется */
         gap: 10px; /* Отступы между элементами */
     }
 
-    /* Новости занимают первую колонку */
+    /* Перепозиционирование элементов для мобильной версии */
     .news {
-        grid-column: 1 / 2; /* Левая колонка */
-        grid-row: 1 / 2; /* Первая строка */
+        grid-column: 1 / 3; /* Занимает обе колонки */
+        grid-row: 1; /* Первая строка */
     }
 
-
-    /* Время занимает две строки и одну колонку */
     .time {
-        grid-column: 2 / 3; /* Правая колонка */
-        grid-row: 1 / 3; /* Две строки */
+        grid-column: 1 / 2; /* Левая колонка */
+        grid-row: 2; /* Вторая строка */
+    }
+     .time img {
+        display: none; /* Скрыть изображение */
     }
 
-
-    /* Dosai занимает правую колонку первой строки */
     .dosai {
-        grid-column: 1 / 2; /* Левая колонка */
-        grid-row: 2 / 3; /* Вторая строка */
-    }
-
-    /* Services_s в правой колонке второй строки */
-    .services_s {
         grid-column: 2 / 3; /* Правая колонка */
-        grid-row: 2 / 3; /* Вторая строка */
+        grid-row: 2; /* Вторая строка */
     }
 
-    /* Курсы в левой колонке третьей строки */
+    .action {
+        grid-column: 1 / 3; /* Занимает обе колонки */
+        grid-row: 3; /* Третья строка */
+    }
+
     .course {
-        grid-column: 1 / 2; /* Левая колонка */
-        grid-row: 3 / 4; /* Третья строка */
+        grid-column: 1 / 3; /* Левая колонка */
+        grid-row: 4; /* Четвертая строка */
     }
 
-    /* События в правой колонке третьей строки */
     .event {
-        grid-column: 2 / 3; /* Правая колонка */
-        grid-row: 3 / 4; /* Третья строка */
+        grid-column: 1 / 3; /* Правая колонка */
+        grid-row: 5; /* Четвертая строка */
     }
 }
-
 
 /*News*/
 .service-item.news {
@@ -236,6 +238,10 @@
     text-align: center; /* Текст внутри блока будет центрирован */
     /*max-width: 80%; !* Ограничение по ширине *!*/
 }
+.news img {
+
+    border-radius: 10px;
+}
 
 .swiper-button-prev::after, .swiper-button-next::after {
     content: '' !important;
@@ -260,32 +266,46 @@
 
 /*DosAI*/
 
-
 .dosai .service-item {
     width: 100%;
-    height: 400px; /* Укажите нужную высоту для вашего блока */
+    height: 100%; /* Высота блока */
     display: flex; /* Flexbox для центрирования контента */
     justify-content: center; /* Горизонтальное центрирование */
     align-items: center; /* Вертикальное центрирование */
     overflow: hidden; /* Скрытие элементов, выходящих за рамки */
     text-align: center; /* Центрирование текста */
+    position: relative; /* Для абсолютного позиционирования фонового изображения */
 }
 
-/* Стиль для центрального изображения */
+.dosai a {
+    width: 100%; /* Полная ширина ссылки */
+    height: 100%; /* Полная высота ссылки */
+    display: flex; /* Используем Flexbox для центрирования */
+    justify-content: center; /* Центрирование контента по горизонтали */
+    align-items: center; /* Центрирование контента по вертикали */
+    flex-direction: column; /* Расположение контента столбиком */
+    position: relative; /* Абсолютное позиционирование */
+    background: url("/static/img/services/logo-dosai-white-bg.svg") no-repeat center; /* Централизованный фоновый рисунок */
+    text-decoration: none;
+}
+
 .dosai .center-image {
-    position: relative; /* Относительное позиционирование внутри ссылки */
     max-width: 150px; /* Максимальная ширина логотипа */
     height: auto; /* Поддержание пропорций изображения */
-    z-index: 2; /* Картинка будет выше фона */
     margin-bottom: 20px; /* Отступ от текста */
 }
 
-/* Стиль для текста */
-.dosai .text h2 {
+.dosai h2 {
     color: #fff; /* Белый цвет текста */
-    padding: 5px 10px;
-    font-size: 20px;
-    border-radius: 5px;
-    z-index: 3; /* Текст выше картинки */
-    display: inline-block; /* Чтобы фон обрамлял текст */
+    font-size: 20px; /* Размер текста */
+    margin: 0; /* Убираем отступы */
+    padding: 5px 10px; /* Внутренние отступы */
+    border-radius: 5px; /* Скругленные углы */
+    display: block; /* Блочный элемент */
+    z-index: 1; /* Уровень слоя текста */
+    text-decoration: none;
+    text-align: center;
 }
+
+/*Service S*/
+
