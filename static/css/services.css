@@ -117,6 +117,7 @@
     grid-template-rows: repeat(3, auto); /* 3 строки */
     gap: 10px; /* Отступы между элементами */
 }
+
 /* Базовые стили для сетки */
 .grid-container {
     display: grid;
@@ -175,7 +176,8 @@
         grid-column: 1 / 2; /* Левая колонка */
         grid-row: 2; /* Вторая строка */
     }
-     .time img {
+
+    .time img {
         display: none; /* Скрыть изображение */
     }
 
@@ -238,6 +240,7 @@
     text-align: center; /* Текст внутри блока будет центрирован */
     /*max-width: 80%; !* Ограничение по ширине *!*/
 }
+
 .news img {
 
     border-radius: 10px;
@@ -307,5 +310,55 @@
     text-align: center;
 }
 
-/*Service S*/
+/*Action*/
 
+
+.action .action-list {
+    border: 1px solid #ddd; /* Добавление рамки */
+    border-radius: 10px; /* Закругление углов */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+.action a {
+    display: flex;
+    align-items: center;
+    padding: 10px 0; /* Отступы сверху и снизу */
+    border-bottom: 1px solid #ddd; /* Разделитель между элементами */
+}
+
+
+.action a:last-child {
+    border-bottom: none; /* Убираем нижний разделитель у последнего элемента */
+}
+
+
+.action a i {
+    font-size: 24px; /* Размер иконки */
+    color: #6c757d; /* Цвет иконки */
+    margin-right: 15px; /* Отступ справа */
+}
+
+.action span {
+    font-weight: 500; /* Полужирный текст */
+    color: #495057; /* Цвет текста */
+    margin: 0; /* Убираем отступы */
+}
+
+.action h5 {
+    text-align: center; /* Центрирование заголовка */
+
+    font-weight: bold;
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+.action a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Цвет ссылки как у обычного текста */
+    transition: background-color 0.2s ease; /* Плавное изменение фона */
+}
+
+.action a:hover span{
+    background-color: #f8f9fa; /* Цвет фона при наведении */
+    color: var(--accent-color) !important;
+}
