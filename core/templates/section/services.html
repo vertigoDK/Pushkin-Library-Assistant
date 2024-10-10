@@ -2,42 +2,33 @@
 {% load static %}
 
 <section id="services" class="services section light-background">
-    <div class="container">
-        <!-- Создаем CSS Grid контейнер -->
-        <div class="grid-container">
-            <!-- Элемент 1: занимает одну колонку и две строки -->
-            <div class="service-item time">
-                {% include 'services/service-time.html' %}
-            </div>
+    <div class="container grid-container">
+        <!-- Новости -->
+        {% include 'services/service-news.html' %}
 
-            <!-- Элемент 2: занимает две колонки и одну строку -->
-            <div class="service-item news">
-                Элемент 2<br>[1][2] - [1][3]
-            </div>
 
-            <!-- Элемент 3: занимает одну колонку и одну строку -->
-            <div class="service-item dosai">
-                Элемент 3<br>[1][4]
-            </div>
+        <!-- Время -->
+        {% include 'services/service-time.html' %}
 
-            <!-- Элемент 4: занимает одну колонку и одну строку -->
-            <div class="service-item services_s">
-                Элемент 4<br>[2][2]
-            </div>
+        <!-- Dosai -->
+        {% include 'services/service-ai-chat.html' %}
+        
+        <!-- Services_s -->
+        <div class="service-item services_s">
+            Элемент SSSS<br>[2][2]
+        </div>
 
-            <!-- Элемент 5: занимает две колонки и одну строку -->
-            <div class="service-item course">
-                Элемент 5<br>[3][1] - [3][2]
-            </div>
+        <!-- Курсы -->
+        <div class="service-item course">
+            Элемент Course<br>[3][1] - [3][2]
+        </div>
 
-            <!-- Элемент 6: занимает две колонки и две строки -->
-            <div class="service-item event">
-                Элемент 6<br>[2][3] - [3][4]
-            </div>
+        <!-- События -->
+        <div class="service-item event">
+            Элемент Events<br>[2][3] - [3][4]
         </div>
     </div>
 </section>
-
 
 
 <!-- Services Section -->

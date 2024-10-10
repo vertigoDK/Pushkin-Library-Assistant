@@ -1,9 +1,12 @@
 {% load static %}
 {% load i18n %}
-<div class="services__action services__ai-chat">
-    <a href="{% url 'chat_page' %}" class="services__ai-chat-link">
-        <img class="services__ai-chat-logo" src="{% static 'img/services/logo-dosai-white.svg' %}"
-             alt="DosAI Logo"/>
-        <p class="services__ai-chat-text">{% trans 'chatbot-assistant-dos-ai' %}</p>
+<div class="service-item dosai" >
+    <a href="{% url 'chat_page' %}">
+        <!-- Центральная картинка -->
+        <img src="{% static 'img/services/logo-dosai-white.svg' %}" alt="DosAI Logo" class="center-image">
+        <!-- Текстовая надпись -->
+        <div class="text">
+            <h2>{% trans 'chatbot-assistant-dos-ai' %}</h2>
+        </div>
     </a>
 </div>

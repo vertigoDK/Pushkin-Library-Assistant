@@ -78,6 +78,11 @@
     color: color-mix(in srgb, var(--secondry-color), transparent 10%);
 }
 
+.services .service-item h3 {
+    color: var(--secondry-color);
+    font-weight: 400;
+}
+
 .services .service-item:hover p {
     color: color-mix(in srgb, var(--background-color), transparent 10%);
 }
@@ -90,7 +95,6 @@
     background-color: var(--accent-color);
     border: 1px solid color-mix(in srgb, var(--secondry-color), transparent 85%);
     min-height: 150px;
-    padding: 30px;
     border-radius: 10px;
     transition: 0.3s;
     display: flex;
@@ -98,75 +102,190 @@
     align-items: center;
 }
 
-/* Сетка для контейнера */
-.services .grid-container {
+.services .service-item {
+    background: linear-gradient(180deg, var(--accent-color) 0%, var(--accent-color-2) 100%);
+}
+
+.services .service-item.time {
+    padding: 20px;
+}
+
+/* Десктопная версия (ваша текущая сетка) */
+.grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 столбца */
-    grid-template-rows: auto; /* 3 строки, высота каждой строки - 200px */
+    grid-template-rows: repeat(3, auto); /* 3 строки */
     gap: 10px; /* Отступы между элементами */
 }
 
-/* Позиционирование элементов */
-.time {
-    grid-column: 1 / 2; /* Столбец 1 */
-    grid-row: 1 / 3; /* Строки 1-2 */
+/* Позиционирование для десктопа */
+.news {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
 }
 
-.news {
-    grid-column: 2 / 4; /* Столбцы 2-3 */
-    grid-row: 1 / 2; /* Строка 1 */
+.time {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
 }
 
 .dosai {
-    grid-column: 4 / 5; /* Столбец 4 */
-    grid-row: 1 / 2; /* Строка 1 */
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
 }
 
 .services_s {
-    grid-column: 2 / 3; /* Столбец 2 */
-    grid-row: 2 / 3; /* Строка 2 */
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
 }
 
 .course {
-    grid-column: 1 / 3; /* Столбцы 1-2 */
-    grid-row: 3 / 4; /* Строка 3 */
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
 }
 
 .event {
-    grid-column: 3 / 5; /* Столбцы 3-4 */
-    grid-row: 2 / 4; /* Строки 2-3 */
+    grid-column: 3 / 5;
+    grid-row: 2 / 4;
 }
 
-/* Адаптивность для мобильных устройств (менее 768px) */
+/* Адаптивная версия для мобильных устройств (двухколоночная сетка) */
 @media (max-width: 768px) {
     .grid-container {
-        grid-template-columns: 1fr; /* Изменяем сетку на 1 столбец */
-        grid-template-rows: auto; /* Высота строк адаптируется автоматически */
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Две колонки */
+        grid-template-rows: auto; /* Высота строк адаптируется */
+        gap: 10px; /* Отступы между элементами */
     }
 
-    /* Каждый элемент занимает всю ширину */
-    .time, .news, .dosai, .services_s, .course, .event {
-        grid-column: 1 / 2; /* Все элементы располагаются в одной колонке */
-        grid-row: auto; /* Высота строк адаптируется автоматически */
+    /* Новости занимают первую колонку */
+    .news {
+        grid-column: 1 / 2; /* Левая колонка */
+        grid-row: 1 / 2; /* Первая строка */
+    }
+
+
+    /* Время занимает две строки и одну колонку */
+    .time {
+        grid-column: 2 / 3; /* Правая колонка */
+        grid-row: 1 / 3; /* Две строки */
+    }
+
+
+    /* Dosai занимает правую колонку первой строки */
+    .dosai {
+        grid-column: 1 / 2; /* Левая колонка */
+        grid-row: 2 / 3; /* Вторая строка */
+    }
+
+    /* Services_s в правой колонке второй строки */
+    .services_s {
+        grid-column: 2 / 3; /* Правая колонка */
+        grid-row: 2 / 3; /* Вторая строка */
+    }
+
+    /* Курсы в левой колонке третьей строки */
+    .course {
+        grid-column: 1 / 2; /* Левая колонка */
+        grid-row: 3 / 4; /* Третья строка */
+    }
+
+    /* События в правой колонке третьей строки */
+    .event {
+        grid-column: 2 / 3; /* Правая колонка */
+        grid-row: 3 / 4; /* Третья строка */
     }
 }
 
-.services .service-item h3 {
-    font-size: 32px;
-    color: var(--secondry-color);
-    opacity: 0.8;
-    font-weight: 700;
-    transition: 0.3s;
+
+/*News*/
+.service-item.news {
+    max-height: 400px;
 }
 
-.services .service-item p {
-    font-size: 20px;
-    color: var(--surface-color);
-    opacity: 0.8;
-}
-
-.services .service-item img {
+.swiper {
     width: 100%;
+    height: 100%; /* Фиксированная высота контейнера Swiper */
 }
 
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex; /* Используем flexbox */
+    justify-content: center; /* Центрируем контент */
+    align-items: center;
+    position: relative; /* Относительное позиционирование для контента */
+    height: 100%; /* Высота слайда = высоте контейнера Swiper */
+}
 
+.news .news-image {
+    width: 100%; /* Ширина изображения — автоматически */
+    height: 100%; /* Высота изображения — 100% от контейнера */
+    object-fit: cover; /* Сохраняем пропорции, изображение не обрезается */
+    max-height: 400px;
+}
+
+.news .news-content {
+    position: absolute;
+    bottom: 5px; /* Позиционирование по вертикали на 50% от высоты контейнера */
+    left: 50%; /* Позиционирование по горизонтали на 50% от ширины контейнера */
+    transform: translate(-50%, -50%); /* Смещение на половину ширины и высоты для идеального центрирования */
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5); /* Фон для лучшей читаемости текста */
+    border-radius: 10px;
+    text-align: center; /* Текст внутри блока будет центрирован */
+    /*max-width: 80%; !* Ограничение по ширине *!*/
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+    content: '' !important;
+}
+
+.news-tag {
+    position: absolute;
+    top: 5px; /* Расположить в левом верхнем углу */
+    left: 5px;
+    background: var(--accent-color); /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.news-tag:hover {
+    background: var(--secondry-color); /* Цвет фона при наведении */
+}
+
+/*DosAI*/
+
+
+.dosai .service-item {
+    width: 100%;
+    height: 400px; /* Укажите нужную высоту для вашего блока */
+    display: flex; /* Flexbox для центрирования контента */
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center; /* Вертикальное центрирование */
+    overflow: hidden; /* Скрытие элементов, выходящих за рамки */
+    text-align: center; /* Центрирование текста */
+}
+
+/* Стиль для центрального изображения */
+.dosai .center-image {
+    position: relative; /* Относительное позиционирование внутри ссылки */
+    max-width: 150px; /* Максимальная ширина логотипа */
+    height: auto; /* Поддержание пропорций изображения */
+    z-index: 2; /* Картинка будет выше фона */
+    margin-bottom: 20px; /* Отступ от текста */
+}
+
+/* Стиль для текста */
+.dosai .text h2 {
+    color: #fff; /* Белый цвет текста */
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    z-index: 3; /* Текст выше картинки */
+    display: inline-block; /* Чтобы фон обрамлял текст */
+}
