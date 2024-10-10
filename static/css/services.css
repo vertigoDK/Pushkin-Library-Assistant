@@ -250,23 +250,6 @@
     content: '' !important;
 }
 
-.news-tag {
-    position: absolute;
-    top: 5px; /* Расположить в левом верхнем углу */
-    left: 5px;
-    background: var(--accent-color); /* Цвет фона */
-    color: #fff; /* Цвет текста */
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-}
-
-.news-tag:hover {
-    background: var(--secondry-color); /* Цвет фона при наведении */
-}
-
 /*DosAI*/
 
 .dosai .service-item {
@@ -395,7 +378,7 @@
 }
 
 
-.course-tag {
+.course .tag-all, .news .tag-all {
     position: absolute;
     top: 5px; /* Расположить в левом верхнем углу */
     left: 5px;
@@ -407,7 +390,6 @@
     text-decoration: none;
     transition: background 0.3s ease;
 }
-
-.course-tag:hover {
+.course .tag-all:hover, .news .tag-all:hover {
     background: var(--secondry-color); /* Цвет фона при наведении */
 }
