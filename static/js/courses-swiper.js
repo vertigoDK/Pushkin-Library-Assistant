@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-            const swiper = new Swiper('.swiper-container-news', {
+            const swiper = new Swiper('.swiper-container-courses', {
                 loop: true,
                 slidesPerView: 1,
                 spaceBetween: 30,

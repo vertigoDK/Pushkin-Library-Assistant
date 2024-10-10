@@ -362,3 +362,52 @@
     background-color: #f8f9fa; /* Цвет фона при наведении */
     color: var(--accent-color) !important;
 }
+
+
+/*Courses*/
+
+.service-item.course {
+    max-height: 400px;
+}
+
+
+.course .course-image {
+    width: 100%; /* Ширина изображения — автоматически */
+    height: 100%; /* Высота изображения — 100% от контейнера */
+    object-fit: cover; /* Сохраняем пропорции, изображение не обрезается */
+    max-height: 400px;
+}
+
+.course .course-content {
+    position: absolute;
+    bottom: 5px; /* Позиционирование по вертикали на 50% от высоты контейнера */
+    left: 50%; /* Позиционирование по горизонтали на 50% от ширины контейнера */
+    transform: translate(-50%, -50%); /* Смещение на половину ширины и высоты для идеального центрирования */
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5); /* Фон для лучшей читаемости текста */
+    border-radius: 10px;
+    text-align: center; /* Текст внутри блока будет центрирован */
+    /*max-width: 80%; !* Ограничение по ширине *!*/
+}
+
+.course img {
+    border-radius: 10px;
+}
+
+
+.course-tag {
+    position: absolute;
+    top: 5px; /* Расположить в левом верхнем углу */
+    left: 5px;
+    background: var(--accent-color); /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.course-tag:hover {
+    background: var(--secondry-color); /* Цвет фона при наведении */
+}
