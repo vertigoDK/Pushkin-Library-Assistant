@@ -159,7 +159,7 @@
 }
 
 /* Адаптивная версия для мобильных устройств */
-@media (max-width: 768px) {
+@media (max-width: 1199px) {
     .grid-container {
         grid-template-columns: 1fr 1fr; /* Две колонки */
         grid-template-rows: auto; /* Высота строк адаптируется */
@@ -223,22 +223,21 @@
 }
 
 .news .news-image {
-    width: 100%; /* Ширина изображения — автоматически */
-    height: 100%; /* Высота изображения — 100% от контейнера */
-    object-fit: cover; /* Сохраняем пропорции, изображение не обрезается */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     max-height: 400px;
 }
 
 .news .news-content {
     position: absolute;
-    bottom: 5px; /* Позиционирование по вертикали на 50% от высоты контейнера */
-    left: 50%; /* Позиционирование по горизонтали на 50% от ширины контейнера */
-    transform: translate(-50%, -50%); /* Смещение на половину ширины и высоты для идеального центрирования */
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: #fff;
-    background: rgba(0, 0, 0, 0.5); /* Фон для лучшей читаемости текста */
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    text-align: center; /* Текст внутри блока будет центрирован */
-    /*max-width: 80%; !* Ограничение по ширине *!*/
+    text-align: center;
 }
 
 .news img {
@@ -254,7 +253,7 @@
 
 .dosai .service-item {
     width: 100%;
-    height: 100%; /* Высота блока */
+    height: 100%;
     display: flex; /* Flexbox для центрирования контента */
     justify-content: center; /* Горизонтальное центрирование */
     align-items: center; /* Вертикальное центрирование */
@@ -392,4 +391,116 @@
 }
 .course .tag-all:hover, .news .tag-all:hover {
     background: var(--secondry-color); /* Цвет фона при наведении */
+}
+
+/*Events*/
+.service-item.event {
+    min-height: 500px;
+
+}
+.event {
+
+    position: relative; /* Для последующего абсолютного позиционирования img */
+    overflow: hidden; /* Скрываем части изображения, которые выходят за рамки */
+}
+
+.event p {
+    color: var(--secondry-color);
+}
+
+.event img {
+    position: absolute; /* Позиционирование относительно контейнера */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ширина изображения заполняет весь контейнер */
+    height: 100%; /* Высота изображения также заполняет весь контейнер */
+    object-fit: cover; /* Изображение будет обрезано, но сохранит пропорции */
+    border-radius: 10px;
+}
+
+.event .swiper-button-prev,
+.event .swiper-button-next {
+    position: absolute;
+    top: 30px; /* Расположение кнопок вверху */
+}
+
+.event .swiper-button-prev {
+    right: 60px; /* Смещение левой кнопки левее */
+}
+
+/* Оформление кнопки "Вперед" (правая кнопка) */
+.event .swiper-button-next {
+    right: 20px; /* Правая кнопка ближе к правому краю */
+}
+
+
+/* Основной стиль для блока слайдов */
+.event .swiper-slide {
+    position: relative; /* Контейнер для позиционирования дочерних элементов */
+    overflow: hidden; /* Скрытие выходящего за границы содержимого */
+    border-radius: 10px;
+    background: #f7f7f7; /* Фон для видимости контента */
+}
+
+/* Основной контейнер для контента события */
+.event-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto; /* Высота подстраивается под контент */
+    background: linear-gradient(180deg, var(--accent-color) 0%, var(--accent-color-2) 100%);
+    padding: 10px 15px;
+    overflow: hidden;
+    transition: height 0.5s ease, opacity 0.5s ease;
+}
+
+
+/* Название события всегда видно */
+.event-title {
+    margin: 0; /* Убираем отступы */
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--secondry-color);
+    padding: 5px;
+    border-bottom: 1px solid var(--secondry-color);
+}
+
+/* Контейнер с дополнительной информацией */
+.event-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 600;
+}
+.event-details .time {
+    color: var(--secondry-color) !important;
+    font-size: 24px;
+}
+
+.event-details .desc {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+/* При наведении на слайд раскрывается дополнительный контент */
+/*.swiper-container-events:hover .event-details {
+    max-height: 300px;
+    opacity: 1;
+}*/
+
+/* Дополнительные стили для элементов внутри event-details */
+.event-details p {
+    margin: 5px 0;
+}
+
+/* Скрываем описание, если оно слишком длинное */
+.event-details .desc {
+    font-size: 20px;
+    max-height: 9em;
+    overflow: hidden; /* Скрытие переполненного текста */
+    overflow-y: auto;
+    font-weight: normal;
 }

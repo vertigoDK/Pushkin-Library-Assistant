@@ -1,0 +1,67 @@
+{% load i18n %}
+{% load static %}
+
+<div class="service-item event">
+    <div class="swiper-container-events swiper">
+        <div id="event-container" class="swiper-wrapper">
+            {% for event in events %}
+                <div class="swiper-slide position-relative">
+                    <img src="{{ event.image.url }}" alt="{% if LANGUAGE_CODE == 'ru' %}
+                    {{ event.title_event_ru }}
+                    {% elif LANGUAGE_CODE == 'kk' %}
+                    {{ event.title_event_kz }}
+                    {% else %}
+                    {{ event.title_event_en }}
+                    {% endif %}">
+
+                    <!-- Контент события, который будет скрываться/раскрываться -->
+                    <div class="event-content">
+                        <!-- Название события, которое всегда видно -->
+                        <h2 class="event-title">
+                            {% if LANGUAGE_CODE == 'ru' %}
+                                {{ event.title_event_ru }}
+                            {% elif LANGUAGE_CODE == 'kk' %}
+                                {{ event.title_event_kz }}
+                            {% elif LANGUAGE_CODE == 'en' %}
+                                {{ event.title_event_en }}
+                            {% endif %}
+                        </h2>
+
+                        <!-- Дополнительный контент, который будет скрыт -->
+                        <div class="event-details">
+                            <p class="location">
+                                <i class="bi bi-geo-alt-fill"></i>
+                                {{ event.location }}
+                            </p>
+                            <p class="date">
+                                <i class="bi bi-calendar-event"></i>
+                                {{ event.date_change|date:"l d F" }}
+                            </p>
+                        
+                            <p class="time">
+                                <i class="bi bi-clock-fill"></i>
+                                {{ event.start_time }} - {{ event.end_time }}
+                            </p>
+                            <p class="desc">
+                                {% if LANGUAGE_CODE == 'ru' %}
+                                    {{ event.content_event_ru }}
+                                {% elif LANGUAGE_CODE == 'kk' %}
+                                    {{ event.content_event_kz }}
+                                {% elif LANGUAGE_CODE == 'en' %}
+                                    {{ event.content_event_en }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-button-prev">
+            <img src="{% static 'img/services/arrow-left.svg' %}" alt="Previous Slide">
+        </div>
+        <div class="swiper-button-next">
+            <img src="{% static 'img/services/arrow-right.svg' %}" alt="Next Slide">
+        </div>
+
+    </div>
+</div>

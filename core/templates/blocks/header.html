@@ -12,8 +12,10 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li class="dropdown"><a href="#"><span>{% trans "library" %}</span> <i
-                        class="bi toggle-dropdown"></i></a>
+                <li class="dropdown">
+                    <a href="#"><span>{% trans "library" %}</span>
+                        <i class="bi bi-chevron-down toggle-dropdown"></i>
+                    </a>
                     <ul>
                         <li><a href="/">{% trans "home" %}</a></li>
                         <li><a href="https://www.pushkinlibrary.kz/ru/homeru/aboutru.html">{% trans 'about-us' %}</a>
@@ -26,8 +28,8 @@
                     </ul>
                 </li>
 
-                <li class="dropdown"><a href="#"><span>{% trans 'readers' %}</span> <i
-                        class="bi toggle-dropdown"></i></a>
+                <li class="dropdown"><a href="#"><span>{% trans 'readers' %}</span>
+                    <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li>
                             <a href="https://www.pushkinlibrary.kz/ru/servicesru/stat-shitatelem.html">{% trans 'sign-up-for-readers' %}</a>
@@ -52,7 +54,7 @@
 
 
                 <li class="dropdown"><a href="#"><span>{% trans 'digital-catalogue' %}</span> <i
-                        class="bi toggle-dropdown"></i></a>
+                        class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li>
                             <a href='http://irbis.pushkinlibrary.kz:8087/jirbis2/index.php?lang=ru'>{% trans 'electronic-library-our-abai' %}</a>
@@ -66,7 +68,7 @@
                 </li>
 
                 <li class="dropdown"><a href="#"><span>{% trans 'local-history' %}</span> <i
-                        class="bi toggle-dropdown"></i></a>
+                        class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li>
                             <a href='http://irbis.pushkinlibrary.kz:8087/jirbis2/index.php?lang=ru'>{% trans 'electronic-library-our-abai' %}</a>
@@ -88,8 +90,7 @@
                 </li>
 
 
-                <li class="dropdown"><a href="#"><span>{% trans 'resources' %}</span> <i
-                        class="bi toggle-dropdown"></i></a>
+                <li class="dropdown"><a href="#"><span>{% trans 'resources' %}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li>
                             <a href='https://www.pushkinlibrary.kz/ru/resursy/raritety.html'>{% trans 'our-rarities' %}</a>
@@ -109,8 +110,7 @@
                 </li>
 
 
-                <li class="dropdown"><a href="#"><span>{% trans 'for-professionals' %}</span> <i
-                        class="bi toggle-dropdown"></i></a>
+                <li class="dropdown"><a href="#"><span>{% trans 'for-professionals' %}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li>
                             <a href='https://adisteme.pushkinlibrary.kz/'>{% trans 'methodological-services' %}</a>
@@ -134,8 +134,7 @@
                             {% endif %}
                         {% endfor %}
                 </span>
-                    <i
-                            class="bi toggle-dropdown"></i></a>
+                    <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         {% for language in languages %}
                             {% if language.code != LANGUAGE_CODE %}

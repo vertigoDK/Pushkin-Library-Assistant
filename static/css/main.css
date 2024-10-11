@@ -4,9 +4,9 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --heading-font: "Nunito", sans-serif;
-    --nav-font: "Inter", sans-serif;
+    --default-font: "Montserrat-Bold", "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --heading-font: "Montserrat-Bold", "Nunito", sans-serif;
+    --nav-font: "Montserrat-Bold", "Inter", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -305,14 +305,14 @@ section,
 }
 
 .featured-services .service-item {
-    background-color: var(--featured-services-color);
+    background: linear-gradient(135deg, var(--accent-color) 20%, var(--accent-color-2) 80%);;
     box-shadow: 0 5px 90px 0 rgba(0, 0, 0, 0.1);
+    color: var(--background-color);
     height: 100%;
     padding: 10px;
     text-align: center;
     transition: 0.3s;
-    border-radius: 20px;
-    border: 3px solid transparent;
+    border-radius: 10px;
 }
 
 .featured-services .service-item .icon {
@@ -348,7 +348,9 @@ section,
 .featured-services .service-item a {
     text-decoration: none;
     color: var(--contrast-color);
+
 }
+
 
 .featured-services .service-item:hover {
     box-shadow: 0 5px 35px 0 rgba(0, 0, 0, 0.1);
@@ -589,6 +591,7 @@ section,
 .features-details .features-item img {
     border-radius: 15px;
 }
+
 /*--------------------------------------------------------------
 # More Features Section
 --------------------------------------------------------------*/
