@@ -1,0 +1,106 @@
+erands is an object array.
+    iterindex : int
+        An index which matches the order of iteration.
+    itersize : int
+        Size of the iterator.
+    itviews
+        Structured view(s) of `operands` in memory, matching the reordered
+        and optimized iterator access pattern. Valid only before the iterator
+        is closed.
+    multi_index
+        When the ``multi_index`` flag was used, this property
+        provides access to the index. Raises a ValueError if accessed
+        accessed and ``has_multi_index`` is False.
+    ndim : int
+        The dimensions of the iterator.
+    nop : int
+        The number of iterator operands.
+    operands : tuple of operand(s)
+        The array(s) to be iterated over. Valid only before the iterator is
+        closed.
+    shape : tuple of ints
+        Shape tuple, the shape of the iterator.
+    value
+        Value of ``operands`` at current iteration. Normally, this is a
+        tuple of array scalars, but if the flag ``external_loop`` is used,
+        it is a tuple of one dimensional arrays.
+
+    Notes
+    -----
+    `nditer` supersedes `flatiter`.  The iterator implementation behind
+    `nditer` is also exposed by the NumPy C API.
+
+    The Python exposure supplies two iteration interfaces, one which follows
+    the Python iterator protocol, and another which mirrors the C-style
+    do-while pattern.  The native Python approach is better in most cases, but
+    if you need the coordinates or index of an iterator, use the C-style pattern.
+
+    Examples
+    --------
+    Here is how we might write an ``iter_add`` function, using the
+    Python iterator protocol:
+
+    >>> def iter_add_py(x, y, out=None):
+    ...     addop = np.add
+    ...     it = np.nditer([x, y, out], [],
+    ...                 [['readonly'], ['readonly'], ['writeonly','allocate']])
+    ...     with it:
+    ...         for (a, b, c) in it:
+    ...             addop(a, b, out=c)
+    ...         return it.operands[2]
+
+    Here is the same function, but following the C-style pattern:
+
+    >>> def iter_add(x, y, out=None):
+    ...    addop = np.add
+    ...    it = np.nditer([x, y, out], [],
+    ...                [['readonly'], ['readonly'], ['writeonly','allocate']])
+    ...    with it:
+    ...        while not it.finished:
+    ...            addop(it[0], it[1], out=it[2])
+    ...            it.iternext()
+    ...        return it.operands[2]
+
+    Here is an example outer product function:
+
+    >>> def outer_it(x, y, out=None):
+    ...     mulop = np.multiply
+    ...     it = np.nditer([x, y, out], ['external_loop'],
+    ...             [['readonly'], ['readonly'], ['writeonly', 'allocate']],
+    ...             op_axes=[list(range(x.ndim)) + [-1] * y.ndim,
+    ...                      [-1] * x.ndim + list(range(y.ndim)),
+    ...                      None])
+    ...     with it:
+    ...         for (a, b, c) in it:
+    ...             mulop(a, b, out=c)
+    ...         return it.operands[2]
+
+    >>> a = np.arange(2)+1
+    >>> b = np.arange(3)+1
+    >>> outer_it(a,b)
+    array([[1, 2, 3],
+           [2, 4, 6]])
+
+    Here is an example function which operates like a "lambda" ufunc:
+
+    >>> def luf(lamdaexpr, *args, **kwargs):
+    ...    '''luf(lambdaexpr, op1, ..., opn, out=None, order='K', casting='safe', buffersize=0)'''
+    ...    nargs = len(args)
+    ...    op = (kwargs.get('out',None),) + args
+    ...    it = np.nditer(op, ['buffered','external_loop'],
+    ...            [['writeonly','allocate','no_broadcast']] +
+    ...                            [['readonly','nbo','aligned']]*nargs,
+    ...            order=kwargs.get('order','K'),
+    ...            casting=kwargs.get('casting','safe'),
+    ...            buffersize=kwargs.get('buffersize',0))
+    ...    while not it.finished:
+    ...        it[0] = lamdaexpr(*it[1:])
+    ...        it.iternext()
+    ...    return it.operands[0]
+
+    >>> a = np.arange(5)
+    >>> b = np.ones(5)
+    >>> luf(lambda i,j:i*i + j/2, a, b)
+    array([  0.5,   1.5,   4.5,   9.5,  16.5])
+
+  
