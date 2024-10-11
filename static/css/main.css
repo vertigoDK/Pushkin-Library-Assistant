@@ -6,7 +6,7 @@
 :root {
     --default-font: "Montserrat-Bold", "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --heading-font: "Montserrat-Bold", "Nunito", sans-serif;
-    --nav-font: "Montserrat-Bold", "Inter", sans-serif;
+    --nav-font: Montserrat, "Inter", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */

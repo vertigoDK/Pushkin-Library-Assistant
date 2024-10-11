@@ -53,19 +53,13 @@
                 </li>
 
 
-                <li class="dropdown"><a href="#"><span>{% trans 'digital-catalogue' %}</span> <i
+   {% comment %}             <li class="dropdown"><a href="#"><span>{% trans 'digital-catalogue' %}</span> <i
                         class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li>
-                            <a href='http://irbis.pushkinlibrary.kz:8087/jirbis2/index.php?lang=ru'>{% trans 'electronic-library-our-abai' %}</a>
-                        </li>
-                        <li>
-                            <a href='http://irbis.pushkinlibrary.kz:8087/jirbis2/index.php?option=com_irbis&view=irbis&Itemid=584&lang=ru'>{% trans 'local-history-electronic-library' %}</a>
-
-                        </li>
+                        
 
                     </ul>
-                </li>
+                </li>{% endcomment %}
 
                 <li class="dropdown"><a href="#"><span>{% trans 'local-history' %}</span> <i
                         class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -105,6 +99,13 @@
                             <a href='https://www.pushkinlibrary.kz/ru/resursy/ru-newbooks.html'>{% trans 'new-arrivals' %}</a>
                         </li>
                         <li><a href='#'>{% trans 'news-archive' %}</a></li>
+                        <li>
+                            <a href='http://irbis.pushkinlibrary.kz:8087/jirbis2/index.php?lang=ru'>{% trans 'electronic-library-our-abai' %}</a>
+                        </li>
+                        <li>
+                            <a href='http://irbis.pushkinlibrary.kz:8087/jirbis2/index.php?option=com_irbis&view=irbis&Itemid=584&lang=ru'>{% trans 'local-history-electronic-library' %}</a>
+
+                        </li>
 
                     </ul>
                 </li>

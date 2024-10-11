@@ -93,7 +93,6 @@
 /* Основной стиль для элементов сетки */
 .services .service-item {
     background-color: var(--accent-color);
-    border: 1px solid color-mix(in srgb, var(--secondry-color), transparent 85%);
     min-height: 150px;
     border-radius: 10px;
     transition: 0.3s;
@@ -173,21 +172,39 @@
     }
 
     .time {
-        grid-column: 1 / 2; /* Левая колонка */
+        grid-column: 1 / 3; /* Левая колонка */
         grid-row: 2; /* Вторая строка */
     }
 
-    .time img {
-        display: none; /* Скрыть изображение */
+    /*  .time img {
+          display: none; !* Скрыть изображение *!
+      }
+  */
+    .time .time-container {
+        flex-direction: row; /* Элементы располагаются горизонтально */
+        justify-content: space-between; /* Равномерное распределение элементов */
+        align-items: center; /* Центрируем по вертикали */
+    }
+
+    /* Оставляем текст слева */
+    .time .time-item:not(:last-child) {
+        flex-grow: 1; /* Чтобы текст занимал больше пространства */
+        text-align: left; /* Выровнять текст по левому краю */
+    }
+
+    /* Перемещаем картинку вправо */
+    .time .time-item:last-child {
+        margin-top: 0;
+        margin-left: 20px; /* Отступ между текстом и картинкой */
     }
 
     .dosai {
         grid-column: 2 / 3; /* Правая колонка */
-        grid-row: 2; /* Вторая строка */
+        grid-row: 3; /* Вторая строка */
     }
 
     .action {
-        grid-column: 1 / 3; /* Занимает обе колонки */
+        grid-column: 1 / 2; /* Занимает обе колонки */
         grid-row: 3; /* Третья строка */
     }
 
@@ -200,6 +217,37 @@
         grid-column: 1 / 3; /* Правая колонка */
         grid-row: 5; /* Четвертая строка */
     }
+}
+
+/*Time*/
+
+.time .time-container {
+    display: flex;
+    flex-direction: column; /* Элементы располагаются вертикально */
+    align-items: start; /* Центрируем содержимое по горизонтали */
+    height: 100%; /* Задаем высоту контейнера, чтобы картинка могла расположиться внизу */
+}
+
+.time .time-item {
+    margin-bottom: 20px; /* Отступы между блоками */
+
+}
+
+.time .time-item h3 {
+    font-weight: 700;
+}
+
+.time .time-item p {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.time .time-item:last-child {
+    margin-top: auto; /* Перемещаем последний элемент (картинку) вниз */
+}
+
+.time img {
+    height: 100%;
 }
 
 /*News*/
@@ -285,6 +333,7 @@
     font-size: 20px; /* Размер текста */
     margin: 0; /* Убираем отступы */
     padding: 5px 10px; /* Внутренние отступы */
+    font-weight: 700;
     border-radius: 5px; /* Скругленные углы */
     display: block; /* Блочный элемент */
     z-index: 1; /* Уровень слоя текста */
@@ -340,7 +389,7 @@
     transition: background-color 0.2s ease; /* Плавное изменение фона */
 }
 
-.action a:hover span{
+.action a:hover span {
     background-color: #f8f9fa; /* Цвет фона при наведении */
     color: var(--accent-color) !important;
 }
@@ -389,6 +438,7 @@
     text-decoration: none;
     transition: background 0.3s ease;
 }
+
 .course .tag-all:hover, .news .tag-all:hover {
     background: var(--secondry-color); /* Цвет фона при наведении */
 }
@@ -398,6 +448,7 @@
     min-height: 500px;
 
 }
+
 .event {
 
     position: relative; /* Для последующего абсолютного позиционирования img */
@@ -476,6 +527,7 @@
     font-size: 24px;
     font-weight: 600;
 }
+
 .event-details .time {
     color: var(--secondry-color) !important;
     font-size: 24px;
@@ -485,11 +537,12 @@
     padding-top: 20px;
     padding-bottom: 10px;
 }
+
 /* При наведении на слайд раскрывается дополнительный контент */
-/*.swiper-container-events:hover .event-details {
+.swiper-container-events:hover .event-details {
     max-height: 300px;
     opacity: 1;
-}*/
+}
 
 /* Дополнительные стили для элементов внутри event-details */
 .event-details p {
