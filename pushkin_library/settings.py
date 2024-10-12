@@ -23,7 +23,7 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
 MODEL_NAME = os.getenv('MODEL_NAME', 'gpt-4o-mini')
 
 # Настройки истории
-HISTORY_TTL = int(os.getenv('HISTORY_TTL', 600))
+HISTORY_TTL = int(os.getenv('HISTORY_TTL', 10))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'corsheaders',
     'bot_logic',
 
 
@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -139,3 +140,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:5500',  # Твой фронтенд
+]
+
+# Сессии по умолчанию используют файловую систему
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Или 'cache' или 'file'
+
+# Настройка времени жизни сессий
+SESSION_COOKIE_AGE = 1209600  # 2 недели по умолчанию
+SESSION_SAVE_EVERY_REQUEST = False  # Сохранять сессию только при изменениях
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Сессия не истекает при закрытии браузера

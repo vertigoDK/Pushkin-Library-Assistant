@@ -5,7 +5,7 @@ from .serializers import LegendSerializer, BookSearchSerializer, TextQuerySerual
 from .services.engines.legends_engine import LegendsEngine
 from .services.engines.book_search_engine import BookSearchEngine
 from .services.engine_intent_router import EngineIntentRouter
-from .services.llm.dosai import DosAI
+from .services.llm.dosai import DosAI, DosAIConversation
 from django.http import HttpRequest
 from .utils import get_user_uuid
 
@@ -78,3 +78,13 @@ def conservation_view(request: HttpRequest):
         return Response(response_data, status=status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET'])
+def get_chat_history_view(request):
+    user_uuid = get_user_uuid(request)
+   
+    dosaiConversation = DosAIConversation()
+    
+    chat_history = dosaiConversation.get_chat_history(user_uuid)
+    
+    return Response({"chat_history": chat_history}, status=status.HTTP_200_OK)

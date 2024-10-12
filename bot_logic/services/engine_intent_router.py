@@ -3,10 +3,10 @@ from pydantic import BaseModel, Field
 
 
 class BookSearchEngineParams(BaseModel):
-    author: str = Field(description="Автор книги НЕ ИЗМЕНЯЙ ЕГО, ЕСЛИ ПЕРЕДАЕТСЯ `книги абая значит просто Абай`")
+    author: str = Field(description="Автор книги НЕ ИЗМЕНЯЙ ЕГО, ЕСЛИ ПЕРЕДАЕТСЯ `книги абая значит просто Абай не Кунанбаев Абай`")
     title: str = Field(description="Название книги")
-    # year1: str = Field(description="От какого года книга")
-    # year2: str = Field(description="До какого года книга")
+    year1: str = Field(description="От какого года книга")
+    year2: str = Field(description="До какого года книга")
 
 
 class LegendSearchEngineParams(BaseModel):
