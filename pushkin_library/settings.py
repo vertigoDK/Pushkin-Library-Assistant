@@ -11,6 +11,19 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+REDIS_HOST = os.getenv('REDIS_HOST', 'localhost')
+REDIS_PORT = int(os.getenv('REDIS_PORT', 6379))
+REDIS_DB = int(os.getenv('REDIS_DB', 0))
+
+# Настройки модели LLM
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
+MODEL_NAME = os.getenv('MODEL_NAME', 'gpt-4o-mini')
+
+# Настройки истории
+HISTORY_TTL = int(os.getenv('HISTORY_TTL', 600))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,8 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'django_extensions',
 
     'bot_logic',
 

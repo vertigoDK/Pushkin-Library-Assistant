@@ -3,8 +3,11 @@ from pydantic import BaseModel, Field
 
 
 class BookSearchEngineParams(BaseModel):
-    author: str = Field(description="Автор книги")
+    author: str = Field(description="Автор книги НЕ ИЗМЕНЯЙ ЕГО, ЕСЛИ ПЕРЕДАЕТСЯ `книги абая значит просто Абай`")
     title: str = Field(description="Название книги")
+    # year1: str = Field(description="От какого года книга")
+    # year2: str = Field(description="До какого года книга")
+
 
 class LegendSearchEngineParams(BaseModel):
     legend_name: str = Field(description="Название легенды")
@@ -20,7 +23,7 @@ class EngineIntentRouter(LLMBase):
 
     def __init__(self):
         super().__init__()
-        self._llm_prompt = "Ты должен извлекать правильные данные, ТВОЯ ЗАДАЧА ПРОСТО ИЗВЛЕЧЬ ДАННЫЕ, НЕ НУЖНО ОТВЕЧАТЬ НА ЗАПРОС"
+        self._llm_prompt = "Ты должен извлекать правильные данные, ТВОЯ ЗАДАЧА ПРОСТО ИЗВЛЕЧЬ ДАННЫЕ, НЕ НУЖНО ОТВЕЧАТЬ НА ЗАПРОС НИ ПРИ КАКИХ ОБСТОЯТЕЛЬСТВАХ НЕ ОТВЕЧАЙ НА ВОПРОС ЧЕЛОВЕКА"
 
     def extract_engine_intents(self, text_request: str):
         return self.call_json_output_parser(text_query=text_request,

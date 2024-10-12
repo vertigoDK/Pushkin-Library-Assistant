@@ -7,7 +7,7 @@ from .services.engines.book_search_engine import BookSearchEngine
 from .services.engine_intent_router import EngineIntentRouter
 from .services.llm.dosai import DosAI
 from django.http import HttpRequest
-
+from .utils import get_user_uuid
 
 @api_view(['POST'])
 def legends_engine_view(request: HttpRequest):
@@ -69,8 +69,12 @@ def conservation_view(request: HttpRequest):
 
         dosai = DosAI()
 
-        response: str = dosai.handle_message(text_query)
+        user_uuid = get_user_uuid(request=request)
 
-        return Response({"response": response}, status=status.HTTP_200_OK)
+        response: str = dosai.handle_message(user_message=text_query, user_uuid=user_uuid)
+
+        response_data = {"response": response}
+        response_data.update({"user_uuid": user_uuid})
+        return Response(response_data, status=status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
