@@ -7,14 +7,14 @@
     <div class="container">
         <div class="d-flex flex-column justify-content-center align-items-center">
             <h1 data-aos="fade-up" class="aos-init aos-animate">{% trans 'library-title-1' %}</h1>
-                
+
             <div class="d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
             </div>
 
             <div class="mt-auto hero-socials">
-                {% for name, url in exl %}
-                    <a target="_blank" href='{{ url }}'>
-                        <img class="img-rounded" src="{% static 'img/logo/'|add:name|lower|add:'-logo.svg' %}" alt="{{ name }}">
+                {% for name, url, icon in exl %}
+                    <a target="_blank" href="{{ url }}" class="me-2">
+                        <i class="bi {{ icon }}"></i>
                     </a>
                 {% endfor %}
             </div> <!-- /SOCIALS -->

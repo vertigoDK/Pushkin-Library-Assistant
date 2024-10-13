@@ -380,16 +380,21 @@
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
-    color: var(--default-color);
+    color: var(--heading-color);
     background-color: var(--background-color);
     font-size: 14px;
     padding-bottom: 50px;
     position: relative;
 }
 
-.footer .footer-top {
-    padding-top: 50px;
+.footer a {
+    text-decoration: none;
 }
+.footer strong {
+    color: var(--default-color);
+
+}
+
 
 .footer .footer-about .logo {
     line-height: 1;
@@ -405,13 +410,13 @@
     font-size: 26px;
     font-weight: 700;
     letter-spacing: 1px;
-    font-family: var(--heading-font);
-    color: var(--heading-color);
+    font-family: var(--heading-font), serif;
+    color: var(--default-color);
 }
 
 .footer .footer-about p {
     font-size: 14px;
-    font-family: var(--heading-font);
+    font-family: var(--heading-font), serif;
 }
 
 .footer .social-links a {
@@ -467,7 +472,7 @@
 }
 
 .footer .footer-links ul a {
-    color: color-mix(in srgb, var(--default-color), transparent 30%);
+    color: color-mix(in srgb, var(--accent-color-2), transparent 30%);
     display: inline-block;
     line-height: 1;
 }

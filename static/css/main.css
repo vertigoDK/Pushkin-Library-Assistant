@@ -13,7 +13,7 @@
 :root {
     --background-color: #ffffff; /* Background color for the entire website, including individual sections */
     --default-color: #3d4348; /* Default color used for the majority of the text content across the entire website */
-    --heading-color: #3e5055; /* Color for headings, subheadings and title throughout the website */
+    --heading-color--heading-color: #3e5055; /* Color for headings, subheadings and title throughout the website */
     --accent-color: #258b58; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
     --accent-color-2: #182a64;
     --secondry-color: #eade5a;
@@ -186,25 +186,56 @@ section,
     border-width: 3px;
     overflow: hidden; /* Обрезаем содержимое круга */
     transition: all 0.1s ease; /* Плавная анимация */
-    padding: 10px;
+    padding: 5px;
 }
 
-.hero .hero-socials a:hover img {
-    border: 3px solid var(--featured-services-color);
-    /*padding: 5px;*/
-    /*overflow: auto;*/
-    border-radius: 50%; /* Сначала задаем круг */
-
+.hero-socials i {
+    font-size: 24px; /* Размер иконок */
+    color: var(--secondry-color); /* Цвет иконок (можно изменить на любой) */
+    margin-right: 8px; /* Отступ справа от текста */
+    transition: color 0.3s ease; /* Плавная смена цвета при наведении */
 }
 
-.hero .hero-socials img {
-    height: 36px;
-    width: 36px;
-    display: block;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    object-fit: contain;
+/* Стили для иконок при наведении */
+.hero-socials a:hover i {
+    color: var(--accent-color); /* Сменить цвет на синий при наведении (можно настроить под тему) */
 }
+
+/* Дополнительные стили для ссылок, чтобы выровнять иконки и текст */
+.hero-socials a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Наследуем цвет текста */
+}
+
+.hero-socials a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Размеры иконок для мобильных устройств */
+@media (max-width: 576px) {
+    .hero-socials i {
+        font-size: 16px;
+    }
+}
+
+/*.hero .hero-socials a:hover img {*/
+/*    border: 3px solid var(--featured-services-color);*/
+/*    !*padding: 5px;*!*/
+/*    !*overflow: auto;*!*/
+/*    border-radius: 50%; !* Сначала задаем круг *!*/
+
+/*}*/
+
+/*.hero .hero-socials img {*/
+/*    height: 36px;*/
+/*    width: 36px;*/
+/*    display: block;*/
+/*    border-radius: 50%;*/
+/*    transition: all 0.3s ease;*/
+/*    object-fit: contain;*/
+/*}*/
 
 
 .hero h1 {
@@ -354,6 +385,8 @@ section,
 
 .featured-services .service-item:hover {
     box-shadow: 0 5px 35px 0 rgba(0, 0, 0, 0.1);
+    scale: 1.05;
+    border-radius: 20px;
 }
 
 .featured-services .service-item:hover {
