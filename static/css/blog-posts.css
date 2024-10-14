@@ -36,16 +36,7 @@
   color: var(--accent-color);
 }
 
-.blog-posts .post-author-img {
-  width: 50px;
-  border-radius: 50%;
-  margin-right: 15px;
-}
 
-.blog-posts .post-author {
-  font-weight: 600;
-  margin-bottom: 5px;
-}
 
 .blog-posts .post-date {
   font-size: 14px;
