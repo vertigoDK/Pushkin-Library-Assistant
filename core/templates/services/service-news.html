@@ -2,11 +2,11 @@
 {% load static %}
 
 
-<div class="service-item news">
+<div class="service-item news ">
     <div class="swiper-container-news swiper">
         <div class="swiper-wrapper">
             {% for item in news %}
-                <div class="swiper-slide">
+                <div class="swiper-slide ">
                     <a href="{% url 'news' %}" class="tag-all">{% trans 'news' %}</a>
                     <a href="{% url 'news_detail' slug=item.slug %}">
                         <img src="{{ item.main_image.url }}" alt="{% if LANGUAGE_CODE == 'ru' %}

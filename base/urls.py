@@ -10,7 +10,7 @@ urlpatterns = [
     path('events', include('app.events_app.urls')),
     path('courses', include('app.courses_app.urls')),
     path('api', include('app.api.urls')),
-    path('i18n', include('django.conf.urls.i18n')),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', include('core.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Обработка медиа-файлов
 
@@ -18,5 +18,3 @@ handler404 = "core.views.handler404"
 handler403 = "core.views.handler403"
 handler500 = "core.views.handler500"
 
-if settings.DEBUG:
-    urlpatterns.append(*static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

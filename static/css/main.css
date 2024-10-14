@@ -336,7 +336,7 @@ section,
 }
 
 .featured-services .service-item {
-    background: linear-gradient(135deg, var(--accent-color) 20%, var(--accent-color-2) 80%);;
+    background: linear-gradient(180deg, var(--accent-color) 20%, var(--accent-color-2) 80%);;
     box-shadow: 0 5px 90px 0 rgba(0, 0, 0, 0.1);
     color: var(--background-color);
     height: 100%;

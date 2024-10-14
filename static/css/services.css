@@ -177,27 +177,27 @@
         grid-row: 2; /* Вторая строка */
     }
 
-    /*  .time img {
-          display: none; !* Скрыть изображение *!
+     .time img {
+          display: none;
       }
-  */
-    .time .time-container {
-        flex-direction: row; /* Элементы располагаются горизонтально */
-        justify-content: space-between; /* Равномерное распределение элементов */
-        align-items: center; /* Центрируем по вертикали */
-    }
 
-    /* Оставляем текст слева */
-    .time .time-item:not(:last-child) {
-        flex-grow: 1; /* Чтобы текст занимал больше пространства */
-        text-align: left; /* Выровнять текст по левому краю */
-    }
+    /*.time .time-container {*/
+    /*    flex-direction: row; !* Элементы располагаются горизонтально *!*/
+    /*    justify-content: space-between; !* Равномерное распределение элементов *!*/
+    /*    align-items: center; !* Центрируем по вертикали *!*/
+    /*}*/
 
-    /* Перемещаем картинку вправо */
-    .time .time-item:last-child {
-        margin-top: 0;
-        margin-left: 20px; /* Отступ между текстом и картинкой */
-    }
+    /*!* Оставляем текст слева *!*/
+    /*.time .time-item:not(:last-child) {*/
+    /*    flex-grow: 1; !* Чтобы текст занимал больше пространства *!*/
+    /*    text-align: left; !* Выровнять текст по левому краю *!*/
+    /*}*/
+
+    /*!* Перемещаем картинку вправо *!*/
+    /*.time .time-item:last-child {*/
+    /*    margin-top: 0;*/
+    /*    margin-left: 20px; !* Отступ между текстом и картинкой *!*/
+    /*}*/
 
     .dosai {
         grid-column: 2 / 3; /* Правая колонка */
@@ -236,6 +236,7 @@
 
 .time .time-item h3 {
     font-weight: 700;
+    font-size: 30px;
 }
 
 .time .time-item p {
@@ -442,6 +443,8 @@
 
 .course .tag-all:hover, .news .tag-all:hover {
     background: var(--secondry-color); /* Цвет фона при наведении */
+
+    color: var(--accent-color);
 }
 
 /*Events*/
