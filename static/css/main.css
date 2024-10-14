@@ -106,6 +106,10 @@ section,
     }
 }
 
+.swiper-button-prev::after, .swiper-button-next::after {
+    content: '' !important;
+}
+
 /*--------------------------------------------------------------
 # Global Section Titles
 --------------------------------------------------------------*/
@@ -336,15 +340,43 @@ section,
 }
 
 .featured-services .service-item {
-    background: linear-gradient(180deg, var(--accent-color) 20%, var(--accent-color-2) 80%);;
     box-shadow: 0 5px 90px 0 rgba(0, 0, 0, 0.1);
     color: var(--background-color);
-    height: 100%;
+    height: 100%;background-size: contain;
     padding: 10px;
     text-align: center;
     transition: 0.3s;
     border-radius: 10px;
 }
+
+.featured-services .service-item.abay {
+    background:
+    url("/static/img/hero/abai-bg.svg") center no-repeat,
+    linear-gradient(180deg, var(--accent-color) 20%, var(--accent-color-2) 100%);
+
+}
+
+.featured-services .service-item.localhistory {
+    background:
+    url("/static/img/hero/map-bg.svg") center no-repeat,
+    linear-gradient(180deg, var(--accent-color) 20%, var(--accent-color-2) 100%);
+
+}
+.featured-services .service-item.mountain {
+    background:
+    url("/static/img/hero/mountain-bg.svg") center no-repeat,
+    linear-gradient(180deg, var(--accent-color) 20%, var(--accent-color-2) 100%);
+
+}
+
+.featured-services .service-item.feather {
+    background:
+    url("/static/img/hero/feather-bg.svg") center no-repeat,
+    linear-gradient(180deg, var(--accent-color) 20%, var(--accent-color-2) 100%);
+
+}
+
+
 
 .featured-services .service-item .icon {
     margin: 10px auto;

@@ -16,7 +16,12 @@
   margin: -30px -30px 20px -30px;
   overflow: hidden;
 }
+.blog-details-news .post-img img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
 
+}
 .blog-details-news .title {
   color: var(--heading-color);
   font-size: 28px;
