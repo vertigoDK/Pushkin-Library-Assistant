@@ -36,7 +36,7 @@
 
 .services .service-item:hover {
     box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
-    scale: 101%;
+    transform: scale(1.05);
 }
 
 .services .service-item:hover h3 {
@@ -60,10 +60,10 @@
     background-color: var(--accent-color);
     min-height: 150px;
     border-radius: 10px;
-    transition: 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .services .service-item {

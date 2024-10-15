@@ -1,36 +1,48 @@
 from datetime import datetime
-from gc import get_objects
 
-from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
+from django.views.generic import ListView, DetailView
 
 from .models import News, NewsImage
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-def soon(request):
-    return render(request=request, template_name='soon.html', context={'show_chatbot': True})
+class NewsListView(ListView):
+    model = News
+    template_name = 'news_list.html'
+    paginate_by = 30
+    context_object_name = 'news'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["now"] = timezone.now()
+        context["show_chatbot"] = True
+        return context
+
+    def get_queryset(self):
+        # Добавляем сортировку по полю, например по id
+        return News.objects.all().order_by('-pub_date')
 
 
-def news_list(request):
-    news_list = News.objects.all().order_by('-pub_date')
-    paginator = Paginator(news_list, 12)    
+class NewsDetailView(DetailView):
+    model = News
+    template_name = 'news_detail.html'
+    context_object_name = 'news_item'
+    slug_field = 'slug'
 
-    page = request.GET.get('page')
-    try:
-        news = paginator.page(page)
-    except PageNotAnInteger:
-        news = paginator.page(1)
-    except EmptyPage:
-        news = paginator.page(paginator.num_pages)
+    def get_context_data(self, **kwargs):
+        # Get the default context from the parent class
+        context = super().get_context_data(**kwargs)
 
-    return render(request, 'news_list.html', {'news': news, 'show_chatbot': True})
+        # Get the news item using the current object
+        news_item = self.get_object()
 
+        # Fetch related news images
+        news_images = NewsImage.objects.filter(news=news_item)
 
-def news_detail(request, slug):
-    news_item = get_object_or_404(News, slug=slug)
-    news_images = NewsImage.objects.filter(news=news_item)
-    return render(request, 'news_detail.html',
-                  {'news_item': news_item, 'news_images': news_images, 'show_chatbot': True, 'current_year': datetime.now().year})
+        # Add extra context
+        context['news_images'] = news_images
+        context['show_chatbot'] = True
+        context['current_year'] = datetime.now().year
+        context['now'] = timezone.now()
 
-
-
+        return context

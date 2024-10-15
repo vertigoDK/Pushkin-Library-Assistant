@@ -24,6 +24,7 @@
     transition: transform 0.5s ease, opacity 0.5s ease;
 
 }
+
 .tour-list li:hover {
     color: var(--background-color);
     background: var(--accent-color);
@@ -32,7 +33,6 @@
 
 
 }
-
 
 
 .tour-list li.active {
@@ -84,9 +84,10 @@
 }
 
 .tour .fade {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out; /* Плавный переход */
-        }
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Плавный переход */
+}
+
 .tour .fade.show {
-            opacity: 1;
-        }
+    opacity: 1;
+}

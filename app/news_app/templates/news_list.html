@@ -6,7 +6,8 @@
 {% block content_css %}
 
     <link rel="stylesheet" href="{% static 'css/blog-posts.css' %}"/>
-    
+    <link rel="stylesheet" href="{% static 'css/pagination.css' %}"/>
+
 {% endblock %}
 
 {% block content %}
@@ -33,22 +34,28 @@
 
                             <h2 class="title">
                                 <a href="{% url 'news_detail' slug=news_item.slug %}">{% if LANGUAGE_CODE == 'ru' %}
-                    {{ news_item.title_ru }}
-                {% elif LANGUAGE_CODE == 'kk' %}
-                    {{ news_item.title_kz }}
-                {% else %}
-                    {{ news_item.title_en }}
-                {% endif %}</a>
+                                    {{ news_item.title_ru }}
+                                {% elif LANGUAGE_CODE == 'kk' %}
+                                    {{ news_item.title_kz }}
+                                {% else %}
+                                    {{ news_item.title_en }}
+                                {% endif %}</a>
                             </h2>
 
                             <div class="d-flex align-items-center">
                                 <p>{% if LANGUAGE_CODE == 'ru' %}
-                    {{ news_item.content_ru|slice:":100" }}
-                {% elif LANGUAGE_CODE == 'kk' %}
-                    {{ news_item.content_kz|slice:":100" }}
-                {% else %}
-                    {{ news_item.content_eng|slice:":100" }}
-                {% endif %}</p>
+                                    {{ news_item.content_ru|slice:":100" }}
+                                {% elif LANGUAGE_CODE == 'kk' %}
+                                    {{ news_item.content_kz|slice:":100" }}
+                                {% else %}
+                                    {{ news_item.content_eng|slice:":100" }}
+                                {% endif %}</p>
+                            </div>
+                            <div class="meta-top">
+                                <i class="bi bi-clock"></i>
+                                <time datetime="{{ news_item.pub_date|date:'Y-m-d' }}">
+                                    {{ news_item.pub_date|date:'M d, Y' }}
+                                </time>
                             </div>
 
                         </article>
@@ -61,24 +68,43 @@
 
     </section><!-- /Blog Posts Section -->
 
-{% endblock %}
+<section id="pagination" class="pagination section">
 
-<div class="news__picture">
     <div class="container">
+        <div class="d-flex justify-content-center">
+            <ul>
+                {#                    <li><a href="#">1</a></li>#}
+                {#                    <li><a href="#" class="active">2</a></li>#}
+                <!-- Кнопка "Первая" -->
+                {% if page_obj.has_previous %}
 
-        <div class="news__picture-text">
-            <!-- TITLE -->
-            <div class="news__title title-wrapper">
-                <div class="title-line"></div>
-                <h1 class="title" data-sr-id="0"
-                    style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);">
-                    {% trans 'news' %}</h1>
-            </div> <!-- TITLE -->
-            <p class="news__nav" data-sr-id="2"
-               style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 0.9s cubic-bezier(0.5, 0, 0, 1), transform 0.9s cubic-bezier(0.5, 0, 0, 1);">
-                <a href="/">{% trans 'home' %}</a> &gt; <strong>{% trans 'news' %}</strong></p>
-        </div> <!-- /TEXT WRAPPER -->
-    </div> <!-- /CONTAINER -->
-    
-    {% include 'news-pagination.html' %}
-</div> <!-- /PICTURE -->
+                    <li><a href="?page=1"><i class="bi bi-chevron-double-left"></i></a></li>
+                    <li><a href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-chevron-left"></i></a>
+                    </li>
+                {% endif %}
+
+                {% for num in paginator.page_range %}
+                    {% if num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' and paginator.num_pages > 1 %}
+                        {% if page_obj.number == num %}
+                            <li><a href="" class="active">{{ num }}</a></li>
+                        {% else %}
+                            <li><a href="?page={{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+
+
+                {% if page_obj.has_next %}
+
+                    <li><a href="?page={{ page_obj.next_page_number }}"><i class="bi bi-chevron-right"></i></a>
+                    </li>
+                    <li><a href="?page={{ paginator.num_pages }}"><i class="bi bi-chevron-double-right"></i></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
