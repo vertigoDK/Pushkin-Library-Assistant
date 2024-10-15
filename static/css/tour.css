@@ -1,0 +1,16 @@
+.tour .title  {
+    font-weight: bold;
+    font-size: 32px;
+    color: var(--accent-color) !important;
+}
+
+.title::before {
+    content: "▍";
+    margin-right: 5px;
+    color: var(--secondry-color);
+}
+
+
+/** {*/
+/*    background-color: red;*/
+/*}*/
