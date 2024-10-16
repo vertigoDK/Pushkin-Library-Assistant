@@ -42,7 +42,6 @@ class NewsDetailView(DetailView):
         # Add extra context
         context['news_images'] = news_images
         context['show_chatbot'] = True
-        context['current_year'] = datetime.now().year
         context['now'] = timezone.now()
 
         return context

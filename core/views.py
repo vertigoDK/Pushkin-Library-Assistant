@@ -36,7 +36,6 @@ def index(request):
     current_date = now().date()
     weekend_days = [6, 0]  # 0 - воскресенье, 1 - понедельник
     current_day_of_week = current_date.weekday()
-    current_year = datetime.now().year
 
     news = News.objects.all().order_by('-pub_date')
     courses = Course.objects.all()
@@ -72,7 +71,6 @@ def index(request):
         'weekend_days': weekend_days,
         'FLOWISE_CHATFLOW': FLOWISE_CHATFLOW,
         'FLOWISE_HOST': FLOWISE_HOST,
-        'current_year': current_year,
     }
     return render(request=request, template_name='core.html', context=context)
 

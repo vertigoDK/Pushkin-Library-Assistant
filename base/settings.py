@@ -127,7 +127,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.settings_context',
-                'django.template.context_processors.i18n'
+                'django.template.context_processors.i18n',
+
+                'core.context_processors.current_year'
             ],
         },
     },
