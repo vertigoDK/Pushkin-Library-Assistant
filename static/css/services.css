@@ -35,7 +35,6 @@
 }
 
 .services .service-item:hover {
-    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
     transform: scale(1.05);
 }
 
@@ -307,6 +306,12 @@
 
 /*Action*/
 
+.service-item.action  {
+    background: var(--background-color);
+}
+
+.service-item.action:hover {
+}
 
 .action .action-list {
     border: 1px solid #ddd; /* Добавление рамки */
