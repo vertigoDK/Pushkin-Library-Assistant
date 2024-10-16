@@ -638,7 +638,7 @@
 --------------------------------------------------------------*/
 .page-title {
   color: var(--default-color);
-  background-color: var(--background-color);
+  background: url("/static/img/hero/photo_summer.jpg");
   padding: 160px 0 80px 0;
   text-align: center;
   position: relative;
@@ -646,7 +646,7 @@
 
 .page-title:before {
   content: "";
-  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  background-color: color-mix(in srgb, var(--background-color), transparent 80%);
   position: absolute;
   inset: 0;
 }
