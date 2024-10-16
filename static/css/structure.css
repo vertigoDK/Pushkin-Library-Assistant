@@ -63,7 +63,6 @@
     /*    margin: 0 15px 0 0;*/
     /*    padding: 6px 15px;*/
     /*}*/
-
     .header .navmenu {
         order: 3;
     }
@@ -390,6 +389,7 @@
 .footer a {
     text-decoration: none;
 }
+
 .footer strong {
     color: var(--default-color);
 
@@ -637,44 +637,55 @@
 # Global Page Titles & Breadcrumbs
 --------------------------------------------------------------*/
 .page-title {
-  color: var(--default-color);
-  background: url("/static/img/hero/photo_summer.jpg");
-  padding: 160px 0 80px 0;
-  text-align: center;
-  position: relative;
+    color: var(--background-color);
+    background: url("/static/img/hero/photo_summer.jpg");
+    padding: 160px 0 80px 0;
+    position: relative;
 }
 
 .page-title:before {
-  content: "";
-  background-color: color-mix(in srgb, var(--background-color), transparent 80%);
-  position: absolute;
-  inset: 0;
+    content: "";
+    background-color: color-mix(in srgb, black, transparent 60%);
+    position: absolute;
+    inset: 0;
 }
+
 
 .page-title h1 {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 10px;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
+
+.page-title h1::before {
+    content: "▍";
+    margin: 5px;
+    color: var(--secondry-color);
+}
+.page-title .breadcrumbs a {
+    color: color-mix(in srgb, var(--background-color), transparent 30%);
+}
 .page-title .breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 400;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--secondry-color);
 }
 
-.page-title .breadcrumbs ol li+li {
-  padding-left: 10px;
+
+
+.page-title .breadcrumbs ol li + li {
+    padding-left: 10px;
 }
 
-.page-title .breadcrumbs ol li+li::before {
-  content: "/";
-  display: inline-block;
-  padding-right: 10px;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
+.page-title .breadcrumbs ol li + li::before {
+    content: "/";
+    display: inline-block;
+    padding-right: 10px;
+    color: color-mix(in srgb, var(--background-color), transparent 30%);
 }
