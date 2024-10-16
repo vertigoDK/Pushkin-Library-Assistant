@@ -3,19 +3,31 @@
 {% load static %}
 
 {% block content %}
-    <section class='error'>
-        <div class="container">
-            <div class="error__content">
-                <div class="error__title">
-                    <h1>{% block error_title %}{% endblock %}</h1>
-                    <img class="error__icon" src="{% block error_img %}{% static 'img/errors/notFound.svg' %}{% endblock %}" alt="404"/>
+
+        <div class="page-title light-background">
+            <div class="container position-relative">
+                <div>
+                    
+                    <h1>{% block error_desc %}{% endblock %}</h1>
                 </div>
-                <h2 class="error__subtitle">{% block error_desc %}{% endblock %}</h2>
-                <div class="btn">
-                    <a href='/'>{% trans 'go-back' %}</a>
-                </div>
-            
+                <nav class="breadcrumbs">
+                    <ol>
+                        <li><a href="/">{% trans 'home' %}</a></li>
+                        <li class="current"> {% block error_img %}{% endblock %}{% block error_title %}{% endblock %}</li>
+                    </ol>
+                </nav>
             </div>
-        </div>
-    </section>
+
+        {#            <div class="error__content">#}
+        {#                <div class="error__title">#}
+        {#                    <img class="error__icon"#}
+        {#                         src="{% block error_img %}{% static 'img/errors/notFound.svg' %}{% endblock %}" alt="404"/>#}
+        {#                </div>#}
+        {#                <h2 class="error__subtitle">{% block error_desc %}{% endblock %}</h2>#}
+        {#                <div class="btn">#}
+        {#                    <a href='/'>{% trans 'go-back' %}</a>#}
+        {#                </div>#}
+        {##}
+        {#            </div>#}
+    </div>
 {% endblock %}
