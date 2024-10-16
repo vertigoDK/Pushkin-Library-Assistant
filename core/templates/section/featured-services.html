@@ -1,0 +1,57 @@
+{% load i18n %}
+{% load static %}
+<section id="featured-services" class="featured-services section light-background">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-auto aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-item position-relative abay">
+                    
+                    <div class="icon">
+                        <img src="{% static 'img/hero/abai-icon.svg' %}" alt="abai" class="bi"/>
+                    </div>
+                    <a href="http://irbis.pushkinlibrary.kz:8087/jirbis2/index.php?lang=ru" class="stretched-link">
+                        <h3>{% trans 'our-abai' %}</h3>
+                    </a>
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative localhistory">
+                    <div class="icon">
+                        <img src="{% static 'img/hero/map-icon.svg' %}" alt="abai" class="bi"/>
+                    </div>
+                    <a href="https://olketanu.pushkinlibrary.kz/index.php/ru" class="stretched-link">
+                        <h3>{% trans 'local-history' %}</h3>
+                    </a>
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate " data-aos="fade-up" data-aos-delay="300">
+                <div class="service-item position-relative mountain">
+                    <div class="icon">
+                        <img src="{% static 'img/hero/mountain-icon.svg' %}" alt="abai" class="bi"/>
+                    </div>
+                    <a href="https://esimder.pushkinlibrary.kz/index.php/ru/" class="stretched-link">
+                        <h3>{% trans 'east-kazakhstan-region-famous-places' %}</h3>
+                    </a>
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-item position-relative feather">
+                    <div class="icon">
+                        <img src="{% static 'img/hero/feather-icon.svg' %}" alt="abai" class="bi"/>
+                    </div>
+                    <a href="https://anyz.pushkinlibrary.kz/ru/legendy-i-skazaniya-vostochnogo-kazakhstana/" class="stretched-link">
+                        <h3>{% trans 'east-kazakhstan-region-legends-and-tales' %}</h3>
+                    </a>
+                </div>
+            </div><!-- End Service Item -->
+        </div>
+
+    </div>
+
+</section>

@@ -3,17 +3,22 @@
 {% load static %}
 
 {% block content %}
-    <main class='main news-page'>
-        {% include 'section/hero-nav.html' %}
+    <main class="main">
+        {% include 'section/hero-section.html' %}
+        {% include 'section/featured-services.html' %}
         {% include 'section/services.html' %}
-        {% include 'section/tour.html' %}
-        {% include 'section/catalog.html' %}
+                {% include 'section/section-tour.html' %}
+                {% include 'section/section-catalog.html' %}
     </main>
 
 {% endblock %}
 
 {% block content_js %}
 
-{% include 'open-close.html' %}
+    {% include 'open-close.html' %}
+    <script src="{% static 'js/news-swiper.js' %}"></script>
+    <script src="{% static 'js/courses-swiper.js' %}"></script>
+    <script src="{% static 'js/event.js' %}"></script>
+    <script src="{% static 'js/tour-swiper.js' %}"></script>
 
 {% endblock %}

@@ -3,81 +3,119 @@
 {% load static %}
 <!-- templates/news_list.html -->
 
+{% block content_css %}
+
+    <link rel="stylesheet" href="{% static 'css/news-posts.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/pagination.css' %}"/>
+
+{% endblock %}
+
 {% block content %}
+    <div class="page-title light-background">
+        <div class="container position-relative">
+            <h1>{% trans 'news' %}</h1>
+            <nav class="breadcrumbs">
+                <ol>
+                    <li><a href="/">{% trans 'home' %}</a></li>
+                    <li class="current">{% trans 'news' %}</li>
+                </ol>
+            </nav>
+        </div>
+    </div><!-- End Page Title -->
 
-    <div class="news__picture">
+    <section id="news-posts" class="news-posts section">
+
         <div class="container">
+            <div class="row gy-4">
 
-            <div class="news__picture-text">
-                <!-- TITLE -->
-                <div class="news__title title-wrapper">
-                    <div class="title-line"></div>
-                    <h1 class="title" data-sr-id="0"
-                        style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);">
-                        {% trans 'news' %}</h1>
-                </div> <!-- TITLE -->
-                <p class="news__nav" data-sr-id="2"
-                   style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 0.9s cubic-bezier(0.5, 0, 0, 1), transform 0.9s cubic-bezier(0.5, 0, 0, 1);">
-                    <a href="/">{% trans 'home' %}</a> &gt; <strong>{% trans 'news' %}</strong></p>
-            </div> <!-- /TEXT WRAPPER -->
-        </div> <!-- /CONTAINER -->
-    </div> <!-- /PICTURE -->
+                {% for news_item in news %}
 
-    <div class="container">
+                    <div class=" col-lg-3 col-md-4 col-sm-6 ">
+                        <article>
 
-        <div class="news__line news__line--top"></div>
-        <div class="news__row">
-
-            {% for news_item in news %}
-
-
-
-
-
-
-                <div class="news__card">
-                    <div class="news__card-image">
-                        <a href="{% url 'news_detail' slug=news_item.slug %}">
-
-                            <img src="{{ news_item.main_image.url }}" alt="
-                 {% if LANGUAGE_CODE == 'ru' %}
+                            <div class="post-img">
+                                <img src="{{ news_item.main_image.url }}" alt=" {% if LANGUAGE_CODE == 'ru' %}
                     {{ news_item.title_ru }}
                 {% elif LANGUAGE_CODE == 'kk' %}
                     {{ news_item.title_kz }}
                 {% else %}
                     {{ news_item.title_en }}
-                {% endif %}">
-                        </a>
-                    </div> <!-- /IMAGE -->
-                    <div class="news__card-contetnt">
-                        <h6 class="news__card-title"> {% if LANGUAGE_CODE == 'ru' %}
-                            {{ news_item.title_ru|truncatechars:50 }}
-                        {% elif LANGUAGE_CODE == 'kk' %}
-                            {{ news_item.title_kz|truncatechars:50 }}
-                        {% else %}
-                            {{ news_item.title_en|truncatechars:50 }}
-                        {% endif %}</h6>
-                        <p class="news__card-text"> {% if LANGUAGE_CODE == 'ru' %}
-                            {{ news_item.content_ru|truncatewords:30 }}
-                        {% elif LANGUAGE_CODE == 'kz' %}
-                            {{ news_item.content_kz|truncatewords:30 }}
-                        {% else %}
-                            {{ news_item.content_eng|truncatewords:30 }}
-                        {% endif %}</p>
-                        <p class="news__card-date">{{ news_item.pub_date|date:"d F Y" }}</p>
-                    </div>
-                    <a href="{% url 'news_detail' slug=news_item.slug %}" class="news__card-link">{% trans 'read' %}</a>
-                </div> <!-- /NEWSCARD -->
+                {% endif %}" class="img-fluid">
+                            </div>
 
-            {% endfor %}
+                            <h2 class="title">
+                                <a href="{% url 'news_detail' slug=news_item.slug %}">{% if LANGUAGE_CODE == 'ru' %}
+                                    {{ news_item.title_ru }}
+                                {% elif LANGUAGE_CODE == 'kk' %}
+                                    {{ news_item.title_kz }}
+                                {% else %}
+                                    {{ news_item.title_en }}
+                                {% endif %}</a>
+                            </h2>
+
+                            <div class="d-flex align-items-center">
+                                <p>{% if LANGUAGE_CODE == 'ru' %}
+                                    {{ news_item.content_ru|slice:":100" }}
+                                {% elif LANGUAGE_CODE == 'kk' %}
+                                    {{ news_item.content_kz|slice:":100" }}
+                                {% else %}
+                                    {{ news_item.content_eng|slice:":100" }}
+                                {% endif %}</p>
+                            </div>
+                            <div class="meta-top">
+                                <i class="bi bi-clock"></i>
+                                <time datetime="{{ news_item.pub_date|date:'Y-m-d' }}">
+                                    {{ news_item.pub_date|date:'M d, Y' }}
+                                </time>
+                            </div>
+
+                        </article>
+                    </div><!-- End post list item -->
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </section><!-- /Blog Posts Section -->
+
+    <section id="pagination" class="pagination section">
+
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <ul>
+                    {#                    <li><a href="#">1</a></li>#}
+                    {#                    <li><a href="#" class="active">2</a></li>#}
+                    <!-- Кнопка "Первая" -->
+                    {% if page_obj.has_previous %}
+
+                        <li><a href="?page=1"><i class="bi bi-chevron-double-left"></i></a></li>
+                        <li><a href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-chevron-left"></i></a>
+                        </li>
+                    {% endif %}
+
+                    {% for num in paginator.page_range %}
+                        {% if num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' and paginator.num_pages > 1 %}
+                            {% if page_obj.number == num %}
+                                <li><a href="" class="active">{{ num }}</a></li>
+                            {% else %}
+                                <li><a href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
 
 
-        </div> <!-- ROW -->
-        <div class="news__line news__line--bottom"></div>
-        <!-- PAGINATION -->
-        {% include 'news-pagination.html' %}
-    </div> <!-- CONTAINER -->
 
+                    {% if page_obj.has_next %}
 
+                        <li><a href="?page={{ page_obj.next_page_number }}"><i class="bi bi-chevron-right"></i></a>
+                        </li>
+                        <li><a href="?page={{ paginator.num_pages }}"><i class="bi bi-chevron-double-right"></i></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
 
+    </section>
 {% endblock %}

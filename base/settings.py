@@ -8,7 +8,6 @@ from django.conf import global_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 # env
@@ -50,7 +49,6 @@ ALLOWED_HOSTS = [
     '192.168.1.109',
     '127.0.0.1',
     '127.0.0.1:8080',
-    'localhost:8080',
     'localhost:3000',
 ]
 
@@ -80,6 +78,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'django.contrib.humanize',
 
     'core',
 
@@ -111,10 +110,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-
-
-    # white noise
-    # "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'base.urls'
@@ -132,7 +127,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.settings_context',
-                'django.template.context_processors.i18n'
+                'django.template.context_processors.i18n',
+
+                'core.context_processors.current_year'
             ],
         },
     },
@@ -196,38 +193,34 @@ LANGUAGES = [
     ('kk', 'Қаз'),
 ]
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 FLOWISE_CHATFLOW = env('FLOWISE_CHATFLOW')
 FLOWISE_HOST = env('FLOWISE_HOST')
 
-DEFAULT_BOOKS_PATH = BASE_DIR / 'database/region-passport.txt'
 
-# SECURE_HSTS_SECONDS = 31536000  # 1 год (в секундах)
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Если хотите включить HSTS для поддоменов
-# SECURE_HSTS_PRELOAD = True  # Включить поддержку HSTS preload
-#
+SECURE_HSTS_SECONDS = 31536000  # 1 год (в секундах)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Если хотите включить HSTS для поддоменов
+SECURE_HSTS_PRELOAD = True  # Включить поддержку HSTS preload
+
 # SECURE_SSL_REDIRECT = True
-#
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-if DEBUG:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = [os.path.join(BASE_DIR, 'media')]
+APPEND_SLASH = False

@@ -1,22 +1,26 @@
 {% load i18n %}
 {% load static %}
 
-<section class="services">
-    <div class="container">
-        <div class="services__row">
+<section id="services" class="services section light-background">
+    <div class="container grid-container">
+        <!-- Новости -->
+        {% include 'services/service-news.html' %}
 
 
-            {% include 'services/service-time.html' %}
-            {% include 'services/service-news.html' %}
+        <!-- Время -->
+        {% include 'services/service-time.html' %}
 
-            {% include 'services/service-ai-chat.html' %}
-            {% include 'services/service-action.html' %}
+        <!-- Dosai -->
+        {% include 'services/service-ai-chat.html' %}
+        
+        <!-- Services_s -->
+        {% include 'services/service-action.html' %}
 
+        <!-- Курсы -->
+        {% include 'services/service-course.html' %}
 
-            {% include 'services/service-events.html' %}
-            {% include 'services/service-course.html' %}
-
-
-        </div>
+        <!-- События -->
+        {% include 'services/service-events.html' %}
     </div>
 </section>
+

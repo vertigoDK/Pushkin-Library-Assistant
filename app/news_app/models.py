@@ -27,14 +27,6 @@ class News(models.Model):
     def __str__(self):
         return self.title_ru
 
-    def save(self, *args, **kwargs):
-        if self.pk:
-            # Проверка на изменение title_ru
-            old_title = News.objects.get(pk=self.pk).title_en
-            if old_title != self.title_en:
-                self.slug = AutoSlugField(populate_from='title_en').slugify(self.title_en)
-        super().save(*args, **kwargs)
-
 
 class NewsImage(models.Model):
     news = models.ForeignKey(News, related_name='additional_images', on_delete=models.CASCADE, default='')

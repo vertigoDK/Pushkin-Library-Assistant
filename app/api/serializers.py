@@ -15,6 +15,7 @@ class BookSearchParamsSerializer(serializers.Serializer):
     document_type = serializers.CharField(max_length=255, required=False, allow_blank=True)
     document_form = serializers.CharField(max_length=255, required=False, allow_blank=True)
     document_language = serializers.CharField(max_length=255, required=False, allow_blank=True)
+    first_number = serializers.IntegerField()
 
 class ExaSearchSerializer(serializers.Serializer):
     query = serializers.CharField(required=True)
@@ -28,5 +29,5 @@ class ExaResultSerializer(serializers.Serializer):
     url = serializers.URLField()
     content = serializers.CharField()
     
-class GoogleLLMSerializer(serializers.Serializer):
-    user_message = serializers.CharField(max_length=300 ,required=True)
+class LLMSerializer(serializers.Serializer):
+    user_message = serializers.CharField(max_length=100 ,required=True)

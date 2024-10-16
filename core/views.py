@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render
 from django.utils.timezone import now, timedelta
 
@@ -68,7 +70,7 @@ def index(request):
         'new_books': new_books,
         'weekend_days': weekend_days,
         'FLOWISE_CHATFLOW': FLOWISE_CHATFLOW,
-        'FLOWISE_HOST': FLOWISE_HOST
+        'FLOWISE_HOST': FLOWISE_HOST,
     }
     return render(request=request, template_name='core.html', context=context)
 

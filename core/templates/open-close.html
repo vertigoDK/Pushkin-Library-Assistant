@@ -57,13 +57,13 @@
             const openStatus = document.getElementById('library-status-open');
             const closeStatus = document.getElementById('library-status-close');
 
-            document.getElementById('services-current-date').textContent = now.toLocaleDateString(lang, {
+            document.getElementById('current-date').textContent = now.toLocaleDateString(lang, {
                 weekday: 'long',
                 day: 'numeric',
                 month: 'long'
             });
 
-            document.getElementById('services-current-time').textContent = now.toLocaleTimeString(lang, {
+            document.getElementById('current-time').textContent = now.toLocaleTimeString(lang, {
                 hour: '2-digit',
                 minute: '2-digit',
             });
@@ -76,7 +76,7 @@
                 closeStatus.style.display = 'block';
             }
 
-            const timeNum = document.getElementById('services__time-num');
+            const timeNum = document.getElementById('time-num');
             if (timeNum) {
                 timeNum.textContent = `${openingTime.toLocaleTimeString(lang, {
                     hour: '2-digit',
@@ -102,7 +102,7 @@
             const minutes = Math.floor((msUntilChange % 3600000) / 60000);
             const seconds = Math.floor((msUntilChange % 60000) / 1000);
 
-            document.getElementById('services-close-time').textContent =
+            document.getElementById('close-time').textContent =
                 `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 

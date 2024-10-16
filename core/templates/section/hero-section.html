@@ -1,0 +1,23 @@
+{% load i18n %}
+{% load static %}
+<section id="hero" class="hero section d-flex align-items-end">
+    <div class="hero-bg">
+        <img src="{% static 'img/hero/photo_summer.jpg' %}" alt="">
+    </div>
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h1 data-aos="fade-up" class="aos-init aos-animate">{% trans 'library-title-1' %}</h1>
+
+            <div class="d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+            </div>
+
+            <div class="mt-auto hero-socials">
+                {% for name, url, icon in exl %}
+                    <a target="_blank" href="{{ url }}" class="me-2">
+                        <i class="bi {{ icon }}"></i>
+                    </a>
+                {% endfor %}
+            </div> <!-- /SOCIALS -->
+        </div>
+    </div>
+</section>
