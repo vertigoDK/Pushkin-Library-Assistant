@@ -5,14 +5,27 @@
 
 {% block content_css %}
 
-    <link rel="stylesheet" href="{% static 'css/blog-posts.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/news-posts.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/pagination.css' %}"/>
 
 {% endblock %}
 
 {% block content %}
+    <div class="page-title light-background">
+        <div class="container position-relative">
+            <h1>Blog</h1>
+            <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam
+                molestias.</p>
+            <nav class="breadcrumbs">
+                <ol>
+                    <li><a href="/">{% trans 'home' %}</a></li>
+                    <li class="current">{% trans 'news' %}</li>
+                </ol>
+            </nav>
+        </div>
+    </div><!-- End Page Title -->
 
-    <section id="blog-posts" class="blog-posts section">
+    <section id="news-posts" class="news-posts section">
 
         <div class="container">
             <div class="row gy-4">
@@ -68,43 +81,43 @@
 
     </section><!-- /Blog Posts Section -->
 
-<section id="pagination" class="pagination section">
+    <section id="pagination" class="pagination section">
 
-    <div class="container">
-        <div class="d-flex justify-content-center">
-            <ul>
-                {#                    <li><a href="#">1</a></li>#}
-                {#                    <li><a href="#" class="active">2</a></li>#}
-                <!-- Кнопка "Первая" -->
-                {% if page_obj.has_previous %}
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <ul>
+                    {#                    <li><a href="#">1</a></li>#}
+                    {#                    <li><a href="#" class="active">2</a></li>#}
+                    <!-- Кнопка "Первая" -->
+                    {% if page_obj.has_previous %}
 
-                    <li><a href="?page=1"><i class="bi bi-chevron-double-left"></i></a></li>
-                    <li><a href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-chevron-left"></i></a>
-                    </li>
-                {% endif %}
-
-                {% for num in paginator.page_range %}
-                    {% if num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' and paginator.num_pages > 1 %}
-                        {% if page_obj.number == num %}
-                            <li><a href="" class="active">{{ num }}</a></li>
-                        {% else %}
-                            <li><a href="?page={{ num }}">{{ num }}</a></li>
-                        {% endif %}
+                        <li><a href="?page=1"><i class="bi bi-chevron-double-left"></i></a></li>
+                        <li><a href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-chevron-left"></i></a>
+                        </li>
                     {% endif %}
-                {% endfor %}
+
+                    {% for num in paginator.page_range %}
+                        {% if num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' and paginator.num_pages > 1 %}
+                            {% if page_obj.number == num %}
+                                <li><a href="" class="active">{{ num }}</a></li>
+                            {% else %}
+                                <li><a href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
 
 
 
-                {% if page_obj.has_next %}
+                    {% if page_obj.has_next %}
 
-                    <li><a href="?page={{ page_obj.next_page_number }}"><i class="bi bi-chevron-right"></i></a>
-                    </li>
-                    <li><a href="?page={{ paginator.num_pages }}"><i class="bi bi-chevron-double-right"></i></a>
-                    </li>
-                {% endif %}
-            </ul>
+                        <li><a href="?page={{ page_obj.next_page_number }}"><i class="bi bi-chevron-right"></i></a>
+                        </li>
+                        <li><a href="?page={{ paginator.num_pages }}"><i class="bi bi-chevron-double-right"></i></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-    </div>
 
-</section>
+    </section>
 {% endblock %}

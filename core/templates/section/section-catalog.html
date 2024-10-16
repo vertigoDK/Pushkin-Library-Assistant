@@ -1,0 +1,64 @@
+{% load i18n %}
+{% load static %}
+
+
+<section id="catalog" class="catalog section">
+    <div class="container">
+        <h3 class="title">{% trans 'new-items' %}</h3>
+        <div class="row">
+            {% for item in new_books %}
+                <div class="col">
+
+
+                    <article>
+
+                        <a href="{{ item.link_to_read }}"></a>
+                        <div class="post-img">
+                            <img src="{{ item.cover.url }}" alt=" {{ item.title }}" class="img-fluid">
+                        </div>
+
+                        <h2 class="title">
+                            {{ item.title }} - {{ item.author }}
+                        </h2>
+
+                        <div class="d-flex align-items-center">
+                            <p> {{ item.description|slice:":100" }}</p>
+                        </div>
+
+
+                    </article>
+                </div>
+            {% endfor %}
+
+
+            <div class="text-center">
+                <button type="button" class="btn btn-primary">
+                    <a href="http://irbis.pushkinlibrary.kz:8087/jirbis2/index.php?lang=ru" class="text-white">{% trans 'go-to-catalog' %}</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+{##}
+{#                {% for item in new_books %}#}
+{##}
+{##}
+{#                    <div class="catalog__bookcard">#}
+{#                        <div class="catalog__bookcard-image">#}
+{#                            <img src="{{ item.cover.url }}" alt="Book Image">#}
+{#                        </div> <!-- /IMAGE -->#}
+{#                        <div class="catalog__bookcard-contetnt">#}
+{#                            <h6 class="catalog__bookcard-title">{{ item.title }} - {{ item.author }}</h6>#}
+{#                            <div class="catalog__bookcard-text-container">#}
+{#                                <p class="catalog__bookcard-text">#}
+{#                                    {{ item.description }}#}
+{#                                </p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <a href="{{ item.link_to_read }}" class="catalog__bookcard-link">{% trans 'read' %}</a>#}
+{#                    </div> <!-- /BOOKCARD -->#}
+{##}
+{#                {% endfor %}#}

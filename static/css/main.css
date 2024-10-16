@@ -67,7 +67,7 @@ body {
 
 a {
     color: var(--accent-color);
-    text-decoration: none;
+    text-decoration: none !important;
     transition: 0.3s;
 }
 
@@ -191,18 +191,20 @@ section,
     overflow: hidden; /* Обрезаем содержимое круга */
     transition: all 0.1s ease; /* Плавная анимация */
     padding: 5px;
+
 }
 
 .hero-socials i {
     font-size: 24px; /* Размер иконок */
     color: var(--secondry-color); /* Цвет иконок (можно изменить на любой) */
     margin-right: 8px; /* Отступ справа от текста */
-    transition: color 0.3s ease; /* Плавная смена цвета при наведении */
+    transition: all 1s ease; /* Плавная анимация */
 }
 
 /* Стили для иконок при наведении */
 .hero-socials a:hover i {
     color: var(--accent-color); /* Сменить цвет на синий при наведении (можно настроить под тему) */
+    transform: scale(110%);
 }
 
 /* Дополнительные стили для ссылок, чтобы выровнять иконки и текст */

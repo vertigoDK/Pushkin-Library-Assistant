@@ -1,0 +1,57 @@
+.catalog article {
+    background-color: var(--surface-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+
+    transition: all 0.5s ease;
+}
+
+.catalog article:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+}
+
+.catalog .post-img {
+    max-height: 450px;
+    min-height: 400px;
+    margin: -30px -30px 15px -30px;
+    overflow: hidden;
+}
+
+
+.catalog .title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.catalog article a {
+    color: var(--heading-color);
+    transition: 0.3s;
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.catalog button {
+  margin: 20px;
+  background: linear-gradient(30deg, var(--accent-color) 20%, var(--accent-color-2) 120%);
+  border-radius: 16px;
+  border: none;
+  min-height: 40px;
+}
+
+.catalog button a {
+  margin: 20px;
+}
+
+

@@ -637,34 +637,44 @@
 # Global Page Titles & Breadcrumbs
 --------------------------------------------------------------*/
 .page-title {
-    --background-color: color-mix(in srgb, var(--default-color), transparent 96%);
-    color: var(--default-color);
-    background-color: var(--background-color);
-    padding: 25px 0;
-    position: relative;
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 160px 0 80px 0;
+  text-align: center;
+  position: relative;
+}
+
+.page-title:before {
+  content: "";
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  position: absolute;
+  inset: 0;
 }
 
 .page-title h1 {
-    font-size: 24px;
-    font-weight: 700;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .page-title .breadcrumbs ol {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
 }
 
-.page-title .breadcrumbs ol li + li {
-    padding-left: 10px;
+.page-title .breadcrumbs ol li+li {
+  padding-left: 10px;
 }
 
-.page-title .breadcrumbs ol li + li::before {
-    content: "/";
-    display: inline-block;
-    padding-right: 10px;
-    color: color-mix(in srgb, var(--default-color), transparent 70%);
+.page-title .breadcrumbs ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
