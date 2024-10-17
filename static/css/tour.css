@@ -78,7 +78,7 @@
 }
 
 @media (max-width: 768px) {
-    img {
+    .tour img {
         max-height: 300px;
     }
 }

@@ -510,10 +510,12 @@
 }
 
 /* При наведении на слайд раскрывается дополнительный контент */
-.swiper-container-events:hover .event-details {
-    max-height: 300px;
-    opacity: 1;
-}
+/*@media (min-width: 1199px) {*/
+/*    .swiper-container-events:hover .event-details {*/
+/*        max-height: 300px;*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
 
 /* Дополнительные стили для элементов внутри event-details */
 .event-details p {
