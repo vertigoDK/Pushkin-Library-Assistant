@@ -4,6 +4,7 @@ from rest_framework import status
 from .serializers import LegendSerializer, BookSearchSerializer, TextQuerySerualizer
 from .services.engines.legends_engine import LegendsEngine
 from .services.engines.book_search_engine import BookSearchEngine
+from .services.engines.person_search_engine import EsimderEngine
 from .services.engine_intent_router import EngineIntentRouter
 from .services.llm.dosai import DosAI, DosAIConversation
 from django.http import HttpRequest
@@ -88,3 +89,19 @@ def get_chat_history_view(request):
     chat_history = dosaiConversation.get_chat_history(user_uuid)
     
     return Response({"chat_history": chat_history}, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def esimder_engine_view(request):
+    from .serializers import SearchQuerySerializer
+    # Сериализация входных данных
+    serializer = SearchQuerySerializer(data=request.data)
+    if serializer.is_valid():
+        search_word = serializer.validated_data['search_word']
+        engine = EsimderEngine()
+        try:
+            result = engine.search_query(search_word)
+            return Response(result, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

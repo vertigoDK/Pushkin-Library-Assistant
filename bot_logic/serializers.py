@@ -20,3 +20,6 @@ class BookSearchSerializer(serializers.Serializer):
     document_type = serializers.CharField(max_length=50, required=False)
     document_form = serializers.CharField(max_length=50, required=False)
     document_language = serializers.CharField(max_length=50, required=False)
+    
+class SearchQuerySerializer(serializers.Serializer):
+    search_word = serializers.CharField(max_length=255)

@@ -2,6 +2,8 @@ from .base_llm import LLMBase
 import redis
 from django.conf import settings  # Импорт настроек Django
 
+
+
 class DosAIConversation:
     def __init__(self):
         # Инициализация Redis через параметры конфигурации из settings.py

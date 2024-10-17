@@ -16,9 +16,11 @@ class LegendSearchEngineParams(BaseModel):
 class EngineIntentModel(BaseModel):
     use_books_engine: bool = Field(description="if user want to use books engine, for example книги абая", default=False)
     use_legends_engine: bool = Field(description="if user want to use legends engine, for example легенда о рахмановских ключах", default=False)
+    use_general_engine: bool = Field(description="Use this engine to handle general inquiries such as greetings, providing website links, or responses that do not require specialized search engines. This engine acts as a fallback for simple or general questions that cannot be classified under other engines.", default=False)
     book_search_params: BookSearchEngineParams = Field(description="Параметры для того что бы можно было сделать поиск по книгам")
     legend_search_params: LegendSearchEngineParams = Field(description="Параметры для того что бы можно было сделать запрос по легендам")
-
+    base_engine_search_param: str = Field(description="Здесь просто передай запрос человека.")
+    
 class EngineIntentRouter(LLMBase):
 
     def __init__(self):
