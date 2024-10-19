@@ -4,6 +4,44 @@ import string
 import re
 from bs4 import BeautifulSoup
 from typing import Dict, Optional, Union, Any, List
+from pydantic import BaseModel, Field
+from app.services.llm.llm_handlers import BaseLLM
+
+class BookSearchParams(BaseModel):
+    author: Optional[str] = Field(None, description="Автор книги")
+    title: Optional[str] = Field(None, description="Название книги")
+    keywords: Optional[str] = Field(None, description="Ключевые слова")
+    year1: Optional[int] = Field(None, description="Год начала публикации")
+    year2: Optional[int] = Field(None, description="Год конца публикации")
+    isbn: Optional[str] = Field(None, description="ISBN книги")
+
+def extract_books_search_params(text_query: str) -> BookSearchParams:
+    bParams = BookSearchParams()
+
+
+    bLlm: BaseLLM = BaseLLM(llm_presets='high_performance')
+
+    pydantic_books_search_params = bLlm.send_request_pydantic(
+        text_query=text_query, 
+        pydantic_object=BookSearchParams, 
+        system_prompt="""
+        Твоя задача — вытащить параметры для поиска книг из текста. Параметры включают: автора, название, ключевые слова, годы публикации и ISBN.
+        - Всегда возвращай ответ в формате JSON, даже если не найдены параметры.
+        - Игнорируй несуществующие годы (например, больше 2100 или меньше 1000).
+        - Если нет упоминания конкретного автора, года или названия, возвращай эти значения как null (None).
+        - НЕ ПЕРЕДАВАЙ ГОД ЕСЛИ ТЕБЯ НЕ ПРОСЯТ
+        Пример:
+        Ввод: 'Книги Абая с 1800 по 1900 год'
+        Вывод: {"author": "Абай", "year1": 1800, "year2": 1900}
+        """
+    )
+
+
+    return pydantic_books_search_params
+
+if __name__ == '__main__':
+    data = extract_books_search_params('Привеет, книги абая с 1800 по 1900 год')
+    print(data)
 
 
 class BaseAPIHandler:
@@ -89,7 +127,7 @@ class HTMLParser:
 
 
 class BookSearchEngine(BaseAPIHandler):
-    def __init__(self, search_params: Dict[str, str], first_number: int = 1):
+    def __init__(self, search_params: BookSearchParams, first_number: int = 1):
         """Инициализирует обработчик с параметрами поиска и настраивает сессию."""
         super().__init__()
         self.session = requests.Session()
@@ -104,19 +142,12 @@ class BookSearchEngine(BaseAPIHandler):
             first_number = self.first_number
         data = {
             'req_static': '0',
-            'author': self.search_params.get('author', ''),
-            'person': self.search_params.get('person', ''),
-            'title': self.search_params.get('title', ''),
-            'keywords': self.search_params.get('keywords', ''),
-            'keywords_cvalif': self.search_params.get('keywords_cvalif', ''),
-            'subject_rubric': self.search_params.get('subject_rubric', ''),
-            'year1': self.search_params.get('year1', ''),
-            'year2': self.search_params.get('year2', ''),
-            'publishing': self.search_params.get('publishing', ''),
-            'isbn': self.search_params.get('isbn', ''),
-            'document_type': self.search_params.get('document_type', ''),
-            'document_form': self.search_params.get('document_form', ''),
-            'document_language': self.search_params.get('document_language', ''),
+            'author': self.search_params.author or '',
+            'title': self.search_params.title or '',
+            'keywords': self.search_params.keywords or '',
+            'year1': self.search_params.year1 or '',
+            'year2': self.search_params.year2 or '',
+            'isbn': self.search_params.isbn or '',
             'task': 'search_broadcast',
             'first_number': first_number,
             'req_id_client': self.client_request_id,
@@ -170,7 +201,3 @@ class BookSearchEngine(BaseAPIHandler):
         return formatted_results
 
 
-if __name__ == '__main__':
-    bParser = BooksSearchEngine({"author": "Абай"})
-    results = bParser.execute_search()
-    print(results)

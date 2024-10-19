@@ -1,4 +1,7 @@
 from app.services.intents_recognize import recognize_intent
+from app.services.processors.books_search import BookSearchEngine
+from pydantic import BaseModel, Field
+
 
 class RequestHandlerIntentProccessed:
     """
@@ -37,7 +40,7 @@ class RequestHandler():
     def __init__(self):
         self.intent_processor = RequestHandlerIntentProccessed()
 
-    def handle_request(self, text_query: str, params: dict = None) -> dict:
+    def handle_request(self, text_query: str) -> dict:
         """
         Обработка запроса: распознавание намерения и выполнение соответствующего действия.
         
@@ -52,6 +55,8 @@ class RequestHandler():
 
         if intent == 'books_search':
             
+            
+
             return self.intent_processor.books_search_proccessed(params=params)
 
         elif intent == 'legends_search':
