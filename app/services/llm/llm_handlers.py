@@ -31,11 +31,9 @@ class BaseLLM:
         if selected_model == 'gpt-4o-mini':
             # Если выбран пресет для модели OpenAI GPT-4
             self.model = ChatOpenAI(api_key=settings.OPENAI_API_KEY, model=selected_model)
-            print('Используется OpenAI')
         else:
             # Иначе используем Google Generative AI
             self.model = ChatGoogleGenerativeAI(api_key=settings.GOOGLE_API_KEY, model=selected_model)
-            print('Используется Gemini')
 
 
 

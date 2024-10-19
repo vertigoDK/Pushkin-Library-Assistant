@@ -1,5 +1,5 @@
 from app.services.intents_recognize import recognize_intent
-from app.services.processors.books_search import BookSearchEngine
+from app.services.processors.books_search import BookSearchEngine, BookSearchParams, extract_books_search_params
 from pydantic import BaseModel, Field
 
 
@@ -9,17 +9,18 @@ class RequestHandlerIntentProccessed:
     Содержит методы для взаимодействия с различными движками.
     """
 
-    def books_search_proccessed(self, params: dict) -> dict:
+    def books_search_proccessed(self, params: BookSearchParams) -> dict:
         """
         Логика поиска книг.
         :param params: Параметры для поиска книг.
         :return: Результат поиска книг.
         """
-        if not params or "title" not in params:
-            return {"error": "Необходимо передать параметры для поиска книги."}
+        # Сейчас нужно провалидировать данные из params
+        book_search_engine = BookSearchEngine(search_params=params)
 
-        # Пример вызова логики поиска книг (замени на реальную логику)
-        return {"result": f"Поиск книг по названию: {params['title']}"}
+        results: dict = book_search_engine.execute_search()
+
+        return {"result": results, "params": params.dict()}
 
     def legends_search_proccessed(self, params: dict) -> dict:
         """
@@ -51,12 +52,12 @@ class RequestHandler():
         
         recognize_intent_data: dict = recognize_intent(text_query=text_query)
 
-        intent: str = recognize_intent_data['data']['content'].strip()
+        print(recognize_intent_data)
+        intent = 'books_search'
 
         if intent == 'books_search':
-            
-            
 
+            params = extract_books_search_params(text_query=text_query)
             return self.intent_processor.books_search_proccessed(params=params)
 
         elif intent == 'legends_search':
