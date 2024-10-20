@@ -3,6 +3,9 @@ import json
 from rapidfuzz import process
 from pydantic import BaseModel, Field
 
+"""
+В будущем переписать поиск на эмбединги
+"""
 
 CATEGORIES = {
     "100 новых имен": "https://esimder.pushkinlibrary.kz/ru/100-novykh-imen.html?limit=0",
@@ -86,24 +89,42 @@ class EsimderSearch:
 
         result = self.bLLM.send_request_pydantic(text_query=text_query, pydantic_object=SearchTypeEsimder, system_prompt=system_prompt)
 
+        print(result)
+
+
         return result
 
 
     def category_search(self, category_name: str):
         """
         Функция для точного поиска по категориям.
-        Возвращает имя категории и ссылку на неё, если найдено точное совпадение.
+        Возвращает имя категории, ссылку на неё и список первых 10 людей из этой категории.
         """
-        # Приведение строки к единому формату
-        category_name = category_name.strip().capitalize()
+        # Приведение строки и ключей словаря к единому нижнему регистру
+        category_name = category_name.strip().lower()
+        categories_lower = {key.lower(): key for key in CATEGORIES}
 
-        # Поиск в словаре категорий
-        if category_name in CATEGORIES:
-            return category_name, CATEGORIES[category_name]
+        if category_name in categories_lower:
+            original_name = categories_lower[category_name]
+            category_url = CATEGORIES[original_name]
+
+            people_in_category = [
+                {
+                    "full_name": record["full_name"],
+                    "content": record["content"],
+                    "name_url": record["name_url"],
+                }
+                for record in self.records if record.get("category", "").lower() == original_name.lower()
+            ]
+
+            top_10_people = people_in_category[:5]
+
+            return original_name, category_url, top_10_people
         else:
-            return "Категория не найдена", None
+            return "Категория не найдена", None, []
 
-        
+
+
 
 
     def execute_fuzzy_search(self, search_type: str, search_type_content: str):

@@ -70,7 +70,7 @@ class ParamsExtractor:
 
     def extract_search_params_by_intent(self, text_query: str, intent: str) -> BaseModel:
 
-        intents = ['books_search', 'legends_search', 'esimder_search_people', 'just_speak']
+        intents = ['books_search', 'legends_search', 'esimder_search', 'just_speak']
 
         bLlm: BaseLLM = BaseLLM(llm_presets='high_performance')
 
