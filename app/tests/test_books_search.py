@@ -1,5 +1,5 @@
 import pytest
-from app.services.processors.books_search import extract_books_search_params, BookSearchParams
+from app.services.intents_recognize import ParamsExtractor
 from pydantic import ValidationError
 from ratelimit import limits, sleep_and_retry
 
@@ -48,7 +48,9 @@ def test_extract_books_search_params(text_query, expected_author, expected_year1
     """
     try:
         # Вызов метода для извлечения параметров
-        result = extract_books_search_params(text_query)
+        pExtcrator = ParamsExtractor()
+
+        result = pExtcrator.extract_search_params_by_intent(text_query=text_query, intent='books_search')
 
         # Проверка автора
         assert result.author == expected_author
