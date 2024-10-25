@@ -56,10 +56,12 @@ def main():
     #
     manager = MeiliSearchManager('http://localhost:7700', 'abfgKS-kxxZ6Dlp2C19wHzcF-IPmKO20fpQtwmhj4XM')
     #
-    # manager.create_index('olketanu')
-    #
-    # # Загрузка и добавление данных из JSON файла
-    # manager.load_data_from_json('olketanu_output_list.json', "olketanu")
+    manager.create_index('olketanu')
+    manager.create_index('esimder')
+
+    # Загрузка и добавление данных из JSON файла
+    manager.load_data_from_json('esimder_output_list.json', "esimder")
+    manager.load_data_from_json('olketanu_output_list.json', "olketanu")
 
     # Выполнение поиска
     query = 'Абай'

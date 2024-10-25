@@ -173,7 +173,7 @@ class BaseAPIHandler:
         await self.close_session()
 
     def write(self, data: list):
-        file_path = 'esimder_output_list.json'
+        file_path = '../olketanu/esimder_output_list.json'
 
         # Проверяем, существует ли файл
         if os.path.exists(file_path):
