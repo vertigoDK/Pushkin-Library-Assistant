@@ -4,7 +4,7 @@ import os
 import time
 from ast import parse
 from pprint import pprint
-from typing import List, Any, Set, Optional
+from typing import List, Any, Set, Optional, Dict
 
 import aiohttp
 from bs4 import BeautifulSoup
@@ -94,7 +94,7 @@ class OlketanuBaseAPIHandler:
 
         return categories
 
-    async def get_content(self, c_url: str, d=0) -> Optional[List[Set]]:
+    async def get_content(self, c_url: str, d=0) -> Optional[List[Dict]]:
 
         print("-" * d, c_url)
         text = await self.get_text(c_url)
@@ -124,19 +124,35 @@ class OlketanuBaseAPIHandler:
 
         else:
             post = soup.find('div', attrs={"class": "item-page"})
-            lst_p = post.find_all('p')
+            # Попытка найти заголовок статьи
             title = None
-            if not len(lst_p):
-                title = post.find('div', attrs={"class": "dd-postmetadataheader"}).text
-                lst_p = post.find_all('div', attrs={"class": "dd-article"})
-            detailed = " ".join(i.text for i in lst_p if not i.text.startswith('Литература:') and not i.text.startswith(
-                '----')).strip().replace('/n',
-                                                ' ').replace(
-                '/t', ' ').replace('\xa0', ' ')
+            # Проверяем несколько возможных вариантов расположения заголовка
+            if post.find('h1'):
+                title = post.find('h1').get_text(strip=True)
+            elif post.find('h2'):
+                title = post.find('h2').get_text(strip=True)
+            elif post.find('div', attrs={"class": "dd-postmetadataheader"}):
+                title = post.find('div', attrs={"class": "dd-postmetadataheader"}).get_text(strip=True)
 
-            if not title:
-                title = lst_p[0].text
-            content.append({"title": title, "content": detailed, "content_url": c_url})
+            # Находим текстовые блоки статьи: сначала ищем параграфы
+            lst_p = post.find_all('p')
+            # Если параграфов нет, ищем в альтернативном блоке
+            if not lst_p:
+                lst_p = post.find_all('div', attrs={"class": "dd-article"})
+
+            # Извлекаем текст, фильтруя ненужные блоки
+            detailed_list = [
+                i.get_text(strip=True) for i in lst_p
+                if
+                not i.get_text(strip=True).startswith('Литература:') and not i.get_text(strip=True).startswith('----')
+            ]
+            detailed_text = " ".join(detailed_list).replace('\n', ' ').replace('\t', ' ').replace('\xa0', ' ')
+
+            # Если заголовок не найден ранее, используем первый элемент текста как заголовок
+            if not title and detailed_list:
+                title = detailed_list[0]
+
+            content.append({"title": title, "content": detailed_text, "content_url": c_url})
 
         return content
 
@@ -149,27 +165,23 @@ class OlketanuBaseAPIHandler:
 
         # await self.get_content('https://olketanu.pushkinlibrary.kz/index.php/ru/2013-11-13-11-56-26/festivali-i-chteniya.html')
         # return
-        # categories = await self.get_categories()
-        categories = [('Культура и искусство ВКО', '/index.php/ru/vostochnyj-kazakhstan-v-seti/kultura-i-iskusstvo-vko.html'), ('Значимые события', '/index.php/ru/hist-chronika/znachimye-sobytiya.html'), ('История сёл ВКО', '/index.php/ru/hist-chronika/istoriya-sjol-vko.html'), ('История улиц Усть-Каменогорска', '/index.php/ru/hist-chronika/istoriya-ulits-ust-kamenogorska.html'), ('Памятники Усть-Каменогорска', '/index.php/ru/hist-chronika/pamyatniki-g-ust-kamenogorska.html'), ('Восточно-Казахстанская область', '/index.php/ru/pasport-vko/vostochno-kazakhstanskaya-oblast.html'), ('Усть-Каменогорск', '/index.php/ru/pasport-vko/gorod-ust-kamenogorsk.html'), ('Риддер', '/index.php/ru/pasport-vko/g-ridder.html'), ('Район Алтай', '/index.php/ru/pasport-vko/2012-05-03-05-30-42.html'), ('Глубоковский район', '/index.php/ru/pasport-vko/2012-05-03-05-28-40.html'), ('Зайсанский район ', '/index.php/ru/pasport-vko/2012-05-03-05-30-00.html'), ('Катон-Карагайский район', '/index.php/ru/pasport-vko/2012-05-03-05-31-43.html'), ('Курчумский район', '/index.php/ru/pasport-vko/2012-05-03-05-32-28.html'), ('Самарский район', '/index.php/ru/pasport-vko/samarskii-raion.html'), ('Тарбагатайский район', '/index.php/ru/pasport-vko/2012-05-03-05-33-17.html'), ('Уланский район', '/index.php/ru/pasport-vko/ulanskii-raion-vostochnyi-kazahstan.html'), ('Шемонаихинский район', '/index.php/ru/pasport-vko/shemonaikhinskij-rajon.html'), ('Легенды ВКО', '/index.php/ru/folklor-zolotogo-altaya/legendy-vko.html'), ('Музыкальное наследие ВКО', '/index.php/ru/folklor-zolotogo-altaya/audiokollektsiya.html'), ('Фольклорные сборники', '/index.php/ru/folklor-zolotogo-altaya/literaturnoe-nasledie-vostochnogo-kazakhstana.html'), ('Природные ресурсы', '/index.php/ru/priroda/priroda.html'), ('Заповедные места', '/index.php/ru/priroda/zapovednye-mesta.html'), ('Уникальные места', '/index.php/ru/priroda/unikalnye-mesta.html'), ('Ашутас', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/ashutas.html'), ('Пещера "Коныр Аулие"', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/peshchera-konyr-aulie.html'), ('Шиликтинская долина', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/shiliktinskaya-dolina.html'), ('Белуха', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/belukha.html'), ('Мавзолей Ыргызбай Досканулы', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/mavzolej-yrgyzbaj-doskanuly.html'), ('Берель', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/berel.html'), ('Дом «Алаш арыстары» ', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/dom-alash-arystary.html'), ('Литературно-мемориальный музей Ф.М. Достоевского города Семей', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/iteraturno-memorialnyj-muzej-f-m-dostoevskogo-goroda-semej.html'), ('Мемориальный комплекс «Абай-Шакарим»', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/gosudarstvennyj-istoriko-kulturnyj-i-literaturno-memorialnyj-zapovednik-muzej-abaya-zhidebaj-borili.html'), ('Монумент «Сильнее смерти»', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/monument-silnee-smerti.html'), ('Мавзолей Козы Корпеш и Баян Сулу', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/mavzolej-kozy-korpesh-i-bayan-sulu.html'), ('Мавзолей Енлик - Кебек', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/mavzolej-enlik-kebek.html'), ('Ак-Баур', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/ak-baur.html'), ('Абылайкит', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/ablajkit.html'), ('Святилище Сарыколь', '/index.php/ru/sakralnaya-geografiya-vostochniy-qazaqstan/svyatilishche-sarykol.html'), ('Краеведческий альманах 2024', '/index.php/ru/kraevedcheskij-almanakh/kraevedcheskij-almanakh-2024.html'), ('Краеведческий альманах 2023', '/index.php/ru/kraevedcheskij-almanakh/kraevedcheskij-almanakh-2023.html'), ('Краеведческий альманах 2022', '/index.php/ru/kraevedcheskij-almanakh/kraevedcheskij-almanakh-2022.html'), ('Краеведческий альманах 2021', '/index.php/ru/kraevedcheskij-almanakh/kraevedcheskij-almanakh-2021.html'), ('Краеведческий альманах 2020', '/index.php/ru/kraevedcheskij-almanakh/kraevedcheskij-almanakh-2020.html'), ('Краеведческий альманах 2019', '/index.php/ru/kraevedcheskij-almanakh/kraevedcheski-almanakh-2019.html'), ('Краеведческий альманах 2018', '/index.php/ru/kraevedcheskij-almanakh/kraev-alman-2018.html'), ('Краеведческий альманах 2017', '/index.php/ru/kraevedcheskij-almanakh/kraevedcheskij-almanakh-2017.html'), ('Краеведческий альманах 2016', '/index.php/ru/kraevedcheskij-almanakh/kraevedcheskij-almanakh-2016.html'), ('Краеведческий альманах 2015', '/index.php/ru/kraevedcheskij-almanakh/kraialmanakh2015.html'), ('Краеведческий альманах 2014', '/index.php/ru/kraevedcheskij-almanakh/kraevedcheskij-almanakh-2014.html'), ('Геология', '/index.php/ru/kraevedcheskij-almanakh/publikatsii-kraevedov/geologiya.html'), ('Достопримечательности и памятники края', '/index.php/ru/kraevedcheskij-almanakh/publikatsii-kraevedov/dostoprimechatelnosti-i-pamyatniki-kraya.html'), ('Исследователи края', '/index.php/ru/kraevedcheskij-almanakh/publikatsii-kraevedov/issledovateli-kraya.html'), ('История.· Этнография.· Культура', '/index.php/ru/kraevedcheskij-almanakh/publikatsii-kraevedov/istoriya-etnografiya-kultura.html'), ('О тех, кто пишет', '/index.php/ru/kraevedcheskij-almanakh/publikatsii-kraevedov/o-tekh-kto-pishet.html'), ('Образование', '/index.php/ru/kraevedcheskij-almanakh/publikatsii-kraevedov/obrazovanie.html'), ('Ономастика', '/index.php/ru/kraevedcheskij-almanakh/publikatsii-kraevedov/onomastika.html'), ('Религия', '/index.php/ru/kraevedcheskij-almanakh/publikatsii-kraevedov/religiya.html'), ('Искусство', '/index.php/ru/kraevedcheskij-almanakh/publikatsii-kraevedov/iskusstvo.html'), ('Партизаны подпольщики', '/index.php/ru/vko-pobedy/partizan.html'), ('Участники трудовой армии', '/index.php/ru/vko-pobedy/uchastniki-trudovoj-armii.html'), ('В тылу как в бою', '/index.php/ru/vko-pobedy/v-tylu-kak-v-boyu.html'), ('30-ая Гвардейская дивизия', '/index.php/ru/vko-pobedy/30-gvardeiskaya-divizia.html'), ('Воспоминания о войне', '/index.php/ru/vko-pobedy/vospominaniya-o-vojne.html'), ('Статьи "Восточный Казахстан в годы ВОВ" ', '/index.php/ru/vko-pobedy/stati-vostochnyj-kazakhstan-v-gody-vov.html'), ('Участники обороны Брестcкой крепости - восточноказахстанцы', '/index.php/ru/vko-pobedy/uchastniki-oborony-brestkoj-kreposti-vostochnokazakhstantsy.html'), ('Видеоколлекция', '/index.php/ru/video-coll.html'), ('Литературное объединение «Звено Алтая»', '/index.php/ru/2013-11-13-11-56-26/zveno-altaya.html'), ('Фестивали и чтения', '/index.php/ru/2013-11-13-11-56-26/festivali-i-chteniya.html'), ('От первого лица', '/index.php/ru/2013-11-13-11-56-26/2013-11-13-11-59-36.html'), ('Литературные и памятные места Восточного Казахстана', '/index.php/ru/2013-11-13-11-56-26/literaturnye-i-pamyatnye-mesta-vostochnogo-kazakhstana.html'), ('Журнал фантастики Фэнзин', '/index.php/ru/2013-11-13-11-56-26/fenzin-ru.html'), ('К. Мухамедханов: библиографический указатель', '/index.php/ru/k-mukhamedkhanovu.html')]
-
+        categories = await self.get_categories()
 
         parse = list()
         i = 1
+        id = 1
         for category, c_url in categories:
-            print(f'{i}/{len(categories)}',end=' ')
+            print(f'{i}/{len(categories)}', end=' ')
             category_url = f"{self.BASE_URL}{c_url}"
             contents = await self.get_content(category_url)
 
-            category_parse = list()
-
             for content in contents:
-                category_parse.append(content)
-
-            parse.append({"category": category, "category_url": category_url, "category_content": category_parse})
+                parse.append({"id": f"{id}", "category": category, "category_url": category_url} | content)
+                id += 1
 
             self.write(parse)
 
-            i+=1
+            i += 1
 
         # await self.close_session()
 
