@@ -2,17 +2,10 @@ import asyncio
 import json
 import os
 import time
-from ast import parse
-from pprint import pprint
-from typing import List, Any, Set, Optional, Dict
+from typing import List, Any, Optional, Dict
 
 import aiohttp
 from bs4 import BeautifulSoup
-from certifi import contents
-from django.template.defaultfilters import title
-from unicodedata import category
-
-from flowise.test import url_link
 
 
 class OlketanuBaseAPIHandler:
@@ -123,32 +116,54 @@ class OlketanuBaseAPIHandler:
                     content.append(*det)
 
         else:
+
             post = soup.find('div', attrs={"class": "item-page"})
+
             # Попытка найти заголовок статьи
+
             title = None
+
             # Проверяем несколько возможных вариантов расположения заголовка
+
             if post.find('h1'):
+
                 title = post.find('h1').get_text(strip=True)
+
             elif post.find('h2'):
+
                 title = post.find('h2').get_text(strip=True)
+
             elif post.find('div', attrs={"class": "dd-postmetadataheader"}):
+
                 title = post.find('div', attrs={"class": "dd-postmetadataheader"}).get_text(strip=True)
 
             # Находим текстовые блоки статьи: сначала ищем параграфы
+
             lst_p = post.find_all('p')
+
             # Если параграфов нет, ищем в альтернативном блоке
+
             if not lst_p:
                 lst_p = post.find_all('div', attrs={"class": "dd-article"})
 
             # Извлекаем текст, фильтруя ненужные блоки
-            detailed_list = [
-                i.get_text(strip=True) for i in lst_p
-                if
-                not i.get_text(strip=True).startswith('Литература:') and not i.get_text(strip=True).startswith('----')
-            ]
+
+
+            detailed_list = list()
+
+            for i in lst_p:
+
+                if i.get_text(strip=True).startswith('  Литература') and i.get_text(strip=True).startswith(
+
+                        '----'):
+                    break
+
+                detailed_list.append(i.get_text(strip=True))
+
             detailed_text = " ".join(detailed_list).replace('\n', ' ').replace('\t', ' ').replace('\xa0', ' ')
 
             # Если заголовок не найден ранее, используем первый элемент текста как заголовок
+
             if not title and detailed_list:
                 title = detailed_list[0]
 
