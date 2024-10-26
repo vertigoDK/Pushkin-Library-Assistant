@@ -54,17 +54,19 @@ class MeiliSearchManager:
 def main():
     # Создаем объект менеджера
     #
-    manager = MeiliSearchManager('http://localhost:7700', 'abfgKS-kxxZ6Dlp2C19wHzcF-IPmKO20fpQtwmhj4XM')
+    manager = MeiliSearchManager('http://localhost:7700', 'Bo7SsVS8_GVwaFJl90GiWWFREI-JdKAFmVSs3hRi97w')
     #
-    manager.create_index('olketanu')
-    manager.create_index('esimder')
+    # manager.create_index('olketanu')
+    # manager.create_index('esimder')
+    # manager.create_index('anyz')
 
     # Загрузка и добавление данных из JSON файла
-    manager.load_data_from_json('esimder_output_list.json', "esimder")
-    manager.load_data_from_json('olketanu_output_list.json', "olketanu")
+    # manager.load_data_from_json('olketanu_output_list.json', "olketanu")
+    # manager.load_data_from_json('esimder_output_list.json', "esimder")
+    # manager.load_data_from_json('anyz_output_list.json', "anyz")
 
     # Выполнение поиска
-    query = 'Абай'
+    query = 'История '
     results = manager.search(query, 'olketanu', limit=2,)
     print("Результаты поиска:", json.dumps(results, indent=4, ensure_ascii=False))
 
