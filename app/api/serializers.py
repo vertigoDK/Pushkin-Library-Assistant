@@ -1,6 +1,7 @@
 # api/serializers.py
 from rest_framework import serializers
 
+
 class BookSearchParamsSerializer(serializers.Serializer):
     author = serializers.CharField(max_length=255, required=False, allow_blank=True)
     title = serializers.CharField(max_length=255, required=False, allow_blank=True)
@@ -17,17 +18,22 @@ class BookSearchParamsSerializer(serializers.Serializer):
     document_language = serializers.CharField(max_length=255, required=False, allow_blank=True)
     first_number = serializers.IntegerField()
 
+
 class ExaSearchSerializer(serializers.Serializer):
     query = serializers.CharField(required=True)
     num_result = serializers.IntegerField(required=False)
     max_characters = serializers.IntegerField(required=False)
 
+
 class NewsFetcherParamsSerializer(serializers.Serializer):
     news_count = serializers.IntegerField(required=False)
+
+
 class ExaResultSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=255)
     url = serializers.URLField()
     content = serializers.CharField()
-    
+
+
 class LLMSerializer(serializers.Serializer):
-    user_message = serializers.CharField(max_length=100 ,required=True)
+    user_message = serializers.CharField(max_length=100, required=True)

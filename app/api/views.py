@@ -14,7 +14,7 @@ class BookSearchAPIView(APIView):
     def post(self, request):
         serializer = BookSearchParamsSerializer(data=request.data)
         if serializer.is_valid():
-            
+
             if serializer.validated_data['first_number'] != None:
                 first_number = serializer.validated_data['first_number']
             else:
@@ -22,20 +22,21 @@ class BookSearchAPIView(APIView):
 
             search_params = serializer.validated_data
             first_handler = BookSearchHandler(search_params=search_params, first_number=first_number)
-            
+
             try:
                 result = first_handler.execute_search()
-                
+
                 return Response(result, status=status.HTTP_200_OK)
             except Exception as e:
                 return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class LatestNewsView(APIView):
     """
     Представление для получения последних новостей.
     """
-    
+
     def get(self, request, *args, **kwargs):
         serializer = NewsFetcherParamsSerializer(data=request.query_params)
         if serializer.is_valid():
@@ -48,8 +49,9 @@ class LatestNewsView(APIView):
                 news['pub_date'] = news['pub_date'].isoformat()
 
             return Response(latest_news, status=status.HTTP_200_OK)
-        
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class EventsFetcherView(APIView):
     def get(self, request, *args, **kwargs):
@@ -58,7 +60,6 @@ class EventsFetcherView(APIView):
 
 
 class AIRequestHandlerView(APIView):
-
     from app.api.services.books_api.books_parser import BookSearchHandler
 
     def post(self, request, *args, **kwargs):
@@ -66,7 +67,6 @@ class AIRequestHandlerView(APIView):
         if serializer.is_valid():
             user_message: str = serializer.validated_data['user_message']
             glm = gllm.OpenaiLLM()
-
 
             intents: list[str] = glm.intents_recognize(user_message=user_message)
 
@@ -79,5 +79,5 @@ class AIRequestHandlerView(APIView):
                 intents.books_search.books_result = bHandler.execute_search()
 
             return Response({"intents": intents}, status=status.HTTP_200_OK)
-            
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -3,14 +3,11 @@
 {% load static %}
 
 {% block content %}
-    <main class="main">
-        {% include 'section/hero-section.html' %}
-        {% include 'section/featured-services.html' %}
-        {% include 'section/services.html' %}
-        {% include 'section/section-tour.html' %}
-        {% include 'section/section-catalog.html' %}
-    </main>
-
+    {% include 'section/hero-section.html' %}
+    {% include 'section/featured-services.html' %}
+    {% include 'section/services.html' %}
+    {% include 'section/section-tour.html' %}
+    {% include 'section/section-catalog.html' %}
 {% endblock %}
 
 {% block content_js %}
