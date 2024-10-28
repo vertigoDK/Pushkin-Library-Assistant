@@ -119,7 +119,7 @@ class BaseAPIHandler:
             print(f"{i}/{l_len} {l_len}")
             title, content = await self.get_content(url)
 
-            parse.append({"id": id, "title": title, "content": content, })
+            parse.append({"id": id, "title": title, "content": content, "url": url})
             id += 1
             i += 1
 
