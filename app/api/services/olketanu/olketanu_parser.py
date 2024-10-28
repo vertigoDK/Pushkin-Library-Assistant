@@ -11,9 +11,13 @@ from bs4 import BeautifulSoup
 class OlketanuBaseAPIHandler:
     BASE_URL: str = "https://olketanu.pushkinlibrary.kz"
     CATEGORIES_URL: str = "https://olketanu.pushkinlibrary.kz/index.php/ru/"
+    CATEGORIES_URL_KZ: str = "https://olketanu.pushkinlibrary.kz/index.php/kz/"
+
+
 
     def __init__(self):
         self.session = None
+        self.id = 1
 
     def get_session(self) -> aiohttp.ClientSession:
         if not self.session:
@@ -66,20 +70,26 @@ class OlketanuBaseAPIHandler:
 
     @staticmethod
     def is_a(url: str):
+        if not (not url.endswith(".jpg") and not url.endswith(".pdf") and (
+                url.startswith('/index.php')) or url.startswith('/ru') or url.startswith('/kz')):
+            print(url)
 
-        return not url.endswith(".jpg") and not url.endswith(".pdf") and url.startswith('/index.php')
+        return not url.endswith(".jpg") and not url.endswith(".pdf") and (
+            url.startswith('/index.php')) or url.startswith('/ru') or url.startswith('/kz')
 
-    async def get_categories(self) -> List[tuple[str, Any]]:
+    async def get_categories(self, url: str) -> List[tuple[str, Any]]:
         """
 
         :return: Список кортежей, где первое это категория, а второе это ссылка на эту категорию
         """
 
-        text = await self.get_text(self.CATEGORIES_URL)
+        text = await self.get_text(url)
 
         soup = BeautifulSoup(text, "html.parser")
         categories: List[tuple[str, Any]] = list()
         lst = soup.find("dl", attrs={"id": "offlajn-accordion-408-1"})
+        if lst is None:
+            lst = soup.find("dl", attrs={"id": "offlajn-accordion-409-1"})
         for i in lst.find_all('a'):
 
             if self.is_a(i["href"]):
@@ -148,7 +158,6 @@ class OlketanuBaseAPIHandler:
 
             # Извлекаем текст, фильтруя ненужные блоки
 
-
             detailed_list = list()
 
             for i in lst_p:
@@ -171,7 +180,7 @@ class OlketanuBaseAPIHandler:
 
         return content
 
-    async def parse(self):
+    async def parse(self, url_category: str = ""):
 
         """
         Начало парсинга
@@ -180,19 +189,18 @@ class OlketanuBaseAPIHandler:
 
         # await self.get_content('https://olketanu.pushkinlibrary.kz/index.php/ru/2013-11-13-11-56-26/festivali-i-chteniya.html')
         # return
-        categories = await self.get_categories()
+        categories = await self.get_categories(url_category)
 
         parse = list()
         i = 1
-        id = 1
         for category, c_url in categories:
             print(f'{i}/{len(categories)}', end=' ')
             category_url = f"{self.BASE_URL}{c_url}"
             contents = await self.get_content(category_url)
 
             for content in contents:
-                parse.append({"id": f"{id}", "category": category, "category_url": category_url} | content)
-                id += 1
+                parse.append({"id": f"{self.id}", "category": category, "category_url": category_url} | content)
+                self.id += 1
 
             self.write(parse)
 
@@ -201,7 +209,7 @@ class OlketanuBaseAPIHandler:
         # await self.close_session()
 
     def write(self, data: list):
-        file_path = 'olketanu_output_list.json'
+        file_path = 'olketanu.json'
 
         # Проверяем, существует ли файл
         if os.path.exists(file_path):
@@ -232,7 +240,8 @@ class OlketanuBaseAPIHandler:
 async def main():
     start_time = time.time()
     b = OlketanuBaseAPIHandler()
-    await b.parse()
+    await b.parse(url_category=b.CATEGORIES_URL_KZ)
+    await b.parse(url_category=b.CATEGORIES_URL)
     # Конец замера времени
     end_time = time.time()
 
