@@ -286,12 +286,6 @@ section,
 /*--------------------------------------------------------------
 # Featured Services Section
 --------------------------------------------------------------*/
-.featured-services {
-    --cyan-color: #0dcaf0;
-    --orange-color: #fd7e14;
-    --teal-color: #20c997;
-    --red-color: #df1529;
-}
 
 .featured-services .service-item {
     box-shadow: 0 5px 90px 0 rgba(0, 0, 0, 0.1);
