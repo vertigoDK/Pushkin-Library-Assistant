@@ -12,6 +12,7 @@ class BaseAPIHandler:
     BASE_URL: str = "https://esimder.pushkinlibrary.kz"
     DEFAULT_URL: str = "https://esimder.pushkinlibrary.kz/ru/pisateli-i-poety.html"
     CATEGORIES_URL: str = "https://esimder.pushkinlibrary.kz/ru/ushiteli.html"
+    CATEGORIES_URL_KZ: str = "https://esimder.pushkinlibrary.kz/kz/100-janaesim.html"
 
     def __init__(self):
         self.session = None
@@ -65,17 +66,19 @@ class BaseAPIHandler:
                 print(f"Произошла ошибка: {e}")
                 return None
 
-    async def get_categories(self) -> List[tuple[str, Any]]:
+    async def get_categories(self, url_category: str) -> List[tuple[str, Any]]:
         """
 
         :return: Список кортежей, где первое это категория, а второе это ссылка на эту категорию
         """
 
-        text = await self.get_text(self.CATEGORIES_URL)
+        text = await self.get_text(url_category)
 
         soup = BeautifulSoup(text, "html.parser")
         categories: List[tuple[str, Any]] = list()
         lst = soup.find("dl", attrs={"id": "offlajn-accordion-140-1", "class": "level1"})
+        if lst is None:
+            lst = soup.find("dl", attrs={"id": "offlajn-accordion-142-1", "class": "level1"})
         for i in lst.find_all('a'):
             categories.append((i.text, i['href']))
 
@@ -129,13 +132,13 @@ class BaseAPIHandler:
             return
         return full_name, content
 
-    async def parse(self):
+    async def parse(self, url_category: str):
         """
         Начало парсинга
         :return:
         """
 
-        categories = await self.get_categories()
+        categories = await self.get_categories(url_category)
 
         list_url = set()
 
@@ -201,35 +204,14 @@ class BaseAPIHandler:
 async def main():
     start_time = time.time()
     b = BaseAPIHandler()
-    await b.parse()
+    await b.parse(b.CATEGORIES_URL_KZ)
+    await b.parse(b.CATEGORIES_URL)
     # Конец замера времени
     end_time = time.time()
 
     # Вычисление времени выполнения
     execution_time = end_time - start_time
     print(execution_time)
-
-
-def read_categories(json_file_path):
-    categories = list()  # Множество для хранения уникальных категорий
-
-    # Чтение JSON данных из файла
-    with open(json_file_path, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-
-        # Проход по каждому элементу в данных и добавление категории в множество
-        for entry in data:
-            category = entry.get("category")
-            if category:
-                if len(categories) < 1 or categories[-1] != category:
-                    categories.append(category)
-
-    # Вывод категорий
-    print("Найденные категории:")
-    for category in categories:
-        print(category)
-
-    return categories
 
 
 if __name__ == "__main__":
