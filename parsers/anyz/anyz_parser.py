@@ -9,43 +9,16 @@ from bs4 import BeautifulSoup
 
 
 class BaseAPIHandler:
-    BASE_URL: str = "https://esimder.pushkinlibrary.kz"
-    DEFAULT_URL: str = "https://esimder.pushkinlibrary.kz/ru/pisateli-i-poety.html"
     LEGENDS_URL: str = "https://anyz.pushkinlibrary.kz/ru/iz-ust-v-usta/"
+    LEGENDS_URL_KZ: str = "https://anyz.pushkinlibrary.kz/kone-anyz-apsanalar/"
 
     def __init__(self):
         self.session = None
 
     def get_session(self) -> aiohttp.ClientSession:
         if not self.session:
-            headers = {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0",
-                "Accept": "text/css,*/*;q=0.1",
-                "Accept-Language": "ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3",
-                "Accept-Encoding": "gzip, deflate, br, zstd",
-                "Referer": "https://esimder.pushkinlibrary.kz/ru/",
-                "DNT": "1",
-                "Sec-GPC": "1",
-                "Connection": "keep-alive",
-                "Sec-Fetch-Dest": "style",
-                "Sec-Fetch-Mode": "no-cors",
-                "Sec-Fetch-Site": "same-origin",
-                "Priority": "u=2",
-                "Pragma": "no-cache",
-                "Cache-Control": "no-cache",
-                "TE": "trailers"
-            }
 
-            cookies = {
-                # "2984f25a664ec8dbe4b165aaa42d3810": "4e2d09466fa0c87fdf9a1d25c2b432ac",
-                # "61cb0e9afd8a5aec45494fe62d65aa75": "ru-RU"
-
-                "_wsm_id_1_39ba": "241d8d94ba70092e.1729883214.2.1729886320.1729886320",
-                "_wsm_ses_1_39ba": "*",
-                "CONSENT": "YES+",
-                "pll_language": "ru"
-            }
-            self.session = aiohttp.ClientSession(headers=headers, cookies=cookies)
+            self.session = aiohttp.ClientSession()
 
         # Создаем новую сессию с переданными заголовками и куками
         return self.session
@@ -70,13 +43,13 @@ class BaseAPIHandler:
                 print(f"Произошла ошибка: {e}")
                 return None
 
-    async def get_legends_links(self) -> List[str]:
+    async def get_legends_links(self, category_url:str) -> List[str]:
         """
 
         :return: Список ссылок на категории
         """
 
-        text = await self.get_text(self.LEGENDS_URL)
+        text = await self.get_text(category_url)
 
         soup = BeautifulSoup(text, "html.parser")
         links: List[str] = list()
@@ -102,13 +75,13 @@ class BaseAPIHandler:
 
         return title, content
 
-    async def parse(self):
+    async def parse(self, category_url: str):
         """
         Начало парсинга
         :return:
         """
 
-        links_legends = await self.get_legends_links()
+        links_legends = await self.get_legends_links(category_url)
 
         parse = list()
         l_len = len(links_legends)
@@ -159,7 +132,8 @@ class BaseAPIHandler:
 async def main():
     start_time = time.time()
     b = BaseAPIHandler()
-    await b.parse()
+    await b.parse(b.LEGENDS_URL_KZ)
+    await b.parse(b.LEGENDS_URL)
     # Конец замера времени
     end_time = time.time()
 
