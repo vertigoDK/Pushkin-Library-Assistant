@@ -1,9 +1,10 @@
-from app.services.intents_recognize import recognize_intent, ParamsExtractor
+from app.services.intents_recognize import IntentRecognize
+from app.services.params_extractor import ParamsExtractor
 from pydantic import BaseModel, Field
 
 from app.services.processors.books_search import BookSearchEngine
 from app.services.processors.esimder_search import EsimderSearch
-
+from app.services.processors.legends_search import LegendSearch
 
 class RequestHandlerIntentProccessed:
     """
@@ -30,7 +31,12 @@ class RequestHandlerIntentProccessed:
         :param params: Параметры для поиска легенд.
         :return: Результат поиска легенд.
         """
-        return {"result": f"Поиск легенд по ключевым словам: {params.keywords}"}
+        
+        legend_search: LegendSearch = LegendSearch()
+        
+        result = legend_search.search_by_keywords(keywords=params.keywords)
+        
+        return {"result": result}
 
     def esimder_search_people_proccessed(self, text_query: str):
         """
@@ -75,19 +81,22 @@ class RequestHandler():
         :return: Результат действия.
         """
         params_extractor = ParamsExtractor()
-        recognize_intent_data: dict = recognize_intent(text_query=text_query)
+        recognize_intent_data: dict = IntentRecognize.recognize_intent(text_query=text_query)
 
         intent = recognize_intent_data.content
 
         if intent == 'books_search':
             
+            # Извлекает параметры и после отправляет запрос
             params = params_extractor.extract_search_params_by_intent(text_query=text_query, intent=intent)
+            
+            
             return self.intent_processor.books_search_proccessed(params=params)
 
         elif intent == 'legends_search':
             
             params = params_extractor.extract_search_params_by_intent(text_query=text_query, intent=intent)
-            print(params)
+            
             return self.intent_processor.legends_search_proccessed(params=params)
 
         elif intent == 'esimder_search':
