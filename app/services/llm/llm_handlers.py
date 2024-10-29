@@ -36,7 +36,6 @@ class BaseLLM:
             self.model = ChatGoogleGenerativeAI(api_key=settings.GOOGLE_API_KEY, model=selected_model)
 
 
-
     def send_request_pydantic(self, text_query: str, pydantic_object: BaseModel, system_prompt: str):
         parser = PydanticOutputParser(pydantic_object=pydantic_object)
 

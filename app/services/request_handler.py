@@ -30,11 +30,7 @@ class RequestHandlerIntentProccessed:
         :param params: Параметры для поиска легенд.
         :return: Результат поиска легенд.
         """
-        if not params or "legend_name" not in params:
-            return {"error": "Необходимо передать параметры для поиска легенды."}
-
-        # Пример вызова логики поиска легенд
-        return {"result": f"Поиск легенд по имени: {params['legend_name']}"}
+        return {"result": f"Поиск легенд по ключевым словам: {params.keywords}"}
 
     def esimder_search_people_proccessed(self, text_query: str):
         """
@@ -90,7 +86,9 @@ class RequestHandler():
 
         elif intent == 'legends_search':
             
-            return {"data": "legends"}
+            params = params_extractor.extract_search_params_by_intent(text_query=text_query, intent=intent)
+            print(params)
+            return self.intent_processor.legends_search_proccessed(params=params)
 
         elif intent == 'esimder_search':
             

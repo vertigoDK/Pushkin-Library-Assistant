@@ -11,13 +11,13 @@ def recognize_intent(text_query: str) -> str:
 
     instructions_for_llm: str = f"""
     Тебе будет передан текст, и ты должен будешь определить намерение человека. Всего существует 4 возможных намерения:
-    1) books_search (Когда человек хочет сделать поиск по книгам. ВАЖНО: обращай внимание только на фразы, связанные с книгами или наличием книг, например: "Книги Абая" или "Есть ли книга Пушкина?". Не используй это намерение для общих вопросов о книгах, рекомендациях или советах.)
+    1) books_search (Когда человек хочет сделать поиск по книгам. ВАЖНО: обращай внимание только на фразы, связанные с книгами или наличием книг, например: "Книги Абая" или "Есть ли книга Пушкина?". Не используй это намерение для общих вопросов о книгах, рекомендациях или советах.) 
     2) legends_search (Когда человек интересуется конкретной легендой или просит рассказать её. Например, "Легенда о горе Толагай", "Расскажи про Прялку великанши" или "Какие есть легенды об Иртыше". Не спутывай с запросами на поиск по известным людям или категориям.)
     3) esimder_search (Когда человек хочет узнать о конкретных людях или категориях людей. Например, если запрос содержит фамилию, имя, отчество или упоминание категорий людей, таких как "Партизаны", "Писатели", "Батыры" и другие. Вот все возможные категории: {categories_list}. Если встречается категория или имя, обязательно возвращай это намерение.)
     4) just_speak (Когда запрос не относится ни к книгам, ни к легендам, ни к известным людям. Например, это может быть приветствие или общие вопросы, которые не требуют поиска информации по книгам, легендам или людям.)
 
     ВАЖНО: Игнорируй лишние слова и сосредотачивайся на ключевых элементах запроса. Например, если человек напишет "Привееет, книги Абая", просто анализируй "книги Абая". 
-    Обязательно проверь, не принадлежит ли запрос к одной из четко перечисленных категорий или намерений.
+    Обязательно проверь, не принадлежит ли запрос к одной из четко перечисленных категорий или намерений. ПЕРЕПРОВЕРЯЙ ЧТО ЧЕЛОВЕК УКАЗЫВАЕТ В ЗАПРОСЕ, ИДИ И ДУМАЙ ПО СЛОВУ
     """
 
 
@@ -31,7 +31,26 @@ def recognize_intent(text_query: str) -> str:
 
 
 class ParamsExtractor:
-
+    
+    def __init__(self):
+        self.bLlm: BaseLLM = BaseLLM(llm_presets='high_performance')
+    
+    def _extract_legends_search_params(self, text_query: str) -> BaseModel:
+        
+        class LegendSearchParams(BaseModel):
+            keywords: str = Field(None, description="ключевые слова через пробел")
+        
+        legends_search_params = self.bLlm.send_request_pydantic(
+            text_query=text_query,
+            pydantic_object=LegendSearchParams,
+            system_prompt="""
+            Твоя задача - вытащить пармаметры для легенд, к примеру если человек говорит легенда о толагае то передаешь
+            keywords: толагай легенда
+            """ 
+        )
+        
+        return legends_search_params
+        
     def _extract_books_search_params(self, text_query: str) -> BaseModel:
         """
         Метод для извлечения параметров для books_search
@@ -44,20 +63,21 @@ class ParamsExtractor:
             year2: Optional[int] = Field(None, description="Год конца публикации")
             isbn: Optional[str] = Field(None, description="ISBN книги")
 
-        bParams = BookSearchParams() # Инициализируется объект класса BookSearchParams
-
         
-        bLlm: BaseLLM = BaseLLM(llm_presets='high_performance')
 
-        pydantic_books_search_params = bLlm.send_request_pydantic(
+        pydantic_books_search_params = self.bLlm.send_request_pydantic(
             text_query=text_query, 
             pydantic_object=BookSearchParams, 
             system_prompt="""
             Твоя задача — вытащить параметры для поиска книг из текста. Параметры включают: автора, название, ключевые слова, годы публикации и ISBN.
+            Если человек делает какой то запрос о книге ты должен извлекать только ТО что есть в запросе к примеру
+            Ввод 'Кто автор книги «Ұшқан ұя»?'
+            Вывол {"title": "Ұшқан ұя"} И ВСЕ БОЛЬШЕ НИЧЕГО не нужно указывать автора
             - Всегда возвращай ответ в формате JSON, даже если не найдены параметры.
             - Игнорируй несуществующие годы (например, больше 2100 или меньше 1000).
             - Если нет упоминания конкретного автора, года или названия, возвращай эти значения как null (None).
             - НЕ ПЕРЕДАВАЙ ГОД ЕСЛИ ТЕБЯ НЕ ПРОСЯТ
+            - УКАЗЫВАЙ ТОЛЬКО ТЕ ПАРАМЕТРЫ ЧТО ТЕБЕ ПЕРЕДАЮТ НЕ УКАЗЫВАЙ ЛИШНИХ ПАРАМЕТРОВ
             Пример:
             Ввод: 'Книги Абая с 1800 по 1900 год'
             Вывод: {"author": "Абай", "year1": 1800, "year2": 1900}
@@ -67,6 +87,7 @@ class ParamsExtractor:
 
         return pydantic_books_search_params
 
+        
 
     def extract_search_params_by_intent(self, text_query: str, intent: str) -> BaseModel:
 
@@ -79,5 +100,5 @@ class ParamsExtractor:
         
         if intent == 'books_search':
             return self._extract_books_search_params(text_query=text_query)
-        elif intent == 'esimder_search':
-            ...
+        elif intent == 'legends_search':
+            return self._extract_legends_search_params(text_query=text_query)

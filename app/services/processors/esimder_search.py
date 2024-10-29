@@ -124,9 +124,6 @@ class EsimderSearch:
             return "Категория не найдена", None, []
 
 
-
-
-
     def execute_fuzzy_search(self, search_type: str, search_type_content: str):
 
 
