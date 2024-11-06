@@ -101,7 +101,7 @@ class BaseAPIHandler:
         await self.close_session()
 
     def write(self, data: list):
-        file_path = '../json/anyz_output_list.json'
+        file_path = '../json/anyz.json'
 
         # Проверяем, существует ли файл
         if os.path.exists(file_path):

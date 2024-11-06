@@ -109,7 +109,7 @@ class BaseAPIHandler:
         await self.close_session()
 
     def write(self, data: list):
-        file_path = '../json/irbis_output_list.json'
+        file_path = '../json/irbis.json'
 
         # Проверяем, существует ли файл
         if os.path.exists(file_path):
