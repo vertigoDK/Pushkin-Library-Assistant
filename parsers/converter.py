@@ -25,7 +25,7 @@ def convert_json_to_txt(json_file_path, txt_file_path):
 def main():
     json_s = os.listdir(os.path.join(os.getcwd(), 'json'))
     for i in json_s:
-        convert_json_to_txt(f"json/{i}", rf"txt\{i}.txt")
+        convert_json_to_txt(f"json/{i}", rf"txt/{i}.txt")
 
 
 if __name__ == '__main__':
