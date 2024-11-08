@@ -194,7 +194,6 @@ class OlketanuBaseAPIHandler:
         # return
         categories = await self.get_categories(url_category)
 
-
         parse = list()
         i = 1
         for category, c_url, main_category in categories:
@@ -206,11 +205,9 @@ class OlketanuBaseAPIHandler:
                 parse.append({"id": f"{self.id}", "category": category, "category_url": category_url,
                               "main_category": main_category} | content)
                 self.id += 1
-
-            self.write(parse)
-
             i += 1
 
+        self.write(parse)
         # await self.close_session()
 
     def write(self, data: list):
