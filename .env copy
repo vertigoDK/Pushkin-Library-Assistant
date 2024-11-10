@@ -1,0 +1,10 @@
+# нужно все поментяь и оформить для EXAMPLE.env
+GOOGLE_API_KEY=<ВАШ API КЛЮЧ>
+OPENAI_API_KEY=<ВАШ API КЛЮЧ>
+OPENAI_EMBEDDINGS_MODEL=<МОДЕЛЬ>
+GENERAL_VECTOR_SEARCH_NAME=<ИМЯ КОЛЛЕКЦИИ>
+ANYZ_VECTOR_SEARCH_NAME=legends
+ESIMDER_VECTOR_SEARCH_NAME=esimder
+
+PROJECT_NAME=DosAI API
+GOOGLE_MODEL_NAME=gemini-1.5-flash
