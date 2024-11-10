@@ -11,7 +11,6 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     original_query: str
-    rephrased_query: str
     intent_classification: Dict[str, Any]
     search_results: Optional[Dict[str, Any]]
     llm_response: Optional[str]
@@ -20,10 +19,9 @@ class ChatResponse(BaseModel):
 async def process_chat(request: ChatRequest):
     """
     Обработка чат-запроса:
-    1. Перефразирование запроса
-    2. Классификация намерения
-    3. Поиск по соответствующей коллекции
-    4. Генерация ответа (если не book)
+    1. Классификация намерения
+    2. Поиск по соответствующей коллекции
+    3. Генерация ответа (если не book)
     """
     try:
         result = await chat_service.process_chat(request.query)
