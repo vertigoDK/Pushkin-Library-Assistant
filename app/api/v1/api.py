@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from .endpoints import anyz_vector_search, general_vector_search, book_search
-from app.api.v1.endpoints import intent
+from app.api.v1.endpoints import intent, chat
 # Основной роутер API v1
 api_router = APIRouter()
 
@@ -28,3 +28,5 @@ api_router.include_router(
 # Подключаем роутер для работы с намерениями
 api_router.include_router(intent.router, prefix="/intent", tags=["intent"])
 
+# Подключаем роутер для работы с чатом
+api_router.include_router(chat.router, prefix="/chat", tags=["chat"])
