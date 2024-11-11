@@ -2,6 +2,7 @@ from typing import Dict, Any
 from app.services.intent_classification import IntentClassification
 from app.services.vector_search_service.anyz_vector_handler import AnyzVectorHandler
 from app.services.vector_search_service.general_vector_handler import GeneralVectorHandler
+from app.services.vector_search_service.esimder_vector_handler import EsimderVectorHandler
 from app.services.book_search.book_parser import SearchParams, BookSearchEngine
 from langchain_google_genai import GoogleGenerativeAI
 from app.core.config import settings
@@ -12,6 +13,7 @@ class ChatService:
         self.intent_classifier = IntentClassification()
         self.anyz_handler = AnyzVectorHandler()
         self.general_handler = GeneralVectorHandler()
+        self.esimder_handler = EsimderVectorHandler()
         self.llm = GoogleGenerativeAI(
             model=settings.GOOGLE_MODEL_NAME,
             temperature=0.7
@@ -39,6 +41,14 @@ class ChatService:
 
         elif intent_type == "anyz":
             search_results = self.anyz_handler.search(
+                query=text_query,
+                n_results=5
+            )
+            context = self._prepare_context_from_results(search_results)
+            llm_response = await self._generate_llm_response(text_query, context)
+
+        elif intent_type == "esimder":
+            search_results = self.esimder_handler.search(
                 query=text_query,
                 n_results=5
             )
