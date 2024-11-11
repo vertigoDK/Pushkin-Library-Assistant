@@ -1,54 +1,7 @@
-from typing import List, Optional
 from app.core.config import settings
-from .vector_handler import VectorHandler
+from app.services.vector_search_service.base_vector_handler import BaseVectorHandler
 
-class AnyzVectorHandler:
+class AnyzVectorHandler(BaseVectorHandler):
     def __init__(self):
-        self.vector_handler = VectorHandler()
-        self.collection_name = settings.ANYZ_VECTOR_SEARCH_NAME
-        self.collection = self.vector_handler.create_collection(self.collection_name)
-
-    def add_documents(self,
-                     texts: List[str],
-                     metadatas: Optional[List[dict]] = None,
-                     ids: Optional[List[str]] = None):
-        """Добавление документов в коллекцию ANYZ"""
-        self.vector_handler.add_documents(
-            texts=texts,
-            collection_name=self.collection_name,
-            metadatas=metadatas,
-            ids=ids
-        )
-
-    def search(self,
-              query: str,
-              n_results: int = 10,
-              where: Optional[dict] = None) -> dict:
-        """Поиск документов в коллекции ANYZ"""
-        return self.vector_handler.search(
-            query=query,
-            collection_name=self.collection_name,
-            n_results=n_results,
-            where=where
-        )
-
-    def update_documents(self,
-                        texts: List[str],
-                        ids: List[str],
-                        metadatas: Optional[List[dict]] = None):
-        """Обновление документов в коллекции ANYZ"""
-        self.vector_handler.update_documents(
-            collection_name=self.collection_name,
-            texts=texts,
-            ids=ids,
-            metadatas=metadatas
-        )
-
-    def delete_collection(self):
-        """Полное удаление коллекции ANYZ"""
-        return self.vector_handler.delete_collection(self.collection_name)
-
-    def get_collection(self):
-        """Получение коллекции"""
-        return self.vector_handler.get_collection(self.collection_name)
+        super().__init__(settings.ANYZ_VECTOR_SEARCH_NAME)
 
