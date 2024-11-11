@@ -42,4 +42,12 @@ class EsimderVectorHandler:
             texts=texts,
             ids=ids,
             metadatas=metadatas
-        ) 
+        )
+
+    def get_collection(self):
+        """Получение коллекции"""
+        return self.vector_handler.get_collection(self.collection_name)
+
+    def delete_collection(self):
+        """Удаление коллекции"""
+        self.vector_handler.delete_collection(self.collection_name)
