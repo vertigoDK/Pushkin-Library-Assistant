@@ -27,4 +27,17 @@ class Settings(BaseSettings):
     ANYZ_VECTOR_SEARCH_NAME: str = Field(default="")
     ESIMDER_VECTOR_SEARCH_NAME: str = Field(default="")
 
+    # DosAI status
+    DOSAI_ENABLED: bool = Field(default=True)
+    DOSAI_STATUS_FILE: str = Field(default="dosai_status.json")
+    DOSAI_MAINTENANCE_MESSAGE: str = Field(
+        default="DosAI временно отключен для технического обслуживания. Пожалуйста, попробуйте позже."
+    )
+
+    # System settings
+    SYSTEM_SETTINGS_FILE: str = Field(default="system_settings.json")
+    DEFAULT_MAINTENANCE_MESSAGE: str = Field(
+        default="Система временно недоступна для технического обслуживания. Пожалуйста, попробуйте позже."
+    )
+
 settings = Settings()

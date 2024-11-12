@@ -7,6 +7,8 @@ from app.services.book_search.book_parser import SearchParams, BookSearchEngine
 from langchain_google_genai import GoogleGenerativeAI
 from app.core.config import settings
 from langchain_core.prompts import ChatPromptTemplate
+from app.services.dosai.status_service import DosAIStatusService
+from app.services.system.settings_service import SystemSettingsService
 
 class ChatService:
     def __init__(self):
@@ -18,15 +20,31 @@ class ChatService:
             model=settings.GOOGLE_MODEL_NAME,
             temperature=0.7
         )
+        self.status_service = DosAIStatusService()
+        self.settings_service = SystemSettingsService()
 
     async def process_chat(self, text_query: str) -> Dict[str, Any]:
+        settings = self.settings_service.get_settings()
+        if not settings["system"]["enabled"]:
+            message = settings["system"]["maintenance_message"]
+            if settings["system"]["maintenance_until"]:
+                message += f"\nСистема будет доступна после: {settings['system']['maintenance_until']}"
+                
+            return {
+                "original_query": text_query,
+                "intent_classification": {"intent_type": "disabled"},
+                "search_results": None,
+                "llm_response": message
+            }
+            
         # Классифицируем запрос
         intent_result = self.intent_classifier.process_query(text_query)
         intent_type = intent_result["intent_type"]
         
         search_results = None
         llm_response = None
-
+        print(text_query)
+        print(intent_type)
         # В зависимости от типа запроса используем соответствующий поиск
         if intent_type == "book":
             search_params = SearchParams(
@@ -38,37 +56,28 @@ class ChatService:
             )
             search_engine = BookSearchEngine(search_params=search_params)
             search_results = search_engine.execute_search()
+            if search_results:
+                context_data = self._prepare_context_from_results(search_results)
+                llm_response = await self._generate_llm_response(text_query, context_data)
+                search_results["documents"] = context_data["documents"]
 
-        elif intent_type == "anyz":
-            search_results = self.anyz_handler.search(
+        elif intent_type in ["anyz", "esimder", "general"]:
+            handler = getattr(self, f"{intent_type}_handler")
+            search_results = handler.search(
                 query=text_query,
                 n_results=5
             )
-            context = self._prepare_context_from_results(search_results)
-            llm_response = await self._generate_llm_response(text_query, context)
-
-        elif intent_type == "esimder":
-            search_results = self.esimder_handler.search(
-                query=text_query,
-                n_results=5
-            )
-            context = self._prepare_context_from_results(search_results)
-            llm_response = await self._generate_llm_response(text_query, context)
-
-        elif intent_type == "general":
-            search_results = self.general_handler.search(
-                query=text_query,
-                n_results=5
-            )
-            context = self._prepare_context_from_results(search_results)
-            llm_response = await self._generate_llm_response(text_query, context)
+            if search_results:
+                context_data = self._prepare_context_from_results(search_results)
+                llm_response = await self._generate_llm_response(text_query, context_data)
+                search_results["documents"] = context_data["documents"]
 
         elif intent_type == "other":
             prompt = ChatPromptTemplate.from_messages([
                 ("system", """Ты - помощник библиотеки. Ответь на вопрос пользователя.
                 Если вопрос не связан с библиотекой или ее услугами, вежливо объясни, 
                 что ты можешь помочь только с вопросами, касающимися библиотеки, ее фондов, 
-                мероприятий и услуг."""),
+                мероприятий и услуг. НЕ ИСПОЛЬЗУЙ ЭМОДЗИ ВСЕГДА ДАВАЙ ИСТОЧНИКИ."""),
                 ("user", "{query}")
             ])
             
@@ -82,33 +91,69 @@ class ChatService:
             "llm_response": llm_response
         }
 
-    def _prepare_context_from_results(self, search_results: Dict) -> str:
-        """Подготавливает контекст из результатов поиска"""
-        context_parts = []
+    def _prepare_context_from_results(self, search_results: Dict) -> Dict[str, Any]:
+        documents = []
         
-        if "documents" in search_results:
-            for doc in search_results["documents"]:
-                if isinstance(doc, dict) and "text" in doc:
-                    context_parts.append(doc["text"])
-                else:
-                    context_parts.append(str(doc))
+        if isinstance(search_results, dict):
+            # Для векторного поиска (anyz, esimder, general)
+            if "ids" in search_results and "documents" in search_results:
+                ids = search_results["ids"][0] if search_results["ids"] else []
+                docs = search_results["documents"][0] if search_results["documents"] else []
+                metadatas = search_results["metadatas"][0] if search_results.get("metadatas") else []
+                
+                for i, (id, doc, metadata) in enumerate(zip(ids, docs, metadatas)):
+                    documents.append({
+                        "text": doc,
+                        "metadata": {
+                            **metadata,
+                            "id": id,
+                            "type": "document"
+                        }
+                    })
+            
+            # Для поиска книг
+            elif "recs" in search_results:
+                for book in search_results["recs"]:
+                    doc = {
+                        "text": f"Название: {book.get('title', '')}\nАвтор: {book.get('author', '')}\n",
+                        "metadata": {
+                            "title": book.get('title', 'Неизвестная книга'),
+                            "author": book.get('author', ''),
+                            "year": book.get('year', ''),
+                            "type": "book"
+                        }
+                    }
+                    if book.get('year'):
+                        doc["text"] += f"Год: {book['year']}\n"
+                    if book.get('description'):
+                        doc["text"] += f"Описание: {book['description']}"
+                    documents.append(doc)
                     
-        return "\n\n".join(context_parts)
+        return {
+            "documents": documents,
+            "total": len(documents)
+        }
 
-    async def _generate_llm_response(self, query: str, context: str) -> str:
-        """Генерирует ответ на основе контекста"""
+    async def _generate_llm_response(self, query: str, context_data: Dict[str, Any]) -> str:
+        """Генерирует ответ на основе контекста с указанием источников"""
         prompt = ChatPromptTemplate.from_messages([
-            ("system", """Ты - помощник библиотеки. Используй предоставленный контекст 
+            ("system", """Ты - помощник библиотеки. Используй предоставленные документы 
             для ответа на вопрос пользователя. Отвечай дружелюбно и информативно.
-
-            Контекст:
-            {context}"""),
+            ВСЕГДА ДАВАЙ ИСТОЧНИКИ.
+            Документы:
+            {documents}"""),
             ("user", "{query}")
         ])
+        
+        documents_text = "\n\n".join([
+            f"[Документ {i+1}]: {doc['text']} Источник: {doc['metadata']['url']}\n\n" 
+            for i, doc in enumerate(context_data["documents"])
+        ])
+        print(documents_text)
 
         chain = prompt | self.llm
         response = chain.invoke({
-            "context": context,
+            "documents": documents_text,
             "query": query
         })
 

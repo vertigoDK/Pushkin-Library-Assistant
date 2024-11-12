@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from .endpoints import vector_search, book_search
+from .endpoints import vector_search, book_search, dosai_status, system_settings
 from app.api.v1.endpoints import intent, chat
 
 # Основной роутер API v1
@@ -31,4 +31,18 @@ api_router.include_router(
     chat.router, 
     prefix="/chat", 
     tags=["Chat"]
+)
+
+# Добавить к существующим роутерам:
+api_router.include_router(
+    dosai_status.router,
+    prefix="/dosai",
+    tags=["DosAI Status"]
+)
+
+# Подключаем роутер для работы с системными настройками
+api_router.include_router(
+    system_settings.router,
+    prefix="/system",
+    tags=["System Settings"]
 )
