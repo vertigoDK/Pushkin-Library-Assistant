@@ -1,0 +1,620 @@
+/* Добавим стили для плавной анимации */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 700ms;
+}
+
+/* Добавим стили для анимации печатающегося текста */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-typing {
+    transition: all 0.5s ease-out;
+}
+
+.text-typing.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.6s;
+}
+
+.bot-message {
+    background: #FFFFFF;
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    max-width: 90%;
+}
+
+.bot-message a {
+    color: #059669;
+    text-decoration: none;
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.bot-message a:hover {
+    color: #047857;
+    text-decoration: underline; 
+}
+
+.source-card {
+    background: #FFFFFF;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    max-width: 90%;
+}
+
+.source-card:hover {
+    background: #F9FAFB;
+    border-color: #10B981;
+}
+
+.source-card span {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+/* Основной контейнер чата */
+.chat-container {
+    height: calc(100vh - 180px); /* Уменьшаем высоту контейнера */
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    padding-top: 100px; /* Добавляем отступ сверху для логотипа */
+    gap: 2rem;
+}
+
+/* Контейнер с сообщениями */
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Увеличиваем отступ между сообщениями */
+}
+
+/* Стили для сообщений пользователя */
+.user-message {
+    background: #22C55E;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0.25rem;
+    max-width: 70%;
+    box-shadow: 0 2px 4px rgba(34, 197, 94, 0.1);
+    align-self: flex-end;
+    word-wrap: break-word;
+}
+
+/* Стили для сообщений бота */
+.bot-message {
+    background: white;
+    color: #1F2937;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0.25rem;
+    max-width: 70%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    align-self: flex-start;
+    word-wrap: break-word;
+}
+
+/* Стили для источников */
+.source-card {
+    background: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #E5E7EB;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    max-width: 70%;
+    margin-top: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.source-card:hover {
+    border-color: #22C55E;
+    background: #F9FAFB;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Контейнер с логотипом */
+.logo-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* Сам логотип */
+.logo-container img {
+    width: 60px;
+    height: 60px;
+}
+
+/* Главный контейнер */
+.main-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Контейнер с логотипом и приветствием */
+#mainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+/* Логотип */
+.logo-image {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+/* Контейнер чата */
+.chat-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Сообщения */
+#chatMessages {
+    margin-top: 2rem;
+}
+
+/* Поле ввода */
+.input-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 4rem);
+    max-width: 1200px;
+}
+
+.sources-container {
+    margin-top: 0.5rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    padding: 0.75rem;
+}
+
+.sources-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.sources-header .icon {
+    width: 1rem;
+    height: 1rem;
+    color: #6b7280
+}
+
+.sources-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.source-card {
+    flex: 1 1 200px;
+    max-width: calc(50% - 0.25rem);
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 0.75rem;
+}
+
+.source-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.source-card h3 {
+    font-size: 0.875rem;
+    margin: 0;
+    color: #111827;
+    flex: 1;
+}
+
+.source-link {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #10b981;
+    text-decoration: none;
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+.source-link:hover {
+    color: #059669;
+}
+
+.source-link .icon {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
+/* Анимация появления сообщений */
+.message-fade-in {
+    animation: messageSlideIn 0.3s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes messageSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Индикатор печатания */
+.typing-indicator {
+    padding: 1rem;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.typing-dots span {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: typingDot 1s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) { animation-delay: 0.1s; }
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes typingDot {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+.input-disabled {
+    background-color: #f3f4f6;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.input-disabled::placeholder {
+    color: #9ca3af;
+}
+.sources-header.recommended {
+    margin-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1rem;
+}
+
+.sources-header.recommended .icon {
+    color: #10b981;
+}
+.source-card.loading {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+}
+
+.loading-spinner svg {
+    animation: rotate 2s linear infinite;
+}
+
+.loading-spinner circle {
+    stroke: #10b981;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
+}
+
+.books-result-block {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 12px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.books-result-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.result-icon {
+    background: #e3f2fd;
+    padding: 12px;
+    border-radius: 50%;
+}
+
+.books-icon {
+    width: 32px;
+    height: 32px;
+    fill: #1976d2;
+}
+
+.result-info h3 {
+    font-size: 18px;
+    color: #1976d2;
+    margin: 0 0 4px 0;
+}
+
+.result-info p {
+    color: #666;
+    margin: 0;
+    font-size: 14px;
+}
+
+.result-preview {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.mini-book-card {
+    width: 80px;
+    height: 120px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.mini-book-card:hover {
+    transform: translateY(-4px);
+}
+
+.mini-book-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.more-books {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 120px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    color: #666;
+    font-weight: 500;
+}
+
+.show-books-btn {
+    width: 100%;
+    padding: 12px;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.show-books-btn:hover {
+    background: #1565c0;
+}
+
+.arrow-icon {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+.no-books-found {
+    text-align: center;
+    padding: 24px;
+}
+
+.sad-icon {
+    width: 48px;
+    height: 48px;
+    fill: #666;
+    margin-bottom: 12px;
+}
+
+.catalog-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #1976d2;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #1976d2;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.catalog-link:hover {
+    background: #1976d2;
+    color: white;
+}
+
+.book-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    gap: 24px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.book-card:hover {
+    transform: scale(1.02);
+}
+
+.book-cover-wrapper {
+    position: relative;
+    min-width: 140px;
+}
+
+.book-cover {
+    position: relative;
+    width: 140px;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 16px 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.book-details p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: #666;
+}
+
+.book-details .icon {
+    width: 18px;
+    height: 18px;
+    fill: #888;
+}
+
+.book-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.check-btn {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.location-btn {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.action-btn .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.check-btn .icon {
+    fill: #1976d2;
+}
+
+.location-btn .icon {
+    fill: #666;
+}

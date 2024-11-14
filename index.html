@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DosAI Чат-бот</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/botStyles.css">
+
+    <!-- Добавм стили для сообщений бота -->
+    <style>
+        .bot-message {
+            background: #FFFFFF;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            max-width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .bot-message h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #166534;
+        }
+
+        .bot-message p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .bot-message ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            list-style-type: disc;
+        }
+
+        .bot-message .sources {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(229, 231, 235, 0.5);
+            font-size: 0.9rem;
+            color: #4B5563;
+        }
+
+        .bot-message a {
+            color: #059669;
+            text-decoration: underline;
+        }
+
+        .bot-message a:hover {
+            color: #047857;
+        }
+
+        /* Добавим стили для контейнера сообщений */
+        #chatMessages {
+            position: relative;
+            z-index: 10;
+            background: #F9FAFB;
+            min-height: calc(100vh - 160px);
+        }
+
+        /* Стили для центрального логотипа */
+        #centerLogo {
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #centerLogo img {
+            position: fixed;
+            pointer-events: none;
+        }
+
+        /* Добавим стили для контейнера чата */
+        .chat-container {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Стили для инпут-контейнера */
+        .chat-input-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: #F9FAFB;
+        }
+
+        /* Стили для основного контента */
+        #mainContent {
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+
+
+        /* Обновляем стили */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Обновляем стили для основного контента */
+        #mainContent {
+            min-height: calc(100vh - 80px); /* Вычитаем высоту чат-инпута */
+            padding-bottom: 0; /* Убираем нижний отступ */
+        }
+
+        /* Обновляем стили для чат-контейнера */
+        .chat-container {
+            display: none; /* Скрываем, пока нет сообщений */
+        }
+
+        /* Обновляем стили для инпут-контейнера */
+        .chat-input-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px; /* Фиксированная высота */
+            background: #F9FAFB;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        /* Удаляем нен��жные отступы */
+        .mb-20, .mb-24 {
+            margin-bottom: 0;
+        }
+
+
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Основной контент -->
+    <div id="mainContent" class="container mx-auto max-w-4xl p-4">
+        <!-- Заголовок -->
+        <header class="mb-8">
+            <h1 class="text-2xl font-bold text-green-700">Доброе Утро!</h1>
+        </header>
+
+        <!-- Карточки категорий -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Карточка 1 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-lg">Биография известного человека</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Поиск по книгам</p>
+                <button class="text-green-600 hover:text-green-700 font-medium flex items-center gap-1">
+                    Поиск 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-lg">Книги фантастики</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Поиск по жанрам</p>
+                <button class="text-green-600 hover:text-green-700 font-medium flex items-center gap-1">
+                    Поиск 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-lg">История Усть-Каменогорска</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Поиск по краеведению</p>
+                <button class="text-green-600 hover:text-green-700 font-medium flex items-center gap-1">
+                    Поиск 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Секция возможностей с обновленными иконками -->
+        <div class="mb-20">
+            <h2 class="text-xl font-semibold mb-6">Как я могу использовать DosAI?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Найти книги определенного автора</span>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Узнать историю своего района</span>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Узнать о предстоящих мероприятиях</span>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Подобрать литературу для учёбы</span>
+                </div>
+            </div>
+            <a href="demo.html" class="mt-6 text-green-600 hover:text-green-700">Узнать все возможности →</a>
+        </div>
+    </div>
+
+    <!-- Контейнер для собщений -->
+    <div class="chat-messages-container" id="chat-message-container">
+        <div id="chatMessages" class="container mx-auto max-w-4xl p-4 mb-24">
+            <div class="flex flex-col gap-6">
+                <!-- Сообщения будут добавлятся сюда динамически -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Чат-инпут -->
+    <div class="chat-input-container">
+        <div class="container mx-auto max-w-4xl p-4">
+            <form id="chatForm" class="relative flex items-center">
+                <button type="button" 
+                        class="absolute left-4 text-gray-400 hover:text-red-500 transition-colors"
+                        title="Очистить чат">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </button>
+
+                <input autocomplete="off" 
+                id="chatInput" 
+                       type="text" 
+                       placeholder="Введите сообщение" 
+                       class="w-full pl-14 pr-32 py-4 rounded-[50px] border border-gray-200 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500">
+
+                <label class="absolute right-20 cursor-pointer text-gray-400 hover:text-green-500 transition-colors p-2"
+                       title="Добавить изображение">    
+                    <input type="file" accept="image/*" class="hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </label>
+
+                <button type="submit" 
+                        class="absolute right-4 p-2 rounded-lg text-gray-400 hover:text-white hover:bg-green-500 transition-all duration-200"
+                        title="Отправить сообщение">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-[-90deg]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="js/chat.js"></script>
+</body> 
+</html>  

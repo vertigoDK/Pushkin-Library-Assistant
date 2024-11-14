@@ -1,0 +1,86 @@
+/* Основные стили для текста */
+.text-normal {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #374151;
+}
+
+.text-emphasis {
+    font-weight: 500;
+    color: #111827;
+}
+
+.text-quote {
+    border-left: 4px solid #10b981;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #4b5563;
+    margin: 1rem 0;
+}
+
+/* Списки */
+.list-decimal {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.list-disc {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+/* Заголовки */
+.heading-large {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1.5rem 0 1rem;
+}
+
+.heading-medium {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #1f2937;
+    margin: 1.25rem 0 0.75rem;
+}
+
+/* Выделения */
+.highlight {
+    background-color: #ecfdf5;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    color: #059669;
+}
+
+.note {
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+/* Таблицы */
+.table-container {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.table-simple {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-simple th,
+.table-simple td {
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.table-simple th {
+    background-color: #f9fafb;
+    font-weight: 500;
+}
