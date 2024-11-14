@@ -11,8 +11,8 @@ class SearchParams(BaseModel):
     author: Optional[str] = Field(default=None, description="Автор книги")
     title: Optional[str] = Field(default=None, description="Название книги")
     keywords: Optional[str] = Field(default=None, description="Ключевые слова для поиска")
-    year1: Optional[str] = Field(default=None, description="Год издания от")
-    year2: Optional[str] = Field(default=None, description="Год издания до")
+    year1: Optional[int] = Field(default=None, description="Год издания от")
+    year2: Optional[int] = Field(default=None, description="Год издания до")
     isbn: Optional[str] = Field(default=None, description="ISBN книги")
     
 
