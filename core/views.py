@@ -8,7 +8,6 @@ from app.events_app.models import Event
 from app.new_book_app.models import NewBook
 from app.news_app.models import News
 from app.time_app.models import TimeModel
-from base.settings import FLOWISE_CHATFLOW, FLOWISE_HOST
 from .link import EXTERNAL_LINKS
 
 
@@ -69,8 +68,6 @@ def index(request):
         'time_model_next': time_model_next,
         'new_books': new_books,
         'weekend_days': weekend_days,
-        'FLOWISE_CHATFLOW': FLOWISE_CHATFLOW,
-        'FLOWISE_HOST': FLOWISE_HOST,
     }
     return render(request=request, template_name='core.html', context=context)
 
