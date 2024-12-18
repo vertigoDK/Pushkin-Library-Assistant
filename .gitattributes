@@ -1,6 +1,0 @@
-*.js linguist-language=JavaScript
-*.js linguist-vendored
-
-*.css linguist-vendored
-
-*.py linguist-detectable

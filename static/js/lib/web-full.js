@@ -1,1 +1,0 @@
-https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js
