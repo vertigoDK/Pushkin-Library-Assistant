@@ -1,10 +1,12 @@
 import asyncio
+import datetime
 import json
 import os
 import time
-from typing import List, Any
+from typing import List, Any, Set, Dict
 
 import aiohttp
+import uuid
 from bs4 import BeautifulSoup
 
 
@@ -13,6 +15,7 @@ class BaseAPIHandler:
     DEFAULT_URL: str = "https://esimder.pushkinlibrary.kz/ru/pisateli-i-poety.html"
     CATEGORIES_URL: str = "https://esimder.pushkinlibrary.kz/ru/ushiteli.html"
     CATEGORIES_URL_KZ: str = "https://esimder.pushkinlibrary.kz/kz/100-janaesim.html"
+    CATEGORIES_URL_EN: str = "https://esimder.pushkinlibrary.kz/en/100-new-names.html"
 
     def __init__(self):
         self.session = None
@@ -66,7 +69,7 @@ class BaseAPIHandler:
                 print(f"Произошла ошибка: {e}")
                 return None
 
-    async def get_categories(self, url_category: str) -> List[tuple[str, Any]]:
+    async def get_categories(self, url_category: str, lang) -> List[tuple[str, Any]]:
         """
 
         :return: Список кортежей, где первое это категория, а второе это ссылка на эту категорию
@@ -76,9 +79,14 @@ class BaseAPIHandler:
 
         soup = BeautifulSoup(text, "html.parser")
         categories: List[tuple[str, Any]] = list()
-        lst = soup.find("dl", attrs={"id": "offlajn-accordion-140-1", "class": "level1"})
-        if lst is None:
+        if lang == 'ru':
+            lst = soup.find("dl", attrs={"id": "offlajn-accordion-140-1", "class": "level1"})
+        elif lang == 'kz':
             lst = soup.find("dl", attrs={"id": "offlajn-accordion-142-1", "class": "level1"})
+        else:
+            print(1)
+            lst = soup.find("dl", attrs={"id": "offlajn-accordion-143-1", "class": "level1"})
+
         for i in lst.find_all('a'):
             categories.append((i.text, i['href']))
 
@@ -132,48 +140,80 @@ class BaseAPIHandler:
             return
         return full_name, content
 
-    async def parse(self, url_category: str):
+    async def parse(self, url_category: str, lang: str = 'ru'):
         """
         Начало парсинга
         :return:
         """
 
-        categories = await self.get_categories(url_category)
+        categories = await self.get_categories(url_category, lang)
 
         list_url = set()
 
         parse = list()
         c_len = len(categories)
+        # url: (short_name, [category])
+        all_name: Dict[str, Dict] = dict()
+
         i = 1
-        id = 0
         for category, c_url in categories:
             category_url = f"{self.BASE_URL}{c_url}?limit=0"
-            print(f"{i}/{c_len} {category_url}")
+            text_p = f"{i}/{c_len} {category_url}"
+            print(text_p)
             names = await self.get_names_in_categories(category_url)
-            for short_name, n_url in names:
-                if n_url in list_url:
-                    "Если есть элемент в списке"
+            j = 1
+            for name, url in names:
+                print(f"{text_p}   {j}/{len(names)}   {name}")
+                a = all_name.get(url, {
+                    "short_name": '',
+                    "category": [],
+                    'category_url': []
+                })
 
-                    continue
+                a["short_name"] = name
+                a["category"] = a["category"] + [category]
+                a["category_url"] = a["category_url"] + [category_url]
 
-                # Добавляем в уникальный список
-                list_url.add(n_url)
-                name_url = f"{self.BASE_URL}{n_url}"
-                if name_url.find('#') != -1:
-                    continue
-                full_name, content = await self.get_content_name(short_name, name_url)
-                parse.append(
-                    {"id": id, "name_url": name_url, "full_name": full_name, "content": content, "category": category,
-                     "category_url": category_url})
-                id += 1
+                all_name[url] = a
+                j+=1
+            i+=1
+
+
+        c_len = len(all_name)
+        i = 1
+        for n_url, a in all_name.items():
+
+            short_name = a["short_name"]
+            categories = a["category"] = a["category"]
+            categories_url= a["category_url"] = a["category_url"]
+
+            print(f"{i}/{c_len} {short_name}")
+            # Добавляем в уникальный список
+            list_url.add(n_url)
+            name_url = f"{self.BASE_URL}{n_url}"
+            if name_url.find('#') != -1:
+                continue
+            full_name, content = await self.get_content_name(short_name, name_url)
+            parse.append(
+                {
+                    "id": f"{uuid.uuid4()}",
+                    "title": full_name,
+                    "content": content,
+                    "url": name_url,
+                    "keywords": categories,
+                    "timestamp": str(datetime.datetime.now()),
+                    "related_links": categories_url,
+                    "language": lang,
+                    "source": "esimder",
+                })
             i += 1
 
-        self.write(parse)
+        self.write(parse, lang)
 
         await self.close_session()
 
-    def write(self, data: list):
-        file_path = '../json/esimder.json'
+    def write(self, data: list, lang: str = 'ru'):
+        file_path = f'../json/esimder-{lang}.json'
 
         # Проверяем, существует ли файл
         if os.path.exists(file_path):
@@ -204,8 +244,9 @@ class BaseAPIHandler:
 async def main():
     start_time = time.time()
     b = BaseAPIHandler()
-    await b.parse(b.CATEGORIES_URL_KZ)
-    await b.parse(b.CATEGORIES_URL)
+    await b.parse(b.CATEGORIES_URL_EN, lang='en')
+    await b.parse(b.CATEGORIES_URL, lang='ru')
+    await b.parse(b.CATEGORIES_URL_KZ, lang='kz')
     # Конец замера времени
     end_time = time.time()
 
@@ -217,3 +258,4 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
     # read_categories("esimder_output_list.json")
+

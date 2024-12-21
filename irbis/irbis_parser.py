@@ -143,7 +143,6 @@ class BaseAPIHandler:
                     "id": f"{uuid.uuid4()}",
                     "title": title,
                     "content": content,
-                    "category": category,
                     "url": category_url,
                     "keywords": [*keywords, category],
                     "timestamp": str(datetime.datetime.now()),
@@ -155,12 +154,12 @@ class BaseAPIHandler:
             self.id += 1
             i += 1
 
-        self.write(parse)
+        self.write(parse, lang)
 
         await self.close_session()
 
-    def write(self, data: list):
-        file_path = '../json/irbis.json'
+    def write(self, data: list, lang: str):
+        file_path = f'../json/irbis-{lang}.json'
 
         # Проверяем, существует ли файл
         if os.path.exists(file_path):
